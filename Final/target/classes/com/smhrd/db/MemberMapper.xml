@@ -3,11 +3,11 @@
 <mapper namespace="com.smhrd.db.MemberMapper">
 
 	<insert id="join" parameterType="com.smhrd.model.MemberVO">
-		INSERT INTO tb_member(memId, memPw, memName) VALUES(#{memId}, #{memPw}, #{memName})
+		INSERT INTO tb_member(memId, memPw, name, gender, birth) VALUES(#{memId}, #{memPw}, #{name}, #{gender}, #{birth})
 	</insert>
 	
 	<select id="login" parameterType="com.smhrd.model.MemberVO" resultType="com.smhrd.model.MemberVO">
-		SELECT memId, memPw, memName From tb_member where memId = #{memId} AND memPw = #{memPw}
+		SELECT memId, memPw, name From tb_member where memId = #{memId} AND memPw = #{memPw}
 	</select>
 	
 	<update id="update" parameterType="com.smhrd.model.MemberVO">
