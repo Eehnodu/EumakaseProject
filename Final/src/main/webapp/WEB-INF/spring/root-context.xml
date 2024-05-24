@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	https://www.springframework.org/schema/beans/spring-beans.xsd
+	http://mybatis.org/schema/mybatis-spring 
+    http://mybatis.org/schema/mybatis-spring-1.2.xsd"
+	>
+
+	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
+		<property name="username" value="ehroqkfdbcah"/>	
+		<property name="password" value="q1w2e3!@#"/>
+		<property name="jdbcUrl" value="jdbc:mysql://project-db-cgi.smhrd.com:3307/ehroqkfdbcah"/>
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>	
+	 </bean>
+	 
+	 <bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource"> 
+	 	<constructor-arg ref="hikariConfig">
+	 	</constructor-arg>
+	 </bean>
+	 
+	 <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="dataSource" ref="dataSource"/>
+	 </bean>
+	 
+	 <mybatis-spring:scan base-package="com.smhrd.db"/>
+	 
+</beans>
