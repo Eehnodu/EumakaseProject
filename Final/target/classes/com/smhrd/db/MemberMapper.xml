@@ -12,7 +12,7 @@
 	
 	<update id="update" parameterType="com.smhrd.model.MemberVO">
 		UPDATE tb_member set memPw = #{memPw} Where memId = #{memId}
-	</update>
+	</update> 
 	
 	<delete id="delete">
 		DELETE FROM tb_member WHERE memId = #{memId}
