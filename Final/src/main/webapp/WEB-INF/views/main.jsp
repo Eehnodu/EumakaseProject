@@ -8,23 +8,22 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <%@ include file="include.jsp"%>
-
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 	<button type="button" class="btn btn-success btn-sm">
-		<a href="${cpath}/mypage" style="text-decoration: none; color: white;">마이페이지</a>
+		<a href="${cpath}/mypage" class="btnMypage">마이페이지</a>
 	</button>
 	<form action="${cpath}/logout" method="post">
 		<button type="submit" class="btn btn-dark btn-sm">로그아웃</button>
 	</form>
 
-	<div>${member.name}님을위한추천음악</div>
+	<div>${member.name}님을 위한 추천 음악</div>
 	<div>다른 사용자들의 플레이리스트</div>
-	<div>음악 재생 플레이어~~</div>
+	<div>음악 재생 플레이어</div>
 	<div>
-		<a href="#">AI 추천 받으러 가기!</a>
+		<a href="#">AI 추천 받으러 가기</a>
 	</div>
-
 
 </body>
 </html>

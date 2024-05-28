@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smhrd.db.MemberMapper;
 import com.smhrd.model.MemberVO;
@@ -28,8 +30,9 @@ public class MainController {
 	}
 
 	@PostMapping("/joinProcess")
-	public String join(MemberVO vo) {
+	public String join(MemberVO vo, HttpSession session) {
 		mapper.join(vo);
+		session.setAttribute("member", vo);
 		return "redirect:/";
 	}
 
@@ -63,10 +66,25 @@ public class MainController {
 	@PostMapping("/update")
 	public String update(MemberVO vo, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
-		String memId = member.getMemId();
-		vo.setMemId(memId);
+		
+		// 기존 이름, 성별, 생일, 가입일 정보 유지
+		vo.setMemId(member.getMemId());
+		if (vo.getName() == null) {
+			vo.setName(member.getName());
+		}
+		if (vo.getGender() == null) {
+			vo.setGender(member.getGender());
+		}
+		if (vo.getBirth() == null) {
+			vo.setBirth(member.getBirth());
+		}
+		if (vo.getCreatedAt() == null) {
+			vo.setCreatedAt(member.getCreatedAt());
+		}
+
 		mapper.update(vo);
-		return "redirect:/";
+		session.setAttribute("member", vo);
+		return "redirect:/main";
 	}
 
 	@PostMapping("/delete")
