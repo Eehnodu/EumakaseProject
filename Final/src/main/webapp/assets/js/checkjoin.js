@@ -47,9 +47,11 @@ $('#btnCheckId').click(function() {
 				$('input[name="memId"]').focus();
 				idChecked = false;
 			}
+			completeJoin();
 		},
 		error: function(xhr, status, error) {
 			alert("아이디 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+			completeJoin();
 		}
 	});
 });
@@ -86,13 +88,16 @@ function checkPw(pw) {
 
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
-	console.log("idChecked : " + idChecked + "\npwChecked : " + pwChecked);
 	if (idChecked && pwChecked) {
 		// 만약 아이디와 비밀번호의 유효성 검사를 마쳤다면
 		$("#btnPref").removeAttr("disabled");
 	} else {
-		$("#btnPref").attr("disabled", "disabled"); // 유효성 검사 실시하지 않았다면 button이 눌려지지 않도록
+		$("#btnPref").attr("disabled", "disabled"); // 유효성 검사 실시하지 않았다면 버튼이 눌려지지 않도록
 	}
+	// 다시 검사 모두 완료되면 버튼 활성화
+	if (idChecked && pwChecked) {
+		$("#btnPref").removeAttr("disabled");}
+	
 }
 
-
+completeJoin();

@@ -17,6 +17,9 @@ public interface MemberMapper {
 	public int update(MemberVO vo);
 
 	// 회원탈퇴
-	public int delete(String memId);
+	public void delete(MemberVO vo);
+	
+	// 회원탈퇴 비밀번호확인
+	public int checkDelete(MemberVO vo);
 
 }

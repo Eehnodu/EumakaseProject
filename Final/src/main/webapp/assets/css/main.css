@@ -1,4 +1,4 @@
-.btnMypage {
+.btnMypage, .btnMypage:hover {
 	text-decoration: none;
 	color: white;
 }
