@@ -1,61 +1,65 @@
+// 다른 라이브러리와의 충돌 방지
+let $jq = jQuery.noConflict();
+
 // 엔터를 눌렀었을 때 다음 입력란으로 이동
 $(document).ready(function() {
-    $('input').keydown(function(event) {
-        if (event.keyCode === 13) { // Enter 키 코드
-            event.preventDefault(); // 기본 Enter 동작 방지
-            let inputs = $('input'); // 모든 input 필드 선택
-            let currentIndex = inputs.index(this); // 현재 input 필드의 인덱스
-            let nextIndex = currentIndex + 1; // 다음 input 필드의 인덱스
+	$('input').keydown(function(event) {
+		if (event.keyCode === 13) { // Enter 키 코드
+			event.preventDefault(); // 기본 Enter 동작 방지
+			let inputs = $('input'); // 모든 input 필드 선택
+			let currentIndex = inputs.index(this); // 현재 input 필드의 인덱스
+			let nextIndex = currentIndex + 1; // 다음 input 필드의 인덱스
 
-            if (this.name == 'memId') {
-                // 현재 입력 필드의 ID가 'userId'인 경우
-                $('#btnCheckId').click(); // 중복 확인 버튼에 포커스
-            } else if (nextIndex < inputs.length) {
-                inputs.eq(nextIndex).focus(); // 다음 입력 필드에 포커스
-            } else {
-                // 마지막 입력 필드에서 엔터를 누른 경우
-                $('#btnPref').focus(); // 제출 버튼에 포커스
-            }
-        }
-    });
-});
-
-// 아이디 중복체크
-let idChecked = false;
-$('#btnCheckId').click(function() {
-	let memId = $('input[name="memId"]').val(); // 아이디 필드에서 값 가져오기
-
-	if (memId == '') {
-		alert("아이디를 입력해주세요.");
-		return;
-	}
-
-	$.ajax({
-		type: "post",
-		url: `${cpath}/checkId`,
-		data: {
-			"memId": memId
-		},
-		success: function(data) {
-			// data : checkId에서 넘겨준 결과값
-			// 반환된 data 값이 "YES"인 경우
-			if (data == "YES") {
-				alert("사용 가능한 아이디입니다.");
-				idChecked = true; // id체크 true
+			if (this.name == 'memId') {
+				// 현재 입력 필드의 ID가 'userId'인 경우
+				$('#btnCheckId').click(); // 중복 확인 버튼에 포커스
+			} else if (nextIndex < inputs.length) {
+				inputs.eq(nextIndex).focus(); // 다음 입력 필드에 포커스
 			} else {
-				alert("중복된 아이디입니다.");
-				$('input[name="memId"]').focus();
-				idChecked = false;
+				// 마지막 입력 필드에서 엔터를 누른 경우
+				$('#btnPref').focus(); // 제출 버튼에 포커스
 			}
-			completeJoin();
-		},
-		error: function(xhr, status, error) {
-			alert("아이디 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
-			completeJoin();
 		}
 	});
 });
 
+// 아이디 중복체크
+let idChecked = false;
+$(document).ready(function() {
+	$('#btnCheckId').click(function() {
+		let memId = $('input[name="memId"]').val(); // 아이디 필드에서 값 가져오기
+
+		if (memId == '') {
+			alert("아이디를 입력해주세요.");
+			return;
+		}
+
+		$jq.ajax({
+			type: "post",
+			url: `${cpath}/checkId`,
+			data: {
+				"memId": memId
+			},
+			success: function(data) {
+				// data : checkId에서 넘겨준 결과값
+				// 반환된 data 값이 "YES"인 경우
+				if (data == "YES") {
+					alert("사용 가능한 아이디입니다.");
+					idChecked = true; // id체크 true
+				} else {
+					alert("중복된 아이디입니다.");
+					$('input[name="memId"]').focus();
+					idChecked = false;
+				}
+				completeJoin();
+			},
+			error: function(xhr, status, error) {
+				alert("아이디 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+				completeJoin();
+			}
+		});
+	});
+});
 
 // 비밀번호 확인
 let pwChecked = false;
@@ -96,8 +100,9 @@ function completeJoin() {
 	}
 	// 다시 검사 모두 완료되면 버튼 활성화
 	if (idChecked && pwChecked) {
-		$("#btnPref").removeAttr("disabled");}
-	
+		$("#btnPref").removeAttr("disabled");
+	}
+
 }
 
 completeJoin();
