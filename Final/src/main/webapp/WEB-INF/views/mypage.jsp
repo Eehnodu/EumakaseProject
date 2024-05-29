@@ -55,6 +55,7 @@
 
 	<h3>회원탈퇴</h3>
 	<form action="${cpath}/delete" method="post">
+		비밀번호 입력 : <input type="password" name="memPw">
 		<button type="submit" class="btn btn-danger btn-sm">탈퇴하기</button>
 	</form>
 </body>

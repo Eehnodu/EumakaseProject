@@ -7,6 +7,9 @@ public interface MemberMapper {
 	// 회원가입
 	public int join(MemberVO vo);
 
+	// 아이디 중복체크
+	public int checkId(String memId);
+
 	// 로그인
 	public MemberVO login(MemberVO vo);
 
@@ -14,6 +17,9 @@ public interface MemberMapper {
 	public int update(MemberVO vo);
 
 	// 회원탈퇴
-	public int delete(String memId);
+	public void delete(MemberVO vo);
 	
+	// 회원탈퇴 비밀번호확인
+	public int checkDelete(MemberVO vo);
+
 }

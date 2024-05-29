@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>소개</title>
 <%@ include file="include.jsp"%>
+<link rel="stylesheet" href="assets/css/intro.css">
+
 </head>
 <body>
 	<c:choose>
@@ -16,11 +18,14 @@
 			<button type="button" class="btn btn-primary btn-sm"
 				data-toggle="modal" data-target="#loginModal">로그인</button>
 			<button type="button" class="btn btn-success btn-sm">
-				<a href="${cpath}/join" style="text-decoration: none; color: white;">
-					회원가입 </a>
+				<a href="${cpath}/join" style="text-decoration: none; color: white;">회원가입</a>
 			</button>
 		</c:when>
+		<%-- 로그인 시 마이페이지,로그아웃 버튼 --%>
 		<c:when test="${member!=null}">
+			<button type="button" class="btn btn-success btn-sm">
+				<a href="${cpath}/mypage" class="btnMypage">마이페이지</a>
+			</button>
 			<form action="${cpath}/logout" method="post">
 				<button type="submit" class="btn btn-dark btn-sm">로그아웃</button>
 			</form>
@@ -63,6 +68,7 @@
 
 				<!-- Modal footer -->
 				<div class="modal-footer">
+					<a href="${cpath}/join"> 회원가입 </a>
 					<button type="button" class="btn btn-danger btn-sm"
 						data-dismiss="modal">Close</button>
 				</div>

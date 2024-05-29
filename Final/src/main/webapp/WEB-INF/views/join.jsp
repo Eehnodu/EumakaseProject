@@ -8,43 +8,58 @@
 <meta charset="UTF-8">
 <title>가입</title>
 <%@ include file="include.jsp"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	let cpath = "${cpath}"
+</script>
 </head>
 <body>
-
 	<div id="prefSurvey">
 		<h3>회원가입</h3>
 		<form action="${cpath}/joinProcess" method="post">
-			<div>
-				아이디 : <input type="text" name="memId">
-			</div>
-			<div>
-				비밀번호 : <input type="password" name="memPw">
-			</div>
-			<div>
-				비밀번호 확인 : <input type="password" name="memPw">
-			</div>
-			<div>
-				이름 : <input type="text" name="name">
-			</div>
-			<div>
-				성별 : <input type="text" name="gender">
-			</div>
-			<div>
-				생년월일 : <input type="text" name="birth">
-			</div>
-			<div>
-				<button type="submit" class="btn btn-primary btn-sm" id="prefButton">선호도
-					조사 후 가입하기</button>
-			</div>
+			<table>
+				<tr>
+					<td>아이디:</td>
+					<td><input type="text" name="memId"></td>
+					<td><button type="button" class="btn btn-primary btn-sm" id="btnCheckId">중복확인</button></td>
+				</tr>
+				<tr>
+					<td>비밀번호:</td>
+					<td><input type="password" id="pw1" name="memPw"></td>
+				</tr>
+				<tr>
+					<td>비밀번호 확인:</td>
+					<td><input type="password" id="pw2" class="pwcheck" name="memPw2"></td>
+					<td><span id="checkPw"></span></td>
+				</tr>
+				<tr>
+					<td>이름:</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td>성별:</td>
+					<td>남자 <input type="radio" name="gender" value="남"> 여자
+						<input type="radio" name="gender" value="여">
+					</td>
+				</tr>
+				<tr>
+					<td>생년월일:</td>
+					<td><input type="text" placeholder="생년월일 8글자" name="birth"></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<button type="submit" class="btn btn-primary btn-sm"
+							id="btnPref">선호도조사 후 가입하기</button>
+					</td>
+				</tr>
+			</table>
 		</form>
 	</div>
-	<!-- 선호도 조사 ajax 불러오기 -->
 
 
-
-
-	<script src="${cpath}/assets/js/preference.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/checkjoin.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/preference.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 </body>
 </html>

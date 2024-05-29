@@ -2,19 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.MemberMapper">
 
+	<!-- 회원가입 -->
 	<insert id="join" parameterType="com.smhrd.model.MemberVO">
-		INSERT INTO tb_member(memId, memPw, name, gender, birth) VALUES(#{memId}, #{memPw}, #{name}, #{gender}, #{birth})
+		INSERT INTO tb_member(memId, memPw, name, gender, birth) 
+		VALUES(#{memId}, #{memPw}, #{name}, #{gender}, #{birth})
 	</insert>
-	
-	<select id="login" parameterType="com.smhrd.model.MemberVO" resultType="com.smhrd.model.MemberVO">
-		SELECT memId, memPw, name From tb_member where memId = #{memId} AND memPw = #{memPw}
+
+	<!-- 아이디 중복체크 -->
+	<select id="checkId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM tb_member WHERE memId = #{memId}
 	</select>
-	
+
+	<!-- 로그인 -->
+	<select id="login" parameterType="com.smhrd.model.MemberVO"
+		resultType="com.smhrd.model.MemberVO">
+		SELECT memId, name, birth From tb_member 
+		where memId = #{memId} AND memPw = #{memPw}
+	</select>
+
+	<!-- 회원정보 수정 -->
 	<update id="update" parameterType="com.smhrd.model.MemberVO">
 		UPDATE tb_member set memPw = #{memPw} Where memId = #{memId}
-	</update> 
-	
-	<delete id="delete">
+	</update>
+
+	<!-- 회원탈퇴 -->
+	<delete id="delete" parameterType="com.smhrd.model.MemberVO">
 		DELETE FROM tb_member WHERE memId = #{memId}
 	</delete>
+
+	<!-- 회원탈퇴 비밀번호 확인 -->
+	<select id="checkDelete" parameterType="com.smhrd.model.MemberVO" resultType="int">
+    	SELECT COUNT(*) FROM tb_member
+    	WHERE memId = #{memId} AND memPw = #{memPw}
+	</select>
+
+
 </mapper>
