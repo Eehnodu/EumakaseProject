@@ -15,13 +15,13 @@
 	<div>
 		<a href="${cpath}/main">메인화면으로</a>
 	</div>
-	
+
 	<br>
 
 	<form action="${cpath}/logout" method="post">
 		<button type="submit" class="btn btn-dark btn-sm">로그아웃</button>
 	</form>
-	
+
 	<br>
 
 	<div>
