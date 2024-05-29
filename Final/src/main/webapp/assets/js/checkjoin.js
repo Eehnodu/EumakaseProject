@@ -1,5 +1,4 @@
-// 다른 라이브러리와의 충돌 방지
-let $jq = jQuery.noConflict();
+
 
 // 엔터를 눌렀었을 때 다음 입력란으로 이동
 $(document).ready(function() {
@@ -33,7 +32,10 @@ $(document).ready(function() {
 			alert("아이디를 입력해주세요.");
 			return;
 		}
-
+		
+		// 다른 라이브러리와의 충돌 방지
+		let $jq = jQuery.noConflict();
+		
 		$jq.ajax({
 			type: "post",
 			url: `${cpath}/checkId`,
