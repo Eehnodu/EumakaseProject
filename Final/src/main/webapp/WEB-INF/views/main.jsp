@@ -21,6 +21,7 @@
 	<div>${member.name}님을 위한 추천 음악</div>
 	<div>다른 사용자들의 플레이리스트</div>
 	<div>음악 재생 플레이어</div>
+
 	<div>
 		<a href="#">AI 추천 받으러 가기</a>
 	</div>
