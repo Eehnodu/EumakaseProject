@@ -16,13 +16,13 @@
 	<!-- 로그인 -->
 	<select id="login" parameterType="com.smhrd.model.MemberVO"
 		resultType="com.smhrd.model.MemberVO">
-		SELECT memId, name, birth From tb_member 
-		where memId = #{memId} AND memPw = #{memPw}
+		SELECT memId, name, birth FROM tb_member 
+		WHERE memId = #{memId} AND memPw = #{memPw}
 	</select>
 
 	<!-- 회원정보 수정 -->
 	<update id="update" parameterType="com.smhrd.model.MemberVO">
-		UPDATE tb_member set memPw = #{memPw} Where memId = #{memId}
+		UPDATE tb_member SET memPw = #{memPw} WHERE memId = #{memId}
 	</update>
 
 	<!-- 회원탈퇴 -->
