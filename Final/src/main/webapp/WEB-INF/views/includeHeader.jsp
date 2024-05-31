@@ -41,8 +41,19 @@
 							<li><a href="browse.html">Browse</a></li>
 							<li><a href="details.html">Details</a></li>
 							<li><a href="streams.html">Streams</a></li>
-							<li><a href="profile.html">Profile <img
-									src="assets/images/profile-header.jpg" alt=""></a></li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle active" href="profile.html"
+								id="profileDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> Profile <img
+									src="assets/images/profile-header.jpg" alt=""
+									style="vertical-align: middle;">
+							</a>
+								<div class="dropdown-menu" aria-labelledby="profileDropdown">
+									<a class="dropdown-item" href="${cpath}/update">프로필 수정</a> <a
+										class="dropdown-item" href="${cpath}/mypage">나의 뮤직</a> <a
+										class="dropdown-item" href="#">로그아웃</a>
+								</div></li>
+
 						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
 						</a>
