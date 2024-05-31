@@ -1,0 +1,154 @@
+ 
+  
+
+  /* 
+  ---------------------------------------------
+  Game Details Style
+  --------------------------------------------- 
+  */
+
+  .game-details h2 {
+    font-size: 45px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 60px 0px;
+  }
+
+  .game-details .content {
+    border-radius: 23px;
+    padding: 30px;
+    background-color: #1f2122;
+  }
+
+  .game-details .content .left-info {
+    background-color: #27292a;
+    border-radius: 23px;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .game-details .content .left-info .left {
+    float: left;
+  }
+
+  .game-details .content .left-info h4 {
+    font-size: 15px;
+    display: block;
+  }
+
+  .game-details .content .left-info span {
+    color: #666;
+    display: block;
+    margin-top: 7px;
+    font-weight: 400;
+  }
+
+  .game-details .content .left-info ul {
+    text-align: right;
+  }
+
+  .game-details .content .left-info ul li {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .game-details .content .left-info ul li:first-child i {
+    color: yellow;
+  }
+
+  .game-details .content .left-info ul li:last-child i {
+    color: #ec6090;
+  }
+
+  .game-details .content .right-info {
+    background-color: #27292a;
+    border-radius: 23px;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .game-details .content .right-info ul li {
+    display: inline-block;
+    width: 23%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .game-details .content .right-info ul li i {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .game-details .content .right-info ul li:first-child i {
+    color: yellow;
+  }
+
+  .game-details .content .right-info ul li i {
+    color: #ec6090;
+  }
+
+  .game-details .main-border-button {
+    margin-top: 35px;
+  }
+
+  .game-details .main-border-button a {
+    text-align: center;
+    width: 100%;
+  }
+  
+  
+  
+  /* ***** playlistDetailPage ***** */
+  .col-lg-12 .playlist {
+    width: 100%;
+  }
+
+
+  .playlistDetail .col-lg-12 .item {
+    position: relative;
+    /* border-bottom: 1px solid #666; */
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+  }
+
+  .playlistDetail .item img {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .playlistDetail .item h4 {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 5px;
+    padding-top: 15px;
+  }
+
+  .playlistDetail .item span {
+    color: #666;
+    font-size: 14px;
+    display: block;
+  }
+
+  .playlistDetail ul {
+    position: absolute;
+    right: 0;
+    top: 15px;
+  }
+
+  .playlistDetail ul li {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .playlistDetail ul li:first-child i {
+    color: yellow;
+  }
+
+  .playlistDetail ul li:last-child i {
+    color: #ec6090;
+  }
+
+  /* ***** playlistDetailPage 끝 ***** */

@@ -2,7 +2,10 @@ $(document).ready(function() {
 	$("#btnPref").click(function(event) {
 		event.preventDefault(); // 폼의 기본 제출 동작을 방지
 
-		$.ajax({
+		// 다른 라이브러리와의 충돌 방지
+		let $jq = jQuery.noConflict();
+		
+		$jq.ajax({
 			url: `${cpath}/joinProcess`, // 요청을 보낼 서버의 URL
 			type: "post", // HTTP 요청 방식
 			data: $("form").serialize(), // 폼 데이터 직렬화
