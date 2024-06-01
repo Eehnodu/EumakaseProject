@@ -36,7 +36,7 @@ public class MainController {
 		vo.setMemPw(null);
 		vo.setGender(null);
 		session.setAttribute("member", vo);
-		return "redirect:/main";
+		return "redirect:/mainPage";
 	}
 
 	@PostMapping("/login")
@@ -44,7 +44,7 @@ public class MainController {
 		MemberVO result = mapper.login(vo);
 		if (result != null) {
 			session.setAttribute("member", result);
-			return "redirect:/main";
+			return "redirect:/mainPage";
 		} else {
 			return "redirect:/";
 		}
@@ -56,14 +56,15 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/main")
-	public String main() {
-		return "main";
-	}
 
 	@GetMapping("/mypage")
 	public String mypage() {
 		return "mypage";
+	}
+	
+	@GetMapping("/mainPage")
+	public String mainPage() {
+		return "mainPage";
 	}
 
 	@PostMapping("/update")
@@ -71,7 +72,7 @@ public class MainController {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		vo.setMemId(member.getMemId());
 		mapper.update(vo);
-		return "redirect:/main";
+		return "redirect:/mainPage";
 	}
 	
 	@PostMapping("/delete")
