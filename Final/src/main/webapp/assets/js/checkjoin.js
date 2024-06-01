@@ -1,3 +1,4 @@
+const cpath = document.body.getAttribute('data-cpath');
 
 
 // 엔터를 눌렀었을 때 다음 입력란으로 이동
@@ -24,6 +25,7 @@ $(document).ready(function() {
 
 // 아이디 중복체크
 let idChecked = false;
+
 $(document).ready(function() {
 	$('#btnCheckId').click(function() {
 		let memId = $('input[name="memId"]').val(); // 아이디 필드에서 값 가져오기
@@ -32,10 +34,10 @@ $(document).ready(function() {
 			alert("아이디를 입력해주세요.");
 			return;
 		}
-		
+
 		// 다른 라이브러리와의 충돌 방지
 		let $jq = jQuery.noConflict();
-		
+
 		$jq.ajax({
 			type: "post",
 			url: `${cpath}/checkId`,
@@ -96,7 +98,32 @@ function checkPw(pw) {
 function completeJoin() {
 	if (idChecked && pwChecked) {
 		// 만약 아이디와 비밀번호의 유효성 검사를 마쳤다면
-		$("#btnPref").removeAttr("disabled");
+		$("#btnPref").click(function(e) {
+			e.preventDefault(); // 폼의 기본 제출 동작을 방지
+
+			// 다른 라이브러리와의 충돌 방지
+			let $jq = jQuery.noConflict();
+
+			$jq.ajax({
+				url: `${cpath}/joinProcess`,
+				type: "post",
+				data: $("form").serialize(), // 폼 데이터 직렬화
+				success: function(response) {
+					// 요청이 성공했을 때 실행될 함수
+					// 서버로부터 받은 응답 데이터를 'prefSurvey' 요소에 삽입
+					$("#prefSurvey").html("<div>선호도 조사<br><button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button></div>");
+					// 가입 완료 버튼 클릭 시 '/mypage'로 리디렉션
+					$("#btnComplete").click(function() {
+						window.location.href = "main";
+					});
+
+				},
+				error: function(xhr, status, error) {
+					// 요청이 실패했을 때 실행될 함수
+					alert("에러 발생: " + error);
+				}
+			});
+		});
 	} else {
 		$("#btnPref").attr("disabled", "disabled"); // 유효성 검사 실시하지 않았다면 버튼이 눌려지지 않도록
 	}
@@ -108,3 +135,60 @@ function completeJoin() {
 }
 
 completeJoin();
+
+// 생년월일 8글자 확인
+document.getElementById('joinForm').addEventListener('submit', function(e) {
+	let inputBirth = document.getElementById('inputBirth').value;
+	if (inputBirth.length !== 8) {
+		e.preventDefault(); // 폼 제출 방지
+		alert('생년월일을 반드시 8글자로 입력해 주세요.');
+	}
+});
+
+
+// 드롭다운을 클릭 이벤트로만 활성화
+$(document).ready(function() {
+
+    // 드롭다운 메뉴 항목을 클릭했을 때 드롭다운 메뉴 숨기기
+    $('.dropdown-item').click(function() {
+        $(this).closest('#ddwGdMenu').removeClass('show'); // 드롭다운 메뉴를 숨깁니다.
+    });
+
+    // 바깥쪽을 클릭하면 드롭다운 메뉴 숨기기
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').removeClass('show');
+        }
+    });
+});
+
+// 드롭다운으로 선택한 성별을 화면에 보여주기
+$(document).ready(function() {
+	$('.dropdown-item').click(function() {
+		let selectedGender = $(this).text();
+		$('#genderPlaceholder').text(selectedGender)
+			.css({
+				'color': '#c4c3ca',
+				'font-weight': '500',
+				'font-size': '14px',
+				'opacity': '1'
+			});
+	});
+});
+
+// 드롭다운에서 선택한 value 넘겨주기
+let genderDropdown = document.getElementById('dropdownGender');
+let genderInput = document.getElementById('genderInput');
+let genderPlaceholder = document.getElementById('genderPlaceholder');
+let genderItems = document.querySelectorAll('.dropdown-item[data-value]');
+
+// 각 성별 옵션 항목에 대해 클릭 이벤트 리스너 등록
+genderItems.forEach(function(e) {
+	e.addEventListener('click', function() {
+		// 클릭한 항목의 data-value 속성 값을 selectedValue 변수에 저장
+		let selectedValue = e.dataset.value;
+		// 성별 입력 필드의 값을 selectedValue로 설정
+		genderInput.value = selectedValue;
+	});
+});
+
