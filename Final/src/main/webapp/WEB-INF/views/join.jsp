@@ -8,65 +8,115 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>가입</title>
+
+<title>회원가입</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
+
+<!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/join.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-	let cpath = "${cpath}"
-</script>
+<link rel="stylesheet"
+	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+
+
 </head>
-<body>
+<body data-cpath="${cpath}">
+
 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-content">
+
+					<!-- ***** 회원가입 ***** -->
 					<div id="prefSurvey">
-						<h3>회원가입</h3>
-						<form action="${cpath}/joinProcess" method="post">
-							<table>
-								<tr>
-									<td>아이디:</td>
-									<td><input type="text" name="memId"></td>
-									<td><button type="button" class="btn btn-primary btn-sm"
-											id="btnCheckId">중복확인</button></td>
-								</tr>
-								<tr>
-									<td>비밀번호:</td>
-									<td><input type="password" id="pw1" name="memPw"></td>
-								</tr>
-								<tr>
-									<td>비밀번호 확인:</td>
-									<td><input type="password" id="pw2" class="pwcheck"
-										name="memPw2"></td>
-									<td><span id="checkPw"></span></td>
-								</tr>
-								<tr>
-									<td>이름:</td>
-									<td><input type="text" name="name"></td>
-								</tr>
-								<tr>
-									<td>성별:</td>
-									<td>남자 <input type="radio" name="gender" value="남">
-										여자 <input type="radio" name="gender" value="여">
-									</td>
-								</tr>
-								<tr>
-									<td>생년월일:</td>
-									<td><input type="text" placeholder="생년월일 8글자" name="birth"></td>
-								</tr>
-								<tr>
-									<td colspan="3">
-										<button type="submit" class="btn btn-primary btn-sm"
-											id="btnPref">선호도조사 후 가입하기</button>
-									</td>
-								</tr>
-							</table>
-						</form>
+						<div class="row justify-content-center">
+							<div class="col-12 text-center align-self-center">
+								<div class="section pb-5 pt-5 pt-sm-2 text-center">
+									<div class="card-3d-wrap mx-auto">
+										<div class="card-3d-wrapper">
+											<div class="center-wrap">
+												<div class="section text-center">
+													<h4 class="mb-4 pb-3">회원가입</h4>
+													<form id="joinForm" action="${cpath}/joinProcess"
+														method="post">
+														<div class="form-group inputId">
+															<input type="text" name="memId" class="form-style"
+																placeholder="아이디" autocomplete="off" maxlength="50">
+															<i class="input-icon uil uil-at"></i>
+															<button type="button" class="btn btn-sm btnPink"
+																id="btnCheckId">중복확인</button>
+														</div>
+														<div class="form-group mt-2">
+															<input type="password" id="pw1" name="memPw"
+																class="form-style" placeholder="비밀번호" autocomplete="off">
+															<i class="input-icon uil uil-lock-alt"></i>
+														</div>
+														<div class="form-group mt-2">
+															<input type="password" id="pw2" name="memPw2"
+																class="pwcheck form-style" placeholder="비밀번호 확인"
+																autocomplete="off"> <i
+																class="input-icon uil uil-lock-alt"></i> <span
+																id="checkPw"></span>
+														</div>
+														<div class="form-group mt-4">
+															<input type="text" name="name" class="form-style"
+																placeholder="이름" autocomplete="off" maxlength="30">
+															<i class="input-icon uil uil-user"></i>
+														</div>
+
+
+														<!-- 성별 드롭다운 -->
+														<div id="genderDiv">
+															<div class="dropdown mt-2 inputGender" id="exdiv">
+																<div>
+																	<span id="genderLabel">성별</span> <i
+																		class="input-icon uil uil-user"></i>
+																</div>
+															</div>
+															<div class="dropdown w-100">
+																<button
+																	class="btn btn-secondary dropdown-toggle ms-2 mt-2"
+																	type="button" id="dropdownGender"
+																	data-bs-toggle="dropdown" aria-expanded="false">
+																	<span id="genderPlaceholder">성별을 선택해주세요</span>
+																	<div id="iconDiv">
+																		<i class="fa-solid fa-caret-down"></i>
+																	</div>
+																</button>
+																<ul class="dropdown-menu dropdown-menu-dark"
+																	id="ddwGdMenu" aria-labelledby="dropdownGender">
+																	<li><a id class="dropdown-item" href="#"
+																		data-value="남">남자</a></li>
+																	<li><a class="dropdown-item" href="#"
+																		data-value="여">여자</a></li>
+																</ul>
+																<input type="hidden" name="gender" id="genderInput"
+																	value="">
+															</div>
+
+														</div>
+
+
+														<div class="form-group mt-2">
+															<input id="inputBirth" type="text" name="birth"
+																class="form-style" placeholder="생년월일 8글자"
+																autocomplete="off" maxlength="8"> <i
+																class="input-icon uil uil-lock-alt"></i>
+														</div>
+														<button type="submit" class="btn mt-4" id="btnPref">선호도조사
+															후 가입하기</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+					<!-- ***** 회원가입 끝 ***** -->
+
 				</div>
 			</div>
 		</div>
@@ -74,7 +124,7 @@
 
 
 	<!-- Scripts -->
-	<!-- Bootstrap core JavaScript -->
+
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/tabs.js"></script>
@@ -83,14 +133,8 @@
 
 	<script
 		src="assets/js/checkjoin.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/preference.js?ver=<%=System.currentTimeMillis()%>"></script>
-
 
 	<%@ include file="includeFooter.jsp"%>
-
-
-
 
 </body>
 </html>
