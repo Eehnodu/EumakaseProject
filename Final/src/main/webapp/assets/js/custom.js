@@ -10,7 +10,6 @@
 	});
 
 	// WOW JS
-<<<<<<< HEAD
 	$(window).on('load', function() {
 		if ($(".wow").length) {
 			var wow = new WOW({
@@ -23,64 +22,29 @@
 			wow.init();
 		}
 	});
-=======
-	$(window).on ('load', function (){
-        if ($(".wow").length) { 
-            var wow = new WOW ({
-                boxClass:     'wow',      // Animated element css class (default is wow)
-                animateClass: 'animated', // Animation css class (default is animated)
-                offset:       20,         // Distance to the element when triggering the animation (default is 0)
-                mobile:       true,       // Trigger animations on mobile devices (default is true)
-                live:         true,       // Act on asynchronously loaded content (default is true)
-            });
-            wow.init();
-        }
-    });
 
 	// $(window).scroll(function() {
-	//   var scroll = $(window).scrollTop();
-	//   var box = $('.header-text').height();
-	//   var header = $('header').height();
+//   var scroll = $(window).scrollTop();
+//   var box = $('.header-text').height();
+//   var header = $('header').height();
 
-	//   if (scroll >= box - header) {
-	//     $("header").addClass("background-header");
-	//   } else {
-	//     $("header").removeClass("background-header");
-	//   }
-	// });
-	
-	$('.filters ul li').click(function(){
-        $('.filters ul li').removeClass('active');
-        $(this).addClass('active');
-          
-          var data = $(this).attr('data-filter');
-          $grid.isotope({
-            filter: data
-          })
-        });
->>>>>>> 1f2fd6eb2153944d2a224ffb68f48de53440e115
+//   if (scroll >= box - header) {
+//     $("header").addClass("background-header");
+//   } else {
+//     $("header").removeClass("background-header");
+//   }
+// });
 
-	// $(window).scroll(function() {
-	//   var scroll = $(window).scrollTop();
-	//   var box = $('.header-text').height();
-	//   var header = $('header').height();
+$('.filters ul li').click(function() {
+	$('.filters ul li').removeClass('active');
+	$(this).addClass('active');
 
-	//   if (scroll >= box - header) {
-	//     $("header").addClass("background-header");
-	//   } else {
-	//     $("header").removeClass("background-header");
-	//   }
-	// });
-
-	$('.filters ul li').click(function() {
-		$('.filters ul li').removeClass('active');
-		$(this).addClass('active');
-
-		var data = $(this).attr('data-filter');
-		$grid.isotope({
-			filter: data
-		})
+	var data = $(this).attr('data-filter');
+	$grid.isotope({
+		filter: data
 	});
+});
+
 
 	var $grid = $(".grid").isotope({
 		itemSelector: ".all",
@@ -162,26 +126,26 @@
 		}
 	})
 
-/*	$('.owl-banner').owlCarousel({
-		items: 1,
-		loop: true,
-		dots: false,
-		nav: true,
-		autoplay: true,
-		margin: 30,
-		responsive: {
-			0: {
-				items: 1
-			},
-			600: {
-				items: 1
-			},
-			1000: {
-				items: 1
+	/*	$('.owl-banner').owlCarousel({
+			items: 1,
+			loop: true,
+			dots: false,
+			nav: true,
+			autoplay: true,
+			margin: 30,
+			responsive: {
+				0: {
+					items: 1
+				},
+				600: {
+					items: 1
+				},
+				1000: {
+					items: 1
+				}
 			}
-		}
-	})
-*/
+		})
+	*/
 
 
 
@@ -257,17 +221,10 @@
 	// refElement가 존재하는가?
 	function onScroll(event) {
 		var scrollPos = $(document).scrollTop();
-<<<<<<< HEAD
 		$('.nav a').each(function() {
 			var currLink = $(this);
 			var refElement = $(currLink.attr("href"));
 
-=======
-		$('.nav a').each(function () {
-			var currLink = $(this);
-			var refElement = $(currLink.attr("href"));
-			
->>>>>>> 1f2fd6eb2153944d2a224ffb68f48de53440e115
 			// refElement가 존재하는지 확인
 			if (refElement.length) {
 				if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
@@ -279,6 +236,7 @@
 			}
 		});
 	}
+
 
 
 
