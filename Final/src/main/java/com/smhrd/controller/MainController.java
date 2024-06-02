@@ -56,11 +56,6 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
-	
-	@GetMapping("/maincontent")
-	public String maincontent() {
-		return "maincontent";
-	}
 
 	@GetMapping("/mypage")
 	public String mypage() {
