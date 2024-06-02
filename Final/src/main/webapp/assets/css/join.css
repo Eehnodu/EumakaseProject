@@ -1,0 +1,325 @@
+body {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #c4c3ca;
+	background-color: #1f2029;
+	overflow-x: hidden;
+}
+
+p {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+h4 {
+	font-weight: 600;
+}
+
+h6 span {
+	padding: 0 20px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+hr {
+	color: #ec6090;
+	height: 3px;
+	background-color: #ec6090;
+}
+
+.section {
+	position: relative;
+	width: 100%;
+	display: block;
+}
+
+.full-height {
+	min-height: 100vh;
+}
+
+.card-3d-wrap {
+	position: relative;
+	width: 440px;
+	max-width: 100%;
+	height: 400px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	perspective: 800px;
+	margin-top: 60px;
+}
+
+.card-3d-wrapper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	transition: all 600ms ease-out;
+}
+
+.center-wrap {
+	position: absolute;
+	width: 100%;
+	padding: 0 35px;
+	top: 50%;
+	left: 0;
+	transform: translate3d(0, -50%, 35px) perspective(100px);
+	z-index: 20;
+	display: block;
+}
+
+.form-group {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.form-style {
+	padding: 13px 20px;
+	padding-left: 55px;
+	height: 48px;
+	width: 100%;
+	font-weight: 500;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: 0.5px;
+	outline: none;
+	color: #c4c3ca;
+	background-color: #1f2029;
+	border: none;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+	box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+}
+
+.form-style:focus, .form-style:active {
+	border: none;
+	outline: none;
+	box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+}
+
+.input-icon {
+	position: absolute;
+	top: 0;
+	left: 18px;
+	height: 48px;
+	font-size: 24px;
+	line-height: 48px;
+	text-align: left;
+	color: #ec6090;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+.form-group input:-ms-input-placeholder {
+	color: #c4c3ca;
+	opacity: 0.7;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+.form-group input::-moz-placeholder {
+	color: #c4c3ca;
+	opacity: 0.7;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+.form-group input:-moz-placeholder {
+	color: #c4c3ca;
+	opacity: 0.7;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+.form-group input::-webkit-input-placeholder {
+	color: #c4c3ca;
+	opacity: 0.7;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+.form-group input:focus:-ms-input-placeholder {
+	opacity: 0;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+/* 아이디 입력란 */
+.inputId {
+	position: relative;
+}
+
+.inputId button {
+	position: absolute;
+	right: 0.7rem;
+	margin-top: 0.5rem;
+}
+
+#btnCheckId:not(:disabled) {
+	cursor: pointer;
+	transition: all 200ms linear;
+	color: white;
+	background-color: #ec6090;
+	border-color: transparent;
+}
+
+#btnCheckId:not(:disabled):hover {
+	background-color: #b1486c;
+	border-color: transparent;
+}
+
+/* 비밀번호 확인 */
+#checkPw {
+	position: absolute;
+	right: 10px; /* 인풋창의 오른쪽에서 10px 떨어진 위치 */
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 14px;
+}
+
+/* 성별 드롭다운 */
+#exdiv {
+	padding: 13px 20px;
+	padding-left: 43px;
+	height: 48px;
+	width: 114.17px;
+	font-weight: 500;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: 0.5px;
+	outline: none;
+	color: #c4c3ca;
+	background-color: #1f2029;
+	border: none;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+	box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+	position: relative;
+	display: block;
+	margin: 0;
+}
+
+#dropdownGender {
+	padding: 13px 20px;
+	padding-left: 55px;
+	height: 48px;
+	width: 264.4px;
+	font-weight: 500;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: 0.5px;
+	outline: none;
+	color: #c4c3ca;
+	background-color: #1f2029;
+	border: none;
+	-webkit-transition: all 200ms linear;
+	transition: all 200ms linear;
+	box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+	display: inline-flex;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+#dropdownGender:active, #dropdownGender:checked, #dropdownGender.show, #dropdownGender:hover{
+	color: var(--bs-btn-active-color);
+	background-color: var(--bs-btn-active-bg);
+	border-color: var(--bs-btn-active-border-color);
+}
+
+#genderPlaceholder {
+	margin-right: 2.7rem;
+	opacity: 0.3;
+}
+
+#iconDiv {
+	position: absolute;
+	right: 2.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	opacity: 0.3;
+}
+
+#dropdownGender::after {
+	display: none;
+}
+
+.fa-caret-down {
+	right: 3px;
+}
+
+#genderDiv {
+	display: inline-flex;
+	width: 100%;
+}
+
+#genderLabel {
+	color: #93939A;
+	display: inline-block; /* 인라인 블록 요소로 변경 */
+	transform: rotate(0); /* 회전 없음 */
+	writing-mode: horizontal-tb; /* 텍스트 수평 쓰기 모드 */
+}
+
+#ddwGdMenu {
+	width: 250px;
+	height: auto;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 0 !important;
+}
+
+#ddwGdMenu a {
+    color: white;
+}
+
+#ddwGdMenu a:hover {
+    background: #ddd;
+    color: #ec6090;
+}
+
+
+
+
+/* 성별란 끝 */
+.btnPink {
+	cursor: pointer;
+	transition: all 200ms linear;
+	color: white;
+	background-color: #ec6090;
+	border-color: transparent;
+}
+
+.btnPink:hover {
+	background-color: #b1486c;
+	border-color: transparent;
+}
+
+#btnPref {
+	cursor: pointer;
+	transition: all 200ms linear;
+	color: white;
+	background-color: #ec6090;
+	border-color: transparent;
+	width: 100%;
+}
+
+#btnPref:hover {
+	background-color: #b1486c;
+	border-color: transparent;
+}
+
+#prefSurvey>div>div {
+	padding-bottom: 2rem !important;
+}
