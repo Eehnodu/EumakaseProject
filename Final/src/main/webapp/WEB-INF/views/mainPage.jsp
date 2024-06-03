@@ -28,7 +28,7 @@
 					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
 					<div class="row">
 						<div class="col-lg-4">
-							<div class="top-streamers">
+							<div class="top-streamers" id="top-AI">
 								<div class="heading-section">
 									<h6>Welcome To Cyborg</h6>
 									<h4>
