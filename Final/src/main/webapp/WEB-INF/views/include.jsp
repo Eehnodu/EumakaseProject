@@ -18,6 +18,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/cf3cd4698d.js"
 	crossorigin="anonymous"></script>
