@@ -896,8 +896,8 @@
   */
 
   .gaming-library {
-    margin-top: 60px;
-    padding: 30px;
+    /* margin-top: 60px;
+    padding: 30px; */
     background-color: #1f2122;
     border-radius: 23px;
   }
@@ -1385,7 +1385,7 @@
 
   .game-details .content .right-info ul li {
     display: inline-block;
-    width: 23%;
+    /* width: 23%; */
     text-align: center;
     font-size: 14px;
     color: #fff;
@@ -1404,9 +1404,9 @@
     color: #ec6090;
   }
 
-  .game-details .main-border-button {
+  /* .game-details .main-border-button {
     margin-top: 35px;
-  }
+  } */
 
   .game-details .main-border-button a {
     text-align: center;
