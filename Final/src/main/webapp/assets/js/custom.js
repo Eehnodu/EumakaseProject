@@ -126,27 +126,26 @@ $('.filters ul li').click(function() {
 		}
 	})
 
-	/*	$('.owl-banner').owlCarousel({
-			items: 1,
-			loop: true,
-			dots: false,
-			nav: true,
-			autoplay: true,
-			margin: 30,
-			responsive: {
-				0: {
-					items: 1
-				},
-				600: {
-					items: 1
-				},
-				1000: {
-					items: 1
-				}
-			}
-		})
-	*/
 
+	/*$('.owl-banner').owlCarousel({
+		items:1,
+		loop:true,
+		dots: false,
+		nav: true,
+		autoplay: true,
+		margin:30,
+		responsive:{
+			  0:{
+				  items:1
+			  },
+			  600:{
+				  items:1
+			  },
+			  1000:{
+				  items:1
+			}
+		}
+	})*/
 
 
 

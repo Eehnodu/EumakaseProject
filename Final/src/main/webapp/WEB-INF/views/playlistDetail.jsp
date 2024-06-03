@@ -27,14 +27,14 @@
 						<div class="row">
 
 							<!-- 페이지 플레이리스트 정보 -->
-							<div class="col-lg-12">
-								<div class="left-info">
-									<h2>플레이리스트 정보</h2>
-								</div>
-							</div>
 
 							<!-- 플레이리스트 정보 -->
 							<div class="col-lg-12">
+								<div class="heading-section">
+									<h4>
+										<em>지금 이 플리</em> 어때요?
+									</h4>
+								</div>
 								<div class="content">
 									<div class="row">
 										<div class="col-lg-6">
@@ -52,10 +52,9 @@
 											</div>
 										</div>
 										<div class="col-lg-6">
-											<div class="right-info">
-												<div class="main-button">
-													<a href="#">이 플리 저장</a> <a href="#">다른 플리 보기</a>
-												</div>
+											<div class="main-border-button">
+												<a href="#">Download Fortnite Now!</a> <a href="#">Download
+													Fortnite Now!</a>
 											</div>
 										</div>
 										<div class="col-lg-6">
@@ -66,7 +65,7 @@
 										<!-- 추천하는 곡 리스트  -->
 										<div class="col-lg-6 playlistDetail">
 											<div class="right-info">
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item songDetail">
 														<div>
 															<img src="assets/images/song1.jpg" alt=""
@@ -76,7 +75,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item">
 														<img src="assets/images/game-01.jpg" alt=""
 															class="templatemo-item">
@@ -84,7 +83,7 @@
 														<span>Doja Cat</span>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item">
 														<img src="assets/images/game-01.jpg" alt=""
 															class="templatemo-item">
@@ -92,7 +91,7 @@
 														<span>같애</span>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item">
 														<img src="assets/images/game-01.jpg" alt=""
 															class="templatemo-item">
@@ -100,7 +99,7 @@
 														<span>Taylor Swift</span>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item songDetail">
 														<img src="assets/images/song1.jpg" alt=""
 															class="templatemo-item">
@@ -108,7 +107,7 @@
 														<span>LE SSERAFIM</span>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item">
 														<img src="assets/images/game-01.jpg" alt=""
 															class="templatemo-item">
@@ -116,7 +115,7 @@
 														<span>Doja Cat</span>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item">
 														<img src="assets/images/game-01.jpg" alt=""
 															class="templatemo-item">
@@ -124,7 +123,7 @@
 														<span>같애</span>
 													</div>
 												</div>
-												<div class="col-lg-12 playlist">
+												<div class="col-lg-6 playlist">
 													<div class="item">
 														<img src="assets/images/game-01.jpg" alt=""
 															class="templatemo-item">
