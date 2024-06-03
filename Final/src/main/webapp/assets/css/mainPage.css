@@ -315,7 +315,15 @@
     width: 100%;
   }
    
-  
+  /* ***** AI 추천 ***** */
+  #top-AI {
+    background-image: url(../images/banner-bg.jpg);
+    background-position: center center;
+    background-size: cover;
+    min-height: 380px;
+    border-radius: 23px;
+    padding: 80px 60px;
+  }
   
   .heading-section h4 {
     color: #ec6090;
@@ -529,15 +537,7 @@
     font-size: 15px;
   }
   
-  /* ***** AI 추천 ***** */
-  #top-AI {
-    background-image: url(../images/banner-bg.jpg);
-    background-position: center center;
-    background-size: cover;
-    min-height: 380px;
-    border-radius: 23px;
-    padding: 80px 60px;
-  }
+  
   
   
   
