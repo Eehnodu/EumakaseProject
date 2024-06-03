@@ -11,7 +11,7 @@
 
 <title>메인</title>
 <%@ include file="include.jsp"%>
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/header.css">
 </head>
 <body>
 
@@ -22,37 +22,43 @@
 				<div class="col-12">
 					<nav class="main-nav">
 						<!-- ***** Logo Start ***** -->
-						<a href="index.html" class="logo"> <img
+						<a href="${cpath}/" class="logo"> <img
 							src="assets/images/logo.png" alt="">
 						</a>
 						<!-- ***** Logo End ***** -->
-						<!-- ***** Search End ***** -->
-						<div class="search-input">
-							<form id="search" action="#">
-								<input type="text" placeholder="Type Something" id='searchText'
-									name="searchKeyword" onkeypress="handle" /> <i
-									class="fa fa-search"></i>
-							</form>
-						</div>
-						<!-- ***** Search End ***** -->
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
-							<li><a href="index.html" class="active">Home</a></li>
-							<li><a href="browse.html">Browse</a></li>
-							<li><a href="details.html">Details</a></li>
-							<li><a href="streams.html">Streams</a></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle active" href="profile.html"
-								id="profileDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> Profile <img
-									src="assets/images/profile-header.jpg" alt=""
-									style="vertical-align: middle;">
-							</a>
-								<div class="dropdown-menu" aria-labelledby="profileDropdown">
-									<a class="dropdown-item" href="${cpath}/update">프로필 수정</a> <a
-										class="dropdown-item" href="${cpath}/mypage">나의 뮤직</a> <a
-										class="dropdown-item" href="#">로그아웃</a>
-								</div></li>
+							<li><a href="${cpath}/" class="active">Intro</a></li>
+							<li><a href="${cpath}/mypage">내 음악</a></li>
+							<li><a href="#">AI추천</a></li>
+
+
+							<%-- 로그인 안 했을 시 로그인,회원가입 버튼 --%>
+							<c:if test="${member == null}">
+								<button type="button" class="btn btn-primary btn-sm"
+									data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
+							</c:if>
+							<%-- 로그인 시 마이페이지,로그아웃 버튼 --%>
+							<c:if test="${member != null}">
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle active" href="${cpath}/mypage"
+									id="profileDropdown" role="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"> ${member.name}님
+								</a>
+									<div class="dropdown-menu" aria-labelledby="profileDropdown">
+										<button class="dropdown-item btnNav" id="btnUpdate">
+											<a href="${cpath}/update">프로필 수정</a>
+										</button>
+										<button class="dropdown-item btnNav" id="btnMypage">
+											<a href="${cpath}/mypage">나의 뮤직</a>
+										</button>
+										<form action="${cpath}/logout" method="post">
+											<button type="submit" class="dropdown-item btnNav"
+												id="btnLogout">로그아웃</button>
+										</form>
+									</div></li>
+							</c:if>
+
 
 						</ul>
 						<a class='menu-trigger'> <span>Menu</span>
@@ -64,6 +70,48 @@
 		</div>
 	</header>
 	<!-- ***** Header Area End ***** -->
+	
+	
+	<!-- 로그인 Modal -->
+	<div class="modal" id="loginModal">
+		<div class="modal-dialog" id=="modal-dialog">
+			<div class="modal-content" id="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header" id="modal-header">
+
+					<h4 class="modal-title">
+						<img src="assets/images/logo.png" alt="">
+					</h4>
+					<button type="button" class="btn-close" id="btn-close"
+						data-bs-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" id="modal-body">
+					<form action="${cpath}/login" method="post">
+						<div class="form-group inputId">
+							<input type="text" name="memId" class="form-style"
+								placeholder="아이디" autocomplete="off" maxlength="50"> <i
+								class="input-icon uil uil-at"></i>
+						</div>
+						<div class="form-group mt-3">
+							<input type="password" id="pw1" name="memPw" class="form-style"
+								placeholder="비밀번호" autocomplete="off"> <i
+								class="input-icon uil uil-lock-alt"></i>
+						</div>
+						<a id="txtJoin" href="${cpath}/join"> 회원가입 </a>
+						<div>
+							<button type="submit" class="btn btnPink w-100 mt-5"
+								id="btnLogin">로그인</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- 로그인모달 끝 -->
 
 </body>
 </html>

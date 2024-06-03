@@ -8,77 +8,161 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>소개</title>
+
+<title>소개합니다.....</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
+
 <link rel="stylesheet" href="assets/css/intro.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+
+
 </head>
 <body>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-content">
 
-					<c:choose>
-						<%-- 로그인 안 했을 시 로그인,회원가입 버튼 --%>
-						<c:when test="${member==null}">
-							<button type="button" class="btn btn-primary btn-sm"
-								data-toggle="modal" data-target="#loginModal">로그인</button>
-							<button type="button" class="btn btn-success btn-sm">
-								<a href="${cpath}/join"
-									style="text-decoration: none; color: white;">회원가입</a>
-							</button>
-						</c:when>
+					<!-- ***** 페이지 내용 작성 ***** -->
+
+
+					<!-- ******모달테스트용 로그인버튼******* -->
+					<%-- 로그인 안 했을 시 로그인,회원가입 버튼 --%>
+					<c:if test="${member == null}">
+						<button type="button" class="btn btn-primary btn-sm"
+							data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
+						<button type="button" class="btn btn-success btn-sm">
+							<a href="${cpath}/join"
+								style="text-decoration: none; color: white;">회원가입</a>
+						</button>
+					</c:if>
 						<%-- 로그인 시 마이페이지,로그아웃 버튼 --%>
-						<c:when test="${member!=null}">
-							<button type="button" class="btn btn-success btn-sm">
-								<a href="${cpath}/mypage" class="btnMypage">마이페이지</a>
-							</button>
-							<form action="${cpath}/logout" method="post">
-								<button type="submit" class="btn btn-dark btn-sm">로그아웃</button>
-							</form>
-						</c:when>
-					</c:choose>
+					<c:if test="${member != null}">
+						<button type="button" class="btn btn-success btn-sm">
+							<a href="${cpath}/mypage" class="btnMypage">마이페이지</a>
+						</button>
+						<form action="${cpath}/logout" method="post">
+							<button type="submit" class="btn btn-dark btn-sm">로그아웃</button>
+						</form>
+					</c:if>
 
 
-					<div>소개이미지</div>
-					<div>
-						<a href="#">AI 추천 받으러 가기</a>
-					</div>
-					<div>여름 플레이리스트</div>
-
-
-					<!-- 로그인 Modal -->
-					<div class="modal" id="loginModal">
-						<div class="modal-dialog">
-							<div class="modal-content">
-
-								<!-- Modal Header -->
-								<div class="modal-header">
-									<h4 class="modal-title">로그인</h4>
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="row">
+						<div id="introImages" class="col-lg-8">
+							<div class="featured-games header-text">
+								<div class="heading-section">
+									<h4>
+										<span>Listen to Personalized</span> Playlist
+									</h4>
 								</div>
-
-								<!-- Modal body -->
-								<div class="modal-body">
-									<form action="${cpath}/login" method="post">
-										<div>
-											아이디 : <input type="text" name="memId">
+								<div class="owl-features owl-carousel">
+									<div class="item">
+										<div class="thumb">
+											<img src="assets/images/intro1.jpg" height="550px" alt="">
 										</div>
-										<div>
-											비밀번호 : <input type="password" name="memPw">
+									</div>
+									<div class="item">
+										<div class="thumb">
+											<img src="assets/images/intro2.jpg" height="550px" alt="">
 										</div>
-										<div>
-											<button type="submit" class="btn btn-primary btn-sm">로그인</button>
+									</div>
+									<div class="item">
+										<div class="thumb">
+											<img src="assets/images/intro3.jpg" height="550px" alt="">
 										</div>
-									</form>
+									</div>
+									<div class="item">
+										<div class="thumb">
+											<img src="assets/images/intro2.jpg" height="550px" alt="">
+										</div>
+									</div>
 								</div>
+							</div>
+						</div>
 
-								<!-- Modal footer -->
-								<div class="modal-footer">
-									<a href="${cpath}/join"> 회원가입 </a>
-									<button type="button" class="btn btn-danger btn-sm"
-										data-dismiss="modal">Close</button>
+
+
+						<div class="col-lg-4">
+							<div id="goAi" class="game-details mb-3">
+								<a href="#">
+									<div class="content">
+										<div class="row">
+											<div class="col-lg-12">
+												<div>
+													<h6 id="txtGoAI">
+														AI 추천 받으러 가기&nbsp; <i class="fa-solid fa-arrow-right-long"></i>
+													</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div id="plSeason" class="game-details">
+								<div class="content"">
+									<div class=" row">
+										<h5 id="txtSeason">Summer Music</h5>
+										<div class="col-lg-12 playlistDetail right-info">
+											<div>
+												<div>
+													<div class="col-lg-12 playlist">
+														<div class="item songDetail">
+															<div>
+																<img src="assets/images/game-01.jpg" alt=""
+																	class="templatemo-item imgCover"> <span
+																	class="songTitle">Super Shy</span><span>New
+																	Jeans</span>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-12 playlist">
+														<div class="item songDetail">
+															<img src="assets/images/game-01.jpg" alt=""
+																class="templatemo-item imgCover"> <span
+																class="songTitle">Attention</span><span>Doja Cat</span>
+														</div>
+													</div>
+													<div class="col-lg-12 playlist">
+														<div class="item songDetail">
+															<img src="assets/images/game-01.jpg" alt=""
+																class="templatemo-item imgCover"> <span
+																class="songTitle">같애 (feat. SHIRT)</span><span>같애</span>
+														</div>
+													</div>
+													<div class="col-lg-12 playlist">
+														<div class="item songDetail">
+															<img src="assets/images/game-01.jpg" alt=""
+																class="templatemo-item imgCover"> <span
+																class="songTitle">Cruel Summer</span><span>Taylor
+																Swift</span>
+														</div>
+													</div>
+													<div class="col-lg-12 playlist">
+														<div class="item songDetail">
+															<img src="assets/images/game-01.jpg" alt=""
+																class="templatemo-item imgCover"> <span
+																class="songTitle">Perfect Night</span><span>LE
+																SSERAFIM</span>
+														</div>
+													</div>
+													<div class="col-lg-12 playlist">
+														<div class="item songDetail">
+															<img src="assets/images/game-01.jpg" alt=""
+																class="templatemo-item imgCover"> <span
+																class="songTitle">Attention</span><span>Doja Cat</span>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
 								</div>
 
 							</div>
@@ -90,15 +174,20 @@
 	</div>
 
 
+
+
 	<!-- Scripts -->
-	<!-- Bootstrap core JavaScript -->
+
 	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/tabs.js"></script>
 	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
+
+
+	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
+
+
+
 
 	<%@ include file="includeFooter.jsp"%>
-
 </body>
 </html>
