@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<div class="container">ㅇㅇ
+	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-content">

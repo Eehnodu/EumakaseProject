@@ -58,6 +58,7 @@
 										<div class="col-lg-6">
 											<div class="main-border-button" id="buttonDownload">
 												<a href="#">이 플리 저장</a> <a href="#">다른 플리 보여줘</a>
+
 											</div>
 										</div>
 

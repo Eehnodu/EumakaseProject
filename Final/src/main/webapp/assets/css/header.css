@@ -1,0 +1,81 @@
+#btnUpdate, #btnMypage, #btnLogout {
+	color: white;
+	background-color: pink;
+	border: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 로그인 모달 */
+.modal-backdrop.show {
+	opacity: .70 !important;
+}
+
+#modal-dialog {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	min-height: calc(100% - ( .5rem * 2));
+	margin-top: 10%;
+}
+
+div#\=\"modal-dialog\" {
+	margin-top: 10%;
+}
+
+#modal-content {
+	background-color: #27292a;
+	color: white;
+	text-align: center;
+	width: 440px;
+	height: 450px;
+}
+
+#modal-header {
+	border: none;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	height: 120px;
+	margin-top: 15px;
+}
+
+#modal-header #btn-close {
+	position: absolute;
+	right: 30px;
+	top: 10px;
+	background: none; 
+	border: none;
+	color: white;
+}
+
+#modal-body {
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+#txtJoin {
+	display: flex;
+	justify-content: right;
+	margin-top: 10px;
+	font-size: 13px;
+}
+
+#loginModal>div>div>div.modal-body>form>div:nth-child(4)>button {
+	height: 48px;
+}
+
+/* 로그인 모달 끝 */

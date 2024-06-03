@@ -39,7 +39,6 @@
 
 
 	<!-- Scripts -->
-	<!-- Bootstrap core JavaScript -->
 
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
