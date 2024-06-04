@@ -854,11 +854,19 @@ body {
 	border-radius: 23px;
 }
 
-.gaming-library .item {
-	border-bottom: 1px solid #27292a;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-}
+
+  .gaming-library {
+    /* margin-top: 60px;
+    padding: 30px; */
+    background-color: #1f2122;
+    border-radius: 23px;
+  }
+
+  .gaming-library .item {
+    border-bottom: 1px solid #27292a;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
 
 .gaming-library .last-item {
 	margin-bottom: 30px;
@@ -1194,16 +1202,6 @@ footer p a:hover {
 	margin: 0px 5px;
 }
 
-<<<<<<< HEAD
-.live-stream .hover-effect ul li a {
-	background-color: rgba(236, 96, 144, 0.9);
-	padding: 5px 10px;
-	border-radius: 23px;
-	color: #fff;
-	font-size: 14px;
-}
-=======
-<<<<<<< HEAD
 /* 
 ---------------------------------------------
 Banner Style
@@ -2038,12 +2036,12 @@ Profile Style
 
 .clips .item .thumb a {
   position: absolute;
-=======
-  .live-stream .hover-effect ul li {
+}
+  
+.live-stream .hover-effect ul li {
     display: inline-block;
     margin: 0px 5px;
   }
->>>>>>> branch 'feature-intro' of https://github.com/Eehnodu/FinalProject.git
 
 .live-stream .avatar img {
 	margin-right: 15px;
@@ -2106,27 +2104,8 @@ Profile Style
 	color: #ec6090;
 }
 
-<<<<<<< HEAD
-/* 
-=======
-  .feature-banner .thumb a {
-    position: absolute;
->>>>>>> 1f2fd6eb2153944d2a224ffb68f48de53440e115
-    left: 50%;
-    top: 50%;
-    transform: translate(-23px, -23px);
-    width: 46px;
-    height: 46px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
-    line-height: 46px;
-    color: #ec6090;
-  }
 
   /* 
->>>>>>> branch 'feature-intro' of https://github.com/Eehnodu/FinalProject.git
   ---------------------------------------------
   Game Details Style
   --------------------------------------------- 
@@ -2686,13 +2665,9 @@ body {
 
 /* 드롭다운 메뉴 보이기 */
 .dropdown:hover .dropdown-menu {
-<<<<<<< HEAD
-	display: block;
-}
-=======
+
   display: block;
 }
-<<<<<<< HEAD
 
 @media (max-width: 992px) {
   .background-header {
@@ -2737,9 +2712,3 @@ body {
     width: 16%;
   }
 }
-
-
-=======
-	
->>>>>>> 1f2fd6eb2153944d2a224ffb68f48de53440e115
->>>>>>> branch 'feature-intro' of https://github.com/Eehnodu/FinalProject.git
