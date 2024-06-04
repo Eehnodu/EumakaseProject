@@ -14,7 +14,6 @@
 <%@ include file="includeHeader.jsp"%>
 
 <link rel="stylesheet" href="assets/css/intro.css">
-
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
@@ -30,28 +29,6 @@
 				<div class="page-content">
 
 					<!-- ***** 페이지 내용 작성 ***** -->
-
-
-					<!-- ******모달테스트용 로그인버튼******* -->
-					<%-- 로그인 안 했을 시 로그인,회원가입 버튼 --%>
-					<c:if test="${member == null}">
-						<button type="button" class="btn btn-primary btn-sm"
-							data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
-						<button type="button" class="btn btn-success btn-sm">
-							<a href="${cpath}/join"
-								style="text-decoration: none; color: white;">회원가입</a>
-						</button>
-					</c:if>
-						<%-- 로그인 시 마이페이지,로그아웃 버튼 --%>
-					<c:if test="${member != null}">
-						<button type="button" class="btn btn-success btn-sm">
-							<a href="${cpath}/mypage" class="btnMypage">마이페이지</a>
-						</button>
-						<form action="${cpath}/logout" method="post">
-							<button type="submit" class="btn btn-dark btn-sm">로그아웃</button>
-						</form>
-					</c:if>
-
 
 					<div class="row">
 						<div id="introImages" class="col-lg-8">
@@ -188,6 +165,6 @@
 
 
 
-	<%@ include file="includeFooter.jsp"%>
 </body>
+	<%@ include file="includeFooter.jsp"%>
 </html>

@@ -96,45 +96,43 @@ function checkPw(pw) {
 
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
-	if (idChecked && pwChecked) {
-		// 만약 아이디와 비밀번호의 유효성 검사를 마쳤다면
-		$("#btnPref").click(function(e) {
-			e.preventDefault(); // 폼의 기본 제출 동작을 방지
+    // 입력 필드의 값 확인
+    let name = $("input[name='name']").val().trim();
+    let gender = $("#genderInput").val().trim();
+    let birth = $("input[name='birth']").val().trim();
 
-			// 다른 라이브러리와의 충돌 방지
-			let $jq = jQuery.noConflict();
+    // 모든 조건이 충족되었는지 확인
+    if (idChecked && pwChecked && name && gender && birth) {
+        $("#btnPref").removeAttr("disabled");
+        $("#btnPref").off("click").on("click", function(e) {
+            e.preventDefault();
 
-			$jq.ajax({
-				url: `${cpath}/joinProcess`,
-				type: "post",
-				data: $("form").serialize(), // 폼 데이터 직렬화
-				success: function(response) {
-					// 요청이 성공했을 때 실행될 함수
-					// 서버로부터 받은 응답 데이터를 'prefSurvey' 요소에 삽입
-					$("#prefSurvey").html("<div>선호도 조사<br><button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button></div>");
-					// 가입 완료 버튼 클릭 시 '/mypage'로 리디렉션
-					$("#btnComplete").click(function() {
-						window.location.href = "main";
-					});
+            let $jq = jQuery.noConflict();
 
-				},
-				error: function(xhr, status, error) {
-					// 요청이 실패했을 때 실행될 함수
-					alert("에러 발생: " + error);
-				}
-			});
-		});
-	} else {
-		$("#btnPref").attr("disabled", "disabled"); // 유효성 검사 실시하지 않았다면 버튼이 눌려지지 않도록
-	}
-	// 다시 검사 모두 완료되면 버튼 활성화
-	if (idChecked && pwChecked) {
-		$("#btnPref").removeAttr("disabled");
-	}
-
+            $jq.ajax({
+                url: `${cpath}/joinProcess`,
+                type: "post",
+                data: $("form").serialize(),
+                success: function(response) {
+                    $("#prefSurvey").html("<div>선호도 조사<br><button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button></div>");
+                    $("#btnComplete").click(function() {
+                        window.location.href = "main";
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert("에러 발생: " + error);
+                }
+            });
+        });
+    } else {
+        $("#btnPref").attr("disabled", "disabled");
+    }
 }
 
-completeJoin();
+// 실시간으로 입력 필드의 변경사항을 감지하여 버튼 활성화 여부를 결정
+$("input[name='name'], input[name='birth'], #genderInput").on("change keyup", completeJoin);
+
+
 
 // 생년월일 8글자 확인
 document.getElementById('joinForm').addEventListener('submit', function(e) {

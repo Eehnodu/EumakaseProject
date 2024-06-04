@@ -39,29 +39,29 @@
 												<div class="section text-center">
 													<h4 class="mb-4 pb-3">회원가입</h4>
 													<form id="joinForm" action="${cpath}/joinProcess"
-														method="post">
+														method="post" novalidate>
 														<div class="form-group inputId">
 															<input type="text" name="memId" class="form-style"
-																placeholder="아이디" autocomplete="off" maxlength="50">
+																placeholder="아이디" autocomplete="off" maxlength="50" required>
 															<i class="input-icon uil uil-at"></i>
 															<button type="button" class="btn btn-sm btnPink"
 																id="btnCheckId">중복확인</button>
 														</div>
 														<div class="form-group mt-2">
 															<input type="password" id="pw1" name="memPw"
-																class="form-style" placeholder="비밀번호" autocomplete="off">
+																class="form-style" placeholder="비밀번호" autocomplete="off" required>
 															<i class="input-icon uil uil-lock-alt"></i>
 														</div>
 														<div class="form-group mt-2">
 															<input type="password" id="pw2" name="memPw2"
 																class="pwcheck form-style" placeholder="비밀번호 확인"
 																autocomplete="off"> <i
-																class="input-icon uil uil-lock-alt"></i> <span
+																class="input-icon uil uil-lock-alt" required></i> <span
 																id="checkPw"></span>
 														</div>
 														<div class="form-group mt-4">
 															<input type="text" name="name" class="form-style"
-																placeholder="이름" autocomplete="off" maxlength="30">
+																placeholder="이름" autocomplete="off" maxlength="30" required>
 															<i class="input-icon uil uil-user"></i>
 														</div>
 
@@ -74,7 +74,7 @@
 																		class="input-icon uil uil-user"></i>
 																</div>
 															</div>
-															<div class="dropdown w-100">
+															<div class="dropdown w-100" required>
 																<button
 																	class="btn btn-secondary dropdown-toggle ms-2 mt-2"
 																	type="button" id="dropdownGender"
@@ -102,7 +102,7 @@
 															<input id="inputBirth" type="text" name="birth"
 																class="form-style" placeholder="생년월일 8글자"
 																autocomplete="off" maxlength="8"> <i
-																class="input-icon uil uil-lock-alt"></i>
+																class="input-icon uil uil-lock-alt" required></i>
 														</div>
 														<button type="submit" class="btn mt-4" id="btnPref">선호도조사
 															후 가입하기</button>

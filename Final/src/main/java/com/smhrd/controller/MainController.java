@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.db.MemberMapper;
 import com.smhrd.model.MemberVO;
@@ -36,7 +37,10 @@ public class MainController {
 	}
 
 	@PostMapping("/login")
-	public String login(MemberVO vo, HttpSession session) {
+	public String login(@RequestParam("loginId") String memId, @RequestParam("loginPw") String memPw, HttpSession session) {
+		MemberVO vo = new MemberVO();
+		vo.setMemId(memId);
+		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
 		if (result != null) {
 			session.setAttribute("member", result);
