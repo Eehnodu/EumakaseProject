@@ -4,16 +4,8 @@
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>메인</title>
-<%@ include file="include.jsp"%>
-<link rel="stylesheet" href="assets/css/header.css">
-</head>
-<body>
+	<link rel="stylesheet" href="assets/css/header.css?ver=<%=System.currentTimeMillis()%>">
 
 	<!-- ***** Header Area Start ***** -->
 	<header class="header-area header-sticky">
@@ -29,14 +21,30 @@
 						<!-- ***** Menu Start ***** -->
 						<ul class="nav">
 							<li><a href="${cpath}/" class="active">Intro</a></li>
-							<li><a href="${cpath}/mypage">내 음악</a></li>
-							<li><a href="#">AI추천</a></li>
+							<%-- 비회원은 내 음악 클릭 시 로그인 모달창 --%>
+							<c:if test="${member==null}">
+								<li><a id="aMypage" data-bs-toggle="modal" data-bs-target="#loginModal">내
+										음악</a></li>
+							</c:if>
+							<%-- 로그인한 회원은 내 음악 페이지로 이동 --%>
+							<c:if test="${member!=null}">
+								<li><a class="test" href="${cpath}/mypage">내 음악</a></li>
+							</c:if>
+
+							<%-- 비회원은 AI추천 클릭 시 로그인 모달창 --%>
+							<c:if test="${member==null}">
+								<li><a id="aAi" data-bs-toggle="modal" data-bs-target="#loginModal">AI추천</a></li>
+							</c:if>
+							<%-- 로그인한 회원은 AI추천 페이지로 이동 --%>
+							<c:if test="${member!=null}">
+								<li><a href="${cpath}/join">AI추천</a></li>
+							</c:if>
 
 
 							<%-- 로그인 안 했을 시 로그인,회원가입 버튼 --%>
 							<c:if test="${member == null}">
-								<button type="button" class="btn btn-primary btn-sm"
-									data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
+								<button type="button" id="navLogin" data-bs-toggle="modal"
+									data-bs-target="#loginModal">로그인</button>
 							</c:if>
 							<%-- 로그인 시 마이페이지,로그아웃 버튼 --%>
 							<c:if test="${member != null}">
@@ -70,8 +78,8 @@
 		</div>
 	</header>
 	<!-- ***** Header Area End ***** -->
-	
-	
+
+
 	<!-- 로그인 Modal -->
 	<div class="modal" id="loginModal">
 		<div class="modal-dialog" id=="modal-dialog">
@@ -91,12 +99,12 @@
 				<div class="modal-body" id="modal-body">
 					<form action="${cpath}/login" method="post">
 						<div class="form-group inputId">
-							<input type="text" name="memId" class="form-style"
+							<input type="text" name="loginId" class="form-style"
 								placeholder="아이디" autocomplete="off" maxlength="50"> <i
 								class="input-icon uil uil-at"></i>
 						</div>
 						<div class="form-group mt-3">
-							<input type="password" id="pw1" name="memPw" class="form-style"
+							<input type="password" name="loginPw" class="form-style"
 								placeholder="비밀번호" autocomplete="off"> <i
 								class="input-icon uil uil-lock-alt"></i>
 						</div>
@@ -113,5 +121,6 @@
 	</div>
 	<!-- 로그인모달 끝 -->
 
-</body>
+
+	<script src="assets/js/nav.js?ver=<%=System.currentTimeMillis()%>"></script>
 </html>

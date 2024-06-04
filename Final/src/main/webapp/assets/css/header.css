@@ -1,23 +1,61 @@
 #btnUpdate, #btnMypage, #btnLogout {
-	color: white;
-	background-color: pink;
-	border: 0;
+	color: white !important;
+	background-color: #27292a;
+	border: none !important;
 }
 
 
+.dropdown-item a{
+	background-color: red; 
+}
+
+/* 네비바 로그인버튼*/
+#navLogin {
+	display: block;
+	font-weight: 400;
+	font-size: 14px;
+	text-transform: capitalize;
+	color: #666;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	border: transparent;
+	padding: 8px 20px;
+	border-radius: 18px;
+	letter-spacing: .3px;
+	background-color: #27292a;
+	border-radius: 23px;
+}
+
+#aMypage, #aAi {
+	cursor: pointer;
+	color: #666;
+	display: block;
+	font-weight: 400;
+	font-size: 14px;
+	text-transform: capitalize;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	border: transparent;
+	padding: 13px 10px;
+	border-radius: 18px;
+	letter-spacing: .3px;
+}
+
+.nav a.active{
+    color: #e75e8d !important;
+    font-weight: 600;
+	
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+#aMypage:hover, #aAi:hover, #navLogin:hover {
+    color: #e75e8d !important;
+    font-weight: 600;
+  }
 
 /* 로그인 모달 */
 .modal-backdrop.show {
@@ -57,7 +95,7 @@ div#\=\"modal-dialog\" {
 	position: absolute;
 	right: 30px;
 	top: 10px;
-	background: none; 
+	background: none;
 	border: none;
 	color: white;
 }

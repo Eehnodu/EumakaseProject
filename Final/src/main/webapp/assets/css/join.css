@@ -190,7 +190,7 @@ hr {
 	padding: 13px 20px;
 	padding-left: 43px;
 	height: 48px;
-	width: 114.17px;
+	width: 117px;
 	font-weight: 500;
 	border-radius: 4px;
 	font-size: 14px;
@@ -212,7 +212,7 @@ hr {
 	padding: 13px 20px;
 	padding-left: 55px;
 	height: 48px;
-	width: 264.4px;
+	width: 260px;
 	font-weight: 500;
 	border-radius: 4px;
 	font-size: 14px;
@@ -270,6 +270,7 @@ hr {
 	display: inline-block; /* 인라인 블록 요소로 변경 */
 	transform: rotate(0); /* 회전 없음 */
 	writing-mode: horizontal-tb; /* 텍스트 수평 쓰기 모드 */
+	padding-left: 8px;
 }
 
 #ddwGdMenu {
