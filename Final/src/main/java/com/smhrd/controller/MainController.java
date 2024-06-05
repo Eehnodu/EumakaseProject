@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.smhrd.db.MemberMapper;
 import com.smhrd.model.MemberVO;
+import com.smhrd.model.SurveyVO;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private MemberMapper mapper;
-
+	
+	@GetMapping("/AIquestion")
+	public String AIquestion() {
+		return "AIquestion";
+	}
+	
 	@GetMapping("/")
 	public String intro() {
 		return "intro";
@@ -27,12 +33,23 @@ public class MainController {
 		return "join";
 	}
 
+	
 	@PostMapping("/joinProcess")
 	public String join(MemberVO vo, HttpSession session) {
+		
+		
+		
+		session.getAttribute("member"); 
+		
+		
+		
+		/*
 		mapper.join(vo);
 		vo.setMemPw(null);
 		vo.setGender(null);
 		session.setAttribute("member", vo);
+		 */
+		
 		return "redirect:/mainPage";
 	}
 

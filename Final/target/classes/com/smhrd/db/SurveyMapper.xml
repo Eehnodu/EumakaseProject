@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.SurveyMapper">
+
+	<select id="getAnswer" parameterType="com.smhrd.model.SurveyVO"
+		resultType="com.smhrd.model.SurveyVO">
+		SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "genre";
+	</select>
+	
+	<select id="getQuestion" parameterType="com.smhrd.model.SurveyVO"
+		resultType="com.smhrd.model.SurveyVO">
+		SELECT * FROM tb_survey WHERE surType = 'Q' AND surItem = "genre";
+	</select>
+
+	<select id="joiningSurvey" resultType="com.smhrd.model.SurveyVO">
+		SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "genre";
+	</select>
+	
+	
+
+</mapper>
