@@ -16,7 +16,6 @@
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/playlistDetail.css">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
 
@@ -64,7 +63,7 @@
 
 										<!-- ***** Gaming Library Start ***** -->
 										<div class="col-lg-12">
-											<div class="gaming-library">
+											<div class="gaming-library" id="gaming-playlist">
 												<div class="right-info">
 													<div class="col-lg-12 playlist">
 														<div class="item songDetail">
@@ -85,8 +84,8 @@
 																</li>
 																<li>
                                 <div class="heartbox">
-                                  <input type="checkbox" class="checkbox" id="checkbox" />
-                                  <label for="checkbox">
+                                  <input type="checkbox" class="checkbox" id="checkbox1" />
+                                  <label for="checkbox1">
                                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                                       <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                                         <path
@@ -155,8 +154,8 @@
 																</li>
 																<li>
                                 <div class="heartbox">
-                                  <input type="checkbox" class="checkbox" id="checkbox" />
-                                  <label for="checkbox">
+                                  <input type="checkbox" class="checkbox" id="checkbox2" />
+                                  <label for="checkbox2">
                                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                                       <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                                         <path
@@ -225,8 +224,8 @@
 																</li>
 																<li>
                                 <div class="heartbox">
-                                  <input type="checkbox" class="checkbox" id="checkbox" />
-                                  <label for="checkbox">
+                                  <input type="checkbox" class="checkbox" id="checkbox3" />
+                                  <label for="checkbox3">
                                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                                       <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                                         <path
@@ -295,8 +294,8 @@
 																</li>
 																<li>
                                 <div class="heartbox">
-                                  <input type="checkbox" class="checkbox" id="checkbox" />
-                                  <label for="checkbox">
+                                  <input type="checkbox" class="checkbox" id="checkbox4" />
+                                  <label for="checkbox4">
                                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                                       <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                                         <path
@@ -365,8 +364,8 @@
 																</li>
 																<li>
                                 <div class="heartbox">
-                                  <input type="checkbox" class="checkbox" id="checkbox" />
-                                  <label for="checkbox">
+                                  <input type="checkbox" class="checkbox" id="checkbox5" />
+                                  <label for="checkbox5">
                                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                                       <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                                         <path
@@ -435,8 +434,8 @@
 																</li>
 																<li>
                                 <div class="heartbox">
-                                  <input type="checkbox" class="checkbox" id="checkbox" />
-                                  <label for="checkbox">
+                                  <input type="checkbox" class="checkbox" id="checkbox6" />
+                                  <label for="checkbox6">
                                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                                       <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                                         <path
@@ -506,9 +505,6 @@
 
 
 		<!-- Scripts -->
-		<!-- Bootstrap core JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 		
 
 		<script src="assets/js/isotope.min.js"></script>
@@ -517,6 +513,7 @@
 		<script src="assets/js/popup.js"></script>
 		<script src="assets/js/custom.js"></script>
 		<script src="assets/js/loadMore.js"></script>
+		<script src="assets/js/like.js"></script>
 
 		<%@ include file="includeFooter.jsp"%>
 </body>

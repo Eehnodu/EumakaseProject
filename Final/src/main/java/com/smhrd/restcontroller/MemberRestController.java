@@ -17,7 +17,7 @@ import com.smhrd.model.SurveyVO;
 
 @RestController
 public class MemberRestController {
-	
+
 	@Autowired
 	private MemberMapper memberMapper;
 	
@@ -65,5 +65,4 @@ public class MemberRestController {
 		*/
 		
 	}
-
 }

@@ -1,13 +1,419 @@
-#btnUpdate, #btnMypage, #btnLogout {
-	color: white !important;
-	background-color: #27292a;
-	border: none !important;
+/* 
+  ---------------------------------------------
+  Header Style
+  --------------------------------------------- 
+  */
+
+/* -----추가----- */
+#header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
 }
 
-
-.dropdown-item a{
-	background-color: red; 
+body {
+	padding-top: 80px; /* 네비게이션 바 높이에 맞춰 패딩 추가 */
 }
+
+.background-header {
+	background-color: #fff !important;
+	height: 70px !important;
+	position: fixed !important;
+	top: 0 !important;
+	left: 0;
+	right: 0;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15) !important;
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+	display: none;
+}
+
+.header-area {
+	background-color: transparent;
+	position: absolute;
+	height: 70px;
+	top: 15px;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+}
+
+.header-area .main-nav {
+	min-height: 80px;
+	background: transparent;
+	display: flex;
+	padding: 15px 0px;
+	border-radius: 50px;
+}
+
+.background-header .main-nav {
+	padding: 0px;
+	background-color: transparent;
+}
+
+.header-area .main-nav .logo {
+	border-right: 1px solid #27292a;
+	flex-basis: 25%;
+	margin-right: 5%;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+.header-area .main-nav .logo img {
+	width: 191px;
+}
+
+.background-header .main-nav .logo {
+	margin-top: 8px;
+}
+
+.background-header .main-nav .logo img {
+	width: 180px;
+}
+
+.header-area .main-nav .nav {
+	display: inline-flex;
+	flex-basis: 70%;
+	justify-content: flex-end;
+	vertical-align: middle;
+	text-align: right;
+	margin-top: 0px;
+	margin-right: 0px;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	position: relative;
+	z-index: 999;
+}
+
+.header-area .main-nav .nav li {
+	/* padding-left: 10px; */
+	padding-right: 10px;
+	display: inline-block;
+}
+
+.header-area .main-nav .nav li a {
+	cursor: pointer !important;
+	display: block;
+	font-weight: 400;
+	font-size: 14px;
+	text-transform: capitalize;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	border: transparent;
+	padding: 13px 10px;
+	border-radius: 18px;
+	letter-spacing: .3px;
+	color: #666;
+}
+
+.header-area .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover,
+	.background-header .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover
+	{
+	padding-left: 25px !important;
+}
+
+.header-area .main-nav .nav li:hover a, .header-area .main-nav .nav li a.active
+	{
+	color: #e75e8d !important;
+	font-weight: 600;
+}
+
+.header-area .main-nav .nav li:last-child:hover a, .header-area .main-nav .nav li:last-child a.active
+	{
+	color: #fff !important;
+	background-color: #e75e8d !important;
+}
+
+.background-header .main-nav .nav li:hover a, .background-header .main-nav .nav li a.active
+	{
+	color: #fff;
+	opacity: 1;
+}
+
+.header-area .main-nav .nav li.has-sub {
+	position: relative;
+	padding-right: 15px;
+}
+
+.header-area .main-nav .menu-trigger {
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	top: 23px;
+	width: 32px;
+	height: 40px;
+	text-indent: -9999em;
+	z-index: 99;
+	right: 20px;
+	display: none;
+}
+
+.background-header .main-nav .menu-trigger {
+	top: 17px;
+}
+
+.header-area .main-nav .menu-trigger span, .header-area .main-nav .menu-trigger span:before,
+	.header-area .main-nav .menu-trigger span:after {
+	-moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	background-color: #e75e8d;
+	display: block;
+	position: absolute;
+	width: 30px;
+	height: 2px;
+	left: 0;
+}
+
+.background-header .main-nav .menu-trigger span, .background-header .main-nav .menu-trigger span:before,
+	.background-header .main-nav .menu-trigger span:after {
+	background-color: #e75e8d;
+}
+
+.header-area .main-nav .menu-trigger span:before, .header-area .main-nav .menu-trigger span:after
+	{
+	-moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	background-color: #e75e8d;
+	display: block;
+	position: absolute;
+	width: 30px;
+	height: 2px;
+	left: 0;
+	width: 75%;
+}
+
+.background-header .main-nav .menu-trigger span:before,
+	.background-header .main-nav .menu-trigger span:after {
+	background-color: #e75e8d;
+}
+
+.header-area .main-nav .menu-trigger span:before, .header-area .main-nav .menu-trigger span:after
+	{
+	content: "";
+}
+
+.header-area .main-nav .menu-trigger span {
+	top: 16px;
+}
+
+.header-area .main-nav .menu-trigger span:before {
+	-moz-transform-origin: 33% 100%;
+	-ms-transform-origin: 33% 100%;
+	-webkit-transform-origin: 33% 100%;
+	transform-origin: 33% 100%;
+	top: -10px;
+	z-index: 10;
+}
+
+.header-area .main-nav .menu-trigger span:after {
+	-moz-transform-origin: 33% 0;
+	-ms-transform-origin: 33% 0;
+	-webkit-transform-origin: 33% 0;
+	transform-origin: 33% 0;
+	top: 10px;
+}
+
+.header-area .main-nav .menu-trigger.active span, .header-area .main-nav .menu-trigger.active span:before,
+	.header-area .main-nav .menu-trigger.active span:after {
+	background-color: transparent;
+	width: 100%;
+}
+
+.header-area .main-nav .menu-trigger.active span:before {
+	-moz-transform: translateY(6px) translateX(1px) rotate(45deg);
+	-ms-transform: translateY(6px) translateX(1px) rotate(45deg);
+	-webkit-transform: translateY(6px) translateX(1px) rotate(45deg);
+	transform: translateY(6px) translateX(1px) rotate(45deg);
+	background-color: #e75e8d;
+}
+
+.background-header .main-nav .menu-trigger.active span:before {
+	background-color: #e75e8d;
+}
+
+.header-area .main-nav .menu-trigger.active span:after {
+	-moz-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+	-ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+	-webkit-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+	transform: translateY(-6px) translateX(1px) rotate(-45deg);
+	background-color: #e75e8d;
+}
+
+.background-header .main-nav .menu-trigger.active span:after {
+	background-color: #e75e8d;
+}
+
+.header-area.header-sticky {
+	min-height: 70px;
+}
+
+.header-area.header-sticky .nav li a.active {
+	color: #fff;
+}
+
+@media ( max-width : 1200px) {
+	.header-area .main-nav .nav li {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.header-area .main-nav:before {
+		display: none;
+	}
+}
+
+@media ( max-width : 992px) {
+	.header-area {
+		top: 0;
+	}
+	.header-area .main-nav {
+		background-color: transparent;
+		border-radius: 0px;
+	}
+	.header-area .main-nav .nav {
+		height: auto;
+		flex-basis: 100%;
+	}
+	.header-area .main-nav .logo {
+		position: absolute;
+		left: 30px;
+		top: 15px;
+	}
+	.background-header .main-nav .logo {
+		top: 0px;
+	}
+	.background-header .main-nav .border-button {
+		top: 0px !important;
+	}
+	.header-area .main-nav .border-button {
+		position: absolute;
+		top: 15px;
+		right: 70px;
+	}
+	.header-area.header-sticky .nav li a:hover, .header-area.header-sticky .nav li a.active
+		{
+		color: #e75e8d !important;
+		opacity: 1;
+	}
+	.header-area.header-sticky .nav li.search-icon a {
+		width: 100%;
+	}
+	.header-area {
+		background-color: #f7f7f7;
+		padding: 0px 15px;
+		height: 80px;
+		box-shadow: none;
+		text-align: center;
+	}
+	.header-area .container {
+		padding: 0px;
+	}
+	.header-area .logo {
+		margin-left: 0px;
+	}
+	.header-area .menu-trigger {
+		display: block !important;
+	}
+	.header-area .main-nav {
+		overflow: hidden;
+	}
+	.header-area .main-nav .nav {
+		float: none;
+		width: 100%;
+		display: none;
+		-webkit-transition: all 0s ease 0s;
+		-moz-transition: all 0s ease 0s;
+		-o-transition: all 0s ease 0s;
+		transition: all 0s ease 0s;
+		margin-left: 0px;
+	}
+	.header-area.header-sticky .nav {
+		margin-top: 65px !important;
+		text-align: center;
+	}
+	.background-header.header-sticky .nav {
+		margin-top: 70px !important;
+	}
+	.header-area .main-nav .nav li:first-child {
+		border-top: 1px solid #eee;
+	}
+	.header-area .main-nav .nav li {
+		width: 100%;
+		background: #fff;
+		border-bottom: 1px solid #eee;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	.header-area .main-nav .nav li a {
+		height: 50px !important;
+		line-height: 50px !important;
+		padding: 0px !important;
+		border: none !important;
+		background: #fff !important;
+		color: #1e1e1e !important;
+	}
+	.header-area .main-nav .nav li a:hover {
+		background: #fff !important;
+		color: #e75e8d !important;
+	}
+	.header-area .main-nav .nav li:last-child a img {
+		display: none;
+	}
+	.header-area .main-nav .nav li:last-child a:hover {
+		color: #ec6090 !important;
+		background-color: transparent !important;
+	}
+	.header-area .main-nav .nav li.has-sub ul.sub-menu {
+		position: relative;
+		visibility: inherit;
+		opacity: 1;
+		z-index: 1;
+		transform: translateY(0%);
+		top: 0px;
+		width: 100%;
+		box-shadow: none;
+		height: 0px;
+		transition: all 0s;
+	}
+	.header-area .main-nav .nav li.submenu ul li a {
+		font-size: 12px;
+		font-weight: 400;
+	}
+	.header-area .main-nav .nav li.submenu ul li a:hover:before {
+		width: 0px;
+	}
+	.header-area .main-nav .nav li.has-sub ul.sub-menu {
+		height: auto;
+	}
+	.header-area .main-nav .nav li.has-sub:after {
+		color: #3B566E;
+		right: 30px;
+		font-size: 14px;
+		top: 15px;
+	}
+	.header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul
+		{
+		height: 0px;
+	}
+}
+
+/* --------------- 따로 추가 --------------- */
 
 /* 네비바 로그인버튼*/
 #navLogin {
@@ -28,36 +434,92 @@
 	border-radius: 23px;
 }
 
-#aMypage, #aAi {
-	cursor: pointer;
-	color: #666;
-	display: block;
-	font-weight: 400;
+#navIntro.pink, #navMypage.pink, #navAi.pink {
+	color: #e75e8d !important;
+	font-weight: 600;
+}
+
+/* 네비바 메뉴 */
+#navLogin:hover {
+	color: #e75e8d !important;
+	font-weight: 600;
+}
+/**** 네비바 메뉴 끝 ****/
+
+/***** dropdown 시작***** */
+
+/* 드롭다운 버튼 스타일 */
+#profileDropdown {
+	background-color: #e75e8d !important;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	width: 120px;
+	height: 50px;
+	border-radius: 23px;
 	font-size: 14px;
-	text-transform: capitalize;
-	-webkit-transition: all 0.3s ease 0s;
-	-moz-transition: all 0.3s ease 0s;
-	-o-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s;
-	border: transparent;
-	padding: 13px 10px;
-	border-radius: 18px;
-	letter-spacing: .3px;
+	border: none;
 }
 
-.nav a.active{
-    color: #e75e8d !important;
-    font-weight: 600;
-	
+/* 드롭다운 메뉴 스타일 */
+.dropdown-menu {
+	background-color: #27292a;
+	width: 120px; margin : 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 1;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	transition: opacity 0.5s ease, visibility 0s;
+	margin: 0
 }
 
+/* 드롭다운 메뉴 항목 스타일 */
+ul.dropdown-menu.dropdown-menu-dark.show {
+	text-align: center;
+}
 
-#aMypage:hover, #aAi:hover, #navLogin:hover {
-    color: #e75e8d !important;
-    font-weight: 600;
-  }
+#btnUpdate, #btnMypage, #btnLogout {
+	color: #666;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	text-decoration: none;
+	width: 100%;
+	transition: all 0.5s;
+	font-size: 14px;
+}
 
-/* 로그인 모달 */
+#btnUpdate:hover, #btnMypage:hover, #btnLogout:hover {
+	background: transparent;
+	color: #ec6090;
+}
+
+/* 드롭다운 메뉴 보이기 */
+.dropdown:hover .dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+.dropdown-menu a {
+	color: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	text-decoration: none;
+	transition: all 1s;
+}
+
+/****드롭다운 끝 ****/
+
+/**** 로그인 모달 *****/
 .modal-backdrop.show {
 	opacity: .70 !important;
 }

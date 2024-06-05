@@ -18,7 +18,15 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
-
+<script>
+	window.onload = function() {
+		// 서버 측에서 전달된 에러 메시지를 확인
+		let errorMessage = '<c:out value="${errorMessage}" />';
+		if (errorMessage && errorMessage.trim().length > 0) { // 에러메세지가 null값이 아닌 경우
+			alert(errorMessage);
+		}
+	}
+</script>
 
 </head>
 <body>
