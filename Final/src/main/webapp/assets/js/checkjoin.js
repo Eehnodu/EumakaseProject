@@ -35,10 +35,7 @@ $(document).ready(function() {
 			return;
 		}
 
-		// 다른 라이브러리와의 충돌 방지
-		let $jq = jQuery.noConflict();
-
-		$jq.ajax({
+		$.ajax({
 			type: "post",
 			url: `${cpath}/checkId`,
 			data: {
@@ -96,38 +93,119 @@ function checkPw(pw) {
 
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
-    // 입력 필드의 값 확인
-    let name = $("input[name='name']").val().trim();
-    let gender = $("#genderInput").val().trim();
-    let birth = $("input[name='birth']").val().trim();
+	// 입력 필드의 값 확인
+	let name = $("input[name='name']").val().trim();
+	let gender = $("#genderInput").val().trim();
+	let birth = $("input[name='birth']").val().trim();
 
-    // 모든 조건이 충족되었는지 확인
-    if (idChecked && pwChecked && name && gender && birth) {
-        $("#btnPref").removeAttr("disabled");
-        $("#btnPref").off("click").on("click", function(e) {
-            e.preventDefault();
+	// 모든 조건이 충족되었는지 확인
+	if (idChecked && pwChecked && name && gender && birth) {
+		$("#btnPref").removeAttr("disabled");
+		$("#btnPref").off("click").on("click", function(e) {
+			e.preventDefault();
 
-            let $jq = jQuery.noConflict();
 
-            $jq.ajax({
-                url: `${cpath}/joinProcess`,
-                type: "post",
-                data: $("form").serialize(),
-                success: function(response) {
-                    $("#prefSurvey").html("<div>선호도 조사<br><button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button></div>");
-                    $("#btnComplete").click(function() {
-                        window.location.href = "main";
-                    });
-                },
-                error: function(xhr, status, error) {
-                    alert("에러 발생: " + error);
-                }
-            });
-        });
-    } else {
-        $("#btnPref").attr("disabled", "disabled");
-    }
+			$.ajax({
+				url: `${cpath}/joiningProcess`,
+				type: "post",
+				data: $("form").serialize(),
+				success: function(response) {
+
+
+					$.ajax({
+						url: `${cpath}/joiningSurvey`,
+						type: "post",
+						success: function(result) { // 결과 성공 콜백함수
+							console.log(result[0]);
+							console.log(result[0].surType);
+							console.log("여기오냐?");
+
+							// 선언된 변수에 초기 HTML 구조를 설정합니다.
+							let htmlContent = `
+            <div>
+                선호도 조사
+                <br>
+                질문을 박으세요!
+                <br>
+                <form id="toggleForm" onsubmit="handleSubmit(event)">
+        `;
+
+							// result 배열을 반복하여 각 요소에 대한 버튼을 추가합니다.
+							result.forEach((item, index) => {
+								htmlContent += `
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+                    ${item.surDesc}
+                </button>
+            `;
+							});
+
+							// 폼 마감 태그와 추가 버튼을 문자열에 추가합니다.
+							htmlContent += `
+							<br>
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
+                </form>
+                <button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button>
+            </div>
+        `;
+
+							// 최종적으로 구성된 HTML 문자열을 #prefSurvey에 설정합니다.
+							$("#prefSurvey").html(htmlContent);
+						},
+						error: function(xhr, status, error) {
+							console.error('AJAX request failed:', status, error);
+						}
+					});
+
+
+
+					$("#btnComplete").click(function() {
+						window.location.href = "main";
+					});
+				},
+				error: function(xhr, status, error) {
+					alert("에러 발생: " + error);
+				}
+			});
+		});
+	} else {
+		$("#btnPref").attr("disabled", "disabled");
+	}
 }
+
+
+function handleSubmit(event) {
+	event.preventDefault();  // 폼의 기본 제출 동작을 막음
+
+	const buttons = $('button[data-bs-toggle="button"]');
+	const activeButtons = buttons.filter('.active').map(function() {
+		return $(this).text().trim();
+	}).get();
+
+	const formData = {};
+	activeButtons.forEach((buttonText, index) => {
+		formData[`button${index + 1}`] = buttonText;
+	});
+
+	$.ajax({
+		url: '/joiningProcess',
+		type: 'POST',
+		data: formData,
+		success: function(response) {
+			console.log('Success:', response);
+		},
+		error: function(xhr, status, error) {
+			console.error('Error:', error);
+		}
+	});
+}
+
+
+
+
+
+
+
+
 
 // 실시간으로 입력 필드의 변경사항을 감지하여 버튼 활성화 여부를 결정
 $("input[name='name'], input[name='birth'], #genderInput").on("change keyup", completeJoin);
@@ -147,17 +225,17 @@ document.getElementById('joinForm').addEventListener('submit', function(e) {
 // 드롭다운을 클릭 이벤트로만 활성화
 $(document).ready(function() {
 
-    // 드롭다운 메뉴 항목을 클릭했을 때 드롭다운 메뉴 숨기기
-    $('.dropdown-item').click(function() {
-        $(this).closest('#ddwGdMenu').removeClass('show'); // 드롭다운 메뉴를 숨깁니다.
-    });
+	// 드롭다운 메뉴 항목을 클릭했을 때 드롭다운 메뉴 숨기기
+	$('.dropdown-item').click(function() {
+		$(this).closest('#ddwGdMenu').removeClass('show'); // 드롭다운 메뉴를 숨깁니다.
+	});
 
-    // 바깥쪽을 클릭하면 드롭다운 메뉴 숨기기
-    $(document).on('click', function(e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
+	// 바깥쪽을 클릭하면 드롭다운 메뉴 숨기기
+	$(document).on('click', function(e) {
+		if (!$(e.target).closest('.dropdown').length) {
+			$('.dropdown-menu').removeClass('show');
+		}
+	});
 });
 
 // 드롭다운으로 선택한 성별을 화면에 보여주기
