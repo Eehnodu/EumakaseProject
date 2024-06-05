@@ -61,7 +61,7 @@
 														</div>
 														<div class="form-group mt-4">
 															<input type="text" name="name" class="form-style"
-																placeholder="이름" autocomplete="off" maxlength="30" required>
+																placeholder="이름" autocomplete="off" maxlength="6" required>
 															<i class="input-icon uil uil-user"></i>
 														</div>
 
