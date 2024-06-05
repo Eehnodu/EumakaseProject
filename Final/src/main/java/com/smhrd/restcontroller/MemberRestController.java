@@ -8,10 +8,10 @@ import com.smhrd.db.MemberMapper;
 
 @RestController
 public class MemberRestController {
-	
+
 	@Autowired
 	private MemberMapper mapper;
-	
+
 	@RequestMapping("/checkId")
 	public String checkId(String memId) {
 		String str = "";
@@ -23,5 +23,5 @@ public class MemberRestController {
 		}
 		return str;
 	}
-	
+
 }

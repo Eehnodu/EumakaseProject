@@ -22,4 +22,7 @@ public interface MemberMapper {
 	// 회원탈퇴 비밀번호확인
 	public int checkDelete(MemberVO vo);
 
+	// 수정시 비밀번호 확인
+	public int checkPw(MemberVO vo);
+
 }

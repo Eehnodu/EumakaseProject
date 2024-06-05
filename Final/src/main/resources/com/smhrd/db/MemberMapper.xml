@@ -25,6 +25,12 @@
 		UPDATE tb_member SET memPw = #{memPw} WHERE memId = #{memId}
 	</update>
 
+	<!-- 정보수정 비밀번호 확인 -->
+	<select id="checkPw" parameterType="string" resultType="int">
+    	SELECT COUNT(*) FROM tb_member
+    	WHERE memId = #{memId} AND memPw = #{memPw}
+	</select>
+	
 	<!-- 회원탈퇴 -->
 	<delete id="delete" parameterType="com.smhrd.model.MemberVO">
 		DELETE FROM tb_member WHERE memId = #{memId}
