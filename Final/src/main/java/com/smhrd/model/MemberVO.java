@@ -13,7 +13,9 @@ public class MemberVO {
 
 	private String memId;
 	private String memPw;
-	private String memName;
+	private String name;
+	private String gender;
+	private String birth;
 	private Date createdAt;
 	
 }

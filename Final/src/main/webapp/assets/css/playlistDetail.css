@@ -1,0 +1,537 @@
+
+
+  /* ***** button ***** */
+  .main-button a:hover {
+    background-color: #fff;
+    color: #e75e8d;
+  }
+
+  .main-border-button a {
+    font-size: 14px;
+    color: #ec6090;
+    background-color: transparent;
+    border: 1px solid #ec6090;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #buttonDownload {
+  	margin-top: 0px;
+  }
+
+
+  /* .game-details .main-border-button {
+    margin-top: 35px;
+  }
+ */
+  .game-details .main-border-button a {
+    text-align: center;
+    width: 100%;
+  }
+
+
+
+  /* ***** playlistDetailPage ***** */
+  .col-lg-6 .playlist {
+    width: 100%;
+  }
+
+
+  .playlistDetail .col-lg-6 .item {
+    position: relative;
+    /* border-bottom: 1px solid #666; */
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+  }
+
+  .playlistDetail .item img {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .playlistDetail .item h4 {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 5px;
+    padding-top: 15px;
+  }
+
+  .playlistDetail .item span {
+    color: #666;
+    font-size: 14px;
+    display: block;
+  }
+
+  .playlistDetail ul {
+    position: absolute;
+    right: 0;
+    top: 15px;
+  }
+
+  .playlistDetail ul li {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .playlistDetail ul li:first-child i {
+    color: yellow;
+  }
+
+  .playlistDetail ul li:last-child i {
+    color: #ec6090;
+  }
+
+  /* ***** playlistDetailPage 끝 ***** */
+
+  /* 
+  ---------------------------------------------
+  Gaming Library Style
+  --------------------------------------------- 
+  */
+
+  #gaming-playlist{
+    margin-top: 0px;
+    padding: 0px; 
+    background-color: #1f2122;
+    border-radius: 23px;
+  }
+
+  .gaming-library .item {
+    border-bottom: 1px solid #27292a;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .gaming-library .last-item {
+    margin-bottom: 30px;
+  }
+
+  .profile-library .last-item {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+
+  .gaming-library .item ul li {
+    margin-top: 15px;
+  }
+
+  .gaming-library .item ul li img {
+    margin-top: -30px;
+  }
+
+  .gaming-library .item ul li {
+    display: inline-block;
+    width: 17%;
+  }
+
+  .gaming-library .item ul li:first-child {
+    width: 110px;
+  }
+
+  .gaming-library .item ul li:last-child {
+    width: 15%;
+    text-align: right;
+  }
+
+  .gaming-library .item ul li h4 {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .gaming-library .item ul li span {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .gaming-library .main-button {
+    text-align: center;
+    margin-bottom: -53px;
+  }
+
+  
+#buttonDownload a {
+	font-size: 14px;
+	color: #fff;
+	background-color: #e75e8d;
+	padding: 12px 30px;
+	display: inline-block;
+	border-radius: 25px;
+	font-weight: 400;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	transition: all .3s;
+	position: relative;
+	overflow: hidden;
+}
+
+#buttonDownload a:hover {
+	background-color: #fff;
+	color: #e75e8d;
+}
+
+ /* ***** 좋아요 ***** */
+  li .heartbox {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+    
+}
+         svg {
+  cursor: pointer;
+  overflow: visible;
+  width: 60px;
+  /* margin: 20px; */
+  margin-bottom: -10px;
+}
+
+svg #heart {
+  transform-origin: center;
+  animation: animateHeartOut .3s linear forwards;
+}
+
+svg #main-circ {
+  transform-origin: 29.5px 29.5px;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox:checked+label svg #heart {
+  transform: scale(0.2);
+  fill: #E2264D;
+  animation: animateHeart .3s linear forwards .25s;
+}
+
+.checkbox:checked+label svg #main-circ {
+  transition: all 2s;
+  animation: animateCircle .3s linear forwards;
+  opacity: 1;
+}
+
+.checkbox:checked+label svg #heartgroup1 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup1 #heart1 {
+  transform: scale(0) translate(0, -30px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup1 #heart2 {
+  transform: scale(0) translate(10px, -50px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup2 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup2 #heart1 {
+  transform: scale(0) translate(30px, -15px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup2 #heart2 {
+  transform: scale(0) translate(60px, -15px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup3 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup3 #heart1 {
+  transform: scale(0) translate(30px, 0px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup3 #heart2 {
+  transform: scale(0) translate(60px, 10px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup4 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup4 #heart1 {
+  transform: scale(0) translate(30px, 15px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup4 #heart2 {
+  transform: scale(0) translate(40px, 50px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup5 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup5 #heart1 {
+  transform: scale(0) translate(-10px, 20px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup5 #heart2 {
+  transform: scale(0) translate(-60px, 30px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup6 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup6 #heart1 {
+  transform: scale(0) translate(-30px, 0px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup6 #heart2 {
+  transform: scale(0) translate(-60px, -5px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup7 {
+  opacity: 1;
+  transition: .1s all .3s;
+}
+
+.checkbox:checked+label svg #heartgroup7 #heart1 {
+  transform: scale(0) translate(-30px, -15px);
+  transform-origin: 0 0 0;
+  transition: .5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup7 #heart2 {
+  transform: scale(0) translate(-55px, -30px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform .3s;
+}
+
+.checkbox:checked+label svg #heartgroup2 {
+  opacity: 1;
+  transition: .1s opacity .3s;
+}
+
+.checkbox:checked+label svg #heartgroup3 {
+  opacity: 1;
+  transition: .1s opacity .3s;
+}
+
+.checkbox:checked+label svg #heartgroup4 {
+  opacity: 1;
+  transition: .1s opacity .3s;
+}
+
+.checkbox:checked+label svg #heartgroup5 {
+  opacity: 1;
+  transition: .1s opacity .3s;
+}
+
+.checkbox:checked+label svg #heartgroup6 {
+  opacity: 1;
+  transition: .1s opacity .3s;
+}
+
+.checkbox:checked+label svg #heartgroup7 {
+  opacity: 1;
+  transition: .1s opacity .3s;
+}
+
+@keyframes animateCircle {
+  40% {
+    transform: scale(10);
+    opacity: 1;
+    fill: #DD4688;
+  }
+  55% {
+    transform: scale(11);
+    opacity: 1;
+    fill: #D46ABF;
+  }
+  65% {
+    transform: scale(12);
+    opacity: 1;
+    fill: #CC8EF5;
+  }
+  75% {
+    transform: scale(13);
+    opacity: 1;
+    fill: transparent;
+    stroke: #CC8EF5;
+    stroke-width: .5;
+  }
+  85% {
+    transform: scale(17);
+    opacity: 1;
+    fill: transparent;
+    stroke: #CC8EF5;
+    stroke-width: .2;
+  }
+  95% {
+    transform: scale(18);
+    opacity: 1;
+    fill: transparent;
+    stroke: #CC8EF5;
+    stroke-width: .1;
+  }
+  100% {
+    transform: scale(19);
+    opacity: 1;
+    fill: transparent;
+    stroke: #CC8EF5;
+    stroke-width: 0;
+  }
+}
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(0.2);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+} 
+
+@keyframes animateHeartOut {
+  0% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  } 
+}
+
+  
+/* ***** 더보기 ***** */
+.songDetail {
+  display: none;
+}
+
+.noContent {
+  color: #fff;
+}
+
+
+
+/* 
+
+  ---------------------------------------------
+  Game Details Style
+  --------------------------------------------- 
+  */
+
+  .game-details h2 {
+    font-size: 45px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 60px 0px;
+  }
+
+  .game-details .content {
+    border-radius: 23px;
+    padding: 30px;
+    background-color: #1f2122;
+  }
+
+  .game-details .content .left-info {
+    background-color: #27292a;
+    border-radius: 23px;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .game-details .content .left-info .left {
+    float: left;
+  }
+
+  .game-details .content .left-info h4 {
+    font-size: 15px;
+    display: block;
+  }
+
+  .game-details .content .left-info span {
+    color: #666;
+    display: block;
+    margin-top: 7px;
+    font-weight: 400;
+  }
+
+  .game-details .content .left-info ul {
+    text-align: right;
+  }
+
+  .game-details .content .left-info ul li {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .game-details .content .left-info ul li:first-child i {
+    color: yellow;
+  }
+
+  .game-details .content .left-info ul li:last-child i {
+    color: #ec6090;
+  }
+
+  .game-details .content .right-info {
+    background-color: #27292a;
+    border-radius: 23px;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .game-details .content .right-info .playlist .songDetail ul li {
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .game-details .content .right-info ul li i {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .game-details .content .right-info ul li:first-child i {
+    color: yellow;
+  }
+
+  .game-details .content .right-info ul li i {
+    color: #ec6090;
+  }

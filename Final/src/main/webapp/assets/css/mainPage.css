@@ -1,0 +1,549 @@
+ #introWrap{
+ 	height:800px;
+ }
+ 
+ /* 
+  ---------------------------------------------
+  Top Streamers Style
+  --------------------------------------------- 
+ */
+
+  .top-streamers {
+    border-radius: 23px;
+    background-color: #1f2122;
+    padding: 30px;
+    max-height: 567px;
+    min-height: 567px;
+  }
+  
+  .top-streamers ul li {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #353637;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+  }
+  
+  .top-streamers ul li:last-child {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .top-streamers ul li span {
+    float: left;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+    padding-top: 12px;
+    margin-right: 10px;
+  }
+  
+  .top-streamers ul li h6 {
+    display: inline;
+    font-size: 14px;
+    color: #ec6090;
+    font-weight: 400;
+  }
+  
+  .top-streamers ul li h6 i {
+    color: #fff;
+    background-color: #ec6090;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 3px;
+  }
+  
+  .top-streamers ul li .main-button {
+    float: right;
+  }
+  
+  .top-streamers ul li .main-button a {
+    padding: 8px 20px;
+  }
+  
+  
+  
+  
+  
+  /**
+   * Owl Carousel v2.3.4
+   * Copyright 2013-2018 David Deutsch
+   * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+   */
+  /*
+   *  Owl Carousel - Core
+   */
+  
+  .owl-carousel {
+    display: none;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    /* position relative and z-index fix webkit rendering fonts issue */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .owl-carousel .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+    /* fix firefox animation glitch */
+  }
+  
+  .owl-carousel .owl-stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    /* padding-top: 100%; */ /* 추가 */
+  }
+  
+  .owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  
+  .owl-carousel .owl-wrapper,
+  .owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+  }
+  
+  .owl-carousel .owl-item {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+  
+  .owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+  }
+  
+  .owl-carousel .owl-nav.disabled,
+  .owl-carousel .owl-dots.disabled {
+    display: none;
+  }
+  
+  .owl-carousel .owl-nav .owl-prev,
+  .owl-carousel .owl-nav .owl-next,
+  .owl-carousel .owl-dot {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next,
+  .owl-carousel button.owl-dot {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+  }
+  
+  .owl-carousel.owl-loaded {
+    display: block;
+  }
+  
+  .owl-carousel.owl-loading {
+    opacity: 0;
+    display: block;
+  }
+  
+  .owl-carousel.owl-hidden {
+    opacity: 0;
+  }
+  
+  .owl-carousel.owl-refresh .owl-item {
+    visibility: hidden;
+  }
+  
+  .owl-carousel.owl-drag .owl-item {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .owl-carousel.owl-grab {
+    cursor: move;
+    cursor: grab;
+  }
+  
+  .owl-carousel.owl-rtl {
+    direction: rtl;
+  }
+  
+  .owl-carousel.owl-rtl .owl-item {
+    float: right;
+  }
+  
+  /* No Js */
+  .no-js .owl-carousel {
+    display: block;
+  }
+  
+  /*
+   *  Owl Carousel - Animate Plugin
+   */
+  .owl-carousel .animated {
+    animation-duration: 1000ms;
+    animation-fill-mode: both;
+  }
+  
+  .owl-carousel .owl-animated-in {
+    z-index: 0;
+  }
+  
+  .owl-carousel .owl-animated-out {
+    z-index: 1;
+  }
+  
+  .owl-carousel .fadeOut {
+    animation-name: fadeOut;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  /*
+   * 	Owl Carousel - Auto Height Plugin
+   */
+  .owl-height {
+    transition: height 500ms ease-in-out;
+  }
+  
+  /*
+   * 	Owl Carousel - Lazy Load Plugin
+   */
+  .owl-carousel .owl-item {
+    /**
+        This is introduced due to a bug in IE11 where lazy loading combined with autoheight plugin causes a wrong
+        calculation of the height of the owl-item that breaks page layouts
+       */
+  }
+  
+  .owl-carousel .owl-item .owl-lazy {
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+  
+  .owl-carousel .owl-item .owl-lazy[src^=""],
+  .owl-carousel .owl-item .owl-lazy:not([src]) {
+    max-height: 0;
+  }
+  
+  .owl-carousel .owl-item img.owl-lazy {
+    transform-style: preserve-3d;
+  }
+  
+  /*
+   * 	Owl Carousel - Video Plugin
+   */
+   .owl-carousel .owl-video-wrapper {
+    position: relative;
+    height: 80%;
+    background: #000;
+  }
+  
+  .owl-carousel .owl-video-play-icon {
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    left: 50%;
+    top: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+    background: url("owl.video.play.png") no-repeat;
+    cursor: pointer;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    transition: transform 100ms ease;
+  }
+  
+  .owl-carousel .owl-video-play-icon:hover {
+    -ms-transform: scale(1.3, 1.3);
+    transform: scale(1.3, 1.3);
+  }
+  
+  .owl-carousel .owl-video-playing .owl-video-tn,
+  .owl-carousel .owl-video-playing .owl-video-play-icon {
+    display: none;
+  }
+  
+  .owl-carousel .owl-video-tn {
+    opacity: 0;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: opacity 400ms ease;
+  }
+  
+  .owl-carousel .owl-video-frame {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+  }
+   
+  /* ***** AI 추천 ***** */
+  #top-AI {
+    background-image: url(../images/banner-bg.jpg);
+    background-position: center center;
+    background-size: cover;
+    min-height: 380px;
+    border-radius: 23px;
+    padding: 80px 60px;
+  }
+  
+  .heading-section h4 {
+    color: #ec6090;
+    font-size: 34px;
+    text-decoration: none;
+    margin-bottom: 30px;
+  }
+  
+  .heading-section h4 em {
+    color: #fff;
+    font-style: normal;
+    text-decoration: underline;
+  }
+  
+  .main-button a {
+    font-size: 14px;
+    color: #fff;
+    background-color: #e75e8d;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .main-button a:hover {
+    background-color: #fff;
+    color: #e75e8d;
+  }
+  
+  /* 
+    ---------------------------------------------
+    Featured Games Style
+    --------------------------------------------- 
+    */
+  
+  .featured-games {
+    border-radius: 23px;
+    background-color: #1f2122;
+    padding: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .featured-games .item .thumb {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .featured-games .item .thumb .hover-effect {
+    position: absolute;
+    bottom: -100px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+  }
+  
+  .featured-games .item .thumb:hover .hover-effect {
+    opacity: 1;
+    visibility: visible;
+    bottom: 15px;
+  }
+  
+  .featured-games .item .thumb .hover-effect h6 {
+    background-color: rgba(31, 33, 34, 0.95);
+    display: inline-block;
+    color: #ec6090;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 25px;
+  }
+  
+  .featured-games .item img {
+    border-radius: 23px;
+  }
+  
+  .featured-games .item h4 {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    display: inline-block;
+  }
+  
+  .featured-games .item span {
+    color: #666;
+    display: block;
+    margin-top: 7px;
+    font-weight: 400;
+  }
+  
+  .featured-games .item ul {
+    float: right;
+    margin-top: 20px;
+  }
+  
+  .featured-games .item ul li {
+    text-align: right;
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .featured-games .item ul li:first-child i {
+    color: yellow;
+  }
+  
+  .featured-games .item ul li:last-child i {
+    color: #ec6090;
+  }
+  
+  .featured-games .owl-nav {
+    position: absolute;
+    margin: 0 auto;
+    top: -70px;
+    right: 0;
+  }
+  
+  .featured-games .owl-nav .owl-prev {
+    margin-right: 2.5px;
+  }
+  
+  .featured-games .owl-nav .owl-next {
+    margin-left: 2.5px;
+  }
+  
+  .featured-games .owl-nav .owl-prev span,
+  .featured-games .owl-nav .owl-next span {
+    font-size: 36px;
+    display: inline-block;
+    color: #666;
+    opacity: 1;
+    transition: all .3s;
+  }
+  
+  .featured-games .owl-nav .owl-prev span:hover,
+  .featured-games .owl-nav .owl-next span:hover {
+    opacity: 1;
+    color: #ec6090;
+  }
+  
+  /* .top-downloaded {
+    border-radius: 23px;
+    background-color: #1f2122;
+    padding: 30px;
+    max-height: 567px;
+    min-height: 567px;
+  } */
+  
+  .top-downloaded ul li {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .top-downloaded ul li img {
+    float: left;
+    margin-right: 15px;
+  }
+  
+  .top-downloaded ul li h4 {
+    font-size: 15px;
+    padding-top: 7px;
+  }
+  
+  .top-downloaded ul li h6 {
+    font-size: 15px;
+    color: #666;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .top-downloaded ul li span {
+    color: #fff;
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  
+  .top-downloaded ul li .download i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-23px);
+    width: 46px;
+    height: 46px;
+    text-align: center;
+    line-height: 46px;
+    color: #ec6090;
+    background-color: #27292a;
+    border-radius: 50%;
+  }
+  
+  .top-downloaded ul li {
+    border-bottom: 1px solid #27292a;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+  }
+  
+  .top-downloaded .text-button {
+    text-align: center;
+  }
+  
+  .top-downloaded .text-button a {
+    font-weight: 600;
+    color: #ec6090;
+    font-size: 15px;
+  }
+  
+  
+  
+  
+  
+  
+  
