@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="page-content">
+				<div class="page-content" id="introWrap">
 
 					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
 					<div class="row">
@@ -35,7 +35,7 @@
 										<em>AI</em> <br> 음악 추천 서비스
 									</h4>
 									<div class="main-button">
-										<a href="browse.html">Right Now</a>
+										<a href="${cpath}/AIrecommend">Right Now</a>
 									</div>
 								</div>
 							</div>
