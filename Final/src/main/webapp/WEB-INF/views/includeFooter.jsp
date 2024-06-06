@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<link rel="stylesheet" href="assets/css/main.css">
-
 	<footer>
 		<div class="container">
 			<div class="row">
