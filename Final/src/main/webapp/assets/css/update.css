@@ -86,7 +86,7 @@ hr {
 	height: 48px;
 	width: 100%;
 	font-weight: 500;
-	border-radius: 4px;
+	border-radius: 23px;
 	font-size: 14px;
 	line-height: 22px;
 	letter-spacing: 0.5px;
@@ -161,6 +161,7 @@ hr {
 	background-color: #ec6090;
 	border-color: transparent;
 	width: 100%;
+	border-radius: 18px;
 }
 
 #btnUpdateSmt:hover {
