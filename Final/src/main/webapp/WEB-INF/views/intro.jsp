@@ -17,6 +17,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
 <script>
 	window.onload = function() {
@@ -34,7 +36,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="page-content">
+				<div class="page-content" id="introWrap">
 
 					<!-- ***** 페이지 내용 작성 ***** -->
 
@@ -93,63 +95,59 @@
 								<div class="content"">
 									<div class=" row">
 										<h5 id="txtSeason">Summer Music</h5>
-										<div class="col-lg-12 playlistDetail right-info">
-											<div>
-												<div>
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
-															<div>
-																<img src="assets/images/game-01.jpg" alt=""
-																	class="templatemo-item imgCover"> <span
-																	class="songTitle">Super Shy</span><span>New
-																	Jeans</span>
-															</div>
-														</div>
-													</div>
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
+										<div class="col-lg-12 playlistDetail right-info"
+											id="playlistWrap">
+											<div id="songList">
+												<div class="col-lg-12 playlist">
+													<div class="item songDetail">
+														<div>
 															<img src="assets/images/game-01.jpg" alt=""
 																class="templatemo-item imgCover"> <span
-																class="songTitle">Attention</span><span>Doja Cat</span>
-														</div>
-													</div>
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
-															<img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item imgCover"> <span
-																class="songTitle">같애 (feat. SHIRT)</span><span>같애</span>
-														</div>
-													</div>
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
-															<img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item imgCover"> <span
-																class="songTitle">Cruel Summer</span><span>Taylor
-																Swift</span>
-														</div>
-													</div>
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
-															<img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item imgCover"> <span
-																class="songTitle">Perfect Night</span><span>LE
-																SSERAFIM</span>
-														</div>
-													</div>
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
-															<img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item imgCover"> <span
-																class="songTitle">Attention</span><span>Doja Cat</span>
+																class="songTitle">Super Shy</span><span>New Jeans</span>
 														</div>
 													</div>
 												</div>
-
+												<div class="col-lg-12 playlist">
+													<div class="item songDetail">
+														<img src="assets/images/game-01.jpg" alt=""
+															class="templatemo-item imgCover"> <span
+															class="songTitle">Attention</span><span>Doja Cat</span>
+													</div>
+												</div>
+												<div class="col-lg-12 playlist">
+													<div class="item songDetail">
+														<img src="assets/images/game-01.jpg" alt=""
+															class="templatemo-item imgCover"> <span
+															class="songTitle">같애 (feat. SHIRT)</span><span>같애</span>
+													</div>
+												</div>
+												<div class="col-lg-12 playlist">
+													<div class="item songDetail">
+														<img src="assets/images/game-01.jpg" alt=""
+															class="templatemo-item imgCover"> <span
+															class="songTitle">Cruel Summer</span><span>Taylor
+															Swift</span>
+													</div>
+												</div>
+												<div class="col-lg-12 playlist">
+													<div class="item songDetail">
+														<img src="assets/images/game-01.jpg" alt=""
+															class="templatemo-item imgCover"> <span
+															class="songTitle">Perfect Night</span><span>LE
+															SSERAFIM</span>
+													</div>
+												</div>
+												<div class="col-lg-12 playlist">
+													<div class="item songDetail">
+														<img src="assets/images/game-01.jpg" alt=""
+															class="templatemo-item imgCover"> <span
+															class="songTitle">Attention</span><span>Doja Cat</span>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -167,12 +165,23 @@
 	<script src="assets/js/tabs.js"></script>
 	<script src="assets/js/popup.js"></script>
 
+	<!-- put jquery before owl carousel -->
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
 
+	<!-- owl carousel -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+		integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 
 
 
+
 </body>
-	<%@ include file="includeFooter.jsp"%>
+<%@ include file="includeFooter.jsp"%>
 </html>
