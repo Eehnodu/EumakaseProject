@@ -90,6 +90,11 @@ public class MainController {
 	public String AIrecommend() {
 		return "AIrecommend";
 	}
+	
+	@GetMapping("/userPlaylist")
+	public String userPlaylist() {
+		return "userPlaylist";
+	}
 
 	@GetMapping("/update")
 	public String update() {

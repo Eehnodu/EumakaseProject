@@ -26,7 +26,6 @@
   	margin-top: 0px;
   }
 
-
   /* .game-details .main-border-button {
     margin-top: 35px;
   }
@@ -35,6 +34,8 @@
     text-align: center;
     width: 100%;
   }
+
+
 
   /* ***** playlistDetailPage ***** */
   .col-lg-6 .playlist {
@@ -469,7 +470,7 @@ svg #main-circ {
     background-color: #27292a;
     border-radius: 23px;
     padding: 30px;
-    margin-bottom: 0px;
+    margin-bottom: 30px;
   }
 
   .game-details .content .left-info .left {
@@ -479,7 +480,8 @@ svg #main-circ {
   .game-details .content .left-info h4 {
     font-size: 15px;
     display: block;
-  }
+    margin-top: 20px;
+}
 
   .game-details .content .left-info span {
     color: #666;
@@ -502,7 +504,7 @@ svg #main-circ {
     color: yellow;
   }
 
-  .game-details .content .left-info ul li:last-child i {
+  .fa-download{
     color: #ec6090;
   }
 
@@ -533,5 +535,3 @@ svg #main-circ {
   .game-details .content .right-info ul li i {
     color: #ec6090;
   }
-  
-
