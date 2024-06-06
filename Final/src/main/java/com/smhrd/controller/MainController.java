@@ -85,6 +85,11 @@ public class MainController {
 	public String mainPage() {
 		return "mainPage";
 	}
+	
+	@GetMapping("/AIrecommend")
+	public String AIrecommend() {
+		return "AIrecommend";
+	}
 
 	@GetMapping("/update")
 	public String update() {
