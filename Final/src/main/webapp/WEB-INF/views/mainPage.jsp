@@ -15,6 +15,7 @@
 
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/mainPage.css">
+<link rel="stylesheet" href="assets/css/fourimg.css">
 
 
 </head>
@@ -223,6 +224,35 @@
 
 
 
+
+							<div class="owl-features owl-carousel">
+								<div class="item">
+									<a href=${cpath}/userPlaylist>
+										<div class="image-grid">
+											<div class="thumb">
+												<img src="assets/images/stream-05.jpg" alt="">
+											</div>
+											<div class="thumb">
+												<img src="assets/images/stream-02.jpg" alt="">
+											</div>
+											<div class="thumb">
+												<img src="assets/images/stream-03.jpg" alt="">
+											</div>
+											<div class="thumb">
+												<img src="assets/images/stream-04.jpg" alt="">
+											</div>
+										</div>
+										<h4>
+											플리 제목<br> <span>#신나는 #행복한</span>
+										</h4>
+										<ul>
+											<li><i class="fa fa-star"></i> 4.8</li>
+											<li><i class="fa fa-download"></i> 2.3M</li>
+										</ul>
+
+									</a>
+								</div>
+
 							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
 							<div class="col-lg-12">
 								<div class="featured-games header-text">
@@ -231,6 +261,7 @@
 											<em>다른 사람은</em> 뭐 듣지?
 										</h4>
 									</div>
+
 
 									<div class="owl-features owl-carousel">
 										<div class="item">
@@ -326,6 +357,15 @@
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
 
+
+		<!-- Scripts -->
+
+		<script src="assets/js/isotope.min.js"></script>
+		<script src="assets/js/owl-carousel.js"></script>
+		<script src="assets/js/tabs.js"></script>
+		<script src="assets/js/popup.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/fourimg.js"></script>
 </body>
 
 <%@ include file="includeFooter.jsp"%>
