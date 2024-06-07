@@ -48,41 +48,59 @@ public class MemberRestController {
 
 	@RequestMapping("/joinProcess")
 	public void join(@RequestBody MemberVO vo, HttpSession session) {
-		session.invalidate();
 		System.out.println("joinprocess들어옴");
 		
-		session.setAttribute("member", vo);
+		// 세션이 존재하는지 확인
+        if (session.getAttribute("member") != null) {
+            // 세션이 존재하면 세션을 무효화
+            session.invalidate();
+            // 새로운 세션을 생성
+        }
+
+        // 새로운 세션 또는 기존 세션에 새로운 값을 부여
+        session.setAttribute("member", vo);
 	}
 
 	@RequestMapping("/joiningSurvey")
-	public List<SurveyVO> joiningSurvey() {
+	public List<SurveyVO> joiningSurvey(HttpSession session) {
 		//System.out.println("장르를보여주세요");
+		if (session != null) {
+			System.out.println("세션이 존재합니다 삭제하겠습니다");
+			session.invalidate();
+		}
+		
 		List<SurveyVO> SurveyList = surveyMapper.joiningSurvey();
 
 		return SurveyList;
 	}
 
 	@PostMapping("/joiningProcess")
-	public MemberVO joining(MemberVO vo) {
+	public MemberVO joining(MemberVO vo, HttpSession session) {
+		if (session != null) {
+			System.out.println("세션이 존재합니다 삭제하겠습니다");
+			session.invalidate();
+		}
 		return vo;
 	}
-
+	
+	
+	
 	@RequestMapping("/preference")
 	public void preferencejoin(@RequestBody List<String> surDescList, HttpSession session) {
-		//System.out.println("preference 들어옴");
+		System.out.println("preference 들어옴");
 		//System.out.println("genre :" + surDescList);
-		List<SurveyVO> SurveyIdx = surveyMapper.selectSurvey(surDescList);
-
-		List<Integer> surIdxList = SurveyIdx.stream().map(SurveyVO::getSurIdx).collect(Collectors.toList());
-
-
-		//System.out.println(surIdxList);
-		MemberVO vo = (MemberVO) session.getAttribute("member");
 		session.invalidate();
-		//System.out.println(vo.getMemId());
-		String memId = vo.getMemId();
-		memberMapper.join(vo);
-		preferenceMapeer.insertPref(memId,surIdxList);
+		if (session != null) {
+			List<SurveyVO> SurveyIdx = surveyMapper.selectSurvey(surDescList);
+			List<Integer> surIdxList = SurveyIdx.stream().map(SurveyVO::getSurIdx).collect(Collectors.toList());
+			MemberVO vo = (MemberVO) session.getAttribute("member");
+			String memId = vo.getMemId();
+			memberMapper.join(vo);
+			preferenceMapeer.insertPref(memId,surIdxList);
+		}
+
+
+
 		
 		
 	}

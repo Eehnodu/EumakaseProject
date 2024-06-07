@@ -3,6 +3,7 @@ const cpath = document.body.getAttribute('data-cpath');
 
 // 엔터를 눌렀었을 때 다음 입력란으로 이동
 $(document).ready(function() {
+
 	$('input').keydown(function(event) {
 		if (event.keyCode === 13) { // Enter 키 코드
 			event.preventDefault(); // 기본 Enter 동작 방지
@@ -15,7 +16,10 @@ $(document).ready(function() {
 				$('#btnCheckId').click(); // 중복 확인 버튼에 포커스
 			} else if (nextIndex < inputs.length) {
 				inputs.eq(nextIndex).focus(); // 다음 입력 필드에 포커스
-			} else {
+			} else if (this.name == 'loginPw') {
+            // 현재 입력 필드의 이름이 'loginPw'인 경우
+            $('#btnLogin').click(); // 로그인 버튼 클릭
+			}else {
 				// 마지막 입력 필드에서 엔터를 누른 경우
 				$('#btnPref').focus(); // 제출 버튼에 포커스
 			}
@@ -92,6 +96,7 @@ function checkPw(pw) {
 
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
+	window.history.pushState({}, '', `${cpath}/join`);
 	// 입력 필드의 값 확인
 	let name = $("input[name='name']").val().trim();
 	let gender = $("#genderInput").val().trim();
@@ -101,6 +106,7 @@ function completeJoin() {
 	if (idChecked && pwChecked && name && gender && birth) {
 		$("#btnPref").removeAttr("disabled");
 		$("#btnPref").off("click").on("click", function(e) {
+
 			e.preventDefault();
 
 			$.ajax({
@@ -113,7 +119,8 @@ function completeJoin() {
 						url: `${cpath}/joiningSurvey`,
 						type: "post",
 						success: function(result) { // 결과 성공 콜백함수
-							console.log("아까 입력했던 정보들 : " + response);
+							window.history.pushState({}, '', `${cpath}/`);
+							console.log(response);
 							console.log("Survey에 저장된 장르들 호출");
 							// console.log(response); response 가져
 							// 선언된 변수에 초기 HTML 구조를 설정합니다.
@@ -144,14 +151,30 @@ function completeJoin() {
 
 							// 최종적으로 구성된 HTML 문자열을 #prefSurvey에 설정합니다.
 							$("#prefSurvey").html(htmlContent);
+
+
+
 						},
 						error: function(xhr, status, error) {
-							console.error('AJAX request failed:', status, error);
+							if (xhr.status == 401) {
+								// 세션이 없어 인증되지 않았을 경우의 처리
+								alert("로그인이 필요합니다.");
+								window.location.href = `${cpath}/mainPage`; // 로그인 페이지로 리다이렉트
+							} else {
+								// 그 외의 오류 처리
+								alert("오류 발생: " + error);
+							}
 						}
 					});
 
+
+
+
 					// 동적으로 생성된 #btnComplete 요소에 이벤트 핸들러를 위임합니다.
 					$(document).on("click", "#btnComplete", function() {
+
+
+
 						var activeButtons = $("button.active");
 
 						// 각 버튼의 텍스트 값을 배열에 저장하면서 공백 문자 제거
@@ -172,11 +195,11 @@ function completeJoin() {
 							data: JSON.stringify(response),
 							success: function(gomain) {
 
-								console.log("회원가입 성공");
+								console.log("세션에 vo저장");
 								console.log(response);
-								
-								
-								
+
+
+
 
 								$.ajax({
 									url: `${cpath}/preference`,
@@ -189,13 +212,15 @@ function completeJoin() {
 									},
 									error: function() {
 										// 에러 처리 로직
-										
+
 									}
 								});
 
 
+								setTimeout(function() {
+									window.location.href = `${cpath}/`;
+								}, 2000); // 1000밀리초(1초) 후에 페이지 이동
 
-								window.location.href = `${cpath}/mainPage`;
 
 
 							},
@@ -205,10 +230,13 @@ function completeJoin() {
 						});
 					});
 				},
+
 				error: function(xhr, status, error) {
 					alert("에러 발생: " + error);
 				}
+
 			});
+
 		});
 	}
 }
