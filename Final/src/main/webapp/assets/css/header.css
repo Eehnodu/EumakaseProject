@@ -69,7 +69,7 @@ body {
 }
 
 .header-area .main-nav .logo img {
-	width: 191px;
+	width: 90%;
 }
 
 .background-header .main-nav .logo {
@@ -106,7 +106,7 @@ body {
 .header-area .main-nav .nav li a {
 	cursor: pointer !important;
 	display: block;
-	font-weight: 400;
+	font-weight: 600;
 	font-size: 14px;
 	text-transform: capitalize;
 	-webkit-transition: all 0.3s ease 0s;
@@ -419,7 +419,7 @@ body {
 /* 네비바 로그인버튼*/
 #navLogin {
 	display: block;
-	font-weight: 400;
+	font-weight: 600;
 	font-size: 14px;
 	height: 45px;
 	text-transform: capitalize;
@@ -675,38 +675,16 @@ div#\=\"modal-dialog\" {
 	transition: all 200ms linear;
 }
 
-.form-group input:-ms-input-placeholder {
-	color: #c4c3ca;
-	opacity: 0.7;
-	-webkit-transition: all 200ms linear;
-	transition: all 200ms linear;
+/* placeholder */
+.form-group input::placeholder {
+    color: #c4c3ca;
+    opacity: 0.7;
+    transition: all 200ms linear;
 }
 
-.form-group input::-moz-placeholder {
-	color: #c4c3ca;
-	opacity: 0.7;
-	-webkit-transition: all 200ms linear;
-	transition: all 200ms linear;
-}
-
-.form-group input:-moz-placeholder {
-	color: #c4c3ca;
-	opacity: 0.7;
-	-webkit-transition: all 200ms linear;
-	transition: all 200ms linear;
-}
-
-.form-group input::-webkit-input-placeholder {
-	color: #c4c3ca;
-	opacity: 0.7;
-	-webkit-transition: all 200ms linear;
-	transition: all 200ms linear;
-}
-
-.form-group input:focus:-ms-input-placeholder {
-	opacity: 0;
-	-webkit-transition: all 200ms linear;
-	transition: all 200ms linear;
+.form-group input:focus::placeholder {
+    opacity: 0;
+    transition: all 200ms linear;
 }
 
 .card-3d-wrap {

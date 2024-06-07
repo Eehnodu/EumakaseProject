@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientException;
@@ -76,6 +77,9 @@ public class MainController {
 		vo.setMemId(memId);
 		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
+		
+		System.out.println("Login으로 들어옴");
+		
 		if (result != null) {
 			session.setAttribute("member", result);
 			return "redirect:/mainPage";
@@ -98,6 +102,8 @@ public class MainController {
 
 	@GetMapping("/mainPage")
 	public String mainPage() {
+		
+		
 		return "mainPage";
 	}
 
