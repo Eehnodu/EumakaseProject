@@ -2,6 +2,8 @@ package com.smhrd.db;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.smhrd.model.SurveyVO;
 
 public interface SurveyMapper {
@@ -12,4 +14,5 @@ public interface SurveyMapper {
 	
 	public List<SurveyVO> joiningSurvey();
 	
+	public List<SurveyVO> selectSurvey(@Param("surDescList") List<String> surDescList);
 	}
