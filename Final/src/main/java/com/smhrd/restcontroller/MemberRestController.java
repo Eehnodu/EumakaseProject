@@ -1,13 +1,16 @@
 package com.smhrd.restcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.db.MemberMapper;
@@ -65,5 +68,26 @@ public class MemberRestController {
 		*/
 		
 	}
+	
+//	// 선택 결과를 ai 추천 모델에 넘기는 함수
+//	@RequestMapping("/playlistDetail")
+//	public String playlistDetail(@RequestParam(name = "response", required = false) List<String> responses,
+//			Model model) {
+//		List<Integer> result = new ArrayList<>();
+//		if (responses != null) {
+//			try {
+//				for (int i = 0; i < responses.size(); i++) {
+//					result.add(Integer.parseInt(responses.get(i)));
+//					
+//				}
+//			} catch(Exception e) {
+//				return "/";
+//			}
+//			System.out.println(result);
+//			return "playlistDetail";
+//		}else {
+//			return "/";
+//		}
+//	}
 	
 }

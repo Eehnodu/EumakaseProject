@@ -24,4 +24,8 @@
 		SELECT * FROM tb_survey WHERE surType = 'A'
 	</select>
 
+	<select id="aiSurveyAnser" parameterType="com.smhrd.model.SurveyVO" resultType="com.smhrd.model.SurveyVO">
+		SELECT surDesc FROM tb_survey WHERE surIdx = #{surIdx}
+	</select>
+	
 </mapper>

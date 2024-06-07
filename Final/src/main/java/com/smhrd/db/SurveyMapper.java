@@ -15,4 +15,6 @@ public interface SurveyMapper {
 	public List<SurveyVO> aiQuestion();
 	
 	public List<SurveyVO> aiAnswer();
-	}
+	
+	public SurveyVO aiSurveyAnser(SurveyVO vo);
+}
