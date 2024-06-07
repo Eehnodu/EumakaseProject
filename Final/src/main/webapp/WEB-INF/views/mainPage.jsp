@@ -318,6 +318,6 @@
 		<script src="assets/js/popup.js"></script>
 		<script src="assets/js/custom.js"></script>
 		
-		<%@ include file="includeFooter.jsp"%>
 </body>
+		<%@ include file="includeFooter.jsp"%>
 </html>
