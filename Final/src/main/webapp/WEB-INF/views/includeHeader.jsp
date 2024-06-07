@@ -18,13 +18,13 @@
 					<%-- 비회원은 로고 클릭 시 소개페이지 --%>
 					<c:if test="${member==null}">
 						<a href="${cpath}/" class="logo"> <img
-							src="assets/images/logo.png" alt="">
+							src="assets/images/logo2.png" alt="">
 						</a>
 					</c:if>
 					<%-- 로그인한 회원은 로고 클릭 시 메인페이지 --%>
 					<c:if test="${member!=null}">
 						<a href="${cpath}/mainPage" class="logo"> <img
-							src="assets/images/logo.png" alt="">
+							src="assets/images/logo2.png" alt="">
 						</a>
 					</c:if>
 					<!-- ***** Logo End ***** -->

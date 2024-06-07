@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>틀</title>
+<title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
@@ -23,26 +23,23 @@
 		<%-- 세션 속성 'member'가 널이 아닐 때 --%>
 		<c:when test="${member != null}">
 
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-content">
 
+					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="top-streamers" id="top-AI">
+								<div class="heading-section">
+									<h6>Welcome To Cyborg</h6>
+									<h4>
+										<em>AI</em> <br> 음악 추천 서비스
+									</h4>
+									<div class="main-button">
+										<a href="${cpath}/AIrecommend">Right Now</a>
 
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="page-content" id="introWrap">
-
-							<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
-							<div class="row">
-								<div class="col-lg-4">
-									<div class="top-streamers" id="top-AI">
-										<div class="heading-section">
-											<h6>Welcome To Cyborg</h6>
-											<h4>
-												<em>AI</em> <br> 음악 추천 서비스
-											</h4>
-											<div class="main-button">
-												<a href="${cpath}/AIrecommend">Right Now</a>
-											</div>
-										</div>
 									</div>
 								</div>
 

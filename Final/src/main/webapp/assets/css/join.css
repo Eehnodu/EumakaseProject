@@ -148,6 +148,10 @@ hr {
 	border-color: transparent;
 }
 
+#btnCheckId span {
+    font-size: 13px;
+}
+
 /* 비밀번호 확인 메세지 */
 #checkPw {
 	position: absolute;
