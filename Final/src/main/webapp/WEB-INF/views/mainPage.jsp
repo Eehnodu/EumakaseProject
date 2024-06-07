@@ -24,23 +24,25 @@
 		<%-- 세션 속성 'member'가 널이 아닐 때 --%>
 		<c:when test="${member != null}">
 
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="page-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="page-content">
 
-					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
-					<div class="row">
-						<div class="col-lg-4">
-							<div class="top-streamers" id="top-AI">
-								<div class="heading-section">
-									<h6>Welcome To Cyborg</h6>
-									<h4>
-										<em>AI</em> <br> 음악 추천 서비스
-									</h4>
-									<div class="main-button">
-										<a href="${cpath}/AIrecommend">Right Now</a>
+							<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="top-streamers" id="top-AI">
+										<div class="heading-section">
+											<h6>Welcome To Cyborg</h6>
+											<h4>
+												<em>AI</em> <br> 음악 추천 서비스
+											</h4>
+											<div class="main-button">
+												<a href="${cpath}/AIrecommend">Right Now</a>
 
+											</div>
+										</div>
 									</div>
 								</div>
 
@@ -225,33 +227,7 @@
 
 
 
-							<div class="owl-features owl-carousel">
-								<div class="item">
-									<a href=${cpath}/userPlaylist>
-										<div class="image-grid">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
-											</div>
-											<div class="thumb">
-												<img src="assets/images/stream-02.jpg" alt="">
-											</div>
-											<div class="thumb">
-												<img src="assets/images/stream-03.jpg" alt="">
-											</div>
-											<div class="thumb">
-												<img src="assets/images/stream-04.jpg" alt="">
-											</div>
-										</div>
-										<h4>
-											플리 제목<br> <span>#신나는 #행복한</span>
-										</h4>
-										<ul>
-											<li><i class="fa fa-star"></i> 4.8</li>
-											<li><i class="fa fa-download"></i> 2.3M</li>
-										</ul>
 
-									</a>
-								</div>
 
 							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
 							<div class="col-lg-12">
@@ -264,6 +240,32 @@
 
 
 									<div class="owl-features owl-carousel">
+										<div class="item">
+											<a href=${cpath}/userPlaylist>
+												<div class="image-grid">
+													<div class="thumb">
+														<img src="assets/images/stream-05.jpg" alt="">
+													</div>
+													<div class="thumb">
+														<img src="assets/images/stream-02.jpg" alt="">
+													</div>
+													<div class="thumb">
+														<img src="assets/images/stream-03.jpg" alt="">
+													</div>
+													<div class="thumb">
+														<img src="assets/images/stream-04.jpg" alt="">
+													</div>
+												</div>
+												<h4>
+													플리 제목<br> <span>#신나는 #행복한</span>
+												</h4>
+												<ul>
+													<li><i class="fa fa-star"></i> 4.8</li>
+													<li><i class="fa fa-download"></i> 2.3M</li>
+												</ul>
+
+											</a>
+										</div>
 										<div class="item">
 											<div class="thumb">
 												<img src="assets/images/stream-05.jpg" alt="">
@@ -342,19 +344,18 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-
-	<!-- Scripts -->
+			</div>
+			<!-- Scripts -->
 
 
-				<p>안녕하세요, ${member.memId}님</p>
+			<p>안녕하세요, ${member.memId}님</p>
 		</c:when>
 		<%-- 세션 속성 'member'가 널일 때 --%>
 		<c:otherwise>
 			<p>로그인이 필요합니다.</p>
 		</c:otherwise>
 	</c:choose>
+
 	<!-- Scripts -->
 
 	<script src="assets/js/isotope.min.js"></script>
