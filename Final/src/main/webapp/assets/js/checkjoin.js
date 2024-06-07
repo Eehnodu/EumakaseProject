@@ -90,7 +90,6 @@ function checkPw(pw) {
 	completeJoin();
 }
 
-
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
 	// 입력 필드의 값 확인
@@ -104,49 +103,44 @@ function completeJoin() {
 		$("#btnPref").off("click").on("click", function(e) {
 			e.preventDefault();
 
-
 			$.ajax({
 				url: `${cpath}/joiningProcess`,
 				type: "post",
 				data: $("form").serialize(),
 				success: function(response) {
-
-
+					// console.log(response);
 					$.ajax({
 						url: `${cpath}/joiningSurvey`,
 						type: "post",
 						success: function(result) { // 결과 성공 콜백함수
-							console.log(result[0]);
-							console.log(result[0].surType);
-							console.log("여기오냐?");
-
+							console.log("아까 입력했던 정보들 : " + response);
+							console.log("Survey에 저장된 장르들 호출");
+							// console.log(response); response 가져
 							// 선언된 변수에 초기 HTML 구조를 설정합니다.
 							let htmlContent = `
-            <div>
-                선호도 조사
-                <br>
-                질문을 박으세요!
-                <br>
-                <form id="toggleForm" onsubmit="handleSubmit(event)">
-        `;
+								<div>
+									선호도 조사
+									<br>
+									질문을 박으세요!
+									<br>
+									<form id="toggleForm" onsubmit="handleSubmit(event)">
+							`;
 
 							// result 배열을 반복하여 각 요소에 대한 버튼을 추가합니다.
 							result.forEach((item, index) => {
 								htmlContent += `
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
-                    ${item.surDesc}
-                </button>
-            `;
+									<button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+										${item.surDesc}
+									</button>
+								`;
 							});
 
 							// 폼 마감 태그와 추가 버튼을 문자열에 추가합니다.
 							htmlContent += `
-							<br>
-                <button type="submit" class="btn btn-success mt-3">Submit</button>
-                </form>
-                <button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button>
-            </div>
-        `;
+								<br>
+									<button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button>
+								</div>
+							`;
 
 							// 최종적으로 구성된 HTML 문자열을 #prefSurvey에 설정합니다.
 							$("#prefSurvey").html(htmlContent);
@@ -156,10 +150,59 @@ function completeJoin() {
 						}
 					});
 
+					// 동적으로 생성된 #btnComplete 요소에 이벤트 핸들러를 위임합니다.
+					$(document).on("click", "#btnComplete", function() {
+						var activeButtons = $("button.active");
+
+						// 각 버튼의 텍스트 값을 배열에 저장하면서 공백 문자 제거
+						var buttonTexts = [];
+						activeButtons.each(function() {
+							var text = $(this).text().trim(); // 시작과 끝의 공백 제거
+							text = text.replace(/\s+/g, ' '); // 문자열 내의 모든 공백을 하나의 공백으로 치환
+							buttonTexts.push(text);
+						});
+
+						// 콘솔에 출력
+						console.log(buttonTexts);
+
+						$.ajax({
+							url: `${cpath}/joinProcess`,
+							type: 'post',
+							contentType: 'application/json',
+							data: JSON.stringify(response),
+							success: function(gomain) {
+
+								console.log("회원가입 성공");
+								console.log(response);
+								
+								
+								
+
+								$.ajax({
+									url: `${cpath}/preference`,
+									type: 'post',
+									contentType: 'application/json',
+									data: JSON.stringify(buttonTexts),
+									success: function(servey) {
+										// console.log("preference 에이잭스들어옴")
+										// 성공 처리 로직
+									},
+									error: function() {
+										// 에러 처리 로직
+										
+									}
+								});
 
 
-					$("#btnComplete").click(function() {
-						window.location.href = "main";
+
+								window.location.href = `${cpath}/mainPage`;
+
+
+							},
+							error: () => {
+								console.log("회원가입 실패");
+							}
+						});
 					});
 				},
 				error: function(xhr, status, error) {
@@ -167,37 +210,10 @@ function completeJoin() {
 				}
 			});
 		});
-	} else {
-		$("#btnPref").attr("disabled", "disabled");
 	}
 }
 
 
-function handleSubmit(event) {
-	event.preventDefault();  // 폼의 기본 제출 동작을 막음
-
-	const buttons = $('button[data-bs-toggle="button"]');
-	const activeButtons = buttons.filter('.active').map(function() {
-		return $(this).text().trim();
-	}).get();
-
-	const formData = {};
-	activeButtons.forEach((buttonText, index) => {
-		formData[`button${index + 1}`] = buttonText;
-	});
-
-	$.ajax({
-		url: '/joiningProcess',
-		type: 'POST',
-		data: formData,
-		success: function(response) {
-			console.log('Success:', response);
-		},
-		error: function(xhr, status, error) {
-			console.error('Error:', error);
-		}
-	});
-}
 
 
 
