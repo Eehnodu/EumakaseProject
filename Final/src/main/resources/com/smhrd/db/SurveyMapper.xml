@@ -16,6 +16,12 @@
 		SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "genre";
 	</select>
 	
+	<select id="aiQuestion" resultType="com.smhrd.model.SurveyVO">
+		SELECT * FROM tb_survey WHERE surType = 'Q'
+	</select>
 	
+	<select id="aiAnswer" resultType="com.smhrd.model.SurveyVO">
+		SELECT * FROM tb_survey WHERE surType = 'A'
+	</select>
 
 </mapper>

@@ -12,4 +12,7 @@ public interface SurveyMapper {
 	
 	public List<SurveyVO> joiningSurvey();
 	
+	public List<SurveyVO> aiQuestion();
+	
+	public List<SurveyVO> aiAnswer();
 	}

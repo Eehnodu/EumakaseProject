@@ -1,23 +1,34 @@
 package com.smhrd.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smhrd.db.MemberMapper;
+import com.smhrd.db.SurveyMapper;
 import com.smhrd.model.MemberVO;
 import com.smhrd.model.SurveyVO;
+import java.util.Random;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Autowired
+	private SurveyMapper surveyMapper;
 	
 	@GetMapping("/AIquestion")
 	public String AIquestion() {
@@ -87,9 +98,50 @@ public class MainController {
 	}
 	
 	@GetMapping("/AIrecommend")
-	public String AIrecommend() {
-		return "AIrecommend";
+	public String AIrecommend(Model model) {
+	    Random ran = new Random();
+	    List<SurveyVO> Que = surveyMapper.aiQuestion();
+	    List<SurveyVO> Ans = surveyMapper.aiAnswer();
+	    Map<String, List<SurveyVO>> questionMap = new HashMap<>();
+	    Map<String, List<SurveyVO>> answerMap = new HashMap<>();
+	    
+	    // 카테고리 초기화
+	    String[] categories = {"emotion", "situation", "place", "people", "genre"};
+	    for (String category : categories) {
+	        questionMap.put(category, new ArrayList<>());
+	        answerMap.put(category, new ArrayList<>());
+	    }
+	    
+	    // 질문을 카테고리별로 분류
+	    for (SurveyVO que : Que) {
+	        if (questionMap.containsKey(que.getSurItem())) {
+	            questionMap.get(que.getSurItem()).add(que);
+	        }
+	    }
+
+	    // 답변을 카테고리별로 분류
+	    for (SurveyVO ans : Ans) {
+	        if (answerMap.containsKey(ans.getSurItem())) {
+	            answerMap.get(ans.getSurItem()).add(ans);
+	        }
+	    }
+
+	    // 랜덤 질문을 모델에 추가
+	    for (String category : categories) {
+	        List<SurveyVO> ques = questionMap.get(category);
+	        if (!ques.isEmpty()) {
+	            model.addAttribute(category + "Que", ques.get(ran.nextInt(ques.size())));
+	        }
+	    }
+
+	    // 모든 답변을 모델에 추가
+	    for (String category : categories) {
+	        model.addAttribute(category + "Ans", answerMap.get(category));
+	    }
+
+	    return "AIrecommend";
 	}
+
 	
 	@GetMapping("/userPlaylist")
 	public String userPlaylist() {
