@@ -341,6 +341,12 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+
 
 				<p>안녕하세요, ${member.memId}님</p>
 		</c:when>
@@ -358,14 +364,11 @@
 	<script src="assets/js/custom.js"></script>
 
 
-		<!-- Scripts -->
-
-		<script src="assets/js/isotope.min.js"></script>
-		<script src="assets/js/owl-carousel.js"></script>
-		<script src="assets/js/tabs.js"></script>
-		<script src="assets/js/popup.js"></script>
-		<script src="assets/js/custom.js"></script>
-		<script src="assets/js/fourimg.js"></script>
+	<script src="assets/js/isotope.min.js"></script>
+	<script src="assets/js/owl-carousel.js"></script>
+	<script src="assets/js/tabs.js"></script>
+	<script src="assets/js/popup.js"></script>
+	<script src="assets/js/custom.js"></script>
 </body>
 
 <%@ include file="includeFooter.jsp"%>
