@@ -63,3 +63,15 @@ function showResultBubble() {
 		transitionQuestion();
 	}
 }
+
+// 값 클릭후 넘기기
+let selectedResponses = [];
+
+function addResponse(response) {
+    selectedResponses.push(response);
+}
+
+function goToPlaylistDetail() {
+    const params = selectedResponses.map(response => `response=${encodeURIComponent(response)}`).join('&');
+    window.location.href = `playlistDetail?${params}`;
+}

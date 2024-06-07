@@ -27,26 +27,24 @@
 					<div class="box">
 						<div class="intro">
 							<p class="first">
-								<span>Welcome to AI recommend!</span>
+								<span>이랏샤이마세! 어서오세요! 음악하세입니다!!</span>
 							</p>
 							<p>
-								<span>당신의 취향을 어쩌구....</span>
+								<span>맞춤 노래를 추천해드릴게요!!</span>
 							</p>
 						</div>
 						<!-- QUESTION 1-->
 						<div class="question q-one">
 							<div class="q-wrap">
 								<p class="locations">
-									<span>지금 무엇을 하고 있나요?</span>
+									<span>${emotionQue.surDesc}</span>
 								</p>
 							</div>
 							<div class="confirm-container">
-								<p class="confirm-button" data-response="출퇴근 중이시군요!"
-									data-type="yes">출퇴근중</p>
-								<p class="confirm-button" data-response="공부 중이시군요!"
-									data-type="no">공부중</p>
-								<p class="confirm-button" data-response="휴식 중이시군요!"
-									data-type="not-sure">휴식중</p>
+								<c:forEach var="emotion" items="${emotionAns}">
+									<p class="confirm-button" id="${emotion.surIdx}" data-response="${emotion.surDesc} ....^_^"
+										data-type="not-sure" onclick="addResponse('${emotion.surIdx}')">${emotion.surDesc}</p>
+								</c:forEach>
 							</div>
 							<!-- END confirm-container -->
 							<p class="response">
@@ -59,16 +57,14 @@
 						<div class="question q-two">
 							<div class="q-wrap">
 								<p>
-									<span>지금 나의 기분은 어떤 편인가요?</span>
+									<span>${situationQue.surDesc}</span>
 								</p>
 							</div>
 							<div class="confirm-container">
-								<p class="confirm-button" data-response="행복함을 느끼고 계시군요!"
-									data-type="not-sure">행복함</p>
-								<p class="confirm-button" data-response="짜증을 느끼고 계시군요!"
-									data-type="no">짜증남</p>
-								<p class="confirm-button" data-response="우울함을 느끼고 계시군요!"
-									data-type="yes">우울함</p>
+								<c:forEach var="situation" items="${situationAns}">
+									<p class="confirm-button" id="${situation.surIdx}" data-response="${situation.surDesc} ....^_^"
+										data-type="not-sure" onclick="addResponse('${situation.surIdx}')">${situation.surDesc}</p>
+								</c:forEach>
 							</div>
 							<!-- END confirm-container -->
 							<p class="response">
@@ -81,14 +77,14 @@
 						<div class="question q-three">
 							<div class="q-wrap">
 								<p>
-									<span>또 뭘 넣지</span>
+									<span>${placeQue.surDesc}</span>
 								</p>
 							</div>
 							<div class="confirm-container">
-								<p class="confirm-button" data-response="I don't know"
-									data-type="not-sure">I don't know</p>
-								<p class="confirm-button" data-response="No" data-type="no">No</p>
-								<p class="confirm-button" data-response="Yes" data-type="yes">Yes</p>
+								<c:forEach var="place" items="${placeAns}">
+									<p class="confirm-button" id="${place.surIdx}" data-response="${place.surDesc}.. 그곳에서의 하루는 어떨지 궁금하네요 :)"
+										data-type="not-sure" onclick="addResponse('${place.surIdx}')">${place.surDesc}</p>
+								</c:forEach>
 							</div>
 							<!-- END confirm-container -->
 							<p class="response">
@@ -96,7 +92,47 @@
 							</p>
 						</div>
 						<!-- QUESTION 3 END -->
-
+						
+						<!-- QUESTION 4-->
+						<div class="question q-four">
+							<div class="q-wrap">
+								<p>
+									<span>${peopleQue.surDesc}</span>
+								</p>
+							</div>
+							<div class="confirm-container">
+								<c:forEach var="people" items="${peopleAns}">
+									<p class="confirm-button" id="${people.surIdx}" data-response="${people.surDesc}와 함께라면~"
+										data-type="not-sure" onclick="addResponse('${people.surIdx}')">${people.surDesc}</p>
+								</c:forEach>
+							</div>
+							<!-- END confirm-container -->
+							<p class="response">
+								<span></span>
+							</p>
+						</div>
+						<!-- QUESTION 4 END -->
+						
+						<!-- QUESTION 5-->
+						<div class="question q-five">
+							<div class="q-wrap">
+								<p>
+									<span>${genreQue.surDesc}</span>
+								</p>
+							</div>
+							<div class="confirm-container">
+								<c:forEach var="genre" items="${genreAns}">
+									<p class="confirm-button" id="${genre.surIdx}" data-response="${genre.surDesc}가 듣고 싶은 날이네요~"
+										data-type="not-sure" onclick="addResponse('${genre.surIdx}')">${genre.surDesc}</p>
+								</c:forEach>
+							</div>
+							<!-- END confirm-container -->
+							<p class="response">
+								<span></span>
+							</p>
+						</div>
+						<!-- QUESTION 5 END -->
+						<button onclick="goToPlaylistDetail()">완료</button>
 						<!-- RESULT -->
 						<div class="result">
 							<p class="now">
