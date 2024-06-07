@@ -60,7 +60,6 @@
 
 											</div>
 										</div>
-
 										<!-- ***** Gaming Library Start ***** -->
 										<div class="col-lg-12">
 											<div class="gaming-library" id="gaming-playlist">

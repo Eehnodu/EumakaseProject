@@ -71,6 +71,16 @@ public class MainController {
 		
 		return "mainPage";
 	}
+	
+	@GetMapping("/AIrecommend")
+	public String AIrecommend() {
+		return "AIrecommend";
+	}
+	
+	@GetMapping("/userPlaylist")
+	public String userPlaylist() {
+		return "userPlaylist";
+	}
 
 	@GetMapping("/update")
 	public String update() {
@@ -96,7 +106,7 @@ public class MainController {
 		if (count == 1) { // 비밀번호가 일치하는 경우
 			vo.setMemPw(memPw); // 새 비밀번호로 설정
 			mapper.update(vo); // 비밀번호 업데이트
-			return "redirect:/";
+			return "redirect:/mainPage";
 		} else { // 비밀번호가 일치하지 않는 경우
 			redirectAttributes.addFlashAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
 			return "redirect:/update";

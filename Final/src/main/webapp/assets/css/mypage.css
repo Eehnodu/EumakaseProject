@@ -6,3 +6,157 @@ hr {
 	border: 0;
 }
 
+.btn-edit{
+	background-color: #666666;
+    display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    /* border-color:#ec6090; */
+}
+
+.btn-edit:hover{
+	border-color: #fff;
+    background-color: #fff;
+    color: #e75e8d;
+}
+
+.btn-delete{
+	background-color: rgba(236, 96, 144, 0.9);
+    padding: 5px 10px;
+    border-radius:12px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.btn-delete:hover{
+	border-color: #fff;
+    background-color: #fff;
+    color: #e75e8d;
+}
+
+/* 
+  ---------------------------------------------
+  Gaming Library Style
+  --------------------------------------------- 
+  */
+.gaming-library {
+	margin-top: 60px;
+	padding: 30px;
+	background-color: #1f2122;
+	border-radius: 23px;
+}
+
+.gaming-library {
+	/* margin-top: 60px;
+    padding: 30px; */
+	background-color: #1f2122;
+	border-radius: 23px;
+}
+
+.gaming-library .item {
+	border-bottom: 1px solid #27292a;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.gaming-library .last-item {
+	margin-bottom: 30px;
+}
+
+.profile-library .last-item {
+	border-bottom: none;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.gaming-library .item ul li {
+	margin-top: 15px;
+}
+
+.gaming-library .item ul li img {
+	margin-top: -30px;
+}
+
+.gaming-library .item ul li {
+	display: inline-block;
+	width: 17%;
+}
+
+.gaming-library .item ul li:first-child {
+	width: 110px;
+	margin: 0px 20px;
+}
+
+.gaming-library .item ul li:last-child {
+	width: 15%;
+	text-align: left;
+}
+
+.gaming-library .item ul li h4 {
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+
+.gaming-library .item ul li span {
+	color: #666;
+	font-size: 14px;
+}
+
+.gaming-library .main-button {
+	text-align: center;
+	margin-bottom: -53px;
+}
+
+/* 
+  ---------------------------------------------
+  Featured Banner Style
+  --------------------------------------------- 
+  */
+.feature-banner .thumb {
+	position: relative;
+	max-height: 305px;
+	overflow: hidden;
+	border-radius: 23px;
+}
+
+.feature-banner .thumb a {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-23px, -23px);
+	width: 46px;
+	height: 46px;
+	background-color: #fff;
+	border-radius: 50%;
+	display: inline-block;
+	text-align: center;
+	line-height: 46px;
+	color: #ec6090;
+}
+
+li .thumb {
+	position: relative;
+}
+
+li .thumb a {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	/* 아이콘 크기나 실제 요소의 크기에 따라 translate 값을 조정해야 할 수 있습니다. */
+	transform: translate(-200%, -100%);
+	width: 46px;
+	height: 46px;
+	background-color: #e75e8d;
+	border-radius: 50%;
+	display: inline-block;
+	text-align: center;
+	line-height: 46px;
+	color: #fff;
+}
+
+fa-lg {
+	    margin-right: 3px;
+}
