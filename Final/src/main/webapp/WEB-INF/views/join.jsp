@@ -44,7 +44,7 @@
 															<input type="text" name="memId" class="form-style"
 																placeholder="아이디" autocomplete="off" maxlength="50" required>
 															<i class="input-icon uil uil-at"></i>
-															<button type="button" class="btn btn-sm btnPink"
+															<button type="button" class="btn btn-sm"
 																id="btnCheckId">중복확인</button>
 														</div>
 														<div class="form-group mt-2">
@@ -70,8 +70,7 @@
 														<div id="genderDiv">
 															<div class="dropdown mt-2 inputGender" id="exdiv">
 																<div>
-																	<span id="genderLabel">성별</span> <i
-																		class="input-icon uil uil-user"></i>
+																	<span id="genderLabel">성별</span> <i class="input-icon uil uil-mars"></i> 
 																</div>
 															</div>
 															<div class="dropdown w-100" required>
@@ -101,8 +100,7 @@
 														<div class="form-group mt-2">
 															<input id="inputBirth" type="text" name="birth"
 																class="form-style" placeholder="생년월일 8글자"
-																autocomplete="off" maxlength="8"> <i
-																class="input-icon uil uil-lock-alt" required></i>
+																autocomplete="off" maxlength="8"> <i class="input-icon uil uil-calender"></i>
 														</div>
 														<button type="submit" class="btn mt-4" id="btnPref">선호도조사
 															후 가입하기</button>

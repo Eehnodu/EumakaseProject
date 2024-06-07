@@ -17,7 +17,7 @@ body {
 } */
 
 .box {
-    padding-top: 0;
+    padding: 10px 80px 10px 80px;
 }
 
 .box .question {
@@ -71,7 +71,7 @@ body {
     display: none;
     position: relative;
     background: #fff;
-    border-radius: 15px;
+    border-radius: 23px;
     transition: 250ms ease-in-out;
 }
 
@@ -80,7 +80,6 @@ body {
     width: 10px;
     height: 10px;
     background: #fff;
-    border-radius: 50%;
     position: absolute;
     bottom: -2px;
     left: -1px;
@@ -143,12 +142,12 @@ body {
 }
 
 .box p.is-complete {
-    width: auto;
     height: auto;
-    display: block;
-    padding: 5px 10px;
-    max-width: 200px;
-    border-radius: 15px;
+    display: inline-block;
+    padding: 10px 20px;
+    max-width: 500px;
+    border-radius: 23px;
+    box-sizing: border-box;
 }
 
  .box p.is-complete:before {
@@ -176,5 +175,5 @@ body {
 }
 
 .intro{
-	margin:30px -50px;
+	margin:-25px -50px 0px -50px;
 }
