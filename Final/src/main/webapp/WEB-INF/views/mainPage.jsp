@@ -24,7 +24,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="page-content" id="introWrap">
+				<div class="page-content">
 
 					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
 					<div class="row">
@@ -323,16 +323,16 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
+	<!-- Scripts -->
 
-		<!-- Scripts -->
-
-		<script src="assets/js/isotope.min.js"></script>
-		<script src="assets/js/owl-carousel.js"></script>
-		<script src="assets/js/tabs.js"></script>
-		<script src="assets/js/popup.js"></script>
-		<script src="assets/js/custom.js"></script>
-		<script src="assets/js/fourimg.js"></script>
+	<script src="assets/js/isotope.min.js"></script>
+	<script src="assets/js/owl-carousel.js"></script>
+	<script src="assets/js/tabs.js"></script>
+	<script src="assets/js/popup.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/fourimg.js"></script>
 </body>
 <%@ include file="includeFooter.jsp"%>
 </html>
