@@ -14,12 +14,12 @@ $(document).ready(function() {
 			if (this.name == 'memId') {
 				// 현재 입력 필드의 ID가 'userId'인 경우
 				$('#btnCheckId').click(); // 중복 확인 버튼에 포커스
-			} else if (nextIndex < inputs.length) {
-				inputs.eq(nextIndex).focus(); // 다음 입력 필드에 포커스
 			} else if (this.name == 'loginPw') {
             // 현재 입력 필드의 이름이 'loginPw'인 경우
             $('#btnLogin').click(); // 로그인 버튼 클릭
-			}else {
+			} else if (nextIndex < inputs.length) {
+				inputs.eq(nextIndex).focus(); // 다음 입력 필드에 포커스
+			} else {
 				// 마지막 입력 필드에서 엔터를 누른 경우
 				$('#btnPref').focus(); // 제출 버튼에 포커스
 			}
