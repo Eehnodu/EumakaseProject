@@ -15,6 +15,7 @@
 
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/mainPage.css">
+<link rel="stylesheet" href="assets/css/fourimg.css">
 
 
 </head>
@@ -151,16 +152,30 @@
 
 							<div class="owl-features owl-carousel">
 								<div class="item">
-									<div class="thumb">
-										<img src="assets/images/stream-05.jpg" alt="">
-									</div>
-									<h4>
-										Island Rusty<br> <span>249K Downloads</span>
-									</h4>
-									<ul>
-										<li><i class="fa fa-star"></i> 4.8</li>
-										<li><i class="fa fa-download"></i> 2.3M</li>
-									</ul>
+									<a href=${cpath}/userPlaylist>
+										<div class="image-grid">
+											<div class="thumb">
+												<img src="assets/images/stream-05.jpg" alt="">
+											</div>
+											<div class="thumb">
+												<img src="assets/images/stream-02.jpg" alt="">
+											</div>
+											<div class="thumb">
+												<img src="assets/images/stream-03.jpg" alt="">
+											</div>
+											<div class="thumb">
+												<img src="assets/images/stream-04.jpg" alt="">
+											</div>
+										</div>
+										<h4>
+											플리 제목<br> <span>#신나는 #행복한</span>
+										</h4>
+										<ul>
+											<li><i class="fa fa-star"></i> 4.8</li>
+											<li><i class="fa fa-download"></i> 2.3M</li>
+										</ul>
+
+									</a>
 								</div>
 
 								<div class="item">
@@ -317,7 +332,7 @@
 		<script src="assets/js/tabs.js"></script>
 		<script src="assets/js/popup.js"></script>
 		<script src="assets/js/custom.js"></script>
-		
+		<script src="assets/js/fourimg.js"></script>
 </body>
-		<%@ include file="includeFooter.jsp"%>
+<%@ include file="includeFooter.jsp"%>
 </html>

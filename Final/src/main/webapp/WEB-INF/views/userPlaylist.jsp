@@ -16,7 +16,30 @@
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/userPlaylist.css">
 
+<style>
+/* 이미지 사분할 스타일 */
+.image-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	width: 100%; /* 원하는 크기로 설정 */
+	aspect-ratio: 1/1; /* 정사각형 비율 유지 */
+}
 
+.thumb {
+	overflow: hidden; /* 이미지가 컨테이너를 넘치지 않게 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 컨테이너를 가득 채우도록 */
+	border-radius: 23px; /* 추가 스타일 */
+}
+</style>
 
 
 </head>
@@ -45,12 +68,50 @@
 											<img src="assets/images/stream-01.jpg" alt=""
 												style="border-radius: 23px;">
 										</div>
+										<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 세션 스토리지에서 이미지 정보 불러오기
+            const imageSources = JSON.parse(sessionStorage.getItem('imageSources'));
+
+            if (imageSources && imageSources.length > 0) {
+                const container = document.querySelector('.col-lg-3');
+                if (container) {
+                    // 기존에 있는 이미지 태그는 모두 삭제
+                    container.innerHTML = '';
+
+                    // 이미지 컨테이너 생성
+                    const imageGrid = document.createElement('div');
+                    imageGrid.classList.add('image-grid');
+                    container.appendChild(imageGrid);
+
+                    // 각 이미지 소스에 대해 이미지를 생성하여 추가
+                    imageSources.forEach(src => {
+                        const thumbDiv = document.createElement('div');
+                        thumbDiv.classList.add('thumb');
+                        
+                        const newImg = document.createElement('img');
+                        newImg.src = src;
+                        newImg.alt = "";
+
+                        thumbDiv.appendChild(newImg);
+                        imageGrid.appendChild(thumbDiv);
+                    });
+                } else {
+                    console.error("Container element not found");
+                }
+            } else {
+                console.error("No image sources found in session storage");
+            }
+        });
+    </script>
 										<div class="col-lg-9">
 											<div class="left-info">
 												<div class="left" id="left">
 													<h3 id="playlist">플레이리스트 제목</h3>
-													<h4>작성자</h4><span>누구게</span>
-													<h4>작성일자</h4><span>2024.06.06</span>
+													<h4>작성자</h4>
+													<span>누구게</span>
+													<h4>작성일자</h4>
+													<span>2024.06.06</span>
 													<h4>#신나는 #아이돌</h4>
 												</div>
 												<ul>
@@ -76,6 +137,7 @@
 									<div class="col-lg-12">
 										<div class="gaming-library" id="gaming-playlist">
 											<div class="right-info">
+												<!-- 두 번째 페이지 HTML 구조 -->
 												<div class="col-lg-12 playlist">
 													<div class="item songDetail">
 														<ul>
