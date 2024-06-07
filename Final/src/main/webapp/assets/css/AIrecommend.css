@@ -79,10 +79,12 @@ body {
     content: '';
     width: 10px;
     height: 10px;
-    background: #fff;
     position: absolute;
-    bottom: -2px;
-    left: -1px;
+    bottom: -8px;
+    left: 20px;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid white;
+    transform: rotate(10deg);
 }
 
 .box p span {
@@ -94,6 +96,10 @@ body {
     width: 50px;
     height: 30px;
     display: block;
+}
+
+.box p.loading:after {
+    display: none;
 }
 
 .box p.loading:before {

@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>틀</title>
+<title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="page-content" id="introWrap">
+				<div class="page-content">
 
 					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
 					<div class="row">
