@@ -45,7 +45,7 @@
 																placeholder="아이디" autocomplete="off" maxlength="50" required>
 															<i class="input-icon uil uil-at"></i>
 															<button type="button" class="btn btn-sm"
-																id="btnCheckId">중복확인</button>
+																id="btnCheckId"><span>중복확인</span></button>
 														</div>
 														<div class="form-group mt-2">
 															<input type="password" id="pw1" name="memPw"
