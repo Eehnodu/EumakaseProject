@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -35,24 +36,7 @@ public class MainController {
 	}
 
 	
-	@PostMapping("/joinProcess")
-	public String join(MemberVO vo, HttpSession session) {
-		
-		
-		
-		session.getAttribute("member"); 
-		
-		
-		
-		/*
-		mapper.join(vo);
-		vo.setMemPw(null);
-		vo.setGender(null);
-		session.setAttribute("member", vo);
-		 */
-		
-		return "redirect:/mainPage";
-	}
+	
 
 	@PostMapping("/login")
 	public String login(@RequestParam("loginId") String memId, @RequestParam("loginPw") String memPw,
@@ -61,6 +45,9 @@ public class MainController {
 		vo.setMemId(memId);
 		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
+		
+		System.out.println("Login으로 들어옴");
+		
 		if (result != null) {
 			session.setAttribute("member", result);
 			return "redirect:/mainPage";
@@ -83,6 +70,8 @@ public class MainController {
 
 	@GetMapping("/mainPage")
 	public String mainPage() {
+		
+		
 		return "mainPage";
 	}
 	
