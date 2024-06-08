@@ -52,6 +52,9 @@ public class MainController {
 	private MusicMapper musicMapper;
 
 	@Autowired
+	private AiPlaylistMapper aiplaylistMapper;
+
+	@Autowired
 	private RestTemplate restTemplate;
 
 	@GetMapping("/AIquestion")
@@ -184,6 +187,7 @@ public class MainController {
 				}
 
 				String input_keywords = "";
+				String input_tag = "";
 				String input_genre = "";
 				String description = "";
 
@@ -192,14 +196,19 @@ public class MainController {
 					vo.setSurIdx(result.get(i));
 					description = surveyMapper.aiSurveyAnser(vo).getSurDesc();
 					input_keywords += " " + description;
+					input_tag += "#" + description + " ";
 					if (i == 4) {
 						input_genre = description;
 					}
 				}
 
+				// contextIdx값 객체에 저장
+				session.setAttribute("contextIdx", result);
+
 				// Model 객체에 선택했던 키워드와 장르 추가
-				model.addAttribute("input_keywords", input_keywords.toString().trim());
-				model.addAttribute("input_genre", input_genre);
+				session.setAttribute("input_keywords", input_keywords.toString().trim());
+				session.setAttribute("input_tag", input_tag.toString().trim());
+				session.setAttribute("input_genre", input_genre);
 
 				// 회원인지 아닌지 구분하여 context에 저장
 				MemberVO member = (MemberVO) session.getAttribute("member");
@@ -237,7 +246,7 @@ public class MainController {
 				// 추천 결과를 모델에 추가
 				String[] recommendations = responseEntity.getBody();
 				List<String> recommendationList = Arrays.asList(recommendations); // 추천 결과를 리스트로 변환
-				model.addAttribute("recommendations", recommendationList); // 모델에 리스트로 추가
+				session.setAttribute("recommendations", recommendationList); // 모델에 리스트로 추가
 
 				List<MusicVO> musicList = new ArrayList<>();
 				MusicVO musicvo = new MusicVO();
@@ -259,7 +268,7 @@ public class MainController {
 				}
 
 				// 가져온 음원의 정보를 'musicList'라는 모델에 추가
-				model.addAttribute("musicList", musicList);
+				session.setAttribute("musicList", musicList);
 
 			} catch (HttpServerErrorException e) {
 				// 서버 오류 처리
@@ -278,6 +287,39 @@ public class MainController {
 			return "playlistDetail";
 		} else {
 			return "redirect:/"; // responses가 null인 경우 리디렉션
+		}
+	}
+
+	// 플레이리스트 저장
+	@GetMapping("/savePlaylist")
+	public String savePlaylist(HttpSession session) {
+
+		MemberVO member = (MemberVO) session.getAttribute("member");
+
+		if (member != null) {
+			List<Integer> contextIdxList = (List<Integer>) session.getAttribute("contextIdx");
+			List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
+
+			// 공통 contextIdx 설정
+			AiPlaylistVO playlistvo = new AiPlaylistVO();
+			playlistvo.setContextIdx(contextIdxList.get(0));
+			playlistvo.setContextIdx2(contextIdxList.get(1));
+			playlistvo.setContextIdx3(contextIdxList.get(2));
+			playlistvo.setContextIdx4(contextIdxList.get(3));
+			playlistvo.setContextIdx5(contextIdxList.get(4));
+			playlistvo.setPlName("-"); // 기본 플레이리스트 이름 설정
+
+			for (MusicVO music : musicList) {
+				// musicIdx 설정
+				playlistvo.setMusicIdx(music.getMusicIdx());
+
+				// mapper를 통해 playlistvo를 저장
+				aiplaylistMapper.savePlaylist(playlistvo);
+			}
+			return "redirect:/mainPage";
+
+		} else {
+			return "redirect:/";
 		}
 	}
 

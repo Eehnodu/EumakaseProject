@@ -44,7 +44,7 @@
 											<div class="left-info">
 												<div class="left">
 													<h4>플레이리스트 제목</h4>
-													<span>#신나는 #아이돌</span>
+													<span>${input_tag}</span>
 												</div>
 												<ul>
 													<li><i class="fa fa-star"></i> 4.8</li>
@@ -56,8 +56,7 @@
 										</div>
 										<div class="col-lg-6">
 											<div class="main-border-button" id="buttonDownload">
-												<a href="#">이 플리 저장</a> <a href="#">다른 플리 보여줘</a>
-
+												<a href="${cpath}/savePlaylist">이 플리 저장</a> <a href="#" id="redDiff">다른 플리 보여줘</a>
 											</div>
 										</div>
 										<!-- ***** Gaming Library Start ***** -->
