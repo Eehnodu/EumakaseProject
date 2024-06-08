@@ -25,9 +25,15 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.smhrd.db.AiPlaylistMapper;
+import com.smhrd.db.ContextMapper;
 import com.smhrd.db.MemberMapper;
+import com.smhrd.db.MusicMapper;
 import com.smhrd.db.SurveyMapper;
+import com.smhrd.model.AiPlaylistVO;
+import com.smhrd.model.ContextVO;
 import com.smhrd.model.MemberVO;
+import com.smhrd.model.MusicVO;
 import com.smhrd.model.SurveyVO;
 
 @Controller
@@ -38,9 +44,15 @@ public class MainController {
 
 	@Autowired
 	private SurveyMapper surveyMapper;
-	
+
 	@Autowired
-	private RestTemplate restTemplate; 
+	private ContextMapper contextMapper;
+
+	@Autowired
+	private MusicMapper musicMapper;
+
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@GetMapping("/AIquestion")
 	public String AIquestion() {
@@ -77,9 +89,9 @@ public class MainController {
 		vo.setMemId(memId);
 		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
-		
+
 		System.out.println("Login으로 들어옴");
-		
+
 		if (result != null) {
 			session.setAttribute("member", result);
 			return "redirect:/mainPage";
@@ -102,8 +114,7 @@ public class MainController {
 
 	@GetMapping("/mainPage")
 	public String mainPage() {
-		
-		
+
 		return "mainPage";
 	}
 
@@ -163,102 +174,112 @@ public class MainController {
 	}
 
 	@GetMapping("/playlistDetail")
-    public String playlistDetail(@RequestParam(name = "response", required = false) List<String> responses, Model model) {
-        List<Integer> result = new ArrayList<>();
-        if (responses != null) {
-            try {
-                for (String response : responses) {
-                    result.add(Integer.parseInt(response));
-                }
+	public String playlistDetail(@RequestParam(name = "response", required = false) List<String> responses, Model model,
+			HttpSession session) {
+		List<Integer> result = new ArrayList<>();
+		if (responses != null) {
+			try {
+				for (String response : responses) {
+					result.add(Integer.parseInt(response));
+				}
 
-                String input_keywords = "";
-                String input_genre = "";
+				String input_keywords = "";
+				String input_genre = "";
+				String description = "";
 
-                SurveyVO vo = new SurveyVO();
-                for (int i = 0; i < result.size(); i++) {
-                    vo.setSurIdx(result.get(i));
-                    String description = surveyMapper.aiSurveyAnser(vo).getSurDesc();
-                    input_keywords += " " + description;
-                    if (i == 4) {
-                        input_genre = description;
-                    }
-                }
+				SurveyVO vo = new SurveyVO();
+				for (int i = 0; i < result.size(); i++) {
+					vo.setSurIdx(result.get(i));
+					description = surveyMapper.aiSurveyAnser(vo).getSurDesc();
+					input_keywords += " " + description;
+					if (i == 4) {
+						input_genre = description;
+					}
+				}
 
-                // Flask API 호출
-                String url = "http://localhost:5000/recommend";
+				// Model 객체에 선택했던 키워드와 장르 추가
+				model.addAttribute("input_keywords", input_keywords.toString().trim());
+				model.addAttribute("input_genre", input_genre);
 
-                // 요청 바디 생성
-                Map<String, String> requestBody = new HashMap<>();
-                requestBody.put("keywords", input_keywords.trim());
-                requestBody.put("genre", input_genre);
+				// 회원인지 아닌지 구분하여 context에 저장
+				MemberVO member = (MemberVO) session.getAttribute("member");
+				String memId = (member != null) ? member.getMemId() : "guest"; // 회원이 아니면 "guest"로 설정
 
-                // HttpHeaders 설정
-                HttpHeaders headers = new HttpHeaders();
-                headers.add("Content-Type", "application/json");
+				try {
+					for (String response : responses) {
+						Map<String, Object> params = new HashMap<>();
+						params.put("memId", memId);
+						params.put("surIdx", Integer.parseInt(response));
+						contextMapper.insertContext(params);
+					}
+				} catch (Exception e) {
+				}
 
-                // 요청 엔티티 생성
-                HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+				// Flask API 호출
+				String url = "http://localhost:5000/recommend";
 
-                // 요청 보내기 및 응답 받기
-                ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String[].class);
+				// 요청 바디 생성
+				Map<String, String> requestBody = new HashMap<>();
+				requestBody.put("keywords", input_keywords.trim());
+				requestBody.put("genre", input_genre);
 
-                // 추천 결과를 모델에 추가
-                String[] recommendations = responseEntity.getBody();
-                model.addAttribute("recommendations", recommendations);
-                System.out.println("추천 결과: " + Arrays.toString(recommendations));
+				// HttpHeaders 설정
+				HttpHeaders headers = new HttpHeaders();
+				headers.add("Content-Type", "application/json");
 
-            } catch (HttpServerErrorException e) {
-                // 서버 오류 처리
-                model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
-            } catch (RestClientException e) {
-                // 클라이언트 오류 처리
-                model.addAttribute("error", "요청 중 오류가 발생했습니다: " + e.getMessage());
-            } catch (NumberFormatException e) {
-                // 숫자 형식 오류 처리
-                model.addAttribute("error", "잘못된 응답 형식입니다: " + e.getMessage());
-            } catch (Exception e) {
-                // 일반적인 예외 처리
-                model.addAttribute("error", "예기치 않은 오류가 발생했습니다: " + e.getMessage());
-            }
+				// 요청 엔티티 생성
+				HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
 
-            return "playlistDetail";
-        } else {
-            model.addAttribute("error", "응답이 없습니다.");
-            return "redirect:/"; // responses가 null인 경우 리디렉션
-        }
-    }
-	
-//	@GetMapping("/playlistDetail")
-//	public String playlistDetail(@RequestParam(name = "response", required = false) List<String> responses,
-//			Model model) {
-//		List<Integer> result = new ArrayList<>();
-//		if (responses != null) {
-//			try {
-//				for (int i = 0; i < responses.size(); i++) {
-//					result.add(Integer.parseInt(responses.get(i)));
-//					
-//				}
-//			} catch(Exception e) {
-//				return "/";
-//			}
-//			System.out.println(result);
-//			String input_keywords = "";
-//			String input_genre = "";
-//			SurveyVO vo = new SurveyVO();
-//			for(int i = 0; i<result.size(); i++) {
-//				vo.setSurIdx(result.get(i));
-//				input_keywords += " " + surveyMapper.aiSurveyAnser(vo).getSurDesc();
-//				if(i == 4) {
-//					input_genre = surveyMapper.aiSurveyAnser(vo).getSurDesc();
-//				}
-//			}
-//			System.out.println(input_keywords);
-//			System.out.println(input_genre);
-//			return "playlistDetail";
-//		}else {
-//			return "/";
-//		}
-//	}
+				// 요청 보내기 및 응답 받기
+				ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+						String[].class);
+
+				// 추천 결과를 모델에 추가
+				String[] recommendations = responseEntity.getBody();
+				List<String> recommendationList = Arrays.asList(recommendations); // 추천 결과를 리스트로 변환
+				model.addAttribute("recommendations", recommendationList); // 모델에 리스트로 추가
+
+				List<MusicVO> musicList = new ArrayList<>();
+				MusicVO musicvo = new MusicVO();
+
+				// 추천 받은 노래의 음원 정보 가져오기
+				for (String list : recommendationList) {
+					String[] parts = list.split(" - ", 2);
+					if (parts.length == 2) {
+						musicvo.setArtist(parts[0]); // 가수
+						musicvo.setTitle(parts[1]); // 곡명
+					} else {
+						// 만약 구분자가 없는 경우 (예외 처리)
+						musicvo.setArtist(list);
+						musicvo.setTitle("");
+					}
+					// MusicVO에서 일치하는 정보 가져와야함
+					musicList.add(musicMapper.getMusic(musicvo));
+
+				}
+
+				// 가져온 음원의 정보를 'musicList'라는 모델에 추가
+				model.addAttribute("musicList", musicList);
+
+			} catch (HttpServerErrorException e) {
+				// 서버 오류 처리
+				model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
+			} catch (RestClientException e) {
+				// 클라이언트 오류 처리
+				model.addAttribute("error", "요청 중 오류가 발생했습니다: " + e.getMessage());
+			} catch (NumberFormatException e) {
+				// 숫자 형식 오류 처리
+				model.addAttribute("error", "잘못된 응답 형식입니다: " + e.getMessage());
+			} catch (Exception e) {
+				// 일반적인 예외 처리
+				model.addAttribute("error", "예기치 않은 오류가 발생했습니다: " + e.getMessage());
+			}
+
+			return "playlistDetail";
+		} else {
+			return "redirect:/"; // responses가 null인 경우 리디렉션
+		}
+	}
 
 	@PostMapping("/update")
 	public String update(@RequestParam("oldPw") String oldPw, @RequestParam("newPw") String memPw, HttpSession session,
