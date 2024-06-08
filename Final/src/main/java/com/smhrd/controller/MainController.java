@@ -261,8 +261,6 @@ public class MainController {
 				// 가져온 음원의 정보를 'musicList'라는 모델에 추가
 				model.addAttribute("musicList", musicList);
 
-				System.out.println(musicList);
-
 			} catch (HttpServerErrorException e) {
 				// 서버 오류 처리
 				model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
@@ -279,7 +277,6 @@ public class MainController {
 
 			return "playlistDetail";
 		} else {
-			model.addAttribute("error", "응답이 없습니다.");
 			return "redirect:/"; // responses가 null인 경우 리디렉션
 		}
 	}
