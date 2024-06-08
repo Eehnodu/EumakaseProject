@@ -9,14 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AiPlaylistVO {
-	private int plIdx;
-	private int musicIdx;
-	private int contextIdx;
-	private int contextIdx2;
-	private int contextIdx3;
-	private int contextIdx4;
-	private int contextIdx5;
+public class MyPlaylistVO {
+	
 	private int myplIdx;
+	private String memId;
+	private String plName;
 	private Date createdAt;
+	
 }

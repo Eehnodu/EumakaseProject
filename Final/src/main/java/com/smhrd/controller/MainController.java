@@ -29,11 +29,13 @@ import com.smhrd.db.AiPlaylistMapper;
 import com.smhrd.db.ContextMapper;
 import com.smhrd.db.MemberMapper;
 import com.smhrd.db.MusicMapper;
+import com.smhrd.db.MyPlaylistMapper;
 import com.smhrd.db.SurveyMapper;
 import com.smhrd.model.AiPlaylistVO;
 import com.smhrd.model.ContextVO;
 import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
+import com.smhrd.model.MyPlaylistVO;
 import com.smhrd.model.SurveyVO;
 
 @Controller
@@ -53,6 +55,9 @@ public class MainController {
 
 	@Autowired
 	private AiPlaylistMapper aiplaylistMapper;
+	
+	@Autowired
+	private MyPlaylistMapper myplaylistMapper;
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -293,23 +298,28 @@ public class MainController {
 
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		String memId = member.getMemId();
-
+		MyPlaylistVO myplvo = new MyPlaylistVO();
 		if (member != null) {
-			
-			// memId로 contextIdx 리스트를 가져옴
-	        List<ContextVO> contextList = contextMapper.getContext(memId);
-			
-			List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
 
+			// memId로 contextIdx 리스트를 가져옴
+			List<ContextVO> contextList = contextMapper.getContext(memId);
+			List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
+			myplvo.setMemId(memId);
+			
+			// 나중에 플리명 입력하는 로직 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!
+			myplvo.setPlName("-");
+			myplaylistMapper.insertMypl(myplvo);
+			
 			// 공통 contextIdx 설정
 			AiPlaylistVO playlistvo = new AiPlaylistVO();
 			playlistvo.setContextIdx(contextList.get(0).getContextIdx());
-	        playlistvo.setContextIdx2(contextList.get(1).getContextIdx());
-	        playlistvo.setContextIdx3(contextList.get(2).getContextIdx());
-	        playlistvo.setContextIdx4(contextList.get(3).getContextIdx());
-	        playlistvo.setContextIdx5(contextList.get(4).getContextIdx());
-			playlistvo.setPlName("-"); // 기본 플레이리스트 이름 설정
-
+			playlistvo.setContextIdx2(contextList.get(1).getContextIdx());
+			playlistvo.setContextIdx3(contextList.get(2).getContextIdx());
+			playlistvo.setContextIdx4(contextList.get(3).getContextIdx());
+			playlistvo.setContextIdx5(contextList.get(4).getContextIdx());
+			playlistvo.setMyplIdx(myplaylistMapper.getMyplIdx(memId).getMyplIdx());
+			
+			
 			for (MusicVO music : musicList) {
 				// musicIdx 설정
 				playlistvo.setMusicIdx(music.getMusicIdx());
@@ -318,10 +328,9 @@ public class MainController {
 				aiplaylistMapper.savePlaylist(playlistvo);
 			}
 			return "redirect:/mainPage";
-			
-		} else {
-			return "redirect:/";
+
 		}
+		return "redirect:/";
 	}
 
 	@PostMapping("/update")
