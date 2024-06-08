@@ -2,5 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.AiPlaylistMapper">
 
+	<insert id="savePlaylist"
+		parameterType="com.smhrd.model.AiPlaylistVO">
+		INSERT INTO tb_aiplaylist(musicIdx, contextIdx,
+		contextIdx2, contextIdx3, contextIdx4, contextIdx5, plName)
+		VALUES(#{musicIdx}, #{contextIdx}, #{contextIdx2}, #{contextIdx3}, #{contextIdx4}, #{contextIdx5}, #{plName})
+	</insert>
 
 </mapper>
