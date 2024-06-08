@@ -202,9 +202,6 @@ public class MainController {
 					}
 				}
 
-				// contextIdx값 객체에 저장
-				session.setAttribute("contextIdx", result);
-
 				// Model 객체에 선택했던 키워드와 장르 추가
 				session.setAttribute("input_keywords", input_keywords.toString().trim());
 				session.setAttribute("input_tag", input_tag.toString().trim());
@@ -295,18 +292,22 @@ public class MainController {
 	public String savePlaylist(HttpSession session) {
 
 		MemberVO member = (MemberVO) session.getAttribute("member");
+		String memId = member.getMemId();
 
 		if (member != null) {
-			List<Integer> contextIdxList = (List<Integer>) session.getAttribute("contextIdx");
+			
+			// memId로 contextIdx 리스트를 가져옴
+	        List<ContextVO> contextList = contextMapper.getContext(memId);
+			
 			List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
 
 			// 공통 contextIdx 설정
 			AiPlaylistVO playlistvo = new AiPlaylistVO();
-			playlistvo.setContextIdx(contextIdxList.get(0));
-			playlistvo.setContextIdx2(contextIdxList.get(1));
-			playlistvo.setContextIdx3(contextIdxList.get(2));
-			playlistvo.setContextIdx4(contextIdxList.get(3));
-			playlistvo.setContextIdx5(contextIdxList.get(4));
+			playlistvo.setContextIdx(contextList.get(0).getContextIdx());
+	        playlistvo.setContextIdx2(contextList.get(1).getContextIdx());
+	        playlistvo.setContextIdx3(contextList.get(2).getContextIdx());
+	        playlistvo.setContextIdx4(contextList.get(3).getContextIdx());
+	        playlistvo.setContextIdx5(contextList.get(4).getContextIdx());
 			playlistvo.setPlName("-"); // 기본 플레이리스트 이름 설정
 
 			for (MusicVO music : musicList) {
@@ -317,7 +318,7 @@ public class MainController {
 				aiplaylistMapper.savePlaylist(playlistvo);
 			}
 			return "redirect:/mainPage";
-
+			
 		} else {
 			return "redirect:/";
 		}
