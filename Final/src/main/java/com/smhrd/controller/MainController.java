@@ -184,6 +184,7 @@ public class MainController {
 				}
 
 				String input_keywords = "";
+				String input_tag = "";
 				String input_genre = "";
 				String description = "";
 
@@ -192,15 +193,16 @@ public class MainController {
 					vo.setSurIdx(result.get(i));
 					description = surveyMapper.aiSurveyAnser(vo).getSurDesc();
 					input_keywords += " " + description;
+					input_tag += "#" + description + " ";
 					if (i == 4) {
 						input_genre = description;
 					}
 				}
-
 				// Model 객체에 선택했던 키워드와 장르 추가
 				model.addAttribute("input_keywords", input_keywords.toString().trim());
+				model.addAttribute("input_tag", input_tag.toString().trim());
 				model.addAttribute("input_genre", input_genre);
-
+				
 				// 회원인지 아닌지 구분하여 context에 저장
 				MemberVO member = (MemberVO) session.getAttribute("member");
 				String memId = (member != null) ? member.getMemId() : "guest"; // 회원이 아니면 "guest"로 설정

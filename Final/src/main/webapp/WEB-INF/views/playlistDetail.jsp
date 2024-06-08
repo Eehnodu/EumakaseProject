@@ -44,7 +44,7 @@
 											<div class="left-info">
 												<div class="left">
 													<h4>플레이리스트 제목</h4>
-													<span>#신나는 #아이돌</span>
+													<span>${input_tag}</span>
 												</div>
 												<ul>
 													<li><i class="fa fa-star"></i> 4.8</li>
