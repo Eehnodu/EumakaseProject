@@ -5,8 +5,8 @@
 	<insert id="savePlaylist"
 		parameterType="com.smhrd.model.AiPlaylistVO">
 		INSERT INTO tb_aiplaylist(musicIdx, contextIdx,
-		contextIdx2, contextIdx3, contextIdx4, contextIdx5, plName)
-		VALUES(#{musicIdx}, #{contextIdx}, #{contextIdx2}, #{contextIdx3}, #{contextIdx4}, #{contextIdx5}, #{plName})
+		contextIdx2, contextIdx3, contextIdx4, contextIdx5, myplIdx)
+		VALUES(#{musicIdx}, #{contextIdx}, #{contextIdx2}, #{contextIdx3}, #{contextIdx4}, #{contextIdx5}, #{myplIdx})
 	</insert>
 
 </mapper>
