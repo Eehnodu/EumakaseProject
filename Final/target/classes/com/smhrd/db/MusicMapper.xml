@@ -10,4 +10,5 @@
 	<select id="getOtherAlbumCov" parameterType="int" resultType="com.smhrd.model.MusicVO">
 			SELECT albumCov FROM tb_music WHERE musicIdx = #{musicIdx}
 	</select>
+	
 </mapper>

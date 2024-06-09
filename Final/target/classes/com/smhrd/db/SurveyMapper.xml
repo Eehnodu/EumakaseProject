@@ -47,4 +47,9 @@
 		SELECT surDesc FROM tb_survey WHERE surIdx = #{surIdx}
 	</select>
 	
+	<!-- season 추천곡에 쓰일 장르 정보 가져오기 -->
+	<select id="getSeasonGenre" resultType="com.smhrd.model.SurveyVO">
+		SELECT surDesc FROM tb_survey WHERE surType = 'A' AND surItem = 'genre'
+	</select>
+	
 </mapper>

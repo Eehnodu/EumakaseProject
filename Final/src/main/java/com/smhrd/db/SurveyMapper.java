@@ -23,4 +23,7 @@ public interface SurveyMapper {
 	public List<SurveyVO> selectSurvey(@Param("surDescList") List<String> surDescList);
 	
 	public SurveyVO getOtherSurDesc(int i);
+	
+	// season 추천곡에 쓰일 장르 정보 가져오기
+	public List<SurveyVO> getSeasonGenre();
 }
