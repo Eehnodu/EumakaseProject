@@ -153,7 +153,7 @@ public class MainController {
 		    }
 		    // 가져온 음원의 정보를 'musicList'라는 모델에 추가
 		    session.setAttribute("seasonList", musicList);
-		    session.setAttribute("seasonName", season + "에 어울리는 " + genre + "곡");
+		    session.setAttribute("seasonName", season + "에 어울리는 " + genre + "🎧");
 
 		} catch (HttpServerErrorException e) {
 		    // 서버 오류 처리
