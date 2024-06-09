@@ -13,5 +13,7 @@ public interface MyPlaylistMapper {
 	public List<MyPlaylistVO> getOtherPl(String memId);
 	
 	public MyPlaylistVO getUserPlaylist(int myplidx);
+	
+	public List<MyPlaylistVO> getMyplayList(String memId);
 
 }

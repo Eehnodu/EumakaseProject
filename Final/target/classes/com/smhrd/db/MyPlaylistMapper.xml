@@ -22,5 +22,10 @@
 	    SELECT * FROM tb_myplaylist WHERE myplIdx = #{myplIdx}
 	</select>
 	
+	<select id="getMyplayList" resultType="com.smhrd.model.MyPlaylistVO">
+		SELECT * FROM tb_myplaylist where memId = #{memId}
+	</select>
+
+
 
 </mapper>
