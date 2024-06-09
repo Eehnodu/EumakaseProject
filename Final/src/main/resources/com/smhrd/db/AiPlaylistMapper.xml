@@ -8,5 +8,10 @@
 		contextIdx2, contextIdx3, contextIdx4, contextIdx5, myplIdx)
 		VALUES(#{musicIdx}, #{contextIdx}, #{contextIdx2}, #{contextIdx3}, #{contextIdx4}, #{contextIdx5}, #{myplIdx})
 	</insert>
-
+	
+	<!-- 다른 사람들의 playlist 가져오기 -->
+	<select id="getOtherPl" parameterType="com.smhrd.model.AiPlaylistVO" resultType="com.smhrd.model.AiPlaylistVO">
+		SELECT * FROM tb_aiplaylist WHERE myplIdx = #{myplIdx}
+	</select>
+	
 </mapper>

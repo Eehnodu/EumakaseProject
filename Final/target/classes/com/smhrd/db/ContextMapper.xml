@@ -9,4 +9,9 @@
     <select id="getContext" parameterType="string" resultType="com.smhrd.model.ContextVO">
     	SELECT contextIdx, surIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5
     </select>
+    
+    <!-- contextidx를 통해 suridx값 가져오기 -->
+    <select id="getOtherSurIdx" parameterType="int" resultType="com.smhrd.model.ContextVO">
+	    SELECT surIdx FROM tb_context WHERE contextIdx = #{contextIdx}
+	</select>
 </mapper>

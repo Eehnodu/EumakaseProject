@@ -21,4 +21,6 @@ public interface SurveyMapper {
 	public SurveyVO aiSurveyAnser(SurveyVO vo);
 
 	public List<SurveyVO> selectSurvey(@Param("surDescList") List<String> surDescList);
+	
+	public SurveyVO getOtherSurDesc(int i);
 }

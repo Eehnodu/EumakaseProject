@@ -55,7 +55,7 @@ public class MainController {
 
 	@Autowired
 	private AiPlaylistMapper aiplaylistMapper;
-	
+
 	@Autowired
 	private MyPlaylistMapper myplaylistMapper;
 
@@ -121,9 +121,87 @@ public class MainController {
 	}
 
 	@GetMapping("/mainPage")
-	public String mainPage() {
+	public String mainPage(HttpSession session) {
+		// 다른 사람은 뭐듣지? 값 가져오기
+		MemberVO memvo = (MemberVO) session.getAttribute("member");
 
-		return "mainPage";
+		if (memvo == null) {
+			return "redirect:/";
+		}
+
+		String memId = memvo.getMemId();
+
+		try {
+			// 다른 사람의 mypl 정보 가져오기
+			List<MyPlaylistVO> otherIdxList = myplaylistMapper.getOtherPl(memId);
+			session.setAttribute("otherIdxList", otherIdxList);
+
+			// 가져온 idx를 이용해서 개인의 playlist 가져오기
+			List<List<AiPlaylistVO>> otherPlList = new ArrayList<>();
+			// 가져온 playlist 정보에서 선택했던 tag 가져오기
+			List<List<Integer>> otherSurIdxList = new ArrayList<>();
+			// 가져은 playlist 정보에서 musicIdx 가져오기
+			List<List<Integer>> otherMusicIdxList = new ArrayList<>();
+
+			for (MyPlaylistVO other : otherIdxList) {
+				// 가져온 playlist 정보
+				List<AiPlaylistVO> tempPlList = aiplaylistMapper.getOtherPl(other);
+				otherPlList.add(tempPlList);
+
+				if (!tempPlList.isEmpty()) {
+					AiPlaylistVO tempPl = tempPlList.get(0);
+
+					// 각 contextIdx에 대한 surIdx 값을 가져오기
+					int[] contextIdxArray = { tempPl.getContextIdx(), tempPl.getContextIdx2(), tempPl.getContextIdx3(),
+							tempPl.getContextIdx4(), tempPl.getContextIdx5() };
+
+					List<Integer> surIdxList = new ArrayList<>();
+					for (int contextIdx : contextIdxArray) {
+						surIdxList.add(contextMapper.getOtherSurIdx(contextIdx).getSurIdx());
+					}
+
+					otherSurIdxList.add(surIdxList);
+					
+					// playlist에서 musicIDx 가져오기
+					List<Integer> musicIdxList = new ArrayList<>();
+					for(AiPlaylistVO albumCov : tempPlList) {
+						musicIdxList.add(albumCov.getMusicIdx());
+					}
+					otherMusicIdxList.add(musicIdxList);
+				}
+			}
+			
+			// 가져온 surIdx를 통해서 surDesc정보 가져오기
+			List<String> otherSurDescList = new ArrayList<>();
+			for(List<Integer> surIdxList : otherSurIdxList ) {
+				String otherSurDesc = "";
+				for(int surIdx : surIdxList) {
+					// surIdx에 해당하는 Desc값 가져오기
+					otherSurDesc += "#" + surveyMapper.getOtherSurDesc(surIdx).getSurDesc() + " ";
+				}
+				otherSurDescList.add(otherSurDesc.strip());
+			}
+			// 가져온 musicIdx를 이용해서 albumCov 가져오기
+			List<List<String>> otherAlbumCovList = new ArrayList<>();
+			for(List<Integer> musicIdxList : otherMusicIdxList) {
+				List<String> albumCovList = new ArrayList<>();
+				for(int i = 0; i<4; i++) {
+					albumCovList.add(musicMapper.getOtherAlbumCov(musicIdxList.get(i)).getAlbumCov());
+				}
+				otherAlbumCovList.add(albumCovList);
+			}
+			
+			
+			// 가져온 otherPlaylist 정보를 session에 저장
+			session.setAttribute("otherPlList", otherPlList);
+			session.setAttribute("otherSurIdxList", otherSurIdxList);
+			session.setAttribute("otherSurDescList", otherSurDescList);
+			session.setAttribute("otherAlbumCovList", otherAlbumCovList);
+			return "mainPage";
+
+		} catch (Exception e) {
+			return "redirect:/";
+		}
 	}
 
 	@GetMapping("/AIrecommend")
@@ -295,42 +373,41 @@ public class MainController {
 	// 플레이리스트 저장
 	@GetMapping("/savePlaylist")
 	public String savePlaylist(HttpSession session) {
-
 		MemberVO member = (MemberVO) session.getAttribute("member");
+
+		if (member == null) {
+			return "redirect:/";
+		}
+
 		String memId = member.getMemId();
 		MyPlaylistVO myplvo = new MyPlaylistVO();
-		if (member != null) {
 
-			// memId로 contextIdx 리스트를 가져옴
-			List<ContextVO> contextList = contextMapper.getContext(memId);
-			List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
-			myplvo.setMemId(memId);
-			
-			// 나중에 플리명 입력하는 로직 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!
-			myplvo.setPlName("-");
-			myplaylistMapper.insertMypl(myplvo);
-			
-			// 공통 contextIdx 설정
-			AiPlaylistVO playlistvo = new AiPlaylistVO();
-			playlistvo.setContextIdx(contextList.get(0).getContextIdx());
-			playlistvo.setContextIdx2(contextList.get(1).getContextIdx());
-			playlistvo.setContextIdx3(contextList.get(2).getContextIdx());
-			playlistvo.setContextIdx4(contextList.get(3).getContextIdx());
-			playlistvo.setContextIdx5(contextList.get(4).getContextIdx());
-			playlistvo.setMyplIdx(myplaylistMapper.getMyplIdx(memId).getMyplIdx());
-			
-			
-			for (MusicVO music : musicList) {
-				// musicIdx 설정
-				playlistvo.setMusicIdx(music.getMusicIdx());
+		// memId로 contextIdx 리스트를 가져옴
+		List<ContextVO> contextList = contextMapper.getContext(memId);
+		List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
+		myplvo.setMemId(memId);
 
-				// mapper를 통해 playlistvo를 저장
-				aiplaylistMapper.savePlaylist(playlistvo);
-			}
-			return "redirect:/mainPage";
+		// 나중에 플리명 입력하는 로직 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!
+		myplvo.setPlName("-");
+		myplaylistMapper.insertMypl(myplvo);
 
+		// 공통 contextIdx 설정
+		AiPlaylistVO playlistvo = new AiPlaylistVO();
+		playlistvo.setContextIdx(contextList.get(0).getContextIdx());
+		playlistvo.setContextIdx2(contextList.get(1).getContextIdx());
+		playlistvo.setContextIdx3(contextList.get(2).getContextIdx());
+		playlistvo.setContextIdx4(contextList.get(3).getContextIdx());
+		playlistvo.setContextIdx5(contextList.get(4).getContextIdx());
+		playlistvo.setMyplIdx(myplaylistMapper.getMyplIdx(memId).getMyplIdx());
+
+		for (MusicVO music : musicList) {
+			// musicIdx 설정
+			playlistvo.setMusicIdx(music.getMusicIdx());
+
+			// mapper를 통해 playlistvo를 저장
+			aiplaylistMapper.savePlaylist(playlistvo);
 		}
-		return "redirect:/";
+		return "redirect:/mainPage";
 	}
 
 	@PostMapping("/update")

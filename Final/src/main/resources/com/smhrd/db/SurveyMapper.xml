@@ -43,4 +43,8 @@
 		SELECT surDesc FROM tb_survey WHERE surIdx = #{surIdx}
 	</select>
 	
+	<select id="getOtherSurDesc" parameterType="int" resultType="com.smhrd.model.SurveyVO">
+		SELECT surDesc FROM tb_survey WHERE surIdx = #{surIdx}
+	</select>
+	
 </mapper>

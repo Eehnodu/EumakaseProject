@@ -2,12 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.MyPlaylistMapper">
 
+	<!-- 내 플리 생성하기 -->
 	<insert id="insertMypl" parameterType="com.smhrd.model.MyPlaylistVO">
 		INSERT INTO tb_myplaylist(memId, plName) VALUES(#{memId}, #{plName})
 	</insert>
 	
+	<!-- 내 플리idx값 가져오기 -->
 	<select id="getMyplIdx" parameterType="com.smhrd.model.MyPlaylistVO" resultType="com.smhrd.model.MyPlaylistVO">
 		SELECT myplIdx FROM tb_myplaylist WHERE memId = #{memId} ORDER BY createdAt DESC LIMIT 1
 	</select>
 	
+	<!-- 다른 사람의 플리idx값 가져오기 -->
+	<select id="getOtherPl" parameterType="string" resultType="com.smhrd.model.MyPlaylistVO">
+	    SELECT myplIdx, memId, plName FROM tb_myplaylist WHERE memId != #{memId} ORDER BY RAND() LIMIT 8
+	</select>
+	
+
 </mapper>
