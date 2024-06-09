@@ -156,8 +156,19 @@
 
 									<div class="owl-features owl-carousel">
 										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
+											<div class="image-grid">
+												<div class="thumb">
+													<img src="assets/images/stream-05.jpg" alt="">
+												</div>
+												<div class="thumb">
+													<img src="assets/images/stream-02.jpg" alt="">
+												</div>
+												<div class="thumb">
+													<img src="assets/images/stream-03.jpg" alt="">
+												</div>
+												<div class="thumb">
+													<img src="assets/images/stream-04.jpg" alt="">
+												</div>
 											</div>
 											<h4>
 												Island Rusty<br> <span>249K Downloads</span>
@@ -240,96 +251,27 @@
 
 
 									<div class="owl-features owl-carousel">
-										<div class="item">
-											<a href=${cpath}/userPlaylist>
-												<div class="image-grid">
-													<div class="thumb">
-														<img src="assets/images/stream-05.jpg" alt="">
+										<c:forEach var="otherIdx" items="${otherIdxList}"
+											varStatus="status">
+											<div class="item">
+												<a href=${cpath}/userPlaylist>
+													<div class="image-grid">
+														<c:forEach var="albumCov" items="${otherAlbumCovList[status.index]}">
+									                        <div class="thumb">
+									                            <img src="${albumCov}" alt="">
+									                        </div>
+									                    </c:forEach>
 													</div>
-													<div class="thumb">
-														<img src="assets/images/stream-02.jpg" alt="">
-													</div>
-													<div class="thumb">
-														<img src="assets/images/stream-03.jpg" alt="">
-													</div>
-													<div class="thumb">
-														<img src="assets/images/stream-04.jpg" alt="">
-													</div>
-												</div>
-												<h4>
-													플리 제목<br> <span>#신나는 #행복한</span>
-												</h4>
-												<ul>
-													<li><i class="fa fa-star"></i> 4.8</li>
-													<li><i class="fa fa-download"></i> 2.3M</li>
-												</ul>
-
-											</a>
-										</div>
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
+													<h4>
+														${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
+													</h4>
+													<ul>
+														<li><i class="fa fa-star"></i> 4.8</li>
+														<li><i class="fa fa-download"></i> 2.3M</li>
+													</ul>
+												</a>
 											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-06.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
+										</c:forEach>
 									</div>
 								</div>
 
