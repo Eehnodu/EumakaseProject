@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.ContextMapper">
+
+	<insert id="insertContext" parameterType="map">
+        INSERT INTO tb_context(memId, surIdx) VALUES(#{memId}, #{surIdx})
+    </insert>
+    
+    <select id="getContext" parameterType="string" resultType="com.smhrd.model.ContextVO">
+    	SELECT contextIdx, surIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5
+    </select>
+    
+    <!-- contextidx를 통해 suridx값 가져오기 -->
+    <select id="getOtherSurIdx" parameterType="int" resultType="com.smhrd.model.ContextVO">
+	    SELECT surIdx FROM tb_context WHERE contextIdx = #{contextIdx}
+	</select>
+</mapper>

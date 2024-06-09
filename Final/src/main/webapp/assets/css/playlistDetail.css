@@ -36,8 +36,6 @@
     width: 100%;
   }
 
-
-
   /* ***** playlistDetailPage ***** */
   .col-lg-6 .playlist {
     width: 100%;
@@ -471,7 +469,7 @@ svg #main-circ {
     background-color: #27292a;
     border-radius: 23px;
     padding: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
   }
 
   .game-details .content .left-info .left {

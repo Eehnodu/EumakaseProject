@@ -18,33 +18,28 @@
 					<%-- 비회원은 로고 클릭 시 소개페이지 --%>
 					<c:if test="${member==null}">
 						<a href="${cpath}/" class="logo"> <img
-							src="assets/images/logo.png" alt="">
+							src="assets/images/logo2.png" alt="">
 						</a>
 					</c:if>
 					<%-- 로그인한 회원은 로고 클릭 시 메인페이지 --%>
 					<c:if test="${member!=null}">
 						<a href="${cpath}/mainPage" class="logo"> <img
-							src="assets/images/logo.png" alt="">
+							src="assets/images/logo2.png" alt="">
 						</a>
 					</c:if>
 					<!-- ***** Logo End ***** -->
 
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav nav-pills">
-						<%-- 비회원은 소개 클릭 시 로그인 모달창 --%>
-						<c:if test="${member==null}">
-							<li class="nav-item"><a href="${cpath}/"
-								class="nav-link active" id="navIntro">소개</a></li>
-						</c:if>
 						<%-- 비회원은 Home 클릭 시 로그인 모달창 --%>
 						<c:if test="${member==null}">
 							<li class="nav-item"><a class="nav-link"
-								data-bs-toggle="modal" data-bs-target="#loginModal">Home</a></li>
+								data-bs-toggle="modal" data-bs-target="#loginModal">홈</a></li>
 						</c:if>
 						<%-- 로그인한 회원은 메인페이지로 이동 --%>
 						<c:if test="${member!=null}">
 							<li class="nav-item"><a href="${cpath}/mainPage"
-								class="nav-link active" id="navHome">Home</a></li>
+								class="nav-link active" id="navHome">홈</a></li>
 						</c:if>
 
 						<%-- 비회원은 내 음악 클릭 시 로그인 모달창 --%>
@@ -58,16 +53,9 @@
 								class="nav-link" id="navMypage">마이뮤직</a></li>
 						</c:if>
 
-						<%-- 비회원은 AI추천 클릭 시 로그인 모달창 --%>
-						<c:if test="${member==null}">
-							<li class="nav-item"><a id="navAi" data-bs-toggle="modal"
-								data-bs-target="#loginModal">AI추천</a></li>
-						</c:if>
-						<%-- 로그인한 회원은 AI추천 페이지로 이동 --%>
-						<c:if test="${member!=null}">
-							<li class="nav-item"><a href="${cpath}/AIrecommend"
-								class="nav-link" id="navAi">AI추천</a></li>
-						</c:if>
+						<%-- 회원/비회원 모두 AI추천 가능 --%>
+						<li class="nav-item"><a href="${cpath}/AIrecommend"
+							class="nav-link" id="navAi">AI추천</a></li>
 
 						<%-- 비회원은 로그인 버튼 --%>
 						<c:if test="${member == null}">
@@ -115,7 +103,7 @@
 			<div class="modal-header" id="modal-header">
 
 				<h4 class="modal-title">
-					<img src="assets/images/logo.png" alt="">
+					<img src="assets/images/logo2.png" alt="">
 				</h4>
 				<button type="button" class="btn-close" id="btn-close"
 					data-bs-dismiss="modal">&times;</button>

@@ -3,30 +3,31 @@ body {
     background: #1f2122;
 }
 
-/* #chatbox {
-    width: 380px;
-    margin: 0 auto;
-    height: 29.1em;
-    background: #27292a;
-    padding: 1em;
-    position: relative;
-    overflow: hidden;
-    box-shadow: -2px 0px 7px 3px #353637;
-    margin-top: 110px;
-    border-radius: 23px;
-} */
+.chef {
+    vertical-align: middle;
+    width: 50px;
+    margin-top: 60px;
+}
 
 .box {
-    padding-top: 0;
+    padding: 10px 80px 10px 80px;
+}
+
+.intro p{
+    margin-right: 50px;
+}
+
+.intro{
+	margin:-25px -50px 0px -50px;
 }
 
 .box .question {
     display: none;
+    margin-left: -50px;
 }
 
 .box .question.active {
     display: block;
-    margin-bottom: 20px;
 } 
 
 .box .question>.confirm-container {
@@ -71,7 +72,7 @@ body {
     display: none;
     position: relative;
     background: #fff;
-    border-radius: 15px;
+    border-radius: 23px;
     transition: 250ms ease-in-out;
 }
 
@@ -79,11 +80,12 @@ body {
     content: '';
     width: 10px;
     height: 10px;
-    background: #fff;
-    border-radius: 50%;
     position: absolute;
-    bottom: -2px;
-    left: -1px;
+    bottom: -8px;
+    left: 20px;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid white;
+    transform: rotate(10deg);
 }
 
 .box p span {
@@ -94,7 +96,13 @@ body {
     background: #e1e1e1;
     width: 50px;
     height: 30px;
-    display: block;
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.box p.loading:after {
+    display: none;
 }
 
 .box p.loading:before {
@@ -142,13 +150,17 @@ body {
     left: 13px;
 }
 
+p.first.is-complete {
+    margin-bottom: 0px;
+}
+
 .box p.is-complete {
-    width: auto;
     height: auto;
-    display: block;
-    padding: 5px 10px;
-    max-width: 200px;
-    border-radius: 15px;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 23px;
+    box-sizing: border-box;
+    color: black;
 }
 
  .box p.is-complete:before {
@@ -157,6 +169,25 @@ body {
 
 .box p.is-complete i {
     display: none;
+}
+
+.result {
+    margin-left: -50px;
+}
+
+#btnAiComplete {
+	cursor: pointer;
+	transition: all 200ms linear;
+	color: white;
+	background-color: #ec6090;
+	border-color: transparent;
+	border-radius: 23px;
+    padding: 10px 20px;
+}
+
+#btnAiComplete:hover {
+	background-color: #b1486c;
+	border-color: transparent;
 }
 
 @-webkit-keyframes dots {
@@ -169,12 +200,4 @@ body {
     0% {
         opacity: 1;
     }
-}
-
-.intro p{
-	margin:30px 50px;
-}
-
-.intro{
-	margin:30px -50px;
 }
