@@ -17,5 +17,10 @@
 	    SELECT myplIdx, memId, plName FROM tb_myplaylist WHERE memId != #{memId} ORDER BY RAND() LIMIT 8
 	</select>
 	
+	<!-- userPlaylist에 필요한 정보 가져오기 -->
+	<select id="getUserPlaylist" parameterType="int" resultType="com.smhrd.model.MyPlaylistVO">
+	    SELECT * FROM tb_myplaylist WHERE myplIdx = #{myplIdx}
+	</select>
+	
 
 </mapper>

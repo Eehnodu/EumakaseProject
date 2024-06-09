@@ -254,7 +254,7 @@
 										<c:forEach var="otherIdx" items="${otherIdxList}"
 											varStatus="status">
 											<div class="item">
-												<a href=${cpath}/userPlaylist>
+												<a href="${cpath}/userPlaylist?myplIdx=${otherIdx.myplIdx}">
 													<div class="image-grid">
 														<c:forEach var="albumCov" items="${otherAlbumCovList[status.index]}">
 									                        <div class="thumb">

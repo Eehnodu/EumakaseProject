@@ -24,5 +24,7 @@ public interface MemberMapper {
 
 	// 수정시 비밀번호 확인
 	public int checkPw(MemberVO vo);
+	
+	public MemberVO getUserInfo(String memId);
 
 }
