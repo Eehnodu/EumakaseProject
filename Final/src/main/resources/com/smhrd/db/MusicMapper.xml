@@ -8,6 +8,6 @@
 
 	<!-- other의 앨범커버 가져오기 -->
 	<select id="getOtherAlbumCov" parameterType="int" resultType="com.smhrd.model.MusicVO">
-			SELECT albumCov FROM tb_music WHERE musicIdx = #{musicIdx} LIMIT 4
+			SELECT albumCov FROM tb_music WHERE musicIdx = #{musicIdx}
 	</select>
 </mapper>
