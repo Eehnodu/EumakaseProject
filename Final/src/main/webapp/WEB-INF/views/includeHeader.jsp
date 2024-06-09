@@ -103,7 +103,7 @@
 			<div class="modal-header" id="modal-header">
 
 				<h4 class="modal-title">
-					<img src="assets/images/logo.png" alt="">
+					<img src="assets/images/logo2.png" alt="">
 				</h4>
 				<button type="button" class="btn-close" id="btn-close"
 					data-bs-dismiss="modal">&times;</button>

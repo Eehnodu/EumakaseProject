@@ -553,6 +553,10 @@ div#\=\"modal-dialog\" {
 	height: 450px;
 }
 
+.modal-title img{
+	width: 290px;
+}
+
 #modal-header {
 	border: none;
 	display: flex;
