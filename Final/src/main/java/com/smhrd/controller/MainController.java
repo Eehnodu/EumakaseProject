@@ -399,8 +399,6 @@ public class MainController {
 		    userAlbumCovList.add(musicMapper.getUserPlaylist(musicIdx).getAlbumCov());
 		}
 		
-		
-
 		// 가져온 userPlaylist 정보를 model에 저장
 		model.addAttribute("userPlList", userPlList);
 		model.addAttribute("userSurIdxList", userSurIdxList);
