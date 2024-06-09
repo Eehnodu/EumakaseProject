@@ -295,6 +295,8 @@ body {
 		position: absolute;
 		left: 30px;
 		top: 15px;
+		width: 38%;
+		min-width: 290px;
 	}
 	.background-header .main-nav .logo {
 		top: 0px;
@@ -549,6 +551,10 @@ div#\=\"modal-dialog\" {
 	text-align: center;
 	width: 440px;
 	height: 450px;
+}
+
+.modal-title img{
+	width: 290px;
 }
 
 #modal-header {
