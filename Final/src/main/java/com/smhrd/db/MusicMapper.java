@@ -8,4 +8,6 @@ public interface MusicMapper {
 	
 	public MusicVO getOtherAlbumCov(int i);
 	
+	public MusicVO getUserPlaylist(int i);
+	
 }

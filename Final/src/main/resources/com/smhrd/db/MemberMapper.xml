@@ -41,6 +41,10 @@
     	SELECT COUNT(*) FROM tb_member
     	WHERE memId = #{memId} AND memPw = #{memPw}
 	</select>
+	
+	<select id="getUserInfo" parameterType="string" resultType="com.smhrd.model.MemberVO">
+    	SELECT name FROM tb_member WHERE memId = #{memId}
+	</select>
 
 
 </mapper>
