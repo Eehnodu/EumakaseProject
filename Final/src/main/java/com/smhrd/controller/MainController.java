@@ -1,11 +1,14 @@
 package com.smhrd.controller;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +21,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientException;
@@ -68,7 +70,101 @@ public class MainController {
 	}
 
 	@GetMapping("/")
-	public String intro() {
+	public String intro(Model model, HttpSession session) {
+		try {
+		    // 현재 날짜에서 월을 가져오기
+		    LocalDate currentDate = LocalDate.now();
+		    Month currentMonth = currentDate.getMonth();
+
+		    // 월에 따라 계절 결정
+		    String season = "";
+		    switch (currentMonth) {
+		        case DECEMBER:
+		        case JANUARY:
+		        case FEBRUARY:
+		            season = "겨울";
+		            break;
+		        case MARCH:
+		        case APRIL:
+		        case MAY:
+		            season = "봄";
+		            break;
+		        case JUNE:
+		        case JULY:
+		        case AUGUST:
+		            season = "여름";
+		            break;
+		        case SEPTEMBER:
+		        case OCTOBER:
+		        case NOVEMBER:
+		            season = "가을";
+		            break;
+		    }
+
+		    // 장르 리스트
+		    List<SurveyVO> genres = surveyMapper.getSeasonGenre();
+
+		    // 랜덤으로 장르 선택
+		    Random random = new Random();
+		    String genre = genres.get(random.nextInt(genres.size())).getSurDesc();
+
+		    // Flask API 호출
+		    String url = "http://localhost:5000/recommend";
+
+		    // 요청 바디 생성
+		    Map<String, String> requestBody = new HashMap<>();
+		    requestBody.put("keywords", season);
+		    requestBody.put("genre", genre);
+
+		    // HttpHeaders 설정
+		    HttpHeaders headers = new HttpHeaders();
+		    headers.add("Content-Type", "application/json");
+
+		    // 요청 엔티티 생성
+		    HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+		    // 요청 보내기 및 응답 받기
+		    ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String[].class);
+
+		    // 추천 결과를 모델에 추가
+		    String[] recommendations = responseEntity.getBody();
+		    List<String> recommendationList = Arrays.stream(recommendations).limit(6).collect(Collectors.toList()); // 추천 결과를 리스트로 변환
+		    session.setAttribute("seasonRec", recommendationList); // 모델에 리스트로 추가
+		    
+		    List<MusicVO> musicList = new ArrayList<>();
+		    MusicVO musicvo = new MusicVO();
+
+		    // 추천 받은 노래의 음원 정보 가져오기
+		    for (String list : recommendationList) {
+		        String[] parts = list.split(" - ", 2);
+		        if (parts.length == 2) {
+		            musicvo.setArtist(parts[0]); // 가수
+		            musicvo.setTitle(parts[1]); // 곡명
+		        } else {
+		            // 만약 구분자가 없는 경우 (예외 처리)
+		            musicvo.setArtist(list);
+		            musicvo.setTitle("");
+		        }
+		        // MusicVO에서 일치하는 정보 가져와야함
+		        MusicVO musicFromDB = musicMapper.getMusic(musicvo);
+		        if (musicFromDB != null) {
+		            musicList.add(musicFromDB);
+		        }
+		    }
+		    // 가져온 음원의 정보를 'musicList'라는 모델에 추가
+		    session.setAttribute("seasonList", musicList);
+		    session.setAttribute("seasonName", season + "에 어울리는 " + genre + "곡");
+
+		} catch (HttpServerErrorException e) {
+		    // 서버 오류 처리
+		    model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
+		} catch (RestClientException e) {
+		    // 클라이언트 오류 처리
+		    model.addAttribute("error", "요청 중 오류가 발생했습니다: " + e.getMessage());
+		} catch (Exception e) {
+		    // 일반적인 예외 처리
+		    model.addAttribute("error", "예기치 않은 오류가 발생했습니다: " + e.getMessage());
+		}
 		return "intro";
 	}
 
