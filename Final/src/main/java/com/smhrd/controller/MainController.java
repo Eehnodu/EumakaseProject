@@ -279,7 +279,7 @@ public class MainController {
 					// surIdx에 해당하는 Desc값 가져오기
 					otherSurDesc += "#" + surveyMapper.getOtherSurDesc(surIdx).getSurDesc() + " ";
 				}
-				otherSurDescList.add(otherSurDesc.strip());
+				otherSurDescList.add(otherSurDesc.trim());
 			}
 			// 가져온 musicIdx를 이용해서 albumCov 가져오기
 			List<List<String>> otherAlbumCovList = new ArrayList<>();
