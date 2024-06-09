@@ -77,7 +77,7 @@
 
 						<div class="col-lg-4">
 							<div id="goAi" class="game-details mb-3">
-								<a href="#">
+								<a href="${cpath}/AIrecommend">
 									<div class="content">
 										<div class="row">
 											<div class="col-lg-12">
