@@ -16,7 +16,30 @@
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/userPlaylist.css">
 
+<style>
+/* 이미지 사분할 스타일 */
+.image-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	width: 100%; /* 원하는 크기로 설정 */
+	aspect-ratio: 1/1; /* 정사각형 비율 유지 */
+}
 
+.thumb {
+	overflow: hidden; /* 이미지가 컨테이너를 넘치지 않게 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 컨테이너를 가득 채우도록 */
+	border-radius: 23px; /* 추가 스타일 */
+}
+</style>
 
 
 </head>
@@ -42,16 +65,61 @@
 								<div class="content">
 									<div class="row">
 										<div class="col-lg-3">
-											<img src="assets/images/stream-01.jpg" alt=""
-												style="border-radius: 23px;">
+											<div class="image-grid">
+											    <c:forEach var="albumCov" items="${userAlbumCovList}" varStatus="status">
+											        <c:if test="${status.index < 4}">
+											            <div class="thumb">
+											                <img src="${albumCov}" alt="">
+											            </div>
+											        </c:if>
+											    </c:forEach>
+											</div>
 										</div>
+										<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 세션 스토리지에서 이미지 정보 불러오기
+            const imageSources = JSON.parse(sessionStorage.getItem('imageSources'));
+
+            if (imageSources && imageSources.length > 0) {
+                const container = document.querySelector('.col-lg-3');
+                if (container) {
+                    // 기존에 있는 이미지 태그는 모두 삭제
+                    container.innerHTML = '';
+
+                    // 이미지 컨테이너 생성
+                    const imageGrid = document.createElement('div');
+                    imageGrid.classList.add('image-grid');
+                    container.appendChild(imageGrid);
+
+                    // 각 이미지 소스에 대해 이미지를 생성하여 추가
+                    imageSources.forEach(src => {
+                        const thumbDiv = document.createElement('div');
+                        thumbDiv.classList.add('thumb');
+                        
+                        const newImg = document.createElement('img');
+                        newImg.src = src;
+                        newImg.alt = "";
+
+                        thumbDiv.appendChild(newImg);
+                        imageGrid.appendChild(thumbDiv);
+                    });
+                } else {
+                    console.error("Container element not found");
+                }
+            } else {
+                console.error("No image sources found in session storage");
+            }
+        });
+    </script>
 										<div class="col-lg-9">
 											<div class="left-info">
 												<div class="left" id="left">
-													<h3 id="playlist">플레이리스트 제목</h3>
-													<h4>작성자</h4><span>누구게</span>
-													<h4>작성일자</h4><span>2024.06.06</span>
-													<h4>#신나는 #아이돌</h4>
+													<h3 id="playlist">${userPl.plName}</h3>
+													<h4>작성자</h4>
+													<span>${name}</span>
+													<h4>작성일자</h4>
+													<span>${userPl.createdAt}</span>
+													<h4>${userSurDescList}</h4>
 												</div>
 												<ul>
 													<li><i class="fa fa-star"></i> 4.8</li> 사용자 평점
@@ -76,576 +144,73 @@
 									<div class="col-lg-12">
 										<div class="gaming-library" id="gaming-playlist">
 											<div class="right-info">
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Super Shy</h4> <span>New Jeans</span>
-															</li>
-															<li>
-																<h4>NewJeans 2nd EP 'Get Up'</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>댄스</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>2023.07.21</h4> <span>발매일</span>
-															</li>
-															<li>
-																<div class="heartbox">
-																	<input type="checkbox" class="checkbox" id="checkbox1" />
-																	<label for="checkbox1"> <svg id="heart-svg"
-																			viewBox="467 392 58 57"
-																			xmlns="http://www.w3.org/2000/svg">
-                                      <g id="Group" fill="none"
-																				fill-rule="evenodd" transform="translate(467 392)">
-                                        <path
-																				d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-																				id="heart" fill="#AAB8C2" />
-                                        <circle id="main-circ"
-																				fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-																				r="1.5" />
-
-                                        <g id="heartgroup7" opacity="0"
-																				transform="translate(7 6)">
-                                          <circle id="heart1"
-																				fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                          <circle id="heart2"
-																				fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup6" opacity="0"
-																				transform="translate(0 28)">
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="3" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup3" opacity="0"
-																				transform="translate(52 28)">
-                                          <circle id="heart2"
-																				fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                          <circle id="heart1"
-																				fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup2" opacity="0"
-																				transform="translate(44 6)">
-                                          <circle id="heart2"
-																				fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup5" opacity="0"
-																				transform="translate(14 50)">
-                                          <circle id="heart1"
-																				fill="#91D2FA" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup4" opacity="0"
-																				transform="translate(35 50)">
-                                          <circle id="heart1"
-																				fill="#F48EA7" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#F48EA7" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup1" opacity="0"
-																				transform="translate(24)">
-                                          <circle id="heart1"
-																				fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                          <circle id="heart2"
-																				fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                        </g>
-                                      </g>
-                                    </svg>
-																	</label>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-02.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Attention</h4> <span>Doja cat</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>22/06/2036</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>740 H 52 Mins</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>Downloaded</span>
-															</li>
-															<li>
-																<div class="heartbox">
-																	<input type="checkbox" class="checkbox" id="checkbox2" />
-																	<label for="checkbox2"> <svg id="heart-svg"
-																			viewBox="467 392 58 57"
-																			xmlns="http://www.w3.org/2000/svg">
-                                      <g id="Group" fill="none"
-																				fill-rule="evenodd" transform="translate(467 392)">
-                                        <path
-																				d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-																				id="heart" fill="#AAB8C2" />
-                                        <circle id="main-circ"
-																				fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-																				r="1.5" />
-
-                                        <g id="heartgroup7" opacity="0"
-																				transform="translate(7 6)">
-                                          <circle id="heart1"
-																				fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                          <circle id="heart2"
-																				fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup6" opacity="0"
-																				transform="translate(0 28)">
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="3" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup3" opacity="0"
-																				transform="translate(52 28)">
-                                          <circle id="heart2"
-																				fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                          <circle id="heart1"
-																				fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup2" opacity="0"
-																				transform="translate(44 6)">
-                                          <circle id="heart2"
-																				fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup5" opacity="0"
-																				transform="translate(14 50)">
-                                          <circle id="heart1"
-																				fill="#91D2FA" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup4" opacity="0"
-																				transform="translate(35 50)">
-                                          <circle id="heart1"
-																				fill="#F48EA7" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#F48EA7" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup1" opacity="0"
-																				transform="translate(24)">
-                                          <circle id="heart1"
-																				fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                          <circle id="heart2"
-																				fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                        </g>
-                                      </g>
-                                    </svg>
-																	</label>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-03.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>같애 (feat. SHIRT)</h4> <span>같애</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>21/04/2036</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>892 H 14 Mins</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>Downloaded</span>
-															</li>
-															<li>
-																<div class="heartbox">
-																	<input type="checkbox" class="checkbox" id="checkbox3" />
-																	<label for="checkbox3"> <svg id="heart-svg"
-																			viewBox="467 392 58 57"
-																			xmlns="http://www.w3.org/2000/svg">
-                                      <g id="Group" fill="none"
-																				fill-rule="evenodd" transform="translate(467 392)">
-                                        <path
-																				d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-																				id="heart" fill="#AAB8C2" />
-                                        <circle id="main-circ"
-																				fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-																				r="1.5" />
-
-                                        <g id="heartgroup7" opacity="0"
-																				transform="translate(7 6)">
-                                          <circle id="heart1"
-																				fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                          <circle id="heart2"
-																				fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup6" opacity="0"
-																				transform="translate(0 28)">
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="3" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup3" opacity="0"
-																				transform="translate(52 28)">
-                                          <circle id="heart2"
-																				fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                          <circle id="heart1"
-																				fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup2" opacity="0"
-																				transform="translate(44 6)">
-                                          <circle id="heart2"
-																				fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup5" opacity="0"
-																				transform="translate(14 50)">
-                                          <circle id="heart1"
-																				fill="#91D2FA" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup4" opacity="0"
-																				transform="translate(35 50)">
-                                          <circle id="heart1"
-																				fill="#F48EA7" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#F48EA7" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup1" opacity="0"
-																				transform="translate(24)">
-                                          <circle id="heart1"
-																				fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                          <circle id="heart2"
-																				fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                        </g>
-                                      </g>
-                                    </svg>
-																	</label>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Super Shy</h4> <span>New Jeans</span>
-															</li>
-															<li>
-																<h4>NewJeans 2nd EP 'Get Up'</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>댄스</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>2023.07.21</h4> <span>발매일</span>
-															</li>
-															<li>
-																<div class="heartbox">
-																	<input type="checkbox" class="checkbox" id="checkbox4" />
-																	<label for="checkbox4"> <svg id="heart-svg"
-																			viewBox="467 392 58 57"
-																			xmlns="http://www.w3.org/2000/svg">
-                                      <g id="Group" fill="none"
-																				fill-rule="evenodd" transform="translate(467 392)">
-                                        <path
-																				d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-																				id="heart" fill="#AAB8C2" />
-                                        <circle id="main-circ"
-																				fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-																				r="1.5" />
-
-                                        <g id="heartgroup7" opacity="0"
-																				transform="translate(7 6)">
-                                          <circle id="heart1"
-																				fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                          <circle id="heart2"
-																				fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup6" opacity="0"
-																				transform="translate(0 28)">
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="3" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup3" opacity="0"
-																				transform="translate(52 28)">
-                                          <circle id="heart2"
-																				fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                          <circle id="heart1"
-																				fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup2" opacity="0"
-																				transform="translate(44 6)">
-                                          <circle id="heart2"
-																				fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup5" opacity="0"
-																				transform="translate(14 50)">
-                                          <circle id="heart1"
-																				fill="#91D2FA" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup4" opacity="0"
-																				transform="translate(35 50)">
-                                          <circle id="heart1"
-																				fill="#F48EA7" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#F48EA7" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup1" opacity="0"
-																				transform="translate(24)">
-                                          <circle id="heart1"
-																				fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                          <circle id="heart2"
-																				fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                        </g>
-                                      </g>
-                                    </svg>
-																	</label>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-02.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Attention</h4> <span>Doja cat</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>22/06/2036</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>740 H 52 Mins</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>Downloaded</span>
-															</li>
-															<li>
-																<div class="heartbox">
-																	<input type="checkbox" class="checkbox" id="checkbox5" />
-																	<label for="checkbox5"> <svg id="heart-svg"
-																			viewBox="467 392 58 57"
-																			xmlns="http://www.w3.org/2000/svg">
-                                      <g id="Group" fill="none"
-																				fill-rule="evenodd" transform="translate(467 392)">
-                                        <path
-																				d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-																				id="heart" fill="#AAB8C2" />
-                                        <circle id="main-circ"
-																				fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-																				r="1.5" />
-
-                                        <g id="heartgroup7" opacity="0"
-																				transform="translate(7 6)">
-                                          <circle id="heart1"
-																				fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                          <circle id="heart2"
-																				fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup6" opacity="0"
-																				transform="translate(0 28)">
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="3" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup3" opacity="0"
-																				transform="translate(52 28)">
-                                          <circle id="heart2"
-																				fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                          <circle id="heart1"
-																				fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup2" opacity="0"
-																				transform="translate(44 6)">
-                                          <circle id="heart2"
-																				fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup5" opacity="0"
-																				transform="translate(14 50)">
-                                          <circle id="heart1"
-																				fill="#91D2FA" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup4" opacity="0"
-																				transform="translate(35 50)">
-                                          <circle id="heart1"
-																				fill="#F48EA7" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#F48EA7" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup1" opacity="0"
-																				transform="translate(24)">
-                                          <circle id="heart1"
-																				fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                          <circle id="heart2"
-																				fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                        </g>
-                                      </g>
-                                    </svg>
-																	</label>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-03.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>같애 (feat. SHIRT)</h4> <span>같애</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>21/04/2036</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>892 H 14 Mins</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>Downloaded</span>
-															</li>
-															<li>
-																<div class="heartbox">
-																	<input type="checkbox" class="checkbox" id="checkbox6" />
-																	<label for="checkbox6"> <svg id="heart-svg"
-																			viewBox="467 392 58 57"
-																			xmlns="http://www.w3.org/2000/svg">
-                                      <g id="Group" fill="none"
-																				fill-rule="evenodd" transform="translate(467 392)">
-                                        <path
-																				d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-																				id="heart" fill="#AAB8C2" />
-                                        <circle id="main-circ"
-																				fill="#E2264D" opacity="0" cx="29.5" cy="29.5"
-																				r="1.5" />
-
-                                        <g id="heartgroup7" opacity="0"
-																				transform="translate(7 6)">
-                                          <circle id="heart1"
-																				fill="#9CD8C3" cx="2" cy="6" r="2" />
-                                          <circle id="heart2"
-																				fill="#8CE8C3" cx="5" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup6" opacity="0"
-																				transform="translate(0 28)">
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="7" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="3" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup3" opacity="0"
-																				transform="translate(52 28)">
-                                          <circle id="heart2"
-																				fill="#9CD8C3" cx="2" cy="7" r="2" />
-                                          <circle id="heart1"
-																				fill="#8CE8C3" cx="4" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup2" opacity="0"
-																				transform="translate(44 6)">
-                                          <circle id="heart2"
-																				fill="#CC8EF5" cx="5" cy="6" r="2" />
-                                          <circle id="heart1"
-																				fill="#CC8EF5" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup5" opacity="0"
-																				transform="translate(14 50)">
-                                          <circle id="heart1"
-																				fill="#91D2FA" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#91D2FA" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup4" opacity="0"
-																				transform="translate(35 50)">
-                                          <circle id="heart1"
-																				fill="#F48EA7" cx="6" cy="5" r="2" />
-                                          <circle id="heart2"
-																				fill="#F48EA7" cx="2" cy="2" r="2" />
-                                        </g>
-
-                                        <g id="heartgroup1" opacity="0"
-																				transform="translate(24)">
-                                          <circle id="heart1"
-																				fill="#9FC7FA" cx="2.5" cy="3" r="2" />
-                                          <circle id="heart2"
-																				fill="#9FC7FA" cx="7.5" cy="2" r="2" />
-                                        </g>
-                                      </g>
-                                    </svg>
-																	</label>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
+												<!-- 두 번째 페이지 HTML 구조 -->
+												<div class="col-lg-12">
+													    <div class="gaming-library" id="gaming-playlist">
+													        <div class="right-info">
+													            <!-- 각 곡의 정보를 반복해서 출력 -->
+													            <c:forEach var="music" items="${userPlaylistList}" varStatus="status">
+													    <div class="col-lg-12 playlist">
+													        <div class="item songDetail">
+													            <ul>
+													                <li><img src="${music.albumCov}" alt="" class="templatemo-item"></li>
+													                <li>
+													                    <h4>${music.title}</h4> <span>${music.artist}</span>
+													                </li>
+													                <li>
+													                    <h4>${music.album}</h4> <span>앨범명</span>
+													                </li>
+													                <li>
+													                    <h4>${music.genre}</h4> <span>장르</span>
+													                </li>
+													                <li>
+													                    <h4>${music.releasedAt}</h4> <span>발매일</span>
+													                </li>
+													                <li>
+													                    <div class="heartbox">
+													                        <input type="checkbox" class="checkbox" id="checkbox${status.index}" />
+													                        <label for="checkbox${status.index}">
+													                            <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+													                                <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+													                                    <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2" />
+													                                    <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5" />
+													                                    <g id="heartgroup7" opacity="0" transform="translate(7 6)">
+													                                        <circle id="heart1" fill="#9CD8C3" cx="2" cy="6" r="2" />
+													                                        <circle id="heart2" fill="#8CE8C3" cx="5" cy="2" r="2" />
+													                                    </g>
+													                                    <g id="heartgroup6" opacity="0" transform="translate(0 28)">
+													                                        <circle id="heart1" fill="#CC8EF5" cx="2" cy="7" r="2" />
+													                                        <circle id="heart2" fill="#91D2FA" cx="3" cy="2" r="2" />
+													                                    </g>
+													                                    <g id="heartgroup3" opacity="0" transform="translate(52 28)">
+													                                        <circle id="heart2" fill="#9CD8C3" cx="2" cy="7" r="2" />
+													                                        <circle id="heart1" fill="#8CE8C3" cx="4" cy="2" r="2" />
+													                                    </g>
+													                                    <g id="heartgroup2" opacity="0" transform="translate(44 6)">
+													                                        <circle id="heart2" fill="#CC8EF5" cx="5" cy="6" r="2" />
+													                                        <circle id="heart1" fill="#CC8EF5" cx="2" cy="2" r="2" />
+													                                    </g>
+													                                    <g id="heartgroup5" opacity="0" transform="translate(14 50)">
+													                                        <circle id="heart1" fill="#91D2FA" cx="6" cy="5" r="2" />
+													                                        <circle id="heart2" fill="#91D2FA" cx="2" cy="2" r="2" />
+													                                    </g>
+													                                    <g id="heartgroup4" opacity="0" transform="translate(35 50)">
+													                                        <circle id="heart1" fill="#F48EA7" cx="6" cy="5" r="2" />
+													                                        <circle id="heart2" fill="#F48EA7" cx="2" cy="2" r="2" />
+													                                    </g>
+													                                    <g id="heartgroup1" opacity="0" transform="translate(24)">
+													                                        <circle id="heart1" fill="#9FC7FA" cx="2.5" cy="3" r="2" />
+													                                        <circle id="heart2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
+													                                    </g>
+													                                </g>
+													                            </svg>
+													                        </label>
+													                    </div>
+													                </li>
+													            </ul>
+													        </div>
+													    </div>
+													</c:forEach>
 												<div class="main-button" id="loadMore">
 													<a href="profile.html">더보기</a>
 												</div>
