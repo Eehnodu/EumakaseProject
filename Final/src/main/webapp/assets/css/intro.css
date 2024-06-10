@@ -29,13 +29,25 @@ h4 span {
 	cursor: pointer;
 }
 
-#txtGoAI:hover {
-	color: #ec6090;
+#aiBox {
+    padding: 17px 30px;
+    background-color: #ec6090;
 }
 
-/* .col-lg-4 {
-    text-align: center;
-} */
+#aiBox:hover {
+	background-color: #b1486c;
+	border-color: transparent;
+}
+
+
+#txtGoAI span {
+    margin-left: 10px;
+}
+
+svg{
+	width: 45px;
+}
+
 #plSeason>.content {
 	height: 585px;
 	padding-top: 23px;
