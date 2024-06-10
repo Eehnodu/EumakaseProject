@@ -15,6 +15,6 @@ public interface MusicMapper {
 	
 	public List<MusicVO> getMyMusic(String memId);
 	
-	public List<MusicVO> getMusic(AiPlaylistVO playlist);
+	public List<MusicVO> getChartMusic(AiPlaylistVO playlist);
 	
 }

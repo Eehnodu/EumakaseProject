@@ -7,7 +7,7 @@
         <result property="artist" column="artist"/>
    </resultMap>
 
-   <select id="getMusic" parameterType="com.smhrd.model.AiPlaylistVO" resultMap="musicResultMap">
+   <select id="getChartMusic" parameterType="com.smhrd.model.AiPlaylistVO" resultMap="musicResultMap">
         SELECT title, artist
         FROM tb_music
         WHERE musicIdx = #{musicIdx}

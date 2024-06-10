@@ -231,49 +231,6 @@ public class MainController {
 		model.addAttribute("myplayListalbumCov", mymusic);
 		System.out.println(model);
 		
-		for (MusicVO ply : mymusic) {
-			System.out.println(ply.getTitle());
-		}
-		
-//		List<Integer> Idx = new LinkedList<>();
-//		List<Integer> mymusicIdx = new LinkedList<>();
-//		
-//		for (MyPlaylistVO ply : myplayListIdx) {
-//			System.out.println(ply);
-//			Idx.add(ply.getMyplIdx());
-//		}
-//		
-//		List<AiPlaylistVO> myplayList = aiplaylistMapper.getMyPl(Idx);
-//		
-//		System.out.println(myplayList);
-//		
-//		for (AiPlaylistVO ply : myplayList) {
-//			mymusicIdx.add(ply.getMusicIdx());
-//		}
-//		
-//		List<MusicVO> myMusic = musicMapper.getMyMusic(mymusicIdx);
-//		
-//		
-//		System.out.println(myMusic);
-//		for (MusicVO ply : myMusic) {
-//			ply.getAlbumCov();
-//			ply.getArtist();
-//			ply.getTitle();
-//		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return "mypage";
 	}
 
