@@ -511,6 +511,7 @@ svg #main-circ {
     border-radius: 23px;
     padding: 30px;
     margin-bottom: 30px;
+    margin-top: 30px;
   }
 
   .game-details .content .right-info .playlist .songDetail ul li {
