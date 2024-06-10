@@ -12,6 +12,7 @@
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 <link rel="stylesheet" href="assets/css/mypage.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -43,8 +44,16 @@
 							<div class="main-profile ">
 								<div class="row">
 									<div class="col-lg-6">
-										<!-- 차트 영역 -->
-
+										<button id="prevChart" class="btn-arrow"><i class="fas fa-arrow-left"></i></button>
+                                        <button id="nextChart" class="btn-arrow"><i class="fas fa-arrow-right"></i></button>
+                                    
+                                    <!-- 차트 영역 -->
+                                    <form id="chartjs" action="${cpath}/chartjs" method="post" novalidate>
+                                        <canvas id="myChart" width="200" height="200"></canvas>
+                                    </form>
+                                    <form id="getMusic" action="${cpath}/getMusic" method="post" novalidate>
+                                        <canvas id="myChart1" width="200" height="200"></canvas>
+                                    </form>
 									</div>
 
 									<div class="col-lg-6 align-self-center">
@@ -207,7 +216,10 @@
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/js/loadMore.js"></script>
-
+	<script src="assets/js/chartGenre.js"></script>
+	<script src="assets/js/chartPrefernce.js"></script>
+	<script src="assets/js/chartfunction.js"></script>
+	
 	<%@ include file="includeFooter.jsp"%>
 </body>
 </html>

@@ -5,11 +5,12 @@ $.ajax({
     dataType: 'json',
     success: function(data) {
         console.log('성공');
-        
+
         // Extract keys and values from data object
         const labels = Object.keys(data); // Extracting genre names as labels
         const values = Object.values(data); // Extracting genre counts as values
-        
+		 console.log(labels);
+		 console.log(values);
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'doughnut',
