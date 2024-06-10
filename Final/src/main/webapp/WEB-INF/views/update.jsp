@@ -13,8 +13,6 @@
 <%@ include file="includeHeader.jsp"%>
 <link rel="stylesheet"
 	href="assets/css/update.css?ver=<%=System.currentTimeMillis()%>">
-<link rel="stylesheet"
-	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
 <script>
 	window.onload = function() {
 		// 서버 측에서 전달된 에러 메시지를 확인
