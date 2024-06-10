@@ -15,8 +15,6 @@
 
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/join.css">
-<link rel="stylesheet"
-	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
 
 
 </head>

@@ -7,6 +7,8 @@
 
 <link rel="stylesheet"
 	href="assets/css/header.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet"
+	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
 
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
