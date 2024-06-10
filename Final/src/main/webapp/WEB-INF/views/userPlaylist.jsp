@@ -49,201 +49,59 @@
 								<div class="content">
 									<div class="row">
 										<div class="col-lg-3">
-											<img src="assets/images/stream-01.jpg" alt=""
-												style="border-radius: 23px;">
+											<div class="image-grid">
+											    <c:forEach var="albumCov" items="${userAlbumCovList}" varStatus="status">
+											        <c:if test="${status.index < 4}">
+											            <div class="thumb">
+											                <img src="${albumCov}" alt="">
+											            </div>
+											        </c:if>
+											    </c:forEach>
+											</div>
 										</div>
 										<div class="col-lg-9">
 											<div class="left-info">
 												<div class="left" id="left">
-													<h3 id="playlist">플레이리스트 제목</h3>
+													<h3 id="playlist">${userPl.plName}</h3>
 													<h4>작성자</h4>
-													<span>누구게</span>
+													<span>${name}</span>
 													<h4>작성일자</h4>
-													<span>2024.06.06</span>
-													<div class="inputContainer">
-													<h4>태그</h4>
-														<input class="input-tags" type="text"
-															data-role="tagsinput" value="신나는, 랩">
-													</div>
-												</div>
-												<div class="right" id="right">
-													<ul>
-														<li><div class="main-button" id="buttonDownload">
-																<a href="#">수정</a>
-															</div></li>
-														<li><div class="main-button" id="buttonDownload">
-																<a href="#">삭제</a>
-															</div></li>
-													</ul>
+
+													<span>${userPl.createdAt}</span>
+													<h4>${userSurDescList}</h4>
+
 												</div>
 											</div>
 										</div>
 									</div>
 
 									<!-- *** 곡 상세 정보 Start *** -->
-									<div class="col-lg-12">
-										<div class="gaming-library" id="gaming-playlist">
-											<div class="right-info">
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>New Jeans</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>NewJeans 2nd EP 'Get Up'</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>댄스</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>2023.07.21</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-02.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Doja cat</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-03.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Doja cat</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Doja cat</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-02.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Doja cat</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-03.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Doja cat</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<ul>
-															<li><img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item"></li>
-															<li>
-																<h4>Doja cat</h4> <span>가수명</span>
-															</li>
-															<li>
-																<h4>Date Added</h4> <span>곡명</span>
-															</li>
-															<li>
-																<h4>Hours Played</h4> <span>앨범명</span>
-															</li>
-															<li>
-																<h4>Currently</h4> <span>장르</span>
-															</li>
-															<li>
-																<h4>Supery Shy</h4> <span>발매일</span>
-															</li>
-														</ul>
-													</div>
+									<!-- 두 번째 페이지 HTML 구조 -->
+												<div class="col-lg-12">
+													    <div class="gaming-library" id="gaming-playlist">
+													        <div class="right-info">
+													            <!-- 각 곡의 정보를 반복해서 출력 -->
+													            <c:forEach var="music" items="${userPlaylistList}" varStatus="status">
+													    <div class="col-lg-12 playlist">
+													        <div class="item songDetail">
+													            <ul>
+													                <li><img src="${music.albumCov}" alt="" class="templatemo-item"></li>
+													                <li>
+													                    <h4>${music.title}</h4> <span>${music.artist}</span>
+													                </li>
+													                <li>
+													                    <h4>${music.album}</h4> <span>앨범명</span>
+													                </li>
+													                <li>
+													                    <h4>${music.genre}</h4> <span>장르</span>
+													                </li>
+													                <li>
+													                    <h4>${music.releasedAt}</h4> <span>발매일</span>
+													                </li>
+													            </ul>
+													        </div>
+													    </div>
+													</c:forEach>
 												</div>
 											</div>
 										</div>

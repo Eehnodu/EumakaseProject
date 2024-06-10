@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.AiPlaylistMapper">
+
+   <select id="getMusicIdx" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.AiPlaylistVO">
+   		SELECT musicIdx
+   		FROM tb_aiplaylist
+   		WHERE contextIdx = #{contextIdx}
+   </select>	
+
+	<insert id="savePlaylist"
+		parameterType="com.smhrd.model.AiPlaylistVO">
+		INSERT INTO tb_aiplaylist(musicIdx, contextIdx,
+		contextIdx2, contextIdx3, contextIdx4, contextIdx5, myplIdx)
+		VALUES(#{musicIdx}, #{contextIdx}, #{contextIdx2}, #{contextIdx3}, #{contextIdx4}, #{contextIdx5}, #{myplIdx})
+	</insert>
+	
+	<!-- 다른 사람들의 playlist 가져오기 -->
+	<select id="getOtherPl" parameterType="com.smhrd.model.AiPlaylistVO" resultType="com.smhrd.model.AiPlaylistVO">
+		SELECT * FROM tb_aiplaylist WHERE myplIdx = #{myplIdx}
+	</select>
+	
+</mapper>

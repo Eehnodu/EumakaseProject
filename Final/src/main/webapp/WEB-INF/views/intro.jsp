@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>소개합니다.....</title>
+<title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
@@ -77,7 +77,7 @@
 
 						<div class="col-lg-4">
 							<div id="goAi" class="game-details mb-3">
-								<a href="#">
+								<a href="${cpath}/AIrecommend">
 									<div class="content">
 										<div class="row">
 											<div class="col-lg-12">
@@ -94,56 +94,20 @@
 							<div id="plSeason" class="game-details">
 								<div class="content"">
 									<div class=" row">
-										<h5 id="txtSeason">Summer Music</h5>
+										<h5 id="txtSeason">${seasonName}</h5>
 										<div class="col-lg-12 playlistDetail right-info"
 											id="playlistWrap">
 											<div id="songList">
 												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<div>
-															<img src="assets/images/game-01.jpg" alt=""
-																class="templatemo-item imgCover"> <span
-																class="songTitle">Super Shy</span><span>New Jeans</span>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<img src="assets/images/game-01.jpg" alt=""
-															class="templatemo-item imgCover"> <span
-															class="songTitle">Attention</span><span>Doja Cat</span>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<img src="assets/images/game-01.jpg" alt=""
-															class="templatemo-item imgCover"> <span
-															class="songTitle">같애 (feat. SHIRT)</span><span>같애</span>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<img src="assets/images/game-01.jpg" alt=""
-															class="templatemo-item imgCover"> <span
-															class="songTitle">Cruel Summer</span><span>Taylor
-															Swift</span>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<img src="assets/images/game-01.jpg" alt=""
-															class="templatemo-item imgCover"> <span
-															class="songTitle">Perfect Night</span><span>LE
-															SSERAFIM</span>
-													</div>
-												</div>
-												<div class="col-lg-12 playlist">
-													<div class="item songDetail">
-														<img src="assets/images/game-01.jpg" alt=""
-															class="templatemo-item imgCover"> <span
-															class="songTitle">Attention</span><span>Doja Cat</span>
-													</div>
-												</div>
+													<c:forEach var="season" items="${seasonList}">
+												        <div class="item songDetail">
+												            <div>
+												                <img src="${season.albumCov}" alt="" class="templatemo-item imgCover">
+												                <span class="songTitle">${season.title}</span>
+												                <span>${season.artist}</span>
+												            </div>
+												        </div>
+												    </c:forEach>
 											</div>
 										</div>
 									</div>
