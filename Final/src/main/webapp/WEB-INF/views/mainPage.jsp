@@ -35,6 +35,18 @@
 		<%-- 세션 속성 'member'가 널이 아닐 때 --%>
 		<c:when test="${member != null}">
 
+			<!-- ***** Preloader Start ***** -->
+			<div id="js-preloader" class="js-preloader">
+				<div class="preloader-inner">
+					<span class="dot"></span>
+					<div class="dots">
+						<span></span> <span></span> <span></span>
+					</div>
+				</div>
+			</div>
+			<!-- ***** Preloader End ***** -->
+
+
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -326,6 +338,7 @@
 	<script src="assets/js/tabs.js"></script>
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
+
 </body>
 
 <%@ include file="includeFooter.jsp"%>

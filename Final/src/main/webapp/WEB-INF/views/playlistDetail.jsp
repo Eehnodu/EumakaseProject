@@ -16,11 +16,20 @@
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/playlistDetail.css">
 
-
-
-
 </head>
 <body>
+
+	<!-- ***** Preloader Start ***** -->
+	<div id="js-preloader" class="js-preloader">
+		<div class="preloader-inner">
+			<span class="dot"></span>
+			<div class="dots">
+				<span></span> <span></span> <span></span>
+			</div>
+		</div>
+	</div>
+	<!-- ***** Preloader End ***** -->
+
 
 	<div class="container">
 		<div class="row">
@@ -57,7 +66,8 @@
 										<div class="col-lg-6">
 											<div class="main-border-button" id="buttonDownload">
 
-												<a href="${cpath}/savePlaylist">이 플리 저장</a> <a href="#" id="redDiff">다른 플리 보여줘</a>
+												<a href="${cpath}/savePlaylist">이 플리 저장</a> <a href="#"
+													id="redDiff">다른 플리 보여줘</a>
 
 											</div>
 										</div>
@@ -65,58 +75,56 @@
 										<div class="col-lg-12">
 											<div class="gaming-library" id="gaming-playlist">
 												<div class="right-info">
-												<c:forEach var="music" items="${musicList}">
-													<div class="col-lg-12 playlist">
-														<div class="item songDetail">
-															<ul>
-																<li><img src="${music.albumCov}" alt=""
-																	class="templatemo-item"></li>
-																<li>
+													<c:forEach var="music" items="${musicList}">
+														<div class="col-lg-12 playlist">
+															<div class="item songDetail">
+																<ul>
+																	<li><img src="${music.albumCov}" alt=""
+																		class="templatemo-item"></li>
+																	<li>
 
-																	<h4>${music.artist}</h4> <span>가수명</span>
-																</li>
-																<li>
-																	<h4>${music.title}</h4> <span>곡명</span>
+																		<h4>${music.artist}</h4> <span>가수명</span>
+																	</li>
+																	<li>
+																		<h4>${music.title}</h4> <span>곡명</span>
 
-																</li>
-																<li>
-																	<h4>${music.album}</h4> <span>앨범명</span>
-																</li>
-																<li>
-																	<h4>${music.genre}</h4> <span>장르</span>
-																</li>
-																<li>
-																	<c:choose>
-												                        <c:when test="${music.releasedAt == '0001-01-01'}">
-												                            <h4>-</h4>
-												                        </c:when>
-												                        <c:otherwise>
-												                            <h4>${music.releasedAt}</h4>
-												                        </c:otherwise>
-												                    </c:choose> <span>발매일</span>
-																</li>
-															</ul>
+																	</li>
+																	<li>
+																		<h4>${music.album}</h4> <span>앨범명</span>
+																	</li>
+																	<li>
+																		<h4>${music.genre}</h4> <span>장르</span>
+																	</li>
+																	<li><c:choose>
+																			<c:when test="${music.releasedAt == '0001-01-01'}">
+																				<h4>-</h4>
+																			</c:when>
+																			<c:otherwise>
+																				<h4>${music.releasedAt}</h4>
+																			</c:otherwise>
+																		</c:choose> <span>발매일</span></li>
+																</ul>
+															</div>
 														</div>
-													</div>
 
 													</c:forEach>
-										
 
-													</div>
+
 												</div>
 											</div>
 										</div>
-										<!-- ***** Gaming Library End ***** -->
 									</div>
+									<!-- ***** Gaming Library End ***** -->
 								</div>
 							</div>
 						</div>
-
-
 					</div>
+
+
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 	<!-- Scripts -->

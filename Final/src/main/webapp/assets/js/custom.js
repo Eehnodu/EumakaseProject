@@ -1,13 +1,33 @@
+$(window).on('load', function() {
+   // 커버 요소가 있을 경우 parallax 효과를 설정하는 코드
+   if ($('.cover').length) {
+      $('.cover').parallax({
+         imageSrc: $('.cover').data('image'),
+         zIndex: '1'
+      });
+   }
+
+   // 3초 동안 대기한 후 pre-loader를 숨기는 코드
+   setTimeout(function() {
+      $('#js-preloader').addClass('loaded');
+   }, 600); 
+
+   // #preloader 요소를 숨기는 애니메이션 코드 (불필요한 경우 생략 가능)
+   $("#preloader").animate({
+      'opacity': '0'
+   }, 400, function() {
+      setTimeout(function() {
+         $("#preloader").css("visibility", "hidden").fadeOut();
+      }, 300);
+   });
+});
+
+
+
+
 (function($) {
 
    "use strict";
-
-   // Page loading animation
-   $(window).on('load', function() {
-
-      $('#js-preloader').addClass('loaded');
-
-   });
 
    // WOW JS
    $(window).on('load', function() {
@@ -23,27 +43,16 @@
       }
    });
 
-   // $(window).scroll(function() {
-//   var scroll = $(window).scrollTop();
-//   var box = $('.header-text').height();
-//   var header = $('header').height();
 
-//   if (scroll >= box - header) {
-//     $("header").addClass("background-header");
-//   } else {
-//     $("header").removeClass("background-header");
-//   }
-// });
+   $('.filters ul li').click(function() {
+      $('.filters ul li').removeClass('active');
+      $(this).addClass('active');
 
-$('.filters ul li').click(function() {
-   $('.filters ul li').removeClass('active');
-   $(this).addClass('active');
-
-   var data = $(this).attr('data-filter');
-   $grid.isotope({
-      filter: data
+      var data = $(this).attr('data-filter');
+      $grid.isotope({
+         filter: data
+      });
    });
-});
 
 
    var $grid = $(".grid").isotope({
@@ -127,56 +136,6 @@ $('.filters ul li').click(function() {
    })
 
 
-   /*$('.owl-banner').owlCarousel({
-      items:1,
-      loop:true,
-      dots: false,
-      nav: true,
-      autoplay: true,
-      margin:30,
-      responsive:{
-           0:{
-              items:1
-           },
-           600:{
-              items:1
-           },
-           1000:{
-              items:1
-         }
-      }
-   })*/
-
-
-
-   // Menu Dropdown Toggle
-   if ($('.menu-trigger').length) {
-      $(".menu-trigger").on('click', function() {
-         $(this).toggleClass('active');
-         $('.header-area .nav').slideToggle(200);
-      });
-   }
-
-
-   // Menu elevator animation
-   $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
-      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-         var target = $(this.hash);
-         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-         if (target.length) {
-            var width = $(window).width();
-            if (width < 991) {
-               $('.menu-trigger').removeClass('active');
-               $('.header-area .nav').slideUp(200);
-            }
-            $('html,body').animate({
-               scrollTop: (target.offset().top) - 80
-            }, 700);
-            return false;
-         }
-      }
-   });
-
    $(document).ready(function() {
       $(document).on("scroll", onScroll);
 
@@ -202,21 +161,6 @@ $('.filters ul li').click(function() {
       });
    });
 
-   // function onScroll(event){
-   //     var scrollPos = $(document).scrollTop();
-   //     $('.nav a').each(function () {
-   //         var currLink = $(this);
-   //         var refElement = $(currLink.attr("href"));
-   //         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-   //             $('.nav ul li a').removeClass("active");
-   //             currLink.addClass("active");
-   //         }
-   //         else{
-   //             currLink.removeClass("active");
-   //         }
-   //     });
-   // }
-
    // refElement가 존재하는가?
    function onScroll(event) {
       var scrollPos = $(document).scrollTop();
@@ -235,29 +179,6 @@ $('.filters ul li').click(function() {
          }
       });
    }
-
-
-
-
-   // Page loading animation
-   $(window).on('load', function() {
-      if ($('.cover').length) {
-         $('.cover').parallax({
-            imageSrc: $('.cover').data('image'),
-            zIndex: '1'
-         });
-      }
-
-      $("#preloader").animate({
-         'opacity': '0'
-      }, 600, function() {
-         setTimeout(function() {
-            $("#preloader").css("visibility", "hidden").fadeOut();
-         }, 300);
-      });
-   });
-
-
 
    const dropdownOpener = $('.main-nav ul.nav .has-sub > a');
 
@@ -290,14 +211,10 @@ $('.filters ul li').click(function() {
                   }
                }
             }
-
             e.preventDefault();
          });
       });
    }
-
-
-
 })(window.jQuery);
 
 
