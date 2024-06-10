@@ -5,6 +5,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -198,7 +199,6 @@ public class MainController {
 		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
 
-		System.out.println("Login으로 들어옴");
 
 		if (result != null) {
 			session.setAttribute("member", result);
@@ -216,7 +216,18 @@ public class MainController {
 	}
 
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model, HttpSession session) {
+		MemberVO memvo = (MemberVO) session.getAttribute("member");
+		if (memvo == null) {
+			return "redirect:/";
+		}
+		String memId = memvo.getMemId();
+		
+		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);// 
+		model.addAttribute("myplayList", myplayListIdx);
+		
+		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
+		model.addAttribute("myplayListalbumCov", mymusic);
 		return "mypage";
 	}
 

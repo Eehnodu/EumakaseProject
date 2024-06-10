@@ -11,6 +11,14 @@ $(document).ready(function() {
 	});
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const songTitles = document.querySelectorAll('.songTitle');
+    songTitles.forEach(title => {
+        title.setAttribute('title', title.textContent);
+    });
+});
+
+
 
 
 (function($) {

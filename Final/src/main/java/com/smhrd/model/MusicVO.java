@@ -21,7 +21,7 @@ public class MusicVO {
 	private String album;
 	private String genre;
 	private Date releasedAt;
+	private String lyrics;
 	private String TEXT;
 	private Year year;
-	
 }

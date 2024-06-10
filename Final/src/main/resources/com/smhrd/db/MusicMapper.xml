@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.MusicMapper">
 
+   <resultMap id="musicResultMap" type="com.smhrd.model.MusicVO">
+        <result property="title" column="title"/>
+        <result property="artist" column="artist"/>
+   </resultMap>
+
+   <select id="getChartMusic" parameterType="com.smhrd.model.AiPlaylistVO" resultMap="musicResultMap">
+        SELECT title, artist
+        FROM tb_music
+        WHERE musicIdx = #{musicIdx}
+   </select>
+
 	<select id="getMusic" parameterType="com.smhrd.model.MusicVO" resultType="com.smhrd.model.MusicVO">
 		SELECT * FROM tb_music WHERE artist LIKE CONCAT('%', #{artist}, '%') AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
 	</select>
@@ -14,6 +25,24 @@
 	<!-- userplaylist의 음원 정보 가져오기 -->
 	<select id="getUserPlaylist" parameterType="int" resultType="com.smhrd.model.MusicVO">
 			SELECT * FROM tb_music WHERE musicIdx = #{musicIdx}
+	</select>
+	
+	<select id="getMyMusic" resultType="com.smhrd.model.MusicVO">
+		SELECT m.*
+			FROM (
+			  SELECT t2.musicIdx
+			  FROM (
+			    SELECT tb_aiplaylist.musicIdx,
+			    ROW_NUMBER() OVER (PARTITION BY tb_myplaylist.myplIdx ORDER BY RAND()) AS rn
+			    FROM tb_myplaylist
+			    INNER JOIN tb_aiplaylist
+			    ON tb_myplaylist.myplIdx = tb_aiplaylist.myplIdx
+			    WHERE tb_myplaylist.memId = #{memId}
+			    GROUP BY tb_aiplaylist.musicIdx, tb_myplaylist.myplIdx
+			  ) t2
+			  WHERE <![CDATA[t2.rn <= 4]]>
+			) t1
+			INNER JOIN tb_music m ON t1.musicIdx = m.musicIdx
 	</select>
 	
 </mapper>

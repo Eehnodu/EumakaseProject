@@ -12,6 +12,7 @@
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 <link rel="stylesheet" href="assets/css/mypage.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -43,8 +44,16 @@
 							<div class="main-profile ">
 								<div class="row">
 									<div class="col-lg-6">
-										<!-- 차트 영역 -->
-
+										<button id="prevChart" class="btn-arrow"><i class="fas fa-arrow-left"></i></button>
+                                        <button id="nextChart" class="btn-arrow"><i class="fas fa-arrow-right"></i></button>
+                                    
+                                    <!-- 차트 영역 -->
+                                    <form id="chartjs" action="${cpath}/chartjs" method="post" novalidate>
+                                        <canvas id="myChart" width="200" height="200"></canvas>
+                                    </form>
+                                    <form id="getMusic" action="${cpath}/getMusic" method="post" novalidate>
+                                        <canvas id="myChart1" width="200" height="200"></canvas>
+                                    </form>
 									</div>
 
 									<div class="col-lg-6 align-self-center">
@@ -72,75 +81,31 @@
 														</h4>
 													</div>
 												</div>
-												<div class="col-lg-3 col-sm-6">
-													<div class="item">
-														<div class="thumb">
-															<img src="assets/images/clip-01.jpg" alt=""
-																style="border-radius: 23px;"> <a
-																href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-																target="_blank"><i class="fa fa-play"></i></a>
-														</div>
-														<div class="down-content">
-															<h4>First Clip</h4>
-														</div>
-														<div class="moreInfoButtons mt-2">
-															<button type="button" class="btn btn-sm btn-edit">수정</button>
-															<button type="button" class="btn btn-sm btn-delete">삭제</button>
+												<c:forEach var="myply" items="${myplayList}" varStatus="loop">
+													<div class="col-lg-3 col-sm-6">
+														<div class="item">
+															<div class="thumb">
+																<c:forEach var="cov" items="${myplayListalbumCov}"
+																	begin="${loop.index * 4}" end="${(loop.index * 4) + 3}">
+																	<img src="${cov.albumCov}" alt=""
+																		style="border-radius: 23px; width: 25%;">
+																</c:forEach>
+																<a href = "${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">상세보기</a>
+																<a href="https://www.youtube.com/watch?v=r1b03uKWk_M"
+																	target="_blank"> <i class="fa fa-play"></i>
+																</a>
+															</div>
+															<div class="down-content">
+																<h4>${myply.plName}</h4>
+															</div>
+															<div class="moreInfoButtons mt-2">
+																<button type="button" class="btn btn-sm btn-edit">수정</button>
+																<button type="button" class="btn btn-sm btn-delete">삭제</button>
+															</div>
 														</div>
 													</div>
-												</div>
+												</c:forEach>
 
-												<div class="col-lg-3 col-sm-6">
-													<div class="item">
-														<div class="thumb">
-															<img src="assets/images/clip-02.jpg" alt=""
-																style="border-radius: 23px;"> <a
-																href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-																target="_blank"><i class="fa fa-play"></i></a>
-														</div>
-														<div class="down-content">
-															<h4>Second Clip</h4>
-														</div>
-														<div class="moreInfoButtons mt-2">
-															<button type="button" class="btn btn-sm btn-edit">수정</button>
-															<button type="button" class="btn btn-sm btn-delete">삭제</button>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-3 col-sm-6">
-													<div class="item">
-														<div class="thumb">
-															<img src="assets/images/clip-03.jpg" alt=""
-																style="border-radius: 23px;"> <a
-																href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-																target="_blank"><i class="fa fa-play"></i></a>
-														</div>
-														<div class="down-content">
-															<h4>Third Clip</h4>
-														</div>
-														<div class="moreInfoButtons mt-2">
-															<button type="button" class="btn btn-sm btn-edit">수정</button>
-															<button type="button" class="btn btn-sm btn-delete">삭제</button>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-3 col-sm-6">
-													<div class="item">
-														<div class="thumb">
-															<img src="assets/images/clip-04.jpg" alt=""
-																style="border-radius: 23px;"> <a
-																href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-																target="_blank"><i class="fa fa-play"></i></a>
-														</div>
-														<div class="down-content">
-															<h4>Fourth Clip</h4>
-														</div>
-														<div class="moreInfoButtons mt-2">
-															<button type="button" class="btn btn-sm btn-edit">수정</button>
-															<button type="button" class="btn btn-sm btn-delete">삭제</button>
-														</div>
-													</div>
-												</div>
 												<div class="col-lg-12">
 													<div class="main-button" id="loadMore">
 														<a href="profile.html">더보기</a>
@@ -251,7 +216,10 @@
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/js/loadMore.js"></script>
-		
+	<script src="assets/js/chartGenre.js"></script>
+	<script src="assets/js/chartPrefernce.js"></script>
+	<script src="assets/js/chartfunction.js"></script>
+	
 	<%@ include file="includeFooter.jsp"%>
 </body>
 </html>

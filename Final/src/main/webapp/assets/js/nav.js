@@ -26,7 +26,7 @@ window.onload = function() {
 			navHome.classList.add('active');
 		}
 		// URL을 검사하여 현재 페이지가 'mypage'인지 확인
-	} else if (window.location.href.endsWith("mypage")){
+	} else if (window.location.href.endsWith("mypage")) {
 		// 모든 'nav-link' 클래스를 가진 요소를 찾아서 'active' 클래스 제거
 		document.querySelectorAll('.nav-link').forEach(function(link) {
 			link.classList.remove('active');
@@ -47,5 +47,16 @@ window.onload = function() {
 		if (navAi) {
 			navAi.classList.add('active');
 		}
-	} 
+	}
 };
+
+
+// 로그인모달 아이디에 포커스
+document.addEventListener("DOMContentLoaded", function() {
+	const loginModal = document.getElementById('loginModal');
+	const loginIdInput = document.querySelector('input[name="loginId"]');
+
+	loginModal.addEventListener('shown.bs.modal', function() {
+		loginIdInput.focus();
+	});
+});
