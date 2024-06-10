@@ -52,4 +52,8 @@
 		SELECT surDesc FROM tb_survey WHERE surType = 'A' AND surItem = 'genre'
 	</select>
 	
+	<select id="surbayIdx" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.SurveyVO">
+       SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "genre" AND surIdx=#{surIdx} ;
+    </select>
+	
 </mapper>
