@@ -63,7 +63,7 @@ public class MemberRestController {
 
 	@RequestMapping("/joinProcess")
 	public void join(@RequestBody MemberVO vo, HttpSession session) {
-		System.out.println("joinprocess들어옴");
+		System.out.println(vo);
 
 		// 세션이 존재하는지 확인
 		if (session.getAttribute("member") != null) {
@@ -102,7 +102,7 @@ public class MemberRestController {
 	public void preferencejoin(@RequestBody List<String> surDescList, HttpSession session) {
 		System.out.println("preference 들어옴");
 		// System.out.println("genre :" + surDescList);
-		session.invalidate();
+		
 		if (session != null) {
 			List<SurveyVO> SurveyIdx = surveyMapper.selectSurvey(surDescList);
 			List<Integer> surIdxList = SurveyIdx.stream().map(SurveyVO::getSurIdx).collect(Collectors.toList());
@@ -111,7 +111,7 @@ public class MemberRestController {
 			memberMapper.join(vo);
 			preferenceMapeer.insertPref(memId, surIdxList);
 		}
-
+		session.invalidate();
 	}
 
 //	// 선택 결과를 ai 추천 모델에 넘기는 함수

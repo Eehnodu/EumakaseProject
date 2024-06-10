@@ -178,19 +178,6 @@ public class MainController {
 		return "join";
 	}
 
-	@PostMapping("/joinProcess")
-	public String join(MemberVO vo, HttpSession session) {
-
-		session.getAttribute("member");
-
-		/*
-		 * mapper.join(vo); vo.setMemPw(null); vo.setGender(null);
-		 * session.setAttribute("member", vo);
-		 */
-
-		return "redirect:/mainPage";
-	}
-
 	@PostMapping("/login")
 	public String login(@RequestParam("loginId") String memId, @RequestParam("loginPw") String memPw,
 			HttpSession session, RedirectAttributes redirectAttributes) {
