@@ -181,91 +181,24 @@
 
 							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
 							<div class="col-lg-12">
-								<div class="featured-games header-text">
-									<div class="heading-section">
-										<h4>
-											<em>오늘의</em> 추천 노래
-										</h4>
-									</div>
-
-									<div class="owl-features owl-carousel">
-										<div class="item">
-											<div class="image-grid">
-												<div class="thumb">
-													<img src="assets/images/stream-05.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-02.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-03.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-04.jpg" alt="">
-												</div>
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-06.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-									</div>
-								</div>
+							    <div class="featured-games header-text">
+							        <div class="heading-section">
+							            <h4>
+							                <em>오늘의</em> 추천 노래
+							            </h4>
+							        </div>
+							
+							        <div class="owl-features owl-carousel">
+							            <c:forEach var="survey" items="${recSurvey}" varStatus="status">
+							                <div class="item">
+							                    <div class="thumb">
+							                        <img src="assets/images/stream-${status.index + 1}.jpg" alt="">
+							                    </div>
+							                    <h4>${survey}</h4>
+							                </div>
+							            </c:forEach>
+							        </div>
+							    </div>
 							</div>
 							<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
 
