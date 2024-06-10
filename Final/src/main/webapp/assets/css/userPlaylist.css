@@ -1,162 +1,155 @@
+/* ***** button ***** */
+.main-button a:hover {
+	background-color: #fff;
+	color: #e75e8d;
+}
 
+.main-border-button a {
+	font-size: 14px;
+	color: #ec6090;
+	background-color: transparent;
+	border: 1px solid #ec6090;
+	padding: 12px 30px;
+	display: inline-block;
+	border-radius: 25px;
+	font-weight: 400;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	transition: all .3s;
+	position: relative;
+	overflow: hidden;
+}
 
-  /* ***** button ***** */
-  .main-button a:hover {
-    background-color: #fff;
-    color: #e75e8d;
-  }
+#buttonDownload {
+	margin-top: 0px;
+}
 
-  .main-border-button a {
-    font-size: 14px;
-    color: #ec6090;
-    background-color: transparent;
-    border: 1px solid #ec6090;
-    padding: 12px 30px;
-    display: inline-block;
-    border-radius: 25px;
-    font-weight: 400;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-    transition: all .3s;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  #buttonDownload {
-  	margin-top: 0px;
-  }
+.game-details .main-border-button {
+	margin-top: 35px;
+}
 
-  /* .game-details .main-border-button {
-    margin-top: 35px;
-  }
- */
-  .game-details .main-border-button a {
-    text-align: center;
-    width: 100%;
-  }
+.game-details .main-border-button a {
+	text-align: center;
+	width: 100%;
+}
 
+/* ***** playlistDetailPage ***** */
+.col-lg-6 .playlist {
+	width: 100%;
+}
 
+.playlistDetail .col-lg-6 .item {
+	position: relative;
+	/* border-bottom: 1px solid #666; */
+	padding-bottom: 30px;
+	margin-bottom: 10px;
+}
 
-  /* ***** playlistDetailPage ***** */
-  .col-lg-6 .playlist {
-    width: 100%;
-  }
+.playlistDetail .item img {
+	float: left;
+	margin-right: 15px;
+}
 
+.playlistDetail .item h4 {
+	display: inline-block;
+	font-size: 15px;
+	margin-bottom: 5px;
+	padding-top: 15px;
+}
 
-  .playlistDetail .col-lg-6 .item {
-    position: relative;
-    /* border-bottom: 1px solid #666; */
-    padding-bottom: 30px;
-    margin-bottom: 10px;
-  }
+.playlistDetail .item span {
+	color: #666;
+	font-size: 14px;
+	display: block;
+}
 
-  .playlistDetail .item img {
-    float: left;
-    margin-right: 15px;
-  }
+.playlistDetail ul {
+	position: absolute;
+	right: 0;
+	top: 15px;
+}
 
-  .playlistDetail .item h4 {
-    display: inline-block;
-    font-size: 15px;
-    margin-bottom: 5px;
-    padding-top: 15px;
-  }
+.playlistDetail ul li {
+	color: #fff;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
 
-  .playlistDetail .item span {
-    color: #666;
-    font-size: 14px;
-    display: block;
-  }
+.playlistDetail ul li:first-child i {
+	color: yellow;
+}
 
-  .playlistDetail ul {
-    position: absolute;
-    right: 0;
-    top: 15px;
-  }
+.playlistDetail ul li:last-child i {
+	color: #ec6090;
+}
 
-  .playlistDetail ul li {
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
+/* ***** playlistDetailPage 끝 ***** */
 
-  .playlistDetail ul li:first-child i {
-    color: yellow;
-  }
-
-  .playlistDetail ul li:last-child i {
-    color: #ec6090;
-  }
-
-  /* ***** playlistDetailPage 끝 ***** */
-
-  /* 
+/* 
   ---------------------------------------------
   Gaming Library Style
   --------------------------------------------- 
   */
+#gaming-playlist {
+	margin-top: 0px;
+	padding: 0px;
+	background-color: #1f2122;
+	border-radius: 23px;
+}
 
-  #gaming-playlist{
-    margin-top: 0px;
-    padding: 0px; 
-    background-color: #1f2122;
-    border-radius: 23px;
-  }
+.gaming-library .item {
+	border-bottom: 1px solid #27292a;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
 
-  .gaming-library .item {
-    border-bottom: 1px solid #27292a;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
+.gaming-library .last-item {
+	margin-bottom: 30px;
+}
 
-  .gaming-library .last-item {
-    margin-bottom: 30px;
-  }
+.profile-library .last-item {
+	border-bottom: none;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
 
-  .profile-library .last-item {
-    border-bottom: none;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-  }
+.gaming-library .item ul li {
+	margin-top: 15px;
+}
 
-  .gaming-library .item ul li {
-    margin-top: 15px;
-  }
+.gaming-library .item ul li img {
+	margin-top: -30px;
+}
 
-  .gaming-library .item ul li img {
-    margin-top: -30px;
-  }
+.gaming-library .item ul li {
+	display: inline-block;
+	width: 17%;
+}
 
-  .gaming-library .item ul li {
-    display: inline-block;
-    width: 17%;
-  }
+.gaming-library .item ul li:first-child {
+	width: 110px;
+}
 
-  .gaming-library .item ul li:first-child {
-    width: 110px;
-  }
+.gaming-library .item ul li:last-child {
+	width: 15%;
+	text-align: right;
+}
 
-  .gaming-library .item ul li:last-child {
-    width: 15%;
-    text-align: right;
-  }
+.gaming-library .item ul li h4 {
+	font-size: 15px;
+	margin-bottom: 5px;
+}
 
-  .gaming-library .item ul li h4 {
-    font-size: 15px;
-    margin-bottom: 5px;
-  }
+.gaming-library .item ul li span {
+	color: #666;
+	font-size: 14px;
+}
 
-  .gaming-library .item ul li span {
-    color: #666;
-    font-size: 14px;
-  }
+.gaming-library .main-button {
+	text-align: center;
+	margin-bottom: -53px;
+}
 
-  .gaming-library .main-button {
-    text-align: center;
-    margin-bottom: -53px;
-  }
-
-  
 #buttonDownload a {
 	font-size: 14px;
 	color: #fff;
@@ -177,194 +170,194 @@
 	color: #e75e8d;
 }
 
- /* ***** 좋아요 ***** */
-  li .heartbox {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%)
-    
+/* ***** 좋아요 ***** */
+li .heartbox {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
 }
-         svg {
-  cursor: pointer;
-  overflow: visible;
-  width: 60px;
-  /* margin: 20px; */
-  margin-bottom: -10px;
+
+svg {
+	cursor: pointer;
+	overflow: visible;
+	width: 60px;
+	/* margin: 20px; */
+	margin-bottom: -10px;
 }
 
 svg #heart {
-  transform-origin: center;
-  animation: animateHeartOut .3s linear forwards;
+	transform-origin: center;
+	animation: animateHeartOut .3s linear forwards;
 }
 
 svg #main-circ {
-  transform-origin: 29.5px 29.5px;
+	transform-origin: 29.5px 29.5px;
 }
 
 .checkbox {
-  display: none;
+	display: none;
 }
 
 .checkbox:checked+label svg #heart {
-  transform: scale(0.2);
-  fill: #E2264D;
-  animation: animateHeart .3s linear forwards .25s;
+	transform: scale(0.2);
+	fill: #E2264D;
+	animation: animateHeart .3s linear forwards .25s;
 }
 
 .checkbox:checked+label svg #main-circ {
-  transition: all 2s;
-  animation: animateCircle .3s linear forwards;
-  opacity: 1;
+	transition: all 2s;
+	animation: animateCircle .3s linear forwards;
+	opacity: 1;
 }
 
 .checkbox:checked+label svg #heartgroup1 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup1 #heart1 {
-  transform: scale(0) translate(0, -30px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(0, -30px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup1 #heart2 {
-  transform: scale(0) translate(10px, -50px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(10px, -50px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup2 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup2 #heart1 {
-  transform: scale(0) translate(30px, -15px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(30px, -15px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup2 #heart2 {
-  transform: scale(0) translate(60px, -15px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(60px, -15px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup3 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup3 #heart1 {
-  transform: scale(0) translate(30px, 0px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(30px, 0px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup3 #heart2 {
-  transform: scale(0) translate(60px, 10px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(60px, 10px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup4 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup4 #heart1 {
-  transform: scale(0) translate(30px, 15px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(30px, 15px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup4 #heart2 {
-  transform: scale(0) translate(40px, 50px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(40px, 50px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup5 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup5 #heart1 {
-  transform: scale(0) translate(-10px, 20px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(-10px, 20px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup5 #heart2 {
-  transform: scale(0) translate(-60px, 30px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(-60px, 30px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup6 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup6 #heart1 {
-  transform: scale(0) translate(-30px, 0px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(-30px, 0px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup6 #heart2 {
-  transform: scale(0) translate(-60px, -5px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(-60px, -5px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup7 {
-  opacity: 1;
-  transition: .1s all .3s;
+	opacity: 1;
+	transition: .1s all .3s;
 }
 
 .checkbox:checked+label svg #heartgroup7 #heart1 {
-  transform: scale(0) translate(-30px, -15px);
-  transform-origin: 0 0 0;
-  transition: .5s transform .3s;
+	transform: scale(0) translate(-30px, -15px);
+	transform-origin: 0 0 0;
+	transition: .5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup7 #heart2 {
-  transform: scale(0) translate(-55px, -30px);
-  transform-origin: 0 0 0;
-  transition: 1.5s transform .3s;
+	transform: scale(0) translate(-55px, -30px);
+	transform-origin: 0 0 0;
+	transition: 1.5s transform .3s;
 }
 
 .checkbox:checked+label svg #heartgroup2 {
-  opacity: 1;
-  transition: .1s opacity .3s;
+	opacity: 1;
+	transition: .1s opacity .3s;
 }
 
 .checkbox:checked+label svg #heartgroup3 {
-  opacity: 1;
-  transition: .1s opacity .3s;
+	opacity: 1;
+	transition: .1s opacity .3s;
 }
 
 .checkbox:checked+label svg #heartgroup4 {
-  opacity: 1;
-  transition: .1s opacity .3s;
+	opacity: 1;
+	transition: .1s opacity .3s;
 }
 
 .checkbox:checked+label svg #heartgroup5 {
-  opacity: 1;
-  transition: .1s opacity .3s;
+	opacity: 1;
+	transition: .1s opacity .3s;
 }
 
 .checkbox:checked+label svg #heartgroup6 {
-  opacity: 1;
-  transition: .1s opacity .3s;
+	opacity: 1;
+	transition: .1s opacity .3s;
 }
 
 .checkbox:checked+label svg #heartgroup7 {
-  opacity: 1;
-  transition: .1s opacity .3s;
+	opacity: 1;
+	transition: .1s opacity .3s;
 }
 
 @keyframes animateCircle {
@@ -434,17 +427,14 @@ svg #main-circ {
   } 
 }
 
-  
 /* ***** 더보기 ***** */
 .songDetail {
-  display: none;
+	display: none;
 }
 
 .noContent {
-  color: #fff;
+	color: #fff;
 }
-
-
 
 /* 
 
@@ -452,86 +442,149 @@ svg #main-circ {
   Game Details Style
   --------------------------------------------- 
   */
-
-  .game-details h2 {
-    font-size: 45px;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 60px 0px;
-  }
-
-  .game-details .content {
-    border-radius: 23px;
-    padding: 30px;
-    background-color: #1f2122;
-  }
-
-  .game-details .content .left-info {
-    background-color: #27292a;
-    border-radius: 23px;
-    padding: 30px;
-    margin-bottom: 30px;
-  }
-
-  .game-details .content .left-info .left {
-    float: left;
-  }
-
-  .game-details .content .left-info h4 {
-    font-size: 15px;
-    display: block;
-    margin-top: 20px;
+.game-details h2 {
+	font-size: 45px;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 60px 0px;
 }
 
-  .game-details .content .left-info span {
-    color: #666;
-    display: block;
-    margin-top: 7px;
-    font-weight: 400;
-  }
+.game-details .content {
+	border-radius: 23px;
+	padding: 30px;
+	background-color: #1f2122;
+}
 
-  .game-details .content .left-info ul {
-    text-align: right;
-  }
+.game-details .content .left-info {
+	background-color: #27292a;
+	border-radius: 23px;
+	padding: 30px;
+	margin-bottom: 0px;
+}
 
-  .game-details .content .left-info ul li {
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 3px;
-  }
+.game-details .content .left-info .left {
+	float: left;
+}
 
-  .game-details .content .left-info ul li:first-child i {
-    color: yellow;
-  }
+.col-lg-9 .left-info .right {
+	float: right;
+	padding-top: 30px;
+}
 
-  .fa-download{
-    color: #ec6090;
-  }
+.game-details .content .left-info h4 {
+	font-size: 15px;
+	display: block;
+	margin-top: 20px;
+}
 
-  .game-details .content .right-info {
-    background-color: #27292a;
-    border-radius: 23px;
-    padding: 30px;
-    margin-bottom: 30px;
-  }
+.game-details .content .left-info span {
+	color: #666;
+	display: block;
+	margin-top: 7px;
+	font-weight: 400;
+}
 
-  .game-details .content .right-info .playlist .songDetail ul li {
-    display: inline-block;
-    width: 15%;
-    text-align: center;
-    font-size: 14px;
-    color: #fff;
-  }
+.game-details .content .left-info ul {
+	text-align: right;
+}
 
-  .game-details .content .right-info ul li i {
-    display: block;
-    margin-bottom: 12px;
-  }
+.game-details .content .left-info ul li {
+	color: #fff;
+	font-size: 14px;
+	margin-bottom: 3px;
+}
 
-  .game-details .content .right-info ul li:first-child i {
-    color: yellow;
-  }
+.game-details .content .right-info {
+	background-color: #27292a;
+	border-radius: 23px;
+	padding: 30px;
+	margin-top: 30px;
+}
 
-  .game-details .content .right-info ul li i {
-    color: #ec6090;
-  }
+.game-details .content .right-info .playlist .songDetail ul li {
+	display: inline-block;
+	width: 15%;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+}
+
+.game-details .content .right-info ul li i {
+	display: block;
+	margin-bottom: 12px;
+}
+
+.game-details .content .right-info ul li:first-child i {
+	color: yellow;
+}
+
+.game-details .content .right-info ul li i {
+	color: #ec6090;
+}
+
+/* 부트스트랩의 row에 대한 추가 스타일 */
+.row {
+	display: flex;
+	align-items: center; /* 수직 중앙 정렬 */
+}
+
+/* 이미지 스타일링 */
+.col-lg-3 img {
+	width: 100%; /* 이미지가 컨테이너의 100% 크기를 차지하도록 설정 */
+	height: auto; /* 이미지의 원본 비율을 유지 */
+}
+
+/* 내용 영역 스타일링 */
+.col-lg-9 {
+	display: flex;
+	flex-direction: column; /* 내부 요소들을 세로로 정렬 */
+	justify-content: center; /* 세로 방향 중앙 정렬 */
+}
+
+/* *** 사용자 입력 해시태그 *** */
+.label-info {
+  background-color: #e75e8d;
+  padding: 4px;
+}
+
+.inputContainer {
+  width: 100%;
+}
+
+.inputContainer .bootstrap-tagsinput {
+  display: flex; /* Flexbox 사용하여 가로로 배치 */
+  flex-wrap: wrap; /* 필요 시 줄바꿈 */
+  width: 100%;
+  /* padding: 4px; */
+  border: 1px solid #ccc; /* 테두리 추가 */
+  border-radius: 0.7rem;
+}
+
+.inputContainer .bootstrap-tagsinput .tag {
+  display: flex; /* Flexbox 사용하여 태그와 닫기 버튼을 같은 줄에 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+ /*  margin-right: 5px;
+  margin-bottom: 5px; 필요 시 아래쪽 여백도 추가
+  padding: 3px; */
+  border-radius: 0.7rem;
+  color: #fff; /* 텍스트 색상 */ 
+  background-color: #e75e8d; /* 배경 색상 */
+  margin: 0auto;
+}
+
+.inputContainer .bootstrap-tagsinput .tag span {
+	display: inline;
+	color: #fff;
+	margin-left: 5px; /* 닫기 버튼과 텍스트 사이의 여백 */
+	cursor: pointer; /* 닫기 버튼에 마우스 커서 추가 */
+}
+
+.game-details .content .inputContainer span {
+	color: #fff;
+	display: inline;
+	/* margin-top: 7px; */
+	font-weight: 200;
+	margin: 0px 3px;
+	border-radius: 0.5rem;
+}
+
