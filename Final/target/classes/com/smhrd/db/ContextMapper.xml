@@ -2,6 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.ContextMapper">
 
+    <!-- Retrieve data for Chart.js -->
+    <select id="chartjs" parameterType="com.smhrd.model.MemberVO" resultType="com.smhrd.model.ContextVO">
+        SELECT surIdx 
+        FROM tb_context
+        WHERE memId = #{memId}
+    </select>
+    
+    <select id="getContextIdx" parameterType="com.smhrd.model.MemberVO" resultType="com.smhrd.model.ContextVO">
+        SELECT contextIdx
+        FROM tb_context
+        WHERE memId = #{memId}
+    </select>
+
 	<insert id="insertContext" parameterType="map">
         INSERT INTO tb_context(memId, surIdx) VALUES(#{memId}, #{surIdx})
     </insert>
