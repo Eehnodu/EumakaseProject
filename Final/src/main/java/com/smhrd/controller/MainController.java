@@ -5,6 +5,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -216,7 +217,63 @@ public class MainController {
 	}
 
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model, HttpSession session) {
+		MemberVO memvo = (MemberVO) session.getAttribute("member");
+		if (memvo == null) {
+			return "redirect:/";
+		}
+		String memId = memvo.getMemId();
+		
+		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);// 
+		model.addAttribute("myplayList", myplayListIdx);
+		
+		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
+		model.addAttribute("myplayListalbumCov", mymusic);
+		System.out.println(model);
+		
+		for (MusicVO ply : mymusic) {
+			System.out.println(ply.getTitle());
+		}
+		
+//		List<Integer> Idx = new LinkedList<>();
+//		List<Integer> mymusicIdx = new LinkedList<>();
+//		
+//		for (MyPlaylistVO ply : myplayListIdx) {
+//			System.out.println(ply);
+//			Idx.add(ply.getMyplIdx());
+//		}
+//		
+//		List<AiPlaylistVO> myplayList = aiplaylistMapper.getMyPl(Idx);
+//		
+//		System.out.println(myplayList);
+//		
+//		for (AiPlaylistVO ply : myplayList) {
+//			mymusicIdx.add(ply.getMusicIdx());
+//		}
+//		
+//		List<MusicVO> myMusic = musicMapper.getMyMusic(mymusicIdx);
+//		
+//		
+//		System.out.println(myMusic);
+//		for (MusicVO ply : myMusic) {
+//			ply.getAlbumCov();
+//			ply.getArtist();
+//			ply.getTitle();
+//		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return "mypage";
 	}
 
