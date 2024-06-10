@@ -47,7 +47,7 @@
 	
 	<!-- 자동 추천 결과에 쓰일 음원 정보 가져오기 -->
 	<select id="getRecMusic" parameterType="com.smhrd.model.MusicVO" resultType="com.smhrd.model.MusicVO">
-		SELECT musicIdx, title, artist, album, genre, releasedAt FROM tb_music WHERE artist LIKE CONCAT('%', #{artist}, '%') AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
+		SELECT musicIdx, albumCov, title, artist, album, genre, releasedAt FROM tb_music WHERE artist LIKE CONCAT('%', #{artist}, '%') AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
 	</select>
 	
 </mapper>

@@ -61,13 +61,13 @@
 										<div class="col-lg-9">
 											<div class="left-info">
 												<div class="left" id="left">
-													<h3 id="playlist">-</h3>
+													<h3 id="playlist">확인</h3>
 													<h4>작성자</h4>
-													<span>-</span>
+													<span>확인</span>
 													<h4>작성일자</h4>
 
-													<span>-</span>
-													<h4>-</h4>
+													<span>확인</span>
+													<h4>확인</h4>
 
 												</div>
 											</div>
@@ -80,7 +80,7 @@
 										<div class="gaming-library" id="gaming-playlist">
 											<div class="right-info">
 												<!-- 각 곡의 정보를 반복해서 출력 -->
-												<c:forEach var="music" items="${userPlaylistList}"
+												<c:forEach var="music" items="${recMusicList}"
 													varStatus="status">
 													<div class="col-lg-12 playlist">
 														<div class="item songDetail">

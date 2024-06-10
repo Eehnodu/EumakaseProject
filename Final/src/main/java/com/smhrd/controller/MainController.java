@@ -3,6 +3,7 @@ package com.smhrd.controller;
 import java.nio.file.spi.FileSystemProvider;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -238,7 +239,8 @@ public class MainController {
 		// 장르와 선택지 리스트 가져오기
 		List<SurveyVO> surveyList = surveyMapper.getRecSurvey();
 		List<SurveyVO> genreList = surveyMapper.getSeasonGenre();
-		
+
+		// Map을 사용하여 설문 항목을 저장
 		Map<String, List<String>> surveyMap = new HashMap<>();
 		surveyMap.put("emotion", new ArrayList<>());
 		surveyMap.put("situation", new ArrayList<>());
@@ -246,10 +248,10 @@ public class MainController {
 		surveyMap.put("people", new ArrayList<>());
 
 		for (SurveyVO survey : surveyList) {
-		    List<String> list = surveyMap.get(survey.getSurItem());
-		    if (list != null) {
-		        list.add(survey.getSurDesc());
-		    }
+			List<String> list = surveyMap.get(survey.getSurItem());
+			if (list != null) {
+				list.add(survey.getSurDesc());
+			}
 		}
 
 		Random random = new Random();
@@ -258,76 +260,84 @@ public class MainController {
 		List<List<String>> allRecList = new ArrayList<>();
 		List<String> allSurveyList = new ArrayList<>();
 
-		for (SurveyVO genre : genreList) {
-		    String recGen = genre.getSurDesc();
-		    
-		    // 각 항목별로 랜덤 선택
-		    String recEmotion = surveyMap.get("emotion").get(random.nextInt(surveyMap.get("emotion").size()));
-		    String recSituation = surveyMap.get("situation").get(random.nextInt(surveyMap.get("situation").size()));
-		    String recPlace = surveyMap.get("place").get(random.nextInt(surveyMap.get("place").size()));
-		    String recPeople = surveyMap.get("people").get(random.nextInt(surveyMap.get("people").size()));
+		// 장르 인덱스를 포함하여 리스트 생성
+		List<Map.Entry<Integer, SurveyVO>> indexedGenreList = new ArrayList<>();
+		for (int i = 0; i < genreList.size(); i++) {
+			indexedGenreList.add(new AbstractMap.SimpleEntry<>(i, genreList.get(i)));
+		}
 
-		    String recStr = recEmotion + " " + recSituation + " " + recPlace + " " + recPeople;
-		    
-		    // 각 단어 앞에 '#' 추가
-		    String recSurvey = ("#" + recStr.replaceAll(" ", " #") + " #" + recGen).trim();
-		    
-		    // Flask API 호출
-		    String url = "http://localhost:5000/recommend";
+		for (Map.Entry<Integer, SurveyVO> entry : indexedGenreList) {
+			int genreIndex = entry.getKey();
+			String recGen = entry.getValue().getSurDesc();
 
-		    // 요청 바디 생성
-		    Map<String, String> requestBody = new HashMap<>();
-		    requestBody.put("keywords", recStr);
-		    requestBody.put("genre", recGen);
+			// 각 항목별로 랜덤 선택
+			String recEmotion = surveyMap.get("emotion").get(random.nextInt(surveyMap.get("emotion").size()));
+			String recSituation = surveyMap.get("situation").get(random.nextInt(surveyMap.get("situation").size()));
+			String recPlace = surveyMap.get("place").get(random.nextInt(surveyMap.get("place").size()));
+			String recPeople = surveyMap.get("people").get(random.nextInt(surveyMap.get("people").size()));
 
-		    // HttpHeaders 설정
-		    HttpHeaders headers = new HttpHeaders();
-		    headers.add("Content-Type", "application/json");
+			String recStr = recEmotion + " " + recSituation + " " + recPlace + " " + recPeople;
 
-		    // 요청 엔티티 생성
-		    HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+			// 각 단어 앞에 '#' 추가
+			String recSurvey = ("#" + recStr.replaceAll(" ", " #") + " #" + recGen).trim();
 
-		    // 요청 보내기 및 응답 받기
-		    ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String[].class);
+			// Flask API 호출
+			String url = "http://localhost:5000/recommend";
 
-		    // 추천 결과를 모델에 추가
-		    String[] recommendations = responseEntity.getBody();
-		    List<String> recList = Arrays.asList(recommendations);
-		    allRecList.add(recList);
-		    allSurveyList.add(recSurvey);
+			// 요청 바디 생성
+			Map<String, String> requestBody = new HashMap<>();
+			requestBody.put("keywords", recStr);
+			requestBody.put("genre", recGen);
+
+			// HttpHeaders 설정
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "application/json");
+
+			// 요청 엔티티 생성
+			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+			// 요청 보내기 및 응답 받기
+			ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+					String[].class);
+
+			// 추천 결과를 모델에 추가
+			String[] recommendations = responseEntity.getBody();
+			List<String> recList = Arrays.asList(recommendations);
+			allRecList.add(recList);
+			allSurveyList.add(recSurvey);
 		}
 
 		// 각 장르별 추천 리스트를 세션에 저장, 장르를 세션에 저장(페이지 이동에 사용할 예정)
 		session.setAttribute("recommendationMusic", allRecList);
 		session.setAttribute("recSurvey", allSurveyList);
+		session.setAttribute("indexedGenreList", indexedGenreList);
 
 		// 추천 받은 노래의 음원 정보 가져오기
 		List<List<MusicVO>> allRecMusicList = new ArrayList<>();
 		for (List<String> recList : allRecList) {
-		    List<MusicVO> recMusicList = new ArrayList<>();
-		    for (String list : recList) {
-		        MusicVO musicvo = new MusicVO();
-		        String[] parts = list.split(" - ", 2);
-		        if (parts.length == 2) {
-		            musicvo.setArtist(parts[0]); // 가수
-		            musicvo.setTitle(parts[1]); // 곡명
-		        } else {
-		            // 만약 구분자가 없는 경우 (예외 처리)
-		            musicvo.setArtist(list);
-		            musicvo.setTitle("");
-		        }
-		        // MusicVO에서 일치하는 정보 가져와야함
-		        MusicVO musicFromDB = musicMapper.getRecMusic(musicvo);
-		        if (musicFromDB != null) {
-		            recMusicList.add(musicFromDB);
-		        }
-		    }
-		    allRecMusicList.add(recMusicList);
+			List<MusicVO> recMusicList = new ArrayList<>();
+			for (String list : recList) {
+				MusicVO musicvo = new MusicVO();
+				String[] parts = list.split(" - ", 2);
+				if (parts.length == 2) {
+					musicvo.setArtist(parts[0]); // 가수
+					musicvo.setTitle(parts[1]); // 곡명
+				} else {
+					// 만약 구분자가 없는 경우 (예외 처리)
+					musicvo.setArtist(list);
+					musicvo.setTitle("");
+				}
+				// MusicVO에서 일치하는 정보 가져와야함
+				MusicVO musicFromDB = musicMapper.getRecMusic(musicvo);
+				if (musicFromDB != null) {
+					recMusicList.add(musicFromDB);
+				}
+			}
+			allRecMusicList.add(recMusicList);
 		}
 
-		// 각 장르별로 가져온 음원의 정보를 'recMusicList'라는 모델에 추가
+		// 각 장르별로 가져온 음원의 정보를 'recMusic'라는 세션에 추가
 		session.setAttribute("recMusic", allRecMusicList);
-		
 
 		// 다른 사람은 뭐듣지? 값 가져오기
 		MemberVO memvo = (MemberVO) session.getAttribute("member");
@@ -408,6 +418,21 @@ public class MainController {
 		} catch (Exception e) {
 			return "redirect:/";
 		}
+	}
+
+	@GetMapping("/recPlayList")
+	public String recPlaylist(@RequestParam("genreIndex") int genreIndex, HttpSession session, Model model) {
+		// 세션에서 추천 음악 리스트를 가져옴
+		List<List<MusicVO>> allRecMusicList = (List<List<MusicVO>>) session.getAttribute("recMusic");
+
+		if (allRecMusicList != null && genreIndex < allRecMusicList.size()) {
+			// 해당 인덱스의 추천 음악 리스트를 가져옴
+			List<MusicVO> recMusicList = allRecMusicList.get(genreIndex);
+			// 추천 음악 리스트를 모델에 추가
+			model.addAttribute("recMusicList", recMusicList);
+		}
+
+		return "recPlaylist"; // recPlaylist.jsp로 포워딩
 	}
 
 	@GetMapping("/AIrecommend")
