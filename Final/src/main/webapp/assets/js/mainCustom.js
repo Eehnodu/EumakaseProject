@@ -83,48 +83,58 @@ $('.filters ul li').click(function() {
       }
    });
 
-   $('.owl-features').owlCarousel({
-      items: 3,
-      loop: true,
-      dots: false,
-      nav: true,
-      autoplay: false,
-      margin: 30,
-      responsive: {
-         0: {
-            items: 1
-         },
-         600: {
-            items: 2
-         },
-         1200: {
-            items: 4
-         },
-         1800: {
-            items: 4
-         }
+   $(document).ready(function(){
+  $('.owl-collection').owlCarousel({
+    items: 3,
+    loop: true,
+    dots: false,
+    nav: true,
+    autoplay: false,
+    margin: 30,
+    autoplayTimeout: 5000, // 자동 재생 간격 (밀리초 단위)
+    autoplaySpeed: 1000, // 자동 재생 속도 (밀리초 단위)
+    responsive: {
+      0: {
+        items: 1
+      },
+      800: {
+        items: 3
+      },
+      1000: {
+        items: 4
       }
-   })
+    }
+  });
+});
 
-   $('.owl-collection').owlCarousel({
-      items: 3,
-      loop: true,
-      dots: false,
-      nav: true,
-      autoplay: false,
-      margin: 30,
-      responsive: {
-         0: {
-            items: 1
-         },
-         800: {
-            items: 3
-         },
-         1000: {
-            items: 4
-         }
-      }
-   })
+ $(document).ready(function(){
+    $('.owl-features').owlCarousel({
+        items: 3,
+        loop: true,
+        dots: false,
+        nav: true,
+        autoplay: false,
+        margin: 30,
+        autoplayTimeout: 5000, // 자동 재생 간격 (밀리초 단위)
+        autoplaySpeed: 1000, // 자동 재생 속도 (밀리초 단위)
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 4
+            }
+        }
+    });
+});
+
+
+
+
+
 
 
    /*$('.owl-banner').owlCarousel({

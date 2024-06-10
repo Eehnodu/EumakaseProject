@@ -9,10 +9,21 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
 <title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<!-- Owl Carousel JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/mainPage.css">
 <link rel="stylesheet" href="assets/css/fourimg.css">
@@ -54,86 +65,97 @@
 												<em>최근에 들은</em> playlist
 											</h4>
 										</div>
-										<div class="owl-collection">
-											<div class="owl-features owl-carousel">
-												<div class="item">
-													<div class="thumb">
-														<img src="assets/images/featured-01.jpg" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
+										<div class="owl-features owl-carousel owl-collection">
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-01.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
 													</div>
-													<h4>
-														내가 지은 플리 이름<br> <span>플리에 대한 추가 설명</span>
-													</h4>
 												</div>
-												<div class="item">
-													<div class="thumb">
-														<img src="assets/images/featured-02.jpg" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
+												<h4>
+													내가 지은 플리 이름<br> <span>플리에 대한 추가 설명</span>
+												</h4>
+											</div>
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-02.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
 													</div>
-													<h4>
-														저녁 드라이브<br> <span>#시티팝 #R&B</span>
-													</h4>
 												</div>
-												<div class="item">
-													<div class="thumb">
-														<img src="assets/images/featured-03.jpg" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
+												<h4>
+													저녁 드라이브<br> <span>#시티팝</span>
+												</h4>
+											</div>
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-03.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
 													</div>
-													<h4>
-														헬스장<br> <span>#외힙</span>
-													</h4>
 												</div>
-												<div class="item">
-													<div class="thumb">
-														<img src="assets/images/featured-01.jpg" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
+												<h4>
+													헬스장<br> <span>#외힙</span>
+												</h4>
+											</div>
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-01.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
 													</div>
-													<h4>
-														여돌 모음집<br> <span>#여돌</span>
-													</h4>
 												</div>
-												<div class="item">
-													<div class="thumb">
-														<img src="assets/images/featured-02.jpg" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
+												<h4>
+													여돌 모음집<br> <span>#여돌</span>
+												</h4>
+											</div>
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-02.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
 													</div>
-													<h4>
-														퇴근길<br> <span>#신나는</span>
-													</h4>
 												</div>
-												<div class="item">
-													<div class="thumb">
-														<img src="assets/images/featured-03.jpg" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
+												<h4>
+													퇴근길<br> <span>#신나는</span>
+												</h4>
+											</div>
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-03.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
 													</div>
-													<h4>
-														여름 드라이브<br> <span>#신나는</span>
-													</h4>
 												</div>
+												<h4>
+													여름 드라이브<br> <span>#신나는</span>
+												</h4>
+											</div>
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/featured-03.jpg" alt="">
+													<div class="hover-effect">
+														<h6>
+															<a href="#"></a>지금 듣기
+														</h6>
+													</div>
+												</div>
+												<h4>
+													여름 드라이브<br> <span>#신나는</span>
+												</h4>
 											</div>
 										</div>
 									</div>
@@ -150,7 +172,7 @@
 								<div class="featured-games header-text">
 									<div class="heading-section">
 										<h4>
-											<em>오늘의</em> 추천 playlist
+											<em>오늘의</em> 추천 노래
 										</h4>
 									</div>
 
@@ -256,14 +278,14 @@
 											<div class="item">
 												<a href="${cpath}/userPlaylist?myplIdx=${otherIdx.myplIdx}">
 													<div class="image-grid">
-														<c:forEach var="albumCov" items="${otherAlbumCovList[status.index]}">
-									                        <div class="thumb">
-									                            <img src="${albumCov}" alt="">
-									                        </div>
-									                    </c:forEach>
+														<c:forEach var="albumCov"
+															items="${otherAlbumCovList[status.index]}">
+															<div class="thumb">
+																<img src="${albumCov}" alt="">
+															</div>
+														</c:forEach>
 													</div>
-													<h4>
-														${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
+													<h4>${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
 													</h4>
 													<ul>
 														<li><i class="fa fa-star"></i> 4.8</li>
@@ -274,18 +296,17 @@
 										</c:forEach>
 									</div>
 								</div>
-
-
-								<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
-
-
-
-
 							</div>
+
+							<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
+
+
+
+
+
 						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 			<!-- Scripts -->
 
@@ -299,13 +320,6 @@
 	</c:choose>
 
 	<!-- Scripts -->
-
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
-
 
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
