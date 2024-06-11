@@ -76,6 +76,12 @@ public class MainController {
 
 	@GetMapping("/")
 	public String intro(Model model, HttpSession session) {
+		
+		MemberVO memvo = (MemberVO) session.getAttribute("member");
+		if (memvo != null) {
+			return "redirect:/mainPage";
+		}
+		
 		try {
 			// 현재 날짜에서 월을 가져오기
 			LocalDate currentDate = LocalDate.now();
