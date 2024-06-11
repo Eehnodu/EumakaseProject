@@ -139,15 +139,15 @@
 
 	<!-- Scripts -->
 
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/loadMore.js"></script>
-	<script src="assets/js/chartGenre.js"></script>
-	<script src="assets/js/chartPrefernce.js"></script>
-	<script src="assets/js/chartfunction.js"></script>
+	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>
