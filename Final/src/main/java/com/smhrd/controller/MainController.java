@@ -1,7 +1,9 @@
 package com.smhrd.controller;
 
+import java.nio.file.spi.FileSystemProvider;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,6 +42,7 @@ import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
 import com.smhrd.model.MyPlaylistVO;
 import com.smhrd.model.SurveyVO;
+import com.smhrd.restcontroller.MemberRestController;
 
 @Controller
 public class MainController {
@@ -178,19 +181,6 @@ public class MainController {
 		return "join";
 	}
 
-	@PostMapping("/joinProcess")
-	public String join(MemberVO vo, HttpSession session) {
-
-		session.getAttribute("member");
-
-		/*
-		 * mapper.join(vo); vo.setMemPw(null); vo.setGender(null);
-		 * session.setAttribute("member", vo);
-		 */
-
-		return "redirect:/mainPage";
-	}
-
 	@PostMapping("/login")
 	public String login(@RequestParam("loginId") String memId, @RequestParam("loginPw") String memPw,
 			HttpSession session, RedirectAttributes redirectAttributes) {
@@ -198,7 +188,6 @@ public class MainController {
 		vo.setMemId(memId);
 		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
-
 
 		if (result != null) {
 			session.setAttribute("member", result);
@@ -222,17 +211,123 @@ public class MainController {
 			return "redirect:/";
 		}
 		String memId = memvo.getMemId();
-		
-		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);// 
+
+		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);//
 		model.addAttribute("myplayList", myplayListIdx);
-		
+
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
 		model.addAttribute("myplayListalbumCov", mymusic);
+
 		return "mypage";
 	}
 
 	@GetMapping("/mainPage")
 	public String mainPage(HttpSession session) {
+
+		// 중간에 장르 자동 추천
+		// 장르와 선택지 리스트 가져오기
+		List<SurveyVO> surveyList = surveyMapper.getRecSurvey();
+		List<SurveyVO> genreList = surveyMapper.getSeasonGenre();
+
+		// Map을 사용하여 설문 항목을 저장
+		Map<String, List<String>> surveyMap = new HashMap<>();
+		surveyMap.put("emotion", new ArrayList<>());
+		surveyMap.put("situation", new ArrayList<>());
+		surveyMap.put("place", new ArrayList<>());
+		surveyMap.put("people", new ArrayList<>());
+
+		for (SurveyVO survey : surveyList) {
+			List<String> list = surveyMap.get(survey.getSurItem());
+			if (list != null) {
+				list.add(survey.getSurDesc());
+			}
+		}
+
+		Random random = new Random();
+
+		// 각 장르에 대한 추천 리스트를 담을 리스트
+		List<List<String>> allRecList = new ArrayList<>();
+		List<String> allSurveyList = new ArrayList<>();
+
+		// 장르 인덱스를 포함하여 리스트 생성
+		List<Map.Entry<Integer, SurveyVO>> indexedGenreList = new ArrayList<>();
+		for (int i = 0; i < genreList.size(); i++) {
+			indexedGenreList.add(new AbstractMap.SimpleEntry<>(i, genreList.get(i)));
+		}
+
+		for (Map.Entry<Integer, SurveyVO> entry : indexedGenreList) {
+			int genreIndex = entry.getKey();
+			String recGen = entry.getValue().getSurDesc();
+
+			// 각 항목별로 랜덤 선택
+			String recEmotion = surveyMap.get("emotion").get(random.nextInt(surveyMap.get("emotion").size()));
+			String recSituation = surveyMap.get("situation").get(random.nextInt(surveyMap.get("situation").size()));
+			String recPlace = surveyMap.get("place").get(random.nextInt(surveyMap.get("place").size()));
+			String recPeople = surveyMap.get("people").get(random.nextInt(surveyMap.get("people").size()));
+
+			String recStr = recEmotion + " " + recSituation + " " + recPlace + " " + recPeople;
+
+			// 각 단어 앞에 '#' 추가
+			String recSurvey = ("#" + recStr.replaceAll(" ", " #") + " #" + recGen).trim();
+
+			// Flask API 호출
+			String url = "http://localhost:5000/recommend";
+
+			// 요청 바디 생성
+			Map<String, String> requestBody = new HashMap<>();
+			requestBody.put("keywords", recStr);
+			requestBody.put("genre", recGen);
+
+			// HttpHeaders 설정
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "application/json");
+
+			// 요청 엔티티 생성
+			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+			// 요청 보내기 및 응답 받기
+			ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+					String[].class);
+
+			// 추천 결과를 모델에 추가
+			String[] recommendations = responseEntity.getBody();
+			List<String> recList = Arrays.asList(recommendations);
+			allRecList.add(recList);
+			allSurveyList.add(recSurvey);
+		}
+
+		// 각 장르별 추천 리스트를 세션에 저장, 장르를 세션에 저장(페이지 이동에 사용할 예정)
+		session.setAttribute("recommendationMusic", allRecList);
+		session.setAttribute("recSurvey", allSurveyList);
+		session.setAttribute("indexedGenreList", indexedGenreList);
+
+		// 추천 받은 노래의 음원 정보 가져오기
+		List<List<MusicVO>> allRecMusicList = new ArrayList<>();
+		for (List<String> recList : allRecList) {
+			List<MusicVO> recMusicList = new ArrayList<>();
+			for (String list : recList) {
+				MusicVO musicvo = new MusicVO();
+				String[] parts = list.split(" - ", 2);
+				if (parts.length == 2) {
+					musicvo.setArtist(parts[0]); // 가수
+					musicvo.setTitle(parts[1]); // 곡명
+				} else {
+					// 만약 구분자가 없는 경우 (예외 처리)
+					musicvo.setArtist(list);
+					musicvo.setTitle("");
+				}
+				// MusicVO에서 일치하는 정보 가져와야함
+				MusicVO musicFromDB = musicMapper.getRecMusic(musicvo);
+				if (musicFromDB != null) {
+					recMusicList.add(musicFromDB);
+				}
+			}
+			allRecMusicList.add(recMusicList);
+		}
+
+		// 각 장르별로 가져온 음원의 정보를 'recMusic'라는 세션에 추가
+		session.setAttribute("recMusic", allRecMusicList);
+
 		// 다른 사람은 뭐듣지? 값 가져오기
 		MemberVO memvo = (MemberVO) session.getAttribute("member");
 
@@ -314,6 +409,21 @@ public class MainController {
 		}
 	}
 
+	@GetMapping("/recPlayList")
+	public String recPlaylist(@RequestParam("genreIndex") int genreIndex, HttpSession session, Model model) {
+		// 세션에서 추천 음악 리스트를 가져옴
+		List<List<MusicVO>> allRecMusicList = (List<List<MusicVO>>) session.getAttribute("recMusic");
+
+		if (allRecMusicList != null && genreIndex < allRecMusicList.size()) {
+			// 해당 인덱스의 추천 음악 리스트를 가져옴
+			List<MusicVO> recMusicList = allRecMusicList.get(genreIndex);
+			// 추천 음악 리스트를 모델에 추가
+			model.addAttribute("recMusicList", recMusicList);
+		}
+
+		return "recPlaylist"; // recPlaylist.jsp로 포워딩
+	}
+
 	@GetMapping("/AIrecommend")
 	public String AIrecommend(Model model) {
 		Random ran = new Random();
@@ -364,9 +474,29 @@ public class MainController {
 
 		// myplIdx는 pl의 고유값 myplIdx
 		MyPlaylistVO userPl = myplaylistMapper.getUserPlaylist(myplIdx);
+		
 		String memId = userPl.getMemId();
 		MemberVO memvo = mapper.getUserInfo(memId);
 		String name = memvo.getName();
+
+		MemberVO crudcheck = (MemberVO) session.getAttribute("member");
+		
+		MyPlaylistVO mvo = new MyPlaylistVO();
+		
+		if (userPl.getMemId().equals(crudcheck.getMemId())) {
+			model.addAttribute("crud", true);
+			mvo.setMyplIdx(userPl.getMyplIdx());
+			mvo.setPlName("변경할 plName");
+			model.addAttribute("mvo", mvo);
+			//myplaylistMapper.updateMyPlayList(mvo);
+			
+			//MemberRestController memberRestController = new MemberRestController();
+			//memberRestController.updateMyPlayList("plName", mvo);
+			
+			
+		}else {
+			model.addAttribute("crud", false);
+		}
 
 		// pl에 해당되는 mypl 정보 가져오기
 		MyPlaylistVO otherIdx = myplaylistMapper.getUserPlaylist(myplIdx);
@@ -378,27 +508,27 @@ public class MainController {
 		List<Integer> userMusicIdxList = new ArrayList<>();
 
 		if (!userPlList.isEmpty()) {
-		    AiPlaylistVO tempPl = userPlList.get(0);
+			AiPlaylistVO tempPl = userPlList.get(0);
 
-		    // 각 contextIdx에 대한 surIdx 값을 가져오기
-		    int[] contextIdxArray = { tempPl.getContextIdx(), tempPl.getContextIdx2(), tempPl.getContextIdx3(),
-		            tempPl.getContextIdx4(), tempPl.getContextIdx5() };
+			// 각 contextIdx에 대한 surIdx 값을 가져오기
+			int[] contextIdxArray = { tempPl.getContextIdx(), tempPl.getContextIdx2(), tempPl.getContextIdx3(),
+					tempPl.getContextIdx4(), tempPl.getContextIdx5() };
 
-		    for (int contextIdx : contextIdxArray) {
-		        userSurIdxList.add(contextMapper.getOtherSurIdx(contextIdx).getSurIdx());
-		    }
+			for (int contextIdx : contextIdxArray) {
+				userSurIdxList.add(contextMapper.getOtherSurIdx(contextIdx).getSurIdx());
+			}
 
-		    // playlist에서 musicIDx 가져오기
-		    for (AiPlaylistVO userPlay: userPlList) {
-		        userMusicIdxList.add(userPlay.getMusicIdx());
-		    }
+			// playlist에서 musicIDx 가져오기
+			for (AiPlaylistVO userPlay : userPlList) {
+				userMusicIdxList.add(userPlay.getMusicIdx());
+			}
 		}
 
 		// 가져온 surIdx를 통해서 surDesc정보 가져오기
 		StringBuilder userSurDesc = new StringBuilder();
 		for (int surIdx : userSurIdxList) {
-		    // surIdx에 해당하는 Desc값 가져오기
-		    userSurDesc.append("#").append(surveyMapper.getOtherSurDesc(surIdx).getSurDesc()).append(" ");
+			// surIdx에 해당하는 Desc값 가져오기
+			userSurDesc.append("#").append(surveyMapper.getOtherSurDesc(surIdx).getSurDesc()).append(" ");
 		}
 
 		// 가져온 musicIdx를 이용해서 playlist 가져오기
@@ -406,10 +536,10 @@ public class MainController {
 		// albumCov 값을 저장할 리스트
 		List<String> userAlbumCovList = new ArrayList<>();
 		for (int musicIdx : userMusicIdxList) {
-		    userPlaylistList.add(musicMapper.getUserPlaylist(musicIdx));
-		    userAlbumCovList.add(musicMapper.getUserPlaylist(musicIdx).getAlbumCov());
+			userPlaylistList.add(musicMapper.getUserPlaylist(musicIdx));
+			userAlbumCovList.add(musicMapper.getUserPlaylist(musicIdx).getAlbumCov());
 		}
-		
+
 		// 가져온 userPlaylist 정보를 model에 저장
 		model.addAttribute("userPlList", userPlList);
 		model.addAttribute("userSurIdxList", userSurIdxList);
@@ -419,7 +549,7 @@ public class MainController {
 
 		model.addAttribute("userPl", userPl);
 		model.addAttribute("name", name);
-		
+
 		return "userPlaylist";
 	}
 

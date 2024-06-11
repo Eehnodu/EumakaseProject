@@ -541,50 +541,11 @@ svg #main-circ {
 	justify-content: center; /* 세로 방향 중앙 정렬 */
 }
 
-/* *** 사용자 입력 해시태그 *** */
-.label-info {
-  background-color: #e75e8d;
-  padding: 4px;
+/* 이미지 사분할 */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%; /* 원하는 크기로 설정 */
+  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
 }
-
-.inputContainer {
-  width: 100%;
-}
-
-.inputContainer .bootstrap-tagsinput {
-  display: flex; /* Flexbox 사용하여 가로로 배치 */
-  flex-wrap: wrap; /* 필요 시 줄바꿈 */
-  width: 100%;
-  /* padding: 4px; */
-  border: 1px solid #ccc; /* 테두리 추가 */
-  border-radius: 0.7rem;
-}
-
-.inputContainer .bootstrap-tagsinput .tag {
-  display: flex; /* Flexbox 사용하여 태그와 닫기 버튼을 같은 줄에 배치 */
-  align-items: center; /* 세로 중앙 정렬 */
- /*  margin-right: 5px;
-  margin-bottom: 5px; 필요 시 아래쪽 여백도 추가
-  padding: 3px; */
-  border-radius: 0.7rem;
-  color: #fff; /* 텍스트 색상 */ 
-  background-color: #e75e8d; /* 배경 색상 */
-  margin: 0auto;
-}
-
-.inputContainer .bootstrap-tagsinput .tag span {
-	display: inline;
-	color: #fff;
-	margin-left: 5px; /* 닫기 버튼과 텍스트 사이의 여백 */
-	cursor: pointer; /* 닫기 버튼에 마우스 커서 추가 */
-}
-
-.game-details .content .inputContainer span {
-	color: #fff;
-	display: inline;
-	/* margin-top: 7px; */
-	font-weight: 200;
-	margin: 0px 3px;
-	border-radius: 0.5rem;
-}
-

@@ -17,4 +17,6 @@ public interface MusicMapper {
 	
 	public List<MusicVO> getChartMusic(AiPlaylistVO playlist);
 	
+	public MusicVO getRecMusic(MusicVO vo);
+	
 }
