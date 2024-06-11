@@ -4,6 +4,21 @@
   --------------------------------------------- 
   */
 
+.btnPink {
+	cursor: pointer;
+	transition: all 200ms linear;
+	color: white;
+	background-color: #ec6090;
+	border-color: transparent;
+	border-radius: 18px;
+}
+
+.btnPink:hover {
+	background-color: #b1486c;
+	border-color: transparent;
+}
+
+
 /* -----추가----- */
 #header {
 	position: fixed;
@@ -716,3 +731,31 @@ div.\=\"modal-dialog\" {
 }
 
 /* 로그인 모달 끝 */
+
+/* 플리 수정 모달 */
+.modal-content.modal-ed-content{
+	width: 500px;
+	height: 250px;
+}
+
+.modal-header.modal-ed-header {
+    height: 90px;
+}
+
+#editModalTitle {
+    max-width: 350px;
+    word-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
+    overflow-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
+}
+
+.ed-form-group {
+    display: flex;
+    align-items: center;
+}
+
+.ed-form-style {
+    flex: 1;
+    margin-right: 10px; /* 버튼과 인풋창 사이의 간격 */
+}
+
+

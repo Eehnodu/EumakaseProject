@@ -28,8 +28,8 @@
 	</update>
 	
 	<!-- 내 플레이리스트 삭제 -->
-	<delete id="deleteMyPlayList">
-		
+	<delete id="deleteMyPlayList" parameterType="com.smhrd.model.MyPlaylistVO">
+		DELETE FROM tb_myplaylist where myplIdx = ${myplIdx}
 	</delete>
 	
 	<select id="getMyplayList" resultType="com.smhrd.model.MyPlaylistVO">
