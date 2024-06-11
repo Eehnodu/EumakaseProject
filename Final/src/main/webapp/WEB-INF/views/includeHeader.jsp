@@ -103,11 +103,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">"${myPlaylistVO.plName}"을 무엇으로 변경할까요?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">"${defaultplName}"을 무엇으로 변경할까요?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control" id="newPlaylistName" placeholder="새로운 플레이리스트 이름">
+        <input type="text" class="form-control" id="newPlaylistName" placeholder="${defaultplName}">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
@@ -122,21 +122,21 @@
 
 <!-- 로그인 Modal -->
 <div class="modal" id="loginModal">
-	<div class="modal-dialog" id="modal-dialog">
-		<div class="modal-content" id="modal-content">
+	<div class="modal-dialog">
+		<div class="modal-content">
 
 			<!-- Modal Header -->
-			<div class="modal-header" id="modal-header">
+			<div class="modal-header">
 
 				<h4 class="modal-title">
 					<img src="assets/images/logo2.png" alt="">
 				</h4>
-				<button type="button" class="btn-close" id="btn-close"
+				<button type="button" class="btn-close"
 					data-bs-dismiss="modal">&times;</button>
 			</div>
 
 			<!-- Modal body -->
-			<div class="modal-body" id="modal-body">
+			<div class="modal-body">
 				<form action="${cpath}/login" method="post">
 					<div class="form-group inputId">
 						<input type="text" name="loginId" class="form-style"

@@ -14,7 +14,7 @@
 <%@ include file="includeHeader.jsp"%>
 
 <!-- ***** css 연결 ***** -->
-<link rel="stylesheet" href="assets/css/userPlaylist.css">
+<link rel="stylesheet" href="assets/css/userPlaylist.css?ver=<%=System.currentTimeMillis()%>">
 
 <!-- Bootstrap Tags Input CSS -->
 <link rel="stylesheet"
@@ -64,34 +64,33 @@
 											</div>
 										</div>
 										<div class="col-lg-9">
-											<c:choose>
-												<c:when test="${crud}">
-													<button type="button" class="btn btn-primary"
-														data-bs-toggle="modal" data-bs-target="#plyupdate">
-														플레이리스트 이름 수정</button>
-														
-													<button type="button" class="btn btn-primary"
-														data-bs-toggle="modal" data-bs-target="#plydelete">
-														플레이리스트 삭제</button>
-												</c:when>
-												<c:otherwise>
-													<button type="button" class="btn btn-primary"
-														data-bs-toggle="modal" data-bs-target="#plyinsert">
-														플레이리스트 저장</button>
-												</c:otherwise>
-											</c:choose>
-
 											<div class="left-info">
 												<div class="left" id="left">
 													<h3 id="playlist">${userPl.plName}</h3>
 													<h4>작성자</h4>
 													<span>${name}</span>
 													<h4>작성일자</h4>
-
 													<span>${userPl.createdAt}</span>
 													<h4>${userSurDescList}</h4>
-
 												</div>
+												<form action="#">
+													<c:choose>
+														<c:when test="${crud}">
+															<button type="button" class="btn btn-edit"
+																data-bs-toggle="modal" data-bs-target="#plyupdate">
+																플레이리스트 이름 수정</button>
+
+															<button type="button" class="btn btn-delete"
+																data-bs-toggle="modal" data-bs-target="#plydelete">
+																플레이리스트 삭제</button>
+														</c:when>
+														<c:otherwise>
+															<button type="button" class="btn btn-primary"
+																data-bs-toggle="modal" data-bs-target="#plyinsert">
+																플레이리스트 저장</button>
+														</c:otherwise>
+													</c:choose>
+												</form>
 											</div>
 										</div>
 									</div>

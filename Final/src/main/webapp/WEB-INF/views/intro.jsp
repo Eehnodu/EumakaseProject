@@ -13,7 +13,7 @@
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
-<link rel="stylesheet" href="assets/css/intro.css">
+<link rel="stylesheet" href="assets/css/intro.css?ver=<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
