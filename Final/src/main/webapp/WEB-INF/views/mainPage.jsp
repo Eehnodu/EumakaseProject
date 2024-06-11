@@ -25,15 +25,12 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	
 <!-- ***** css 연결 ***** -->
-<link rel="stylesheet" href="assets/css/mainPage.css">
-<link rel="stylesheet" href="assets/css/fourimg.css">
+<link rel="stylesheet" href="assets/css/mainPage.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet" href="assets/css/fourimg.css?ver=<%=System.currentTimeMillis()%>">
 
 
 </head>
 <body>
-	<c:choose>
-		<%-- 세션 속성 'member'가 널이 아닐 때 --%>
-		<c:when test="${member != null}">
 
 			<!-- ***** Preloader Start ***** -->
 			<div id="js-preloader" class="js-preloader">
@@ -74,7 +71,7 @@
 									<div class="featured-games header-text">
 										<div class="heading-section">
 											<h4>
-												<em>최근에 들은</em> playlist
+												<em>가장 많이 </em>사랑받은 노래
 											</h4>
 										</div>
 										<div class="owl-features owl-carousel owl-collection">
@@ -181,91 +178,27 @@
 
 							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
 							<div class="col-lg-12">
-								<div class="featured-games header-text">
-									<div class="heading-section">
-										<h4>
-											<em>오늘의</em> 추천 노래
-										</h4>
-									</div>
-
-									<div class="owl-features owl-carousel">
-										<div class="item">
-											<div class="image-grid">
-												<div class="thumb">
-													<img src="assets/images/stream-05.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-02.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-03.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-04.jpg" alt="">
-												</div>
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-06.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-											<ul>
-												<li><i class="fa fa-star"></i> 4.8</li>
-												<li><i class="fa fa-download"></i> 2.3M</li>
-											</ul>
-										</div>
-									</div>
-								</div>
+							    <div class="featured-games header-text">
+							        <div class="heading-section">
+							            <h4>
+							                <em>오늘의</em> 추천 노래
+							            </h4>
+							        </div>
+							
+							        <div class="owl-features owl-carousel">
+							        
+							            <c:forEach var="survey" items="${recSurvey}" varStatus="status">
+										    <a href="${pageContext.request.contextPath}/recPlayList?genreIndex=${status.index}">
+										        <div class="item">
+										            <div class="thumb">
+										                <img src="assets/images/stream-${status.index + 1}.jpg" alt="">
+										            </div>
+										            <h4>${survey}</h4>
+										        </div>
+										    </a>
+										</c:forEach>
+							        </div>
+							    </div>
 							</div>
 							<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
 
@@ -299,10 +232,6 @@
 													</div>
 													<h4>${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
 													</h4>
-													<ul>
-														<li><i class="fa fa-star"></i> 4.8</li>
-														<li><i class="fa fa-download"></i> 2.3M</li>
-													</ul>
 												</a>
 											</div>
 										</c:forEach>
@@ -320,16 +249,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Scripts -->
 
-
-			<p>안녕하세요, ${member.memId}님</p>
-		</c:when>
-		<%-- 세션 속성 'member'가 널일 때 --%>
-		<c:otherwise>
-			<p>로그인이 필요합니다.</p>
-		</c:otherwise>
-	</c:choose>
 
 	<!-- Scripts -->
 

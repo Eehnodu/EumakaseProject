@@ -16,4 +16,5 @@ public interface MyPlaylistMapper {
 	
 	public List<MyPlaylistVO> getMyplayList(String memId);
 
+	public void updateMyPlayList(MyPlaylistVO mvo);
 }

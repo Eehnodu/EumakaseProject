@@ -33,6 +33,38 @@
 	width: 100%;
 }
 
+
+.btn-edit{
+	background-color: #666666;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    /* border-color:#ec6090; */
+}
+
+.btn-edit:hover{
+	border-color: #fff;
+    background-color: #fff;
+    color: #e75e8d;
+}
+
+.btn-delete{
+	background-color: rgba(236, 96, 144, 0.9);
+    padding: 5px 10px;
+    border-radius:12px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.btn-delete:hover{
+	border-color: #fff;
+    background-color: #fff;
+    color: #e75e8d;
+}
+
+
 /* ***** playlistDetailPage ***** */
 .col-lg-6 .playlist {
 	width: 100%;

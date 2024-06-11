@@ -533,7 +533,7 @@ ul.dropdown-menu.dropdown-menu-dark.show {
 	opacity: .70 !important;
 }
 
-#modal-dialog {
+.modal-dialog {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -541,11 +541,11 @@ ul.dropdown-menu.dropdown-menu-dark.show {
 	margin-top: 10%;
 }
 
-div#\=\"modal-dialog\" {
+div.\=\"modal-dialog\" {
 	margin-top: 10%;
 }
 
-#modal-content {
+.modal-content {
 	background-color: #27292a;
 	color: white;
 	text-align: center;
@@ -557,7 +557,7 @@ div#\=\"modal-dialog\" {
 	width: 290px;
 }
 
-#modal-header {
+.modal-header {
 	border: none;
 	display: flex;
 	justify-content: center;
@@ -566,7 +566,7 @@ div#\=\"modal-dialog\" {
 	margin-top: 15px;
 }
 
-#modal-header #btn-close {
+.btn-close {
 	position: absolute;
 	right: 30px;
 	top: 3px;
@@ -576,7 +576,7 @@ div#\=\"modal-dialog\" {
 	font-size: 2rem;
 }
 
-#modal-body {
+.modal-body {
 	padding-right: 30px;
 	padding-left: 30px;
 }

@@ -38,6 +38,7 @@ import com.smhrd.model.AiPlaylistVO;
 import com.smhrd.model.ContextVO;
 import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
+import com.smhrd.model.MyPlaylistVO;
 import com.smhrd.model.PreferenceVO;
 import com.smhrd.model.SurveyVO;
 
@@ -52,7 +53,7 @@ public class MemberRestController {
 
 	@Autowired
 	private PreferenceMapper preferenceMapeer;
-	
+
 	@Autowired
 	private ContextMapper contextMapper;
 	
@@ -61,6 +62,12 @@ public class MemberRestController {
 	
 	@Autowired
 	private MusicMapper musicMapper;
+	
+	@RequestMapping("/#")
+	public void updateMyPlayList(@RequestParam("plName") String plName, MyPlaylistVO mvo) {
+	        
+	}
+
 
 	@RequestMapping("/checkId")
 	public String checkId(String memId) {
@@ -76,7 +83,7 @@ public class MemberRestController {
 
 	@RequestMapping("/joinProcess")
 	public void join(@RequestBody MemberVO vo, HttpSession session) {
-		System.out.println("joinprocess들어옴");
+		System.out.println(vo);
 
 		// 세션이 존재하는지 확인
 		if (session.getAttribute("member") != null) {
@@ -115,7 +122,7 @@ public class MemberRestController {
 	public void preferencejoin(@RequestBody List<String> surDescList, HttpSession session) {
 		System.out.println("preference 들어옴");
 		// System.out.println("genre :" + surDescList);
-		session.invalidate();
+		
 		if (session != null) {
 			List<SurveyVO> SurveyIdx = surveyMapper.selectSurvey(surDescList);
 			List<Integer> surIdxList = SurveyIdx.stream().map(SurveyVO::getSurIdx).collect(Collectors.toList());
@@ -124,7 +131,7 @@ public class MemberRestController {
 			memberMapper.join(vo);
 			preferenceMapeer.insertPref(memId, surIdxList);
 		}
-
+		session.invalidate();
 	}
 	
 	
@@ -211,27 +218,4 @@ public class MemberRestController {
 	    responseMap.put("counts", counts);
 	    return responseMap;
 	}
-
-
-//	// 선택 결과를 ai 추천 모델에 넘기는 함수
-//	@RequestMapping("/playlistDetail")
-//	public String playlistDetail(@RequestParam(name = "response", required = false) List<String> responses,
-//			Model model) {
-//		List<Integer> result = new ArrayList<>();
-//		if (responses != null) {
-//			try {
-//				for (int i = 0; i < responses.size(); i++) {
-//					result.add(Integer.parseInt(responses.get(i)));
-//					
-//				}
-//			} catch(Exception e) {
-//				return "/";
-//			}
-//			System.out.println(result);
-//			return "playlistDetail";
-//		}else {
-//			return "/";
-//		}
-//	}
-
 }
