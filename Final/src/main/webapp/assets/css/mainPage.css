@@ -75,6 +75,11 @@
   /*
    *  Owl Carousel - Core
    */
+   
+  .owl-collection .owl-item img {
+    width: 156px;
+    height: 156px;
+	}
   
   .owl-carousel {
     display: none;
@@ -320,7 +325,7 @@
     background-image: url(../images/banner-bg.jpg);
     background-position: center center;
     background-size: cover;
-    min-height: 461px;
+    min-height: 352.8px;
     border-radius: 23px;
     padding: 80px 60px;
   }

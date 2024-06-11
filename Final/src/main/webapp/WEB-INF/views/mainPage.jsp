@@ -31,9 +31,6 @@
 
 </head>
 <body>
-	<c:choose>
-		<%-- 세션 속성 'member'가 널이 아닐 때 --%>
-		<c:when test="${member != null}">
 
 			<!-- ***** Preloader Start ***** -->
 			<div id="js-preloader" class="js-preloader">
@@ -74,7 +71,7 @@
 									<div class="featured-games header-text">
 										<div class="heading-section">
 											<h4>
-												<em>최근에 들은</em> playlist
+												<em>가장 많이 </em>사랑받은 노래
 											</h4>
 										</div>
 										<div class="owl-features owl-carousel owl-collection">
@@ -235,10 +232,6 @@
 													</div>
 													<h4>${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
 													</h4>
-													<ul>
-														<li><i class="fa fa-star"></i> 4.8</li>
-														<li><i class="fa fa-download"></i> 2.3M</li>
-													</ul>
 												</a>
 											</div>
 										</c:forEach>
@@ -256,16 +249,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Scripts -->
 
-
-			<p>안녕하세요, ${member.memId}님</p>
-		</c:when>
-		<%-- 세션 속성 'member'가 널일 때 --%>
-		<c:otherwise>
-			<p>로그인이 필요합니다.</p>
-		</c:otherwise>
-	</c:choose>
 
 	<!-- Scripts -->
 
