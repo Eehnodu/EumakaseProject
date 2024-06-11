@@ -18,6 +18,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const albumTitle = document.querySelectorAll('.albumTitle');
+    albumTitle.forEach(title => {
+        title.setAttribute('title', title.textContent);
+    });
+});
+
 
 
 
