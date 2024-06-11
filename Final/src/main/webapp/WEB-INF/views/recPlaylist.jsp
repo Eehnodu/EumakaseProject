@@ -70,9 +70,6 @@
 																	<h4>${music.title}</h4> <span>곡명</span>
 																</li>
 																<li>
-																	<h4>${music.album}</h4> <span>앨범명</span>
-																</li>
-																<li>
 																	<h4>${music.genre}</h4> <span>장르</span>
 																</li>
 																<li>
