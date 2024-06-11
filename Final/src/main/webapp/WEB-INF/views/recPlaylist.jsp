@@ -50,30 +50,6 @@
 									</h4>
 								</div>
 								<div class="content">
-									<div class="row">
-										<div class="col-lg-3">
-											<div class="image-grid">
-												<div class="thumb">
-													<img src="-" alt="">
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-9">
-											<div class="left-info">
-												<div class="left" id="left">
-													<h3 id="playlist">확인</h3>
-													<h4>작성자</h4>
-													<span>확인</span>
-													<h4>작성일자</h4>
-
-													<span>확인</span>
-													<h4>확인</h4>
-
-												</div>
-											</div>
-										</div>
-									</div>
-
 									<!-- *** 곡 상세 정보 Start *** -->
 									<!-- 두 번째 페이지 HTML 구조 -->
 									<div class="col-lg-12">
