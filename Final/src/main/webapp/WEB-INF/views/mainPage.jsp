@@ -81,7 +81,9 @@
 									<c:forEach var="popular" items="${popularMusic}">
 										<div class="item">
 											<div class="thumb">
-												<img src="${popular.albumCov}" alt="">
+												<a href="<c:url value='/songDetail?musicIdx=${popular.musicIdx}'/>">
+													<img src="${popular.albumCov}" alt="">
+												</a>
 												<div class="hover-effect">
 													<h6>
 														<a href="#"></a>지금 듣기

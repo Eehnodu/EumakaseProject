@@ -106,8 +106,11 @@
 													<div class="col-lg-12 playlist">
 														<div class="item songDetail">
 															<ul>
-																<li><img src="${music.albumCov}" alt=""
-																	class="templatemo-item"></li>
+																<li>
+																	<a href="<c:url value='/songDetail?musicIdx=${music.musicIdx}'/>">
+																		<img src="${music.albumCov}" alt="" class="templatemo-item">
+																	</a>
+																</li>
 																<%-- <li>
 																	<h4>${music.artist}</h4> <span>가수명</span>
 																</li> --%>
