@@ -187,7 +187,6 @@ public class MainController {
 		vo.setMemPw(memPw);
 		MemberVO result = mapper.login(vo);
 
-		System.out.println("Login으로 들어옴");
 
 		if (result != null) {
 			session.setAttribute("member", result);

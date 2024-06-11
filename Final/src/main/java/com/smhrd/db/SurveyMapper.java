@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.smhrd.model.ContextVO;
 import com.smhrd.model.SurveyVO;
 
 public interface SurveyMapper {
@@ -24,6 +25,12 @@ public interface SurveyMapper {
 	
 	public SurveyVO getOtherSurDesc(int i);
 	
-	// season 추천곡에 쓰일 장르 정보 가져오기
 	public List<SurveyVO> getSeasonGenre();
+	
+	public SurveyVO surbayIdx(ContextVO context);
+
+	public List<SurveyVO> getTopSurveysByGenres(List<String> genres);
+    
+	public List<SurveyVO> getGenreBySurIdx(String surIdx);
+	
 }

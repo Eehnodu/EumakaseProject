@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     // Initially hide the second chart
     $('#myChart1').hide();

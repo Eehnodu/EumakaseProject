@@ -110,7 +110,10 @@
 																<li><img src="${music.albumCov}" alt=""
 																	class="templatemo-item"></li>
 																<li>
-																	<h4>${music.title}</h4> <span>${music.artist}</span>
+																	<h4>${music.artist}</h4> <span>가수명</span>
+																</li>
+																<li>
+																	<h4>${music.title}</h4> <span>곡명</span>
 																</li>
 																<li>
 																	<h4>${music.album}</h4> <span>앨범명</span>
