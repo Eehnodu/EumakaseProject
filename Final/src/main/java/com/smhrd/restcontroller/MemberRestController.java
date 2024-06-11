@@ -34,6 +34,7 @@ import com.smhrd.db.PreferenceMapper;
 import com.smhrd.db.SurveyMapper;
 import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
+import com.smhrd.model.MyPlaylistVO;
 import com.smhrd.model.PreferenceVO;
 import com.smhrd.model.SurveyVO;
 
@@ -48,7 +49,12 @@ public class MemberRestController {
 
 	@Autowired
 	private PreferenceMapper preferenceMapeer;
-
+	
+	@RequestMapping("/#")
+	public void updateMyPlayList(@RequestParam("plName") String plName, MyPlaylistVO mvo) {
+	        
+	}
+	
 	@RequestMapping("/checkId")
 	public String checkId(String memId) {
 		String str = "";
