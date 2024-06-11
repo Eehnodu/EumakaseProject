@@ -4,6 +4,21 @@
   --------------------------------------------- 
   */
 
+.btnPink {
+	cursor: pointer;
+	transition: all 200ms linear;
+	color: white;
+	background-color: #ec6090;
+	border-color: transparent;
+	border-radius: 18px;
+}
+
+.btnPink:hover {
+	background-color: #b1486c;
+	border-color: transparent;
+}
+
+
 /* -----추가----- */
 #header {
 	position: fixed;
@@ -533,7 +548,7 @@ ul.dropdown-menu.dropdown-menu-dark.show {
 	opacity: .70 !important;
 }
 
-#modal-dialog {
+.modal-dialog {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -541,11 +556,11 @@ ul.dropdown-menu.dropdown-menu-dark.show {
 	margin-top: 10%;
 }
 
-div#\=\"modal-dialog\" {
+div.\=\"modal-dialog\" {
 	margin-top: 10%;
 }
 
-#modal-content {
+.modal-content {
 	background-color: #27292a;
 	color: white;
 	text-align: center;
@@ -557,7 +572,7 @@ div#\=\"modal-dialog\" {
 	width: 290px;
 }
 
-#modal-header {
+.modal-header {
 	border: none;
 	display: flex;
 	justify-content: center;
@@ -566,7 +581,7 @@ div#\=\"modal-dialog\" {
 	margin-top: 15px;
 }
 
-#modal-header #btn-close {
+.btn-close {
 	position: absolute;
 	right: 30px;
 	top: 3px;
@@ -576,7 +591,7 @@ div#\=\"modal-dialog\" {
 	font-size: 2rem;
 }
 
-#modal-body {
+.modal-body {
 	padding-right: 30px;
 	padding-left: 30px;
 }
@@ -716,3 +731,31 @@ div#\=\"modal-dialog\" {
 }
 
 /* 로그인 모달 끝 */
+
+/* 플리 수정 모달 */
+.modal-content.modal-ed-content{
+	width: 500px;
+	height: 250px;
+}
+
+.modal-header.modal-ed-header {
+    height: 90px;
+}
+
+#editModalTitle {
+    max-width: 350px;
+    word-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
+    overflow-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
+}
+
+.ed-form-group {
+    display: flex;
+    align-items: center;
+}
+
+.ed-form-style {
+    flex: 1;
+    margin-right: 10px; /* 버튼과 인풋창 사이의 간격 */
+}
+
+
