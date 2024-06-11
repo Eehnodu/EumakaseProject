@@ -42,6 +42,7 @@ import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
 import com.smhrd.model.MyPlaylistVO;
 import com.smhrd.model.SurveyVO;
+import com.smhrd.restcontroller.MemberRestController;
 
 @Controller
 public class MainController {
@@ -180,19 +181,6 @@ public class MainController {
 		return "join";
 	}
 
-	@PostMapping("/joinProcess")
-	public String join(MemberVO vo, HttpSession session) {
-
-		session.getAttribute("member");
-
-		/*
-		 * mapper.join(vo); vo.setMemPw(null); vo.setGender(null);
-		 * session.setAttribute("member", vo);
-		 */
-
-		return "redirect:/mainPage";
-	}
-
 	@PostMapping("/login")
 	public String login(@RequestParam("loginId") String memId, @RequestParam("loginPw") String memPw,
 			HttpSession session, RedirectAttributes redirectAttributes) {
@@ -229,6 +217,7 @@ public class MainController {
 
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
 		model.addAttribute("myplayListalbumCov", mymusic);
+
 		return "mypage";
 	}
 
@@ -485,9 +474,29 @@ public class MainController {
 
 		// myplIdx는 pl의 고유값 myplIdx
 		MyPlaylistVO userPl = myplaylistMapper.getUserPlaylist(myplIdx);
+		
 		String memId = userPl.getMemId();
 		MemberVO memvo = mapper.getUserInfo(memId);
 		String name = memvo.getName();
+
+		MemberVO crudcheck = (MemberVO) session.getAttribute("member");
+		
+		MyPlaylistVO mvo = new MyPlaylistVO();
+		
+		if (userPl.getMemId().equals(crudcheck.getMemId())) {
+			model.addAttribute("crud", true);
+			mvo.setMyplIdx(userPl.getMyplIdx());
+			mvo.setPlName("변경할 plName");
+			model.addAttribute("mvo", mvo);
+			//myplaylistMapper.updateMyPlayList(mvo);
+			
+			//MemberRestController memberRestController = new MemberRestController();
+			//memberRestController.updateMyPlayList("plName", mvo);
+			
+			
+		}else {
+			model.addAttribute("crud", false);
+		}
 
 		// pl에 해당되는 mypl 정보 가져오기
 		MyPlaylistVO otherIdx = myplaylistMapper.getUserPlaylist(myplIdx);
