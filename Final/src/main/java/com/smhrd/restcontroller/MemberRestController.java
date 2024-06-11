@@ -32,6 +32,7 @@ import com.smhrd.db.AiPlaylistMapper;
 import com.smhrd.db.ContextMapper;
 import com.smhrd.db.MemberMapper;
 import com.smhrd.db.MusicMapper;
+import com.smhrd.db.MyPlaylistMapper;
 import com.smhrd.db.PreferenceMapper;
 import com.smhrd.db.SurveyMapper;
 import com.smhrd.model.AiPlaylistVO;
@@ -63,11 +64,24 @@ public class MemberRestController {
 	@Autowired
 	private MusicMapper musicMapper;
 	
-	@RequestMapping("/#")
+	@Autowired
+	private MyPlaylistMapper myplaylistMapper;
+	
+	@RequestMapping("/updateMyPlayList")
 	public void updateMyPlayList(@RequestParam("plName") String plName, MyPlaylistVO mvo) {
-	        
+		System.out.println("업데이트@@@@@마플리@@@@@변경할이름가져오냐@@@@");
+		System.out.println(plName);
+		//MyPlaylistVO myplymvo = new MyPlaylistVO();
+		//myplymvo.setPlName(plName);
+		//myplymvo.setMyplIdx(mvo.getMyplIdx());
+		//myplaylistMapper.updateMyPlayList(myplymvo);
 	}
-
+	
+	@RequestMapping("/deleteMyPlayList")
+	public void deleteMyPlayList(MyPlaylistVO mvo) {
+		System.out.println(mvo.getMyplIdx());
+		//myplaylistMapper.deleteMyPlayList(mvo);
+	}
 
 	@RequestMapping("/checkId")
 	public String checkId(String memId) {
