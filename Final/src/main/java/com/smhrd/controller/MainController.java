@@ -224,9 +224,17 @@ public class MainController {
 
 	@GetMapping("/mainPage")
 	public String mainPage(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		
+		// 사랑받는 노래 가져오기
+		List<AiPlaylistVO> popularMusicList = aiplaylistMapper.getPopularMusic();
+		List<MusicVO> popularMusic = new ArrayList<>();
+		for(AiPlaylistVO music : popularMusicList) {
+			popularMusic.add(musicMapper.getUserPlaylist(music.getMusicIdx()));
+		}
+		session.setAttribute("popularMusic", popularMusic);
+		
 
 		// 중간에 장르 자동 추천
-		// 장르와 선택지 리스트 가져오기
 		// 쿠키가 이미 있는지 확인
         Cookie recCookie = WebUtils.getCookie(request, "recCookie");
 
@@ -281,7 +289,7 @@ public class MainController {
                 String recStr = recEmotion + " " + recSituation + " " + recPlace + " " + recPeople;
 
                 // 각 단어 앞에 '#' 추가
-                String recSurvey = ("#" + recStr.replaceAll(" ", " #") + " #" + recGen).trim();
+                String recSurvey = ("#" + recGen + " " + "#" + recStr.replaceAll(" ", " #")).trim();
 
                 // Flask API 호출
                 String url = "http://localhost:5000/recommend";
