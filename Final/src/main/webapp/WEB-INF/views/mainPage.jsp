@@ -69,83 +69,64 @@
 						</div>
 
 
-								<!-- 최근에 재생한 플레이리스트 -->
-								<div class="col-lg-8">
-									<div class="featured-games header-text">
-										<div class="heading-section">
-											<h4>
-												<em>가장 많이 </em>사랑받은 노래
-											</h4>
-										</div>
-										<div class="owl-features owl-carousel owl-collection">
-											<c:forEach var="popular" items="${popularMusic}">
-												<div class="item">
-													<div class="thumb">
-														<img src="${popular.albumCov}" alt="">
-														<div class="hover-effect">
-															<h6>
-																<a href="#"></a>지금 듣기
-															</h6>
-														</div>
-													</div>
-													<h4>
-														${popular.title}<br> <span>${popular.artist}</span>
-													</h4>
-												</div>
-											</c:forEach>
-										</div>
-										<h4>
-											여름 드라이브<br> <span>#신나는</span>
-										</h4>
-									</div>
+						<!-- 최근에 재생한 플레이리스트 -->
+						<div class="col-lg-8">
+							<div class="featured-games header-text">
+								<div class="heading-section">
+									<h4>
+										<em>가장 많이 </em>사랑받은 노래
+									</h4>
 								</div>
-
-							<!-- ***** Featured Games End ***** -->
-
-
-
-
-
-							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
-							<div class="col-lg-12">
-							    <div class="featured-games header-text">
-							        <div class="heading-section">
-							            <h4>
-							                <em>오늘의</em> 추천 노래
-							            </h4>
-							        </div>
-							
-							        <div class="owl-features owl-carousel">
-							        
-							            <c:forEach var="genreEntry" items="${indexList}" varStatus="status">
-							                <a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
-							                    <div class="item">
-							                        <div class="thumb">
-							                            <img src="assets/images/genre-${status.index + 1}.png" alt="">
-							                        </div>
-							                        <h4>${recSurvey[genreEntry.key]}</h4>
-							                    </div>
-							                </a>
-							            </c:forEach>
-							        </div>
-							    </div>
-
-							</div>
-
-							<div class="owl-features owl-carousel">
-
-								<c:forEach var="survey" items="${recSurvey}" varStatus="status">
-									<a
-										href="${pageContext.request.contextPath}/recPlayList?genreIndex=${status.index}">
+								<div class="owl-features owl-carousel owl-collection">
+									<c:forEach var="popular" items="${popularMusic}">
 										<div class="item">
 											<div class="thumb">
-												<img src="assets/images/stream-${status.index + 1}.jpg"
-													alt="">
+												<img src="${popular.albumCov}" alt="">
+												<div class="hover-effect">
+													<h6>
+														<a href="#"></a>지금 듣기
+													</h6>
+												</div>
 											</div>
-											<h4>${survey}</h4>
+											<h4>
+												${popular.title}<br> <span>${popular.artist}</span>
+											</h4>
 										</div>
-									</a>
-								</c:forEach>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
+
+						<!-- ***** Featured Games End ***** -->
+
+
+
+
+
+						<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
+						<div class="col-lg-12">
+							<div class="featured-games header-text">
+								<div class="heading-section">
+									<h4>
+										<em>오늘의</em> 추천 노래
+									</h4>
+								</div>
+
+								<div class="owl-features owl-carousel">
+
+									<c:forEach var="genreEntry" items="${indexList}"
+										varStatus="status">
+										<a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
+											<div class="item">
+												<div class="thumb">
+													<img src="assets/images/genre-${status.index + 1}.png"
+														alt="">
+												</div>
+												<h4>${recSurvey[genreEntry.key]}</h4>
+											</div>
+										</a>
+									</c:forEach>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -187,11 +168,12 @@
 							</div>
 						</div>
 					</div>
-					<!-- ***** 다른 사람의 플레이리스트 End ***** -->
-
 				</div>
+				<!-- ***** 다른 사람의 플레이리스트 End ***** -->
 			</div>
+
 		</div>
+	</div>
 	</div>
 
 
