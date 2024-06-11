@@ -187,16 +187,16 @@
 							
 							        <div class="owl-features owl-carousel">
 							        
-							            <c:forEach var="survey" items="${recSurvey}" varStatus="status">
-										    <a href="${pageContext.request.contextPath}/recPlayList?genreIndex=${status.index}">
-										        <div class="item">
-										            <div class="thumb">
-										                <img src="assets/images/stream-${status.index + 1}.jpg" alt="">
-										            </div>
-										            <h4>${survey}</h4>
-										        </div>
-										    </a>
-										</c:forEach>
+							            <c:forEach var="genreEntry" items="${indexList}" varStatus="status">
+							                <a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
+							                    <div class="item">
+							                        <div class="thumb">
+							                            <img src="assets/images/genre-${status.index + 1}.png" alt="">
+							                        </div>
+							                        <h4>${recSurvey[genreEntry.key]}</h4>
+							                    </div>
+							                </a>
+							            </c:forEach>
 							        </div>
 							    </div>
 							</div>
