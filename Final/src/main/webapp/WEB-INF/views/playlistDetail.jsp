@@ -66,7 +66,17 @@
 										<div class="col-lg-6">
 											<div class="main-border-button" id="buttonDownload">
 
-												<a href="${cpath}/savePlaylist">이 플리 저장</a> <a href="#"
+												<%-- 비회원은 플리저장 클릭 시 로그인 모달창 --%>
+												<c:if test="${member==null}">
+													<a data-bs-toggle="modal" data-bs-target="#loginModal">이 플리 저장</a>
+												</c:if>
+												<%-- 로그인한 회원은 플리 저장 --%>
+												<c:if test="${member!=null}">
+													<a href="${cpath}/savePlaylist">이 플리 저장</a>
+												</c:if>
+
+
+												 <a href="#"
 													id="redDiff">다른 플리 보여줘</a>
 
 											</div>

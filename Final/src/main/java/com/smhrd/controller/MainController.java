@@ -748,5 +748,11 @@ public class MainController {
 			return "redirect:/update";
 		}
 	}
+	
+	@GetMapping("/songDetail")
+	public String songDetail() {
+		return "songDetail";
+		
+	}
 
 }
