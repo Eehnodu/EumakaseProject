@@ -40,6 +40,7 @@ import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
 import com.smhrd.model.MyPlaylistVO;
 import com.smhrd.model.SurveyVO;
+import com.smhrd.restcontroller.MemberRestController;
 
 @Controller
 public class MainController {
@@ -178,19 +179,6 @@ public class MainController {
 		return "join";
 	}
 
-	@PostMapping("/joinProcess")
-	public String join(MemberVO vo, HttpSession session) {
-
-		session.getAttribute("member");
-
-		/*
-		 * mapper.join(vo); vo.setMemPw(null); vo.setGender(null);
-		 * session.setAttribute("member", vo);
-		 */
-
-		return "redirect:/mainPage";
-	}
-
 	@PostMapping("/login")
 	public String login(@RequestParam("loginId") String memId, @RequestParam("loginPw") String memPw,
 			HttpSession session, RedirectAttributes redirectAttributes) {
@@ -222,12 +210,13 @@ public class MainController {
 			return "redirect:/";
 		}
 		String memId = memvo.getMemId();
-		
-		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);// 
+
+		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);//
 		model.addAttribute("myplayList", myplayListIdx);
-		
+
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
 		model.addAttribute("myplayListalbumCov", mymusic);
+
 		return "mypage";
 	}
 
@@ -364,9 +353,29 @@ public class MainController {
 
 		// myplIdx는 pl의 고유값 myplIdx
 		MyPlaylistVO userPl = myplaylistMapper.getUserPlaylist(myplIdx);
+		
 		String memId = userPl.getMemId();
 		MemberVO memvo = mapper.getUserInfo(memId);
 		String name = memvo.getName();
+
+		MemberVO crudcheck = (MemberVO) session.getAttribute("member");
+		
+		MyPlaylistVO mvo = new MyPlaylistVO();
+		
+		if (userPl.getMemId().equals(crudcheck.getMemId())) {
+			model.addAttribute("crud", true);
+			mvo.setMyplIdx(userPl.getMyplIdx());
+			mvo.setPlName("변경할 plName");
+			model.addAttribute("mvo", mvo);
+			//myplaylistMapper.updateMyPlayList(mvo);
+			
+			//MemberRestController memberRestController = new MemberRestController();
+			//memberRestController.updateMyPlayList("plName", mvo);
+			
+			
+		}else {
+			model.addAttribute("crud", false);
+		}
 
 		// pl에 해당되는 mypl 정보 가져오기
 		MyPlaylistVO otherIdx = myplaylistMapper.getUserPlaylist(myplIdx);
@@ -378,27 +387,27 @@ public class MainController {
 		List<Integer> userMusicIdxList = new ArrayList<>();
 
 		if (!userPlList.isEmpty()) {
-		    AiPlaylistVO tempPl = userPlList.get(0);
+			AiPlaylistVO tempPl = userPlList.get(0);
 
-		    // 각 contextIdx에 대한 surIdx 값을 가져오기
-		    int[] contextIdxArray = { tempPl.getContextIdx(), tempPl.getContextIdx2(), tempPl.getContextIdx3(),
-		            tempPl.getContextIdx4(), tempPl.getContextIdx5() };
+			// 각 contextIdx에 대한 surIdx 값을 가져오기
+			int[] contextIdxArray = { tempPl.getContextIdx(), tempPl.getContextIdx2(), tempPl.getContextIdx3(),
+					tempPl.getContextIdx4(), tempPl.getContextIdx5() };
 
-		    for (int contextIdx : contextIdxArray) {
-		        userSurIdxList.add(contextMapper.getOtherSurIdx(contextIdx).getSurIdx());
-		    }
+			for (int contextIdx : contextIdxArray) {
+				userSurIdxList.add(contextMapper.getOtherSurIdx(contextIdx).getSurIdx());
+			}
 
-		    // playlist에서 musicIDx 가져오기
-		    for (AiPlaylistVO userPlay: userPlList) {
-		        userMusicIdxList.add(userPlay.getMusicIdx());
-		    }
+			// playlist에서 musicIDx 가져오기
+			for (AiPlaylistVO userPlay : userPlList) {
+				userMusicIdxList.add(userPlay.getMusicIdx());
+			}
 		}
 
 		// 가져온 surIdx를 통해서 surDesc정보 가져오기
 		StringBuilder userSurDesc = new StringBuilder();
 		for (int surIdx : userSurIdxList) {
-		    // surIdx에 해당하는 Desc값 가져오기
-		    userSurDesc.append("#").append(surveyMapper.getOtherSurDesc(surIdx).getSurDesc()).append(" ");
+			// surIdx에 해당하는 Desc값 가져오기
+			userSurDesc.append("#").append(surveyMapper.getOtherSurDesc(surIdx).getSurDesc()).append(" ");
 		}
 
 		// 가져온 musicIdx를 이용해서 playlist 가져오기
@@ -406,10 +415,10 @@ public class MainController {
 		// albumCov 값을 저장할 리스트
 		List<String> userAlbumCovList = new ArrayList<>();
 		for (int musicIdx : userMusicIdxList) {
-		    userPlaylistList.add(musicMapper.getUserPlaylist(musicIdx));
-		    userAlbumCovList.add(musicMapper.getUserPlaylist(musicIdx).getAlbumCov());
+			userPlaylistList.add(musicMapper.getUserPlaylist(musicIdx));
+			userAlbumCovList.add(musicMapper.getUserPlaylist(musicIdx).getAlbumCov());
 		}
-		
+
 		// 가져온 userPlaylist 정보를 model에 저장
 		model.addAttribute("userPlList", userPlList);
 		model.addAttribute("userSurIdxList", userSurIdxList);
@@ -419,7 +428,7 @@ public class MainController {
 
 		model.addAttribute("userPl", userPl);
 		model.addAttribute("name", name);
-		
+
 		return "userPlaylist";
 	}
 

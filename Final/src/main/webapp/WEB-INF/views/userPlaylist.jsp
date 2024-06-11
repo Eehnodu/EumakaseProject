@@ -64,6 +64,23 @@
 											</div>
 										</div>
 										<div class="col-lg-9">
+											<c:choose>
+												<c:when test="${crud}">
+													<button type="button" class="btn btn-primary"
+														data-bs-toggle="modal" data-bs-target="#plyupdate">
+														플레이리스트 이름 수정</button>
+														
+													<button type="button" class="btn btn-primary"
+														data-bs-toggle="modal" data-bs-target="#plydelete">
+														플레이리스트 삭제</button>
+												</c:when>
+												<c:otherwise>
+													<button type="button" class="btn btn-primary"
+														data-bs-toggle="modal" data-bs-target="#plyinsert">
+														플레이리스트 저장</button>
+												</c:otherwise>
+											</c:choose>
+
 											<div class="left-info">
 												<div class="left" id="left">
 													<h3 id="playlist">${userPl.plName}</h3>
@@ -128,7 +145,7 @@
 	</div>
 
 	<!-- Scripts -->
-
+	<script src="assets/js/userPlaylist.js"></script>
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/tabs.js"></script>
