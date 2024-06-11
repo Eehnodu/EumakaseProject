@@ -143,6 +143,12 @@
   .gaming-library .item ul li h4 {
     font-size: 15px;
     margin-bottom: 5px;
+    display: block; /* 요소를 블록 레벨 요소로 설정 */
+    overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
+    text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
+    white-space: nowrap; /* 텍스트를 한 줄로 표시하고 줄바꿈을 하지 않음 */
+    word-break: break-all; /* 단어가 넘칠 경우 임의로 단어를 끊어서 줄바꿈을 함 */
+    vertical-align: top; /* 인라인 요소의 수직 정렬을 상단으로 맞춤 */
   }
 
   .gaming-library .item ul li span {
@@ -470,6 +476,8 @@ svg #main-circ {
     border-radius: 23px;
     padding: 30px;
     margin-bottom: 0px;
+    display: inline-block;
+    width: 100%;
   }
 
   .game-details .content .left-info .left {
@@ -516,7 +524,7 @@ svg #main-circ {
 
   .game-details .content .right-info .playlist .songDetail ul li {
     display: inline-block;
-    width: 15%;
+    /* width: 15%;  */
     text-align: center;
     font-size: 14px;
     color: #fff;
@@ -534,3 +542,56 @@ svg #main-circ {
   .game-details .content .right-info ul li i {
     color: #ec6090;
   }
+
+/* *** 플레이리스트 제목 *** */
+@import
+	url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap")
+	;
+
+.form-input {
+	position: relative;
+	width: 70%;
+}
+
+.form-input input::placeholder {
+	opacity: 0;
+}
+
+.form-input input {
+	width: 300%;
+	height: 10%;
+	font-size: 1.2rem;
+	padding: 10px;
+	outline: none;
+	border: 1px solid #666;
+	box-sizing: border-box;
+	border-radius: 5px;
+	background-color: #27292a;
+	color: #fff;
+}
+
+.form-input label {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.2rem;
+	color: #e75e8d;
+	letter-spacing: 1px;
+	transition: 0.3s;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+}
+
+.form-input input:focus+label, .form-input input:not(:placeholder-shown)+label
+	{
+	top: 0;
+	font-size: 0.8rem;
+	color: #ec6090;
+	background: #27292a;
+	padding: 7px;
+}
+
+.form-input input:focus {
+	border: 2px solid #ec6090;
+}

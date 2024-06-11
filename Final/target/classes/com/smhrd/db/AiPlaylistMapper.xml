@@ -20,4 +20,8 @@
 		SELECT * FROM tb_aiplaylist WHERE myplIdx = #{myplIdx}
 	</select>
 	
+	<select id="getPopularMusic" resultType="com.smhrd.model.AiPlaylistVO">
+		SELECT musicIdx, count(plIdx) AS plIdx FROM ehroqkfdbcah.tb_aiplaylist GROUP BY musicIdx ORDER BY plIdx DESC LIMIT 8
+	</select>
+	
 </mapper>
