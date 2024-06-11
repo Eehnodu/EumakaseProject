@@ -790,9 +790,12 @@ public class MainController {
 	}
 	
 	@GetMapping("/songDetail")
-	public String songDetail() {
-		return "songDetail";
-		
+	public String songDetail(@RequestParam int musicIdx, Model model) {
+	    // musicIdx를 이용하여 해당 곡의 상세 정보를 가져옵니다.
+	    MusicVO music = musicMapper.getUserPlaylist(musicIdx);
+	    model.addAttribute("musicDetail", music);
+	    return "songDetail";
 	}
+
 
 }
