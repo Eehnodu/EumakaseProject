@@ -68,123 +68,68 @@
 							</div>
 						</div>
 
-						<!-- 최근에 재생한 플레이리스트 -->
-						<div class="col-lg-8">
-							<div class="featured-games header-text">
-								<div class="heading-section">
-									<h4>
-										<em>가장 많이 </em>사랑받은 노래
-									</h4>
-								</div>
-								<div class="owl-features owl-carousel owl-collection">
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-01.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
+
+								<!-- 최근에 재생한 플레이리스트 -->
+								<div class="col-lg-8">
+									<div class="featured-games header-text">
+										<div class="heading-section">
+											<h4>
+												<em>가장 많이 </em>사랑받은 노래
+											</h4>
 										</div>
-										<h4>
-											내가 지은 플리 이름<br> <span>플리에 대한 추가 설명</span>
-										</h4>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-02.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
-										</div>
-										<h4>
-											저녁 드라이브<br> <span>#시티팝</span>
-										</h4>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-03.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
-										</div>
-										<h4>
-											헬스장<br> <span>#외힙</span>
-										</h4>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-01.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
-										</div>
-										<h4>
-											여돌 모음집<br> <span>#여돌</span>
-										</h4>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-02.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
-										</div>
-										<h4>
-											퇴근길<br> <span>#신나는</span>
-										</h4>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-03.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
-										</div>
-										<h4>
-											여름 드라이브<br> <span>#신나는</span>
-										</h4>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/featured-03.jpg" alt="">
-											<div class="hover-effect">
-												<h6>
-													<a href="#"></a>지금 듣기
-												</h6>
-											</div>
+										<div class="owl-features owl-carousel owl-collection">
+											<c:forEach var="popular" items="${popularMusic}">
+												<div class="item">
+													<div class="thumb">
+														<img src="${popular.albumCov}" alt="">
+														<div class="hover-effect">
+															<h6>
+																<a href="#"></a>지금 듣기
+															</h6>
+														</div>
+													</div>
+													<h4>
+														${popular.title}<br> <span>${popular.artist}</span>
+													</h4>
+												</div>
+											</c:forEach>
 										</div>
 										<h4>
 											여름 드라이브<br> <span>#신나는</span>
 										</h4>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<!-- ***** Featured Games End ***** -->
+
+							<!-- ***** Featured Games End ***** -->
 
 
 
 
 
-					<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
-					<div class="col-lg-12">
-						<div class="featured-games header-text">
-							<div class="heading-section">
-								<h4>
-									<em>오늘의</em> 추천 노래
-								</h4>
+							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
+							<div class="col-lg-12">
+							    <div class="featured-games header-text">
+							        <div class="heading-section">
+							            <h4>
+							                <em>오늘의</em> 추천 노래
+							            </h4>
+							        </div>
+							
+							        <div class="owl-features owl-carousel">
+							        
+							            <c:forEach var="genreEntry" items="${indexList}" varStatus="status">
+							                <a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
+							                    <div class="item">
+							                        <div class="thumb">
+							                            <img src="assets/images/genre-${status.index + 1}.png" alt="">
+							                        </div>
+							                        <h4>${recSurvey[genreEntry.key]}</h4>
+							                    </div>
+							                </a>
+							            </c:forEach>
+							        </div>
+							    </div>
+
 							</div>
 
 							<div class="owl-features owl-carousel">

@@ -99,22 +99,27 @@
 
 <!-- 플레이리스트 수정 모달 -->
 
-<div class="modal fade" id="plyupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">"${defaultplName}"을 무엇으로 변경할까요?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" class="form-control" id="newPlaylistName" placeholder="${defaultplName}">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary btn-confirm">확인</button>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id="plyupdate" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content modal-ed-content">
+			<div class="modal-header modal-ed-header">
+				<h5 class="modal-title" id="editModalTitle">"${defaultplName}" (을)를 무엇으로 변경할까요?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body mt-3">
+				<form action="#">
+					<div class="form-group ed-form-group">
+						<input type="text" name="newPlaylistName"
+							class="form-style ed-form-style" id="newPlaylistName"
+							placeholder="${defaultplName}" autocomplete="off" maxlength="50">
+						<i class="input-icon fa-solid fa-music"></i>
+						<button type="submit" class="btn btn-confirm btnPink">확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -131,8 +136,7 @@
 				<h4 class="modal-title">
 					<img src="assets/images/logo2.png" alt="">
 				</h4>
-				<button type="button" class="btn-close"
-					data-bs-dismiss="modal">&times;</button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
 			</div>
 
 			<!-- Modal body -->
