@@ -516,7 +516,7 @@ svg #main-circ {
 
   .game-details .content .right-info .playlist .songDetail ul li {
     display: inline-block;
-    width: 15%;
+    /* width: 15%; */
     text-align: center;
     font-size: 14px;
     color: #fff;

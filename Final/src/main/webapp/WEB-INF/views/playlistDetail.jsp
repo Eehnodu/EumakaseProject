@@ -130,12 +130,12 @@
 	<!-- Scripts -->
 
 
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/showplaylist.js"></script>
+	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/showplaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>

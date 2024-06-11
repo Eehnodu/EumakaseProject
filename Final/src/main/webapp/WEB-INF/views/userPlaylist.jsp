@@ -108,14 +108,17 @@
 															<ul>
 																<li><img src="${music.albumCov}" alt=""
 																	class="templatemo-item"></li>
-																<li>
+																<%-- <li>
 																	<h4>${music.artist}</h4> <span>가수명</span>
-																</li>
+																</li> --%>
 																<li>
+																	<h4 class="songTitle">${music.title}</h4> <span>${music.artist}</span>
+																</li>
+																<%-- <li>
 																	<h4>${music.title}</h4> <span>곡명</span>
-																</li>
+																</li> --%>
 																<li>
-																	<h4>${music.album}</h4> <span>앨범명</span>
+																	<h4 class="albumTitle">${music.album}</h4> <span>앨범명</span>
 																</li>
 																<li>
 																	<h4>${music.genre}</h4> <span>장르</span>
@@ -144,13 +147,13 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/userPlaylist.js"></script>
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/showplaylist.js"></script>
+	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/showplaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>
