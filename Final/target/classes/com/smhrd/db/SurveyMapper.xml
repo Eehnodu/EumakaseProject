@@ -55,5 +55,10 @@
 	<select id="surbayIdx" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.SurveyVO">
        SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "genre" AND surIdx=#{surIdx} ;
     </select>
+    
+    <!-- 자동 추천에 쓰일 선택지 가져오기 -->
+	<select id="getRecSurvey" resultType="com.smhrd.model.SurveyVO">
+		SELECT surItem, surDesc FROM tb_survey WHERE surType = 'A' AND surItem != 'genre'
+	</select>
 	
 </mapper>
