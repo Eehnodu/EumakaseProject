@@ -25,8 +25,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	
 <!-- ***** css 연결 ***** -->
-<link rel="stylesheet" href="assets/css/mainPage.css">
-<link rel="stylesheet" href="assets/css/fourimg.css">
+<link rel="stylesheet" href="assets/css/mainPage.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet" href="assets/css/fourimg.css?ver=<%=System.currentTimeMillis()%>">
 
 
 </head>

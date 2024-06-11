@@ -488,6 +488,7 @@ public class MainController {
 			mvo.setMyplIdx(userPl.getMyplIdx());
 			mvo.setPlName("변경할 plName");
 			model.addAttribute("mvo", mvo);
+			model.addAttribute("defaultplName", userPl.getPlName());
 			//myplaylistMapper.updateMyPlayList(mvo);
 			
 			//MemberRestController memberRestController = new MemberRestController();
