@@ -23,48 +23,51 @@
 <!-- Owl Carousel JS -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-	
+
 <!-- ***** css 연결 ***** -->
-<link rel="stylesheet" href="assets/css/mainPage.css?ver=<%=System.currentTimeMillis()%>">
-<link rel="stylesheet" href="assets/css/fourimg.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet"
+	href="assets/css/mainPage.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet"
+	href="assets/css/fourimg.css?ver=<%=System.currentTimeMillis()%>">
 
 
 </head>
 <body>
 
-			<!-- ***** Preloader Start ***** -->
-			<div id="js-preloader" class="js-preloader">
-				<div class="preloader-inner">
-					<span class="dot"></span>
-					<div class="dots">
-						<span></span> <span></span> <span></span>
-					</div>
-				</div>
+	<!-- ***** Preloader Start ***** -->
+	<div id="js-preloader" class="js-preloader">
+		<div class="preloader-inner">
+			<span class="dot"></span>
+			<div class="dots">
+				<span></span> <span></span> <span></span>
 			</div>
-			<!-- ***** Preloader End ***** -->
+		</div>
+	</div>
+	<!-- ***** Preloader End ***** -->
 
 
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="page-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="page-content">
 
-							<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
-							<div class="row">
-								<div class="col-lg-4">
-									<div class="top-streamers" id="top-AI">
-										<div class="heading-section">
-											<h6>Welcome To Cyborg</h6>
-											<h4>
-												<em>AI</em> <br> 음악 추천 서비스
-											</h4>
-											<div class="main-button">
-												<a href="${cpath}/AIrecommend">Right Now</a>
+					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="top-streamers" id="top-AI">
+								<div class="heading-section">
+									<h6>Welcome To Cyborg</h6>
+									<h4>
+										<em>AI</em> <br> 음악 추천 서비스
+									</h4>
+									<div class="main-button">
+										<a href="${cpath}/AIrecommend">Right Now</a>
 
-											</div>
-										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+
 
 								<!-- 최근에 재생한 플레이리스트 -->
 								<div class="col-lg-8">
@@ -91,8 +94,12 @@
 												</div>
 											</c:forEach>
 										</div>
+										<h4>
+											여름 드라이브<br> <span>#신나는</span>
+										</h4>
 									</div>
 								</div>
+
 							<!-- ***** Featured Games End ***** -->
 
 
@@ -122,56 +129,70 @@
 							            </c:forEach>
 							        </div>
 							    </div>
+
 							</div>
-							<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
 
+							<div class="owl-features owl-carousel">
 
-
-
-
-
-							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
-							<div class="col-lg-12">
-								<div class="featured-games header-text">
-									<div class="heading-section">
-										<h4>
-											<em>다른 사람은</em> 뭐 듣지?
-										</h4>
-									</div>
-
-
-									<div class="owl-features owl-carousel">
-										<c:forEach var="otherIdx" items="${otherIdxList}"
-											varStatus="status">
-											<div class="item">
-												<a href="${cpath}/userPlaylist?myplIdx=${otherIdx.myplIdx}">
-													<div class="image-grid">
-														<c:forEach var="albumCov"
-															items="${otherAlbumCovList[status.index]}">
-															<div class="thumb">
-																<img src="${albumCov}" alt="">
-															</div>
-														</c:forEach>
-													</div>
-													<h4>${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
-													</h4>
-												</a>
+								<c:forEach var="survey" items="${recSurvey}" varStatus="status">
+									<a
+										href="${pageContext.request.contextPath}/recPlayList?genreIndex=${status.index}">
+										<div class="item">
+											<div class="thumb">
+												<img src="assets/images/stream-${status.index + 1}.jpg"
+													alt="">
 											</div>
-										</c:forEach>
-									</div>
-								</div>
+											<h4>${survey}</h4>
+										</div>
+									</a>
+								</c:forEach>
 							</div>
-
-							<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
-
-
-
-
-
 						</div>
 					</div>
+					<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
+
+
+
+
+					<!-- ***** 다른 사람의 플레이리스트 start ***** -->
+					<div class="col-lg-12">
+						<div class="featured-games header-text">
+							<div class="heading-section">
+								<h4>
+									<em>다른 사람은</em> 뭐 듣지?
+								</h4>
+							</div>
+
+							<div class="owl-features owl-carousel">
+								<c:forEach var="otherIdx" items="${otherIdxList}"
+									varStatus="status">
+									<div class="item">
+										<a href="${cpath}/userPlaylist?myplIdx=${otherIdx.myplIdx}">
+											<div class="image-grid">
+												<c:forEach var="albumCov"
+													items="${otherAlbumCovList[status.index]}">
+													<div class="thumb">
+														<img src="${albumCov}" alt="">
+													</div>
+												</c:forEach>
+												<div class="hover-effect2">
+													<h6>지금 듣기</h6>
+												</div>
+											</div>
+											<h4>${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
+											</h4>
+										</a>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+					<!-- ***** 다른 사람의 플레이리스트 End ***** -->
+
 				</div>
 			</div>
+		</div>
+	</div>
 
 
 	<!-- Scripts -->
