@@ -121,7 +121,8 @@ function completeJoin() {
 						success: function(result) { // 결과 성공 콜백함수
 							window.history.pushState({}, '', `${cpath}/`);
 							console.log(response);
-							console.log("Survey에 저장된 장르들 호출");
+							console.log(result);
+							
 							// console.log(response); response 가져
 							// 선언된 변수에 초기 HTML 구조를 설정합니다.
 							let htmlContent = `
@@ -197,6 +198,7 @@ function completeJoin() {
 
 								console.log("세션에 vo저장");
 								console.log(response);
+								
 
 
 

@@ -53,43 +53,21 @@
 									<div class="row">
 										<div class="col-lg-3">
 											<div class="image-grid">
-												<c:forEach var="albumCov" items="${userAlbumCovList}"
-													varStatus="status">
-													<c:if test="${status.index < 4}">
-														<div class="thumb">
-															<img src="${albumCov}" alt="">
-														</div>
-													</c:if>
-												</c:forEach>
+												<div class="thumb">
+													<img src="-" alt="">
+												</div>
 											</div>
 										</div>
 										<div class="col-lg-9">
-											<c:choose>
-												<c:when test="${crud}">
-													<button type="button" class="btn btn-primary"
-														data-bs-toggle="modal" data-bs-target="#plyupdate">
-														플레이리스트 이름 수정</button>
-														
-													<button type="button" class="btn btn-primary"
-														data-bs-toggle="modal" data-bs-target="#plydelete">
-														플레이리스트 삭제</button>
-												</c:when>
-												<c:otherwise>
-													<button type="button" class="btn btn-primary"
-														data-bs-toggle="modal" data-bs-target="#plyinsert">
-														플레이리스트 저장</button>
-												</c:otherwise>
-											</c:choose>
-
 											<div class="left-info">
 												<div class="left" id="left">
-													<h3 id="playlist">${userPl.plName}</h3>
+													<h3 id="playlist">확인</h3>
 													<h4>작성자</h4>
-													<span>${name}</span>
+													<span>확인</span>
 													<h4>작성일자</h4>
 
-													<span>${userPl.createdAt}</span>
-													<h4>${userSurDescList}</h4>
+													<span>확인</span>
+													<h4>확인</h4>
 
 												</div>
 											</div>
@@ -102,7 +80,7 @@
 										<div class="gaming-library" id="gaming-playlist">
 											<div class="right-info">
 												<!-- 각 곡의 정보를 반복해서 출력 -->
-												<c:forEach var="music" items="${userPlaylistList}"
+												<c:forEach var="music" items="${recMusicList}"
 													varStatus="status">
 													<div class="col-lg-12 playlist">
 														<div class="item songDetail">
@@ -145,7 +123,7 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/userPlaylist.js"></script>
+
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/tabs.js"></script>

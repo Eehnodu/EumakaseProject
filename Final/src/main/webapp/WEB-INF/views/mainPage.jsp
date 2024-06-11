@@ -178,71 +178,27 @@
 
 							<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
 							<div class="col-lg-12">
-								<div class="featured-games header-text">
-									<div class="heading-section">
-										<h4>
-											<em>오늘의</em> 추천 노래
-										</h4>
-									</div>
-
-									<div class="owl-features owl-carousel">
-										<div class="item">
-											<div class="image-grid">
-												<div class="thumb">
-													<img src="assets/images/stream-05.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-02.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-03.jpg" alt="">
-												</div>
-												<div class="thumb">
-													<img src="assets/images/stream-04.jpg" alt="">
-												</div>
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-06.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-05.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-										</div>
-
-										<div class="item">
-											<div class="thumb">
-												<img src="assets/images/stream-08.jpg" alt="">
-											</div>
-											<h4>
-												Island Rusty<br> <span>249K Downloads</span>
-											</h4>
-										</div>
-									</div>
-								</div>
+							    <div class="featured-games header-text">
+							        <div class="heading-section">
+							            <h4>
+							                <em>오늘의</em> 추천 노래
+							            </h4>
+							        </div>
+							
+							        <div class="owl-features owl-carousel">
+							        
+							            <c:forEach var="genreEntry" items="${indexedGenreList}" varStatus="status">
+							                <a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
+							                    <div class="item">
+							                        <div class="thumb">
+							                            <img src="assets/images/stream-${status.index + 1}.jpg" alt="">
+							                        </div>
+							                        <h4>${recSurvey[genreEntry.key]}</h4>
+							                    </div>
+							                </a>
+							            </c:forEach>
+							        </div>
+							    </div>
 							</div>
 							<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
 

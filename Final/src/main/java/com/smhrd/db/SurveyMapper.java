@@ -33,4 +33,6 @@ public interface SurveyMapper {
     
 	public List<SurveyVO> getGenreBySurIdx(String surIdx);
 	
+	public List<SurveyVO> getRecSurvey();
+	
 }
