@@ -113,6 +113,8 @@ $(".btn-delete").on("click", function() {
 	});
 })
 
-$("#plyinsert").on("click", ()=>{
+$(".btn.btn-primary").on("click", function(){
+	
 	console.log("저장쌉가능?")
+	
 });
