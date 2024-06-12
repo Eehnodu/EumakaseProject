@@ -104,7 +104,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content modal-ed-content">
 			<div class="modal-header modal-ed-header">
-				<h5 class="modal-title" id="editModalTitle">"${defaultplName}" (을)를 무엇으로 변경할까요?</h5>
+				<h5 class="modal-title" id="editModalTitle">"${defaultplName}"<br>(을)를 무엇으로 변경할까요?</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body mt-3">

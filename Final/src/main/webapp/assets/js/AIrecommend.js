@@ -132,3 +132,5 @@ function goToPlaylistDetail() {
 	const params = selectedResponses.map(response => `response=${encodeURIComponent(response)}`).join('&');
 	window.location.href = `playlistDetail?${params}`;
 }
+
+

@@ -35,10 +35,10 @@
 									<em>곡</em> 정보
 								</h4>
 							</div>
-							<div class="main-profile ">
+							<div class="main-profile">
 								<div class="row">
-									<div class="col-lg-4">
-										<img src="assets/images/avatar-04.jpg">
+									<div class="col-lg-4 d-flex justify-content-center">
+										<img class="songAlbumCov" src="assets/images/avatar-04.jpg">
 									</div>
 
 									<div class="col-lg-8 align-self-center">
