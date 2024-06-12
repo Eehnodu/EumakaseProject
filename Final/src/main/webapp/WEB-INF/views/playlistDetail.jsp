@@ -74,8 +74,7 @@
 												</c:if>
 
 
-												 <a href="#"
-													id="redDiff">다른 플리 보여줘</a>
+												 <button id="redDiff">다른 플리 보여줘</button>
 
 											</div>
 										</div>
