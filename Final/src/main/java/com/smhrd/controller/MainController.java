@@ -723,8 +723,8 @@ public class MainController {
 	}
 
 	// 플레이리스트 저장
-	@GetMapping("/savePlaylist")
-	public String savePlaylist(HttpSession session) {
+	@PostMapping("/savePlaylist")
+	public String savePlaylist(@RequestParam(value = "video-url", required = false) String videoUrl, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 
 		if (member == null) {
@@ -739,8 +739,11 @@ public class MainController {
 		List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
 		myplvo.setMemId(memId);
 
-		// 나중에 플리명 입력하는 로직 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!
-		myplvo.setPlName("-");
+		// videoUrl이 비어 있거나 null인 경우 기본값 설정
+	    if (videoUrl == null || videoUrl.trim().isEmpty()) {
+	        videoUrl = "나의 플레이리스트";
+	    }
+		myplvo.setPlName(videoUrl);
 		myplaylistMapper.insertMypl(myplvo);
 		
 		// 바꾸면 장르를 변경해줘야함

@@ -70,7 +70,7 @@
 												</c:if>
 												<%-- 로그인한 회원은 플리 저장 --%>
 												<c:if test="${member!=null}">
-													<a href="${cpath}/savePlaylist">이 플리 저장</a>
+													<a href="#" id="savePlaylistLink">이 플리 저장</a>
 												</c:if>
 													<c:forEach var="genre" items="${preGenre}">
 													 	<button id="redDiff" value="${genre.surDesc}">${genre.surDesc}</button>
@@ -143,6 +143,7 @@
 		src="assets/js/showplaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/otherPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/savePlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>
