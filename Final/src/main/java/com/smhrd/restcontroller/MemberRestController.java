@@ -82,8 +82,6 @@ public class MemberRestController {
 	
 	@RequestMapping("/deleteMyPlayList")
 	public void deleteMyPlayList(MyPlaylistVO mvo) {
-		System.out.println("deleteMyPlayList 들어오냐?");
-		System.out.println(mvo.getMyplIdx());
 		myplaylistMapper.deleteMyPlayList(mvo);
 	}
 
