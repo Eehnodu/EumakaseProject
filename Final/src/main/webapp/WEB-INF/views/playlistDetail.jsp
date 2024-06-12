@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="assets/css/playlistDetail.css">
 
 </head>
-<body>
+<body data-cpath="${cpath}">
 
 	<!-- ***** Preloader Start ***** -->
 	<div id="js-preloader" class="js-preloader">
@@ -81,7 +81,7 @@
 										<!-- ***** Gaming Library Start ***** -->
 										<div class="col-lg-12">
 											<div class="gaming-library" id="gaming-playlist">
-												<div class="right-info">
+												<div class="right-info" id="playlistList">
 													<c:forEach var="music" items="${musicList}">
 														<div class="col-lg-12 playlist">
 															<div class="item songDetail">
@@ -146,6 +146,7 @@
 	<script
 		src="assets/js/showplaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/otherPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>

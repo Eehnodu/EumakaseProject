@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -236,73 +237,73 @@ public class MemberRestController {
 	    return responseMap;
 	}
 	
-	@RequestMapping("/otherPlaylist")
-	public void otherPlaylist(HttpSession session, Model model) {
-		String input_keywords = (String) session.getAttribute("input_keywords");
-		String input_genre = (String) session.getAttribute("input_genre");
-		System.out.println(input_keywords);
-		System.out.println(input_genre);
-		
-		try {
+	@PostMapping("/otherPlaylist")
+    public ResponseEntity<List<MusicVO>> otherPlaylist(HttpSession session) {
+        String input_keywords = (String) session.getAttribute("input_keywords");
+        String input_genre = (String) session.getAttribute("input_genre");
 
-			// Flask API 호출
-			String url = "http://localhost:5000/recommend";
+        System.out.println(input_keywords);
+        System.out.println(input_genre);
 
-			// 요청 바디 생성
-			Map<String, String> requestBody = new HashMap<>();
-			requestBody.put("keywords", input_keywords.trim());
-			requestBody.put("genre", input_genre);
+        try {
+            // Flask API 호출
+            String url = "http://localhost:5000/recommend";
 
-			// HttpHeaders 설정
-			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "application/json");
+            // 요청 바디 생성
+            Map<String, String> requestBody = new HashMap<>();
+            requestBody.put("keywords", input_keywords.trim());
+            requestBody.put("genre", input_genre);
 
-			// 요청 엔티티 생성
-			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+            // HttpHeaders 설정
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Type", "application/json");
 
-			// 요청 보내기 및 응답 받기
-			ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
-					String[].class);
+            // 요청 엔티티 생성
+            HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
 
-			// 추천 결과를 모델에 추가
-			String[] recommendations = responseEntity.getBody();
-			List<String> recommendationList = Arrays.asList(recommendations); // 추천 결과를 리스트로 변환
-			session.setAttribute("recommendations", recommendationList); // 모델에 리스트로 추가
+            // 요청 보내기 및 응답 받기
+            ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+                    String[].class);
 
-			List<MusicVO> musicList = new ArrayList<>();
-			MusicVO musicvo = new MusicVO();
+            // 추천 결과를 모델에 추가
+            String[] recommendations = responseEntity.getBody();
+            List<String> recommendationList = Arrays.asList(recommendations); // 추천 결과를 리스트로 변환
+            session.setAttribute("recommendations", recommendationList); // 모델에 리스트로 추가
 
-			// 추천 받은 노래의 음원 정보 가져오기
-			for (String list : recommendationList) {
-				String[] parts = list.split(" - ", 2);
-				if (parts.length == 2) {
-					musicvo.setArtist(parts[0]); // 가수
-					musicvo.setTitle(parts[1]); // 곡명
-				} else {
-					// 만약 구분자가 없는 경우 (예외 처리)
-					musicvo.setArtist(list);
-					musicvo.setTitle("");
-				}
-				// MusicVO에서 일치하는 정보 가져와야함
-				musicList.add(musicMapper.getMusic(musicvo));
+            List<MusicVO> musicList = new ArrayList<>();
+            MusicVO musicvo = new MusicVO();
 
-			}
+            // 추천 받은 노래의 음원 정보 가져오기
+            for (String list : recommendationList) {
+                String[] parts = list.split(" - ", 2);
+                if (parts.length == 2) {
+                    musicvo.setArtist(parts[0]); // 가수
+                    musicvo.setTitle(parts[1]); // 곡명
+                } else {
+                    // 만약 구분자가 없는 경우 (예외 처리)
+                    musicvo.setArtist(list);
+                    musicvo.setTitle("");
+                }
+                // MusicVO에서 일치하는 정보 가져와야함
+                musicList.add(musicMapper.getMusic(musicvo));
+            }
 
-			// 가져온 음원의 정보를 'musicList'라는 모델에 추가
-			session.setAttribute("musicList", musicList);
+            session.setAttribute("musicList", musicList);
+            // 가져온 음원의 정보를 'musicList'로 반환
+            return ResponseEntity.ok(musicList);
 
-		} catch (HttpServerErrorException e) {
-			// 서버 오류 처리
-			model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
-		} catch (RestClientException e) {
-			// 클라이언트 오류 처리
-			model.addAttribute("error", "요청 중 오류가 발생했습니다: " + e.getMessage());
-		} catch (NumberFormatException e) {
-			// 숫자 형식 오류 처리
-			model.addAttribute("error", "잘못된 응답 형식입니다: " + e.getMessage());
-		} catch (Exception e) {
-			// 일반적인 예외 처리
-			model.addAttribute("error", "예기치 않은 오류가 발생했습니다: " + e.getMessage());
-		}
-	}
+        } catch (HttpServerErrorException e) {
+            // 서버 오류 처리
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        } catch (RestClientException e) {
+            // 클라이언트 오류 처리
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (NumberFormatException e) {
+            // 숫자 형식 오류 처리
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (Exception e) {
+            // 일반적인 예외 처리
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 }
