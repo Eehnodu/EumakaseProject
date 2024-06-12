@@ -27,50 +27,79 @@
 				<div class="page-content">
 
 					<!-- *** 곡 상세 정보 *** -->
-
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="heading-section">
-								<h4>
-									<em>곡</em> 정보
-								</h4>
-							</div>
-							<div class="main-profile ">
-								<div class="row">
-									<div class="col-lg-4">
-										<img src="${musicDetail.albumCov}">
-									</div>
-
-									<div class="col-lg-8 align-self-center">
-										<ul>
-											<li>곡명 <span>${musicDetail.title}</span></li>
-											<li>가수명 <span>${musicDetail.artist}</span></li>
-											<li>앨범명 <span>${musicDetail.album}</span></li>
-											<li>장르 <span>${musicDetail.genre}</span></li>
-											<li>발매일 <span>${musicDetail.releasedAt}</span></li>
-										</ul>
-									</div>
+					<div class="game-details">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="heading-section">
+									<h4>
+										<em>곡</em> 정보
+									</h4>
 								</div>
-								<div class="row">
-									<div class="col-lg-12">
-										<div id="songLyrics">
-											<div class="heading-section">
-												<h4>
-													<em>가사</em>
-												</h4>
-											</div>
-											<span>${musicDetail.lyrics}
-											 </span>
+								<div class="main-profile ">
+									<div class="row">
+										<div class="col-lg-3">
+										<h3 id="musicTitle">${musicDetail.title}</h3>
+											<img src="${musicDetail.albumCov}">
+										</div>
 
+										<div class="col-lg-9 align-self-center">
+											<div class="left-info">
+												 <span>가수명</span>
+												<h4>${musicDetail.artist}</h4>
+												<span>앨범명</span>
+												<h4>${musicDetail.album}</h4>
+												<span>장르명</span>
+												<h4>${musicDetail.genre}</h4>
+												<span>발매일</span>
+												<h4>${musicDetail.releasedAt}</h4>
+												 
+												<%-- <table>
+												<tbody>
+						<tr>
+							<th scope="row"><span>아티스트</span></th>
+							<td>
+										<h4>${musicDetail.artist}</h4>
+							</td>
+						</tr>
+							<tr>
+								<th scope="row"><span>앨범명</span></th>
+								<td><h4>${musicDetail.album}</h4></td>
+							</tr>
+
+						<tr>
+							<th scope="row"><span>장르명</span></th>
+							<td><h4>${musicDetail.releasedAt}</h4></td>
+						</tr>
+						<tr>
+							<th scope="row"><span>발매일</span></th>
+							<td><h4>${musicDetail.releasedAt}</h4></td>
+						</tr>
+
+
+					</tbody>
+					</table> --%>
+											</div>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<div id="songLyrics">
+												<div class="heading-section">
+													<h4>
+														<em>가사</em>
+													</h4>
+												</div>
+												<span class="lyrics">${musicDetail.lyrics}</span>
+											</div>
+										</div>
 
 
+									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
-
 
 
 
@@ -82,7 +111,6 @@
 
 
 	<!-- Scripts -->
-
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/tabs.js"></script>
