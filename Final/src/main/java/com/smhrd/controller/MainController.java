@@ -225,32 +225,8 @@ public class MainController {
 		if (memvo == null) {
 			return "redirect:/";
 		}
-		MyPlaylistVO mvo = new MyPlaylistVO();
-		
-		//model.addAttribute("defaultplName", userPl.getPlName()); // 기존 플리 이름
-		//model.addAttribute("nowplyIdx", userPl.getMyplIdx()); // 현재 myplIdx
-		
-		
-		
-		
-		
-		
 		String memId = memvo.getMemId();
 		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);
-		
-		List<Integer> myplIdx = myplayListIdx.stream()
-                .map(MyPlaylistVO::getMyplIdx)
-                .collect(Collectors.toList());
-		
-		List<String> myplName = myplayListIdx.stream()
-				.map(MyPlaylistVO::getPlName)
-				.collect(Collectors.toList());
-		
-		model.addAttribute("nowplyIdx", myplIdx);// 현재 myplIdx List..
-		model.addAttribute("defaultplName", myplName); // 기존 플리 이름 List..
-		
-		System.out.println(myplIdx);
-		System.out.println(myplName);
 		
 		model.addAttribute("myplayList", myplayListIdx);
 
