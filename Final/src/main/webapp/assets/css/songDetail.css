@@ -1,23 +1,7 @@
-
-
 hr {
 	background: pink;
 	height: 1px;
 	border: 0;
-}
-
-
-
-fa-lg {
-	    margin-right: 3px;
-}
-
-
-/* 내용 영역 스타일링 */
-.col-lg-9 {
-	display: flex;
-	flex-direction: column; /* 내부 요소들을 세로로 정렬 */
-	justify-content: center; /* 세로 방향 중앙 정렬 */
 }
 
 
@@ -31,4 +15,10 @@ html {
     padding: 30px;
     margin-top: 30px;
     color:#666;
+}
+
+.songAlbumCov{
+	border-radius: 23px;
+	width: 329px;
+	height: 329px;
 }
