@@ -104,19 +104,20 @@
 	<div class="modal-dialog">
 		<div class="modal-content modal-ed-content">
 			<div class="modal-header modal-ed-header">
-				<h5 class="modal-title" id="editModalTitle">"${defaultplName}" (을)를 무엇으로 변경할까요?</h5>
+				<h5 class="modal-title" id="editModalTitle">"${defaultplName}"<br>(을)를 무엇으로 변경할까요?</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body mt-3">
-				<form action="#">
 					<div class="form-group ed-form-group">
 						<input type="text" name="newPlaylistName"
 							class="form-style ed-form-style" id="newPlaylistName"
 							placeholder="${defaultplName}" autocomplete="off" maxlength="50">
+							
+							<input type="hidden" name="nowplyIdx" id="nowplyIdx" value="${nowplyIdx}">
+							
 						<i class="input-icon fa-solid fa-music"></i>
-						<button type="submit" class="btn btn-confirm btnPink">확인</button>
+						<button type="button" class="btn btn-confirm btnPink" id="submitbotton">확인</button>
 					</div>
-				</form>
 			</div>
 		</div>
 	</div>

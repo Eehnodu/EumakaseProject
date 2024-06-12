@@ -32,6 +32,9 @@
 		DELETE FROM tb_myplaylist where myplIdx = ${myplIdx}
 	</delete>
 	
+	
+	
+	
 	<select id="getMyplayList" resultType="com.smhrd.model.MyPlaylistVO">
 		SELECT * FROM tb_myplaylist where memId = #{memId}
 	</select>
