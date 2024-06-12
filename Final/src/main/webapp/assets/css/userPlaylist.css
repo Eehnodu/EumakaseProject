@@ -586,6 +586,8 @@ svg #main-circ {
   grid-template-rows: repeat(2, 1fr);
   width: 100%; /* 원하는 크기로 설정 */
   aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+  overflow: hidden;
+  border-radius: 23px;
 }
 
 /* h4 .songTitle{

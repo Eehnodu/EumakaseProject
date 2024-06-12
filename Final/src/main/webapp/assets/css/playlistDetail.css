@@ -577,7 +577,7 @@ svg #main-circ {
 	transform: translateY(-50%);
 	font-size: 1.2rem;
 	color: #e75e8d;
-	letter-spacing: 1px;
+	/* letter-spacing: 1px; */
 	transition: 0.3s;
 	font-family: "Roboto", sans-serif;
 	font-weight: 600;
