@@ -1,12 +1,14 @@
 const cpath = document.body.getAttribute('data-cpath');
 
 $(document).ready(function() {
-    $('#redDiff').click(function(event) {
+    $('button#redDiff').click(function(event) {
         event.preventDefault(); // 링크 기본 동작 방지
 
+		var value = $(this).attr('value');
         $.ajax({
             type: "post",
             url: `${cpath}/otherPlaylist`, // URL을 적절히 변경하세요
+            data : { value: value},
             success: function(data) {
                 updatePlaylist(data);
             },

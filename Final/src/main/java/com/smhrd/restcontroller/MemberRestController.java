@@ -238,13 +238,10 @@ public class MemberRestController {
 	}
 	
 	@PostMapping("/otherPlaylist")
-    public ResponseEntity<List<MusicVO>> otherPlaylist(HttpSession session) {
+    public ResponseEntity<List<MusicVO>> otherPlaylist(@RequestParam("value") String genre, HttpSession session) {
         String input_keywords = (String) session.getAttribute("input_keywords");
-        String input_genre = (String) session.getAttribute("input_genre");
-
-        System.out.println(input_keywords);
-        System.out.println(input_genre);
-
+        session.setAttribute("input_genre", genre);
+        
         try {
             // Flask API 호출
             String url = "http://localhost:5000/recommend";
@@ -252,8 +249,9 @@ public class MemberRestController {
             // 요청 바디 생성
             Map<String, String> requestBody = new HashMap<>();
             requestBody.put("keywords", input_keywords.trim());
-            requestBody.put("genre", input_genre);
-
+            requestBody.put("genre", genre);
+            
+            
             // HttpHeaders 설정
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Type", "application/json");

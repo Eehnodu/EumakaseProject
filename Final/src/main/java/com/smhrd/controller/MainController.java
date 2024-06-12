@@ -39,12 +39,14 @@ import com.smhrd.db.ContextMapper;
 import com.smhrd.db.MemberMapper;
 import com.smhrd.db.MusicMapper;
 import com.smhrd.db.MyPlaylistMapper;
+import com.smhrd.db.PreferenceMapper;
 import com.smhrd.db.SurveyMapper;
 import com.smhrd.model.AiPlaylistVO;
 import com.smhrd.model.ContextVO;
 import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
 import com.smhrd.model.MyPlaylistVO;
+import com.smhrd.model.PreferenceVO;
 import com.smhrd.model.SurveyVO;
 
 @Controller
@@ -67,6 +69,9 @@ public class MainController {
 
 	@Autowired
 	private MyPlaylistMapper myplaylistMapper;
+	
+	@Autowired
+	private PreferenceMapper preferenceMapper;
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -654,7 +659,17 @@ public class MainController {
 				// 회원인지 아닌지 구분하여 context에 저장
 				MemberVO member = (MemberVO) session.getAttribute("member");
 				String memId = (member != null) ? member.getMemId() : "guest"; // 회원이 아니면 "guest"로 설정
-
+				
+				// 회원의 선호도 장르를 담을 리스트 생성
+				List<SurveyVO> preGenre = new ArrayList<>();
+				if(member!= null) {
+					for(PreferenceVO preCon : preferenceMapper.getMemPreCon(memId)) {
+						preGenre.add(surveyMapper.getMemPreGenre(preCon));
+					}
+				}
+				// 개인 선호도 장르를 모델에 담기
+				model.addAttribute("preGenre", preGenre);
+				
 				try {
 					for (String response : responses) {
 						Map<String, Object> params = new HashMap<>();
@@ -751,6 +766,13 @@ public class MainController {
 		// 나중에 플리명 입력하는 로직 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!
 		myplvo.setPlName("-");
 		myplaylistMapper.insertMypl(myplvo);
+		
+		// 바꾸면 장르를 변경해줘야함
+		String input_genre = (String) session.getAttribute("input_genre");
+		SurveyVO genreIdx = surveyMapper.getSameDesc(input_genre);
+		if(contextList.get(0).getContextIdx() != genreIdx.getSurIdx()) {
+			contextMapper.changeSurIdx(genreIdx.getSurIdx());
+		};
 
 		// 공통 contextIdx 설정
 		AiPlaylistVO playlistvo = new AiPlaylistVO();

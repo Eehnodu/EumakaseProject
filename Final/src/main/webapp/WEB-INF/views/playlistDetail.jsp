@@ -72,10 +72,10 @@
 												<c:if test="${member!=null}">
 													<a href="${cpath}/savePlaylist">이 플리 저장</a>
 												</c:if>
-
-
-												 <button id="redDiff">다른 플리 보여줘</button>
-
+													<c:forEach var="genre" items="${preGenre}">
+													 	<button id="redDiff" value="${genre.surDesc}">${genre.surDesc}</button>
+													</c:forEach>
+												 <button id="redDiff" value="${input_genre}">another(이름수정)</button>
 											</div>
 										</div>
 										<!-- ***** Gaming Library Start ***** -->
@@ -88,10 +88,6 @@
 																<ul>
 																	<li><img src="${music.albumCov}" alt=""
 																		class="templatemo-item"></li>
-																	<%-- <li>
-
-																		<h4>${music.artist}</h4> <span>가수명</span>
-																	</li> --%>
 																	<li>
 																		<h4 class="songTitle">${music.title}</h4> <span>${music.artist}</span>
 																	</li>
