@@ -9,7 +9,10 @@
 			(#{memId}, #{Idx})
 		</foreach>
 	</insert>
-
-
+	
+	<!-- 사용자 선호도 가져오기 -->
+	<select id="getMemPreCon" parameterType="string" resultType="com.smhrd.model.PreferenceVO">
+	    SELECT surIdx FROM tb_preference WHERE memId = #{memId}
+	</select>
 
 </mapper>
