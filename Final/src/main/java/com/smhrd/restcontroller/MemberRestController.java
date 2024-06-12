@@ -17,6 +17,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,19 +72,18 @@ public class MemberRestController {
 	private RestTemplate restTemplate;
 	
 	@RequestMapping("/updateMyPlayList")
-	public void updateMyPlayList(@RequestParam("plName") String plName, MyPlaylistVO mvo) {
-		System.out.println("업데이트@@@@@마플리@@@@@변경할이름가져오냐@@@@");
-		System.out.println(plName);
-		//MyPlaylistVO myplymvo = new MyPlaylistVO();
-		//myplymvo.setPlName(plName);
-		//myplymvo.setMyplIdx(mvo.getMyplIdx());
-		//myplaylistMapper.updateMyPlayList(myplymvo);
+	public void updateMyPlayList(String newPlaylistName, int myplIdx) {
+		MyPlaylistVO mvo = new MyPlaylistVO();
+		mvo.setMyplIdx(myplIdx);
+		mvo.setPlName(newPlaylistName);
+		myplaylistMapper.updateMyPlayList(mvo);
 	}
 	
 	@RequestMapping("/deleteMyPlayList")
 	public void deleteMyPlayList(MyPlaylistVO mvo) {
+		System.out.println("deleteMyPlayList 들어오냐?");
 		System.out.println(mvo.getMyplIdx());
-		//myplaylistMapper.deleteMyPlayList(mvo);
+		myplaylistMapper.deleteMyPlayList(mvo);
 	}
 
 	@RequestMapping("/checkId")

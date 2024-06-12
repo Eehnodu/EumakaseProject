@@ -629,3 +629,8 @@
 }
 
 
+/* 장르 추천 섹션 */
+.genreAlbumCov{
+	background-color: #eeeeee14;
+    border-radius: 23px;
+}

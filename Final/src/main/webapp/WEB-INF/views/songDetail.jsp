@@ -35,7 +35,7 @@
 									<em>곡</em> 정보
 								</h4>
 							</div>
-							<div class="main-profile ">
+							<div class="main-profile">
 								<div class="row">
 									<div class="col-lg-4">
 										<img src="${musicDetail.albumCov}">
