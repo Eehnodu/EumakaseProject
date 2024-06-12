@@ -21,7 +21,6 @@ $("#submitbotton").on("click", function() {
 		reverseButtons: true
 	}).then((result) => {
 		if (result.isConfirmed) {
-
 			newPlaylistName = $("#newPlaylistName").val()
 			nowplyIdx = $("#nowplyIdx").val()
 			
