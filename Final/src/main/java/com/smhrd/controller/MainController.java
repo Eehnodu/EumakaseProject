@@ -24,7 +24,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientException;
@@ -37,12 +39,14 @@ import com.smhrd.db.ContextMapper;
 import com.smhrd.db.MemberMapper;
 import com.smhrd.db.MusicMapper;
 import com.smhrd.db.MyPlaylistMapper;
+import com.smhrd.db.PreferenceMapper;
 import com.smhrd.db.SurveyMapper;
 import com.smhrd.model.AiPlaylistVO;
 import com.smhrd.model.ContextVO;
 import com.smhrd.model.MemberVO;
 import com.smhrd.model.MusicVO;
 import com.smhrd.model.MyPlaylistVO;
+import com.smhrd.model.PreferenceVO;
 import com.smhrd.model.SurveyVO;
 
 @Controller
@@ -65,6 +69,9 @@ public class MainController {
 
 	@Autowired
 	private MyPlaylistMapper myplaylistMapper;
+	
+	@Autowired
+	private PreferenceMapper preferenceMapper;
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -73,7 +80,8 @@ public class MainController {
 	public String AIquestion() {
 		return "AIquestion";
 	}
-
+	
+	
 	@GetMapping("/")
 	public String intro(Model model, HttpSession session) {
 		
@@ -218,8 +226,8 @@ public class MainController {
 			return "redirect:/";
 		}
 		String memId = memvo.getMemId();
-
-		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);//
+		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);
+		
 		model.addAttribute("myplayList", myplayListIdx);
 
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
@@ -509,7 +517,7 @@ public class MainController {
 
 		return "AIrecommend";
 	}
-
+	
 	@GetMapping("/userPlaylist")
 	public String userPlaylist(@RequestParam("myplIdx") int myplIdx, Model model, HttpSession session) {
 
@@ -522,19 +530,13 @@ public class MainController {
 
 		MemberVO crudcheck = (MemberVO) session.getAttribute("member");
 
+
 		MyPlaylistVO mvo = new MyPlaylistVO();
 
 		if (userPl.getMemId().equals(crudcheck.getMemId())) {
 			model.addAttribute("crud", true);
-			mvo.setMyplIdx(userPl.getMyplIdx());
-			mvo.setPlName("변경할 plName");
-			model.addAttribute("mvo", mvo);
-			model.addAttribute("defaultplName", userPl.getPlName());
-			// myplaylistMapper.updateMyPlayList(mvo);
-
-			// MemberRestController memberRestController = new MemberRestController();
-			// memberRestController.updateMyPlayList("plName", mvo);
-
+			model.addAttribute("defaultplName", userPl.getPlName()); // 기존 플리 이름
+			model.addAttribute("nowplyIdx", userPl.getMyplIdx()); // 현재 myplIdx
 		} else {
 			model.addAttribute("crud", false);
 		}
@@ -633,7 +635,17 @@ public class MainController {
 				// 회원인지 아닌지 구분하여 context에 저장
 				MemberVO member = (MemberVO) session.getAttribute("member");
 				String memId = (member != null) ? member.getMemId() : "guest"; // 회원이 아니면 "guest"로 설정
-
+				
+				// 회원의 선호도 장르를 담을 리스트 생성
+				List<SurveyVO> preGenre = new ArrayList<>();
+				if(member!= null) {
+					for(PreferenceVO preCon : preferenceMapper.getMemPreCon(memId)) {
+						preGenre.add(surveyMapper.getMemPreGenre(preCon));
+					}
+				}
+				// 개인 선호도 장르를 모델에 담기
+				model.addAttribute("preGenre", preGenre);
+				
 				try {
 					for (String response : responses) {
 						Map<String, Object> params = new HashMap<>();
@@ -711,8 +723,8 @@ public class MainController {
 	}
 
 	// 플레이리스트 저장
-	@GetMapping("/savePlaylist")
-	public String savePlaylist(HttpSession session) {
+	@PostMapping("/savePlaylist")
+	public String savePlaylist(@RequestParam(value = "video-url", required = false) String videoUrl, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 
 		if (member == null) {
@@ -727,9 +739,19 @@ public class MainController {
 		List<MusicVO> musicList = (List<MusicVO>) session.getAttribute("musicList");
 		myplvo.setMemId(memId);
 
-		// 나중에 플리명 입력하는 로직 구현해야함!!!!!!!!!!!!!!!!!!!!!!!!!!
-		myplvo.setPlName("-");
+		// videoUrl이 비어 있거나 null인 경우 기본값 설정
+	    if (videoUrl == null || videoUrl.trim().isEmpty()) {
+	        videoUrl = "나의 플레이리스트";
+	    }
+		myplvo.setPlName(videoUrl);
 		myplaylistMapper.insertMypl(myplvo);
+		
+		// 바꾸면 장르를 변경해줘야함
+		String input_genre = (String) session.getAttribute("input_genre");
+		SurveyVO genreIdx = surveyMapper.getSameDesc(input_genre);
+		if(contextList.get(0).getContextIdx() != genreIdx.getSurIdx()) {
+			contextMapper.changeSurIdx(genreIdx.getSurIdx());
+		};
 
 		// 공통 contextIdx 설정
 		AiPlaylistVO playlistvo = new AiPlaylistVO();

@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="assets/css/playlistDetail.css">
 
 </head>
-<body>
+<body data-cpath="${cpath}">
 
 	<!-- ***** Preloader Start ***** -->
 	<div id="js-preloader" class="js-preloader">
@@ -70,29 +70,24 @@
 												</c:if>
 												<%-- 로그인한 회원은 플리 저장 --%>
 												<c:if test="${member!=null}">
-													<a href="${cpath}/savePlaylist">이 플리 저장</a>
+													<a href="#" id="savePlaylistLink">이 플리 저장</a>
 												</c:if>
-
-
-												 <a href="#"
-													id="redDiff">다른 플리 보여줘</a>
-
+													<c:forEach var="genre" items="${preGenre}">
+													 	<button id="redDiff" value="${genre.surDesc}">${genre.surDesc}</button>
+													</c:forEach>
+												 <button id="redDiff" value="${input_genre}">another(이름수정)</button>
 											</div>
 										</div>
 										<!-- ***** Gaming Library Start ***** -->
 										<div class="col-lg-12">
 											<div class="gaming-library" id="gaming-playlist">
-												<div class="right-info">
+												<div class="right-info" id="playlistList">
 													<c:forEach var="music" items="${musicList}">
 														<div class="col-lg-12 playlist">
 															<div class="item songDetail">
 																<ul>
 																	<li><img src="${music.albumCov}" alt=""
 																		class="templatemo-item"></li>
-																	<%-- <li>
-
-																		<h4>${music.artist}</h4> <span>가수명</span>
-																	</li> --%>
 																	<li>
 																		<h4 class="songTitle">${music.title}</h4> <span>${music.artist}</span>
 																	</li>
@@ -147,6 +142,8 @@
 	<script
 		src="assets/js/showplaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/otherPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/savePlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>

@@ -16,4 +16,7 @@ public interface ContextMapper {
     public List<ContextVO> chartjs(MemberVO member);
     
     public List<ContextVO> getContextIdx(MemberVO member);
+    
+    public void changeSurIdx(int i);
+
 }
