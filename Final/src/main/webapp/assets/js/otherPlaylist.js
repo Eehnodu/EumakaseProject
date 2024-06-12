@@ -19,11 +19,20 @@ $(document).ready(function() {
     });
 });
 
+function formatTimestamp(timestamp) {
+    var date = new Date(parseInt(timestamp));
+    var year = date.getFullYear();
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var day = ('0' + date.getDate()).slice(-2);
+    return year + '-' + month + '-' + day;
+}
+
 function updatePlaylist(musicList) {
     const playlistContainer = $('#playlistList');
     playlistContainer.empty(); // 기존 내용 지우기
 
     musicList.forEach(function(music) {
+        const formattedDate = music.releasedAt === '0001-01-01' ? '-' : formatTimestamp(music.releasedAt);
         const musicItem = `
             <div class="col-lg-12 playlist">
                 <div class="item songDetail" style="display:block;">
@@ -41,7 +50,7 @@ function updatePlaylist(musicList) {
                             <h4>${music.genre}</h4>
                             <span>장르</span>
                         </li>
-                        <li>${music.releasedAt === '0001-01-01' ? '<h4>-</h4>' : '<h4>' + music.releasedAt + '</h4>'}
+                        <li><h4>${formattedDate}</h4>
                             <span>발매일</span>
                         </li>
                     </ul>
