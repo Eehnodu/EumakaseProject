@@ -103,8 +103,7 @@
 <br>
 
 ## 📌 서비스 흐름도
-![서비스 흐름도](https://github.com/2024-SMHRD-KDT-BigData-23/FitNeeds/assets/155061141/65e87772-bcaa-4644-aab5-a7c8e661cf55)
-서비스 흐름도 새로만들것!!!
+![서비스흐름도 drawio](https://github.com/Eehnodu/FinalProject/assets/155136516/f075a2c5-248b-4966-a844-db612f811ac3)
 <br>
 
 ## 📌 ER다이어그램
