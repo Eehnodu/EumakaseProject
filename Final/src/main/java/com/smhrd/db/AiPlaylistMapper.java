@@ -14,4 +14,6 @@ public interface AiPlaylistMapper {
 	
 	public List<AiPlaylistVO> getOtherPl(MyPlaylistVO vo);
 	
+	public List<AiPlaylistVO> getPopularMusic();
+	
 }

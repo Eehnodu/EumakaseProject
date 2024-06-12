@@ -14,7 +14,7 @@
 <%@ include file="includeHeader.jsp"%>
 
 <!-- ***** css 연결 ***** -->
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/main.css?ver=<%=System.currentTimeMillis()%>">
 
 </head>
 <body>

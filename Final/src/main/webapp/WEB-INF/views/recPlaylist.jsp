@@ -61,16 +61,16 @@
 													<div class="col-lg-12 playlist">
 														<div class="item songDetail">
 															<ul>
-																<li><img src="${music.albumCov}" alt=""
-																	class="templatemo-item"></li>
+																<li>
+																	<a href="<c:url value='/songDetail?musicIdx=${music.musicIdx}'/>">
+																		<img src="${music.albumCov}" alt="" class="templatemo-item">
+																	</a>
+																</li>
 																<li>
 																	<h4>${music.artist}</h4> <span>가수명</span>
 																</li>
 																<li>
 																	<h4>${music.title}</h4> <span>곡명</span>
-																</li>
-																<li>
-																	<h4>${music.album}</h4> <span>앨범명</span>
 																</li>
 																<li>
 																	<h4>${music.genre}</h4> <span>장르</span>
