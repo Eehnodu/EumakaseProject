@@ -37,17 +37,17 @@
 							</div>
 							<div class="main-profile">
 								<div class="row">
-									<div class="col-lg-4 d-flex justify-content-center">
-										<img class="songAlbumCov" src="assets/images/avatar-04.jpg">
+									<div class="col-lg-4">
+										<img src="${musicDetail.albumCov}">
 									</div>
 
 									<div class="col-lg-8 align-self-center">
 										<ul>
-											<li>곡명 <span>Bubble Gum</span></li>
-											<li>가수명 <span>Nodu</span></li>
-											<li>앨범명 <span>Nodu 1st Album "Yummy Udon"</span></li>
-											<li>장르 <span>Rock</span></li>
-											<li>발매일 <span>1999.07.19</span></li>
+											<li>곡명 <span>${musicDetail.title}</span></li>
+											<li>가수명 <span>${musicDetail.artist}</span></li>
+											<li>앨범명 <span>${musicDetail.album}</span></li>
+											<li>장르 <span>${musicDetail.genre}</span></li>
+											<li>발매일 <span>${musicDetail.releasedAt}</span></li>
 										</ul>
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 													<em>가사</em>
 												</h4>
 											</div>
-											<span>으아아아ㅏ 우동히 너무 맛있어~<br>마누라 젓가락 준비<br>우동 비빌 준비
+											<span>${musicDetail.lyrics}
 											 </span>
 
 										</div>

@@ -24,7 +24,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientException;
@@ -73,7 +75,8 @@ public class MainController {
 	public String AIquestion() {
 		return "AIquestion";
 	}
-
+	
+	
 	@GetMapping("/")
 	public String intro(Model model, HttpSession session) {
 		
@@ -217,9 +220,33 @@ public class MainController {
 		if (memvo == null) {
 			return "redirect:/";
 		}
+		MyPlaylistVO mvo = new MyPlaylistVO();
+		
+		//model.addAttribute("defaultplName", userPl.getPlName()); // 기존 플리 이름
+		//model.addAttribute("nowplyIdx", userPl.getMyplIdx()); // 현재 myplIdx
+		
+		
+		
+		
+		
+		
 		String memId = memvo.getMemId();
-
-		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);//
+		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);
+		
+		List<Integer> myplIdx = myplayListIdx.stream()
+                .map(MyPlaylistVO::getMyplIdx)
+                .collect(Collectors.toList());
+		
+		List<String> myplName = myplayListIdx.stream()
+				.map(MyPlaylistVO::getPlName)
+				.collect(Collectors.toList());
+		
+		model.addAttribute("nowplyIdx", myplIdx);// 현재 myplIdx List..
+		model.addAttribute("defaultplName", myplName); // 기존 플리 이름 List..
+		
+		System.out.println(myplIdx);
+		System.out.println(myplName);
+		
 		model.addAttribute("myplayList", myplayListIdx);
 
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
@@ -509,7 +536,7 @@ public class MainController {
 
 		return "AIrecommend";
 	}
-
+	
 	@GetMapping("/userPlaylist")
 	public String userPlaylist(@RequestParam("myplIdx") int myplIdx, Model model, HttpSession session) {
 
@@ -522,19 +549,13 @@ public class MainController {
 
 		MemberVO crudcheck = (MemberVO) session.getAttribute("member");
 
+
 		MyPlaylistVO mvo = new MyPlaylistVO();
 
 		if (userPl.getMemId().equals(crudcheck.getMemId())) {
 			model.addAttribute("crud", true);
-			mvo.setMyplIdx(userPl.getMyplIdx());
-			mvo.setPlName("변경할 plName");
-			model.addAttribute("mvo", mvo);
-			model.addAttribute("defaultplName", userPl.getPlName());
-			// myplaylistMapper.updateMyPlayList(mvo);
-
-			// MemberRestController memberRestController = new MemberRestController();
-			// memberRestController.updateMyPlayList("plName", mvo);
-
+			model.addAttribute("defaultplName", userPl.getPlName()); // 기존 플리 이름
+			model.addAttribute("nowplyIdx", userPl.getMyplIdx()); // 현재 myplIdx
 		} else {
 			model.addAttribute("crud", false);
 		}
@@ -790,9 +811,12 @@ public class MainController {
 	}
 	
 	@GetMapping("/songDetail")
-	public String songDetail() {
-		return "songDetail";
-		
+	public String songDetail(@RequestParam int musicIdx, Model model) {
+	    // musicIdx를 이용하여 해당 곡의 상세 정보를 가져옵니다.
+	    MusicVO music = musicMapper.getUserPlaylist(musicIdx);
+	    model.addAttribute("musicDetail", music);
+	    return "songDetail";
 	}
+
 
 }
