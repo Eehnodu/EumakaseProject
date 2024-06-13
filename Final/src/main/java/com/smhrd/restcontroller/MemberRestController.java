@@ -89,6 +89,8 @@ public class MemberRestController {
 		mvo.setMemId(((MemberVO)session.getAttribute("member")).getMemId());
 		System.out.println("다른사람꺼 저장들어오냐?");
 		System.out.println(mvo);
+		System.out.println(mvo.getMemId());
+		
 		myplaylistMapper.insertMypl(mvo);
 		aiplaylistMapper.insertCopyPlayList(mvo);
 	}
@@ -107,7 +109,7 @@ public class MemberRestController {
 
 	@RequestMapping("/joinProcess")
 	public void join(@RequestBody MemberVO vo, HttpSession session) {
-		System.out.println(vo);
+		//System.out.println(vo);
 
 		// 세션이 존재하는지 확인
 		if (session.getAttribute("member") != null) {
@@ -144,8 +146,8 @@ public class MemberRestController {
 
 	@RequestMapping("/preference")
 	public void preferencejoin(@RequestBody List<String> surDescList, HttpSession session) {
-		System.out.println("preference 들어옴");
-		// System.out.println("genre :" + surDescList);
+		//System.out.println("preference 들어옴");
+		//System.out.println("genre :" + surDescList);
 		
 		if (session != null) {
 			List<SurveyVO> SurveyIdx = surveyMapper.selectSurvey(surDescList);
