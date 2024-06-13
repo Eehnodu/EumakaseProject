@@ -297,7 +297,6 @@ public class MemberRestController {
                 // MusicVO에서 일치하는 정보 가져와야함
                 musicList.add(musicMapper.getMusic(musicvo));
             }
-
             session.setAttribute("musicList", musicList);
             // 가져온 음원의 정보를 'musicList'로 반환
             return ResponseEntity.ok(musicList);
