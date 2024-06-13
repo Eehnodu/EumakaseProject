@@ -85,7 +85,8 @@ public class MemberRestController {
 		myplaylistMapper.deleteMyPlayList(mvo);
 	}
 	@RequestMapping("/insertCopyPlayList")
-	public void insertMyPlayList(MyPlaylistVO mvo) {
+	public void insertMyPlayList(MyPlaylistVO mvo, HttpSession session) {
+		mvo.setMemId(((MemberVO)session.getAttribute("member")).getMemId());
 		System.out.println("다른사람꺼 저장들어오냐?");
 		System.out.println(mvo);
 		System.out.println(mvo.getMemId());
@@ -93,20 +94,6 @@ public class MemberRestController {
 		myplaylistMapper.insertMypl(mvo);
 		aiplaylistMapper.insertCopyPlayList(mvo);
 	}
-	
-	@RequestMapping("/checkmymy")// 내가 누구인지 궁금해
-	public String checkmymy(HttpSession session) {
-		MemberVO vo = (MemberVO) session.getAttribute("member");
-		 System.out.println("체크마이마이");
-		System.out.println(vo);
-		
-		String result = vo.getMemId();
-		
-		System.out.println(result);
-		
-		return result;
-	}
-	
 	
 	@RequestMapping("/checkId")
 	public String checkId(String memId) {
