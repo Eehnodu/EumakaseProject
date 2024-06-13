@@ -21,7 +21,6 @@ $("#submitbotton").on("click", function() {
 		reverseButtons: true
 	}).then((result) => {
 		if (result.isConfirmed) {
-
 			newPlaylistName = $("#newPlaylistName").val()
 			nowplyIdx = $("#nowplyIdx").val()
 			
@@ -114,6 +113,79 @@ $(".btn-delete").on("click", function() {
 	});
 })
 
-$("#plyinsert").on("click", ()=>{
+$(".btn.btn-primary").on("click", function(){
 	console.log("저장쌉가능?")
+	swalWithBootstrapButtons.fire({
+		title: `${playlist}를 저장할까요?`,
+		text: "저장이진행됩니다.",
+		icon: "warning",
+		showCancelButton: true,
+		confirmButtonText: "예쓰!",
+		cancelButtonText: "안돼!",
+		reverseButtons: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			
+			// 현재 URL 가져오기
+			var currentUrl = window.location.href;
+			
+			// URL에서 "myplIdx=" 다음 값 가져오기
+			var urlParams = currentUrl.split("myplIdx=");
+			if (urlParams.length > 1) {
+			  var urlParams = urlParams[1];
+			  console.log("myplIdx: " + urlParams);
+			} else {
+			  console.log("myplIdx not found in URL");
+			}
+			nowplyIdx = urlParams
+			
+			$.ajax({
+				  type: 'post',
+				  url: 'checkmymy',
+				  success: function(response) {
+				    var memId = response;
+				
+				    // 가져온 memId를 이용하여 새로운 AJAX 요청 보내기
+				    $.ajax({
+				      type: 'POST',
+				      url: 'insertCopyPlayList',
+				      data: {
+				        memId: memId,
+				        myplIdx: nowplyIdx,
+				        plName: playlist
+				      },
+				      success: function() {
+				        swalWithBootstrapButtons.fire({
+				          title: "저장!",
+				          text: `저장하려고 하게 하는중 :)`,
+				          icon: "success"
+				        });
+				        $(".btn-success").on("click", () => {
+				          window.location.href = 'mypage'
+				        });
+				      },
+				      error: (e) => {
+				        console.log("서브밋버튼실패");
+				      }
+				    });
+				  },
+				  error: (e) => {
+				    console.log("memId 가져오기 실패");
+				  }
+				});
+			
+
+		} else if (
+			/* Read more about handling dismissals below */
+			result.dismiss === Swal.DismissReason.cancel
+		) {
+			swalWithBootstrapButtons.fire({
+				title: "취소",
+				text: `"${playlist}" 를 저장하지 않습니다 :|`,
+				icon: "error"
+			});
+		}
+	});
+	
+	
 });

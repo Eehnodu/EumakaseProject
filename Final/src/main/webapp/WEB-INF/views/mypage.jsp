@@ -15,12 +15,12 @@
 <%@ include file="includeHeader.jsp"%>
 
 <!-- 부트스트랩 프레임워크를 상속받는 새로운 스타일러 문제시 삭제가능 쓸꺼면 나중에 includeHeader로 옮겨야함 그냥쓸땐 include header 아래에 넣어야함 mypage.jsp에선 막아둠
+	-->
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"
 	rel="stylesheet">
-	-->
 
 <link rel="stylesheet" href="assets/css/mypage.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -114,6 +114,7 @@
 																	<h6>지금 듣기</h6>
 																</div>
 															</div>
+
 															</a>
 															<div class="down-content">
 																<h4>${myply.plName}</h4>
@@ -125,6 +126,7 @@
 																<button type="button" class="btn btn-delete"
 															id="#plydelete">플레이리스트 삭제</button>
 															</div>
+
 														</div>
 													</div>
 												</c:forEach>
