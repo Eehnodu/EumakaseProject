@@ -125,28 +125,63 @@ function completeJoin() {
 							
 							// console.log(response); response 가져
 							// 선언된 변수에 초기 HTML 구조를 설정합니다.
-							let htmlContent = `
+							/*let htmlContent = `
 								<div>
-									선호도 조사
+									<h4>선호도 조사</h4>
 									<br>
-									질문을 박으세요!
+									<span>좋아하는 음악 취향을 알려주세요!</span>
 									<br>
 									<form id="toggleForm" onsubmit="handleSubmit(event)">
-							`;
+							`;*/
 
 							// result 배열을 반복하여 각 요소에 대한 버튼을 추가합니다.
-							result.forEach((item, index) => {
+							/*result.forEach((item, index) => {
 								htmlContent += `
 									<button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
 										${item.surDesc}
 									</button>
 								`;
+							});*/
+							
+							// 뤼튼 시작
+							let htmlContent = `
+  
+    <form id="toggleForm" onsubmit="handleSubmit(event)">
+      <fieldset class="checkbox-group">
+      <h3>선호도 조사</h3>
+        <legend class="checkbox-group-legend">Choose your favorites</legend>
+        <legend class="three">최대 3개까지 선택해주세요</legend>
+`;
+
+							result.forEach((item, index) => {
+								htmlContent += `
+    <div class="checkbox">
+      <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input" />
+        <span class="checkbox-tile">
+          <span class="checkbox-icon">
+           
+          </span>
+          <span class="checkbox-label">${item.surDesc}</span>
+        </span>
+      </label>
+    </div>
+  `;
 							});
+
+							htmlContent += `
+      </fieldset>
+    </form>
+  </div>
+`;
+
+
+							//뤼튼 끝
 
 							// 폼 마감 태그와 추가 버튼을 문자열에 추가합니다.
 							htmlContent += `
 								<br>
-									<button type='button' class='btn btn-primary btn-sm' id='btnComplete'>가입 완료</button>
+									<button type='submit' class='btn btn-primary btn-sm' id='btnComplete'><span>가입 완료</span></button>
 								</div>
 							`;
 

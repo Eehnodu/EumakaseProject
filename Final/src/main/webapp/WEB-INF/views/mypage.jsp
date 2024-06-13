@@ -93,19 +93,21 @@
 													varStatus="loop">
 													<div class="col-lg-3 col-sm-6">
 														<div class="item">
-															<div class="thumb">
-																<div class="image-grid">
-																	<c:forEach var="cov" items="${myplayListalbumCov}"
-																		begin="${loop.index * 4}"
-																		end="${(loop.index * 4) + 3}">
-																		<img src="${cov.albumCov}" alt="">
-																	</c:forEach>
-																	<a id="playlistbutton"
-																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}"></a>
+														<a id="playlistbutton"
+																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
+															<div class="thumb image-grid">
+																<c:forEach var="cov" items="${myplayListalbumCov}"
+																	begin="${loop.index * 4}" end="${(loop.index * 4) + 3}">
+																	<img src="${cov.albumCov}" alt="">
+																</c:forEach>
+																<div class="hover-effect2">
+																	
+																	<h6>지금 듣기</h6>
 																</div>
-																<div class="down-content">
-																	<h4>${myply.plName}</h4>
-																</div>
+															</div>
+															</a>
+															<div class="down-content">
+																<h4>${myply.plName}</h4>
 															</div>
 															<div class="moreInfoButtons mt-2">
 																<button type="button" class="btn btn-sm btn-edit">수정</button>
@@ -139,15 +141,20 @@
 
 	<!-- Scripts -->
 
-	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>
