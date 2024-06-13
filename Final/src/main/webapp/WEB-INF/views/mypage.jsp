@@ -102,23 +102,31 @@
 													varStatus="loop">
 													<div class="col-lg-3 col-sm-6">
 														<div class="item">
-															<div class="thumb">
-																<div class="image-grid">
-																	<c:forEach var="cov" items="${myplayListalbumCov}"
-																		begin="${loop.index * 4}"
-																		end="${(loop.index * 4) + 3}">
-																		<img src="${cov.albumCov}" alt="">
-																	</c:forEach>
-																	<a id="playlistbutton"
-																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}"></a>
-																</div>
-																<div class="down-content">
-																	<h4>${myply.plName}</h4>
+														<a id="playlistbutton"
+																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
+															<div class="thumb image-grid">
+																<c:forEach var="cov" items="${myplayListalbumCov}"
+																	begin="${loop.index * 4}" end="${(loop.index * 4) + 3}">
+																	<img src="${cov.albumCov}" alt="">
+																</c:forEach>
+																<div class="hover-effect2">
+																	
+																	<h6>지금 듣기</h6>
 																</div>
 															</div>
-															<!-- 앨범 4장 사진 아래 공간입니다 
-															
-															추가할거있으면 추가해보자 -->
+
+															</a>
+															<div class="down-content">
+																<h4>${myply.plName}</h4>
+															</div>
+															<div class="moreInfoButtons mt-2">
+																<button type="button" class="btn btn-edit"
+															data-bs-toggle="modal" data-bs-target="#plyupdate">
+															플레이리스트 이름 수정</button>
+																<button type="button" class="btn btn-delete"
+															id="#plydelete">플레이리스트 삭제</button>
+															</div>
+
 														</div>
 													</div>
 												</c:forEach>
@@ -146,15 +154,20 @@
 
 
 	<!-- Scripts -->
+
+	<script src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>

@@ -132,3 +132,47 @@ image-grid img{
 html {
 	scroll-behavior: smooth;
 }
+
+
+/* *** 나의 playlist 지금 듣기 *** */
+.clips .thumb {
+    position: relative; /* 상대위치 */
+}
+
+.clips .thumb.image-grid {
+    position: relative;
+    overflow: hidden;
+}
+
+.clips .thumb .hover-effect2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록  */
+.clips .thumb.image-grid:hover .hover-effect2 {
+    opacity: 1;
+    visibility: visible;
+}
+
+.clips .thumb .hover-effect2 h6 {
+    background-color: rgba(31, 33, 34, 0.95);
+    display: inline-block;
+    color: #ec6090;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
