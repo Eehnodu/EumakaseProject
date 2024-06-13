@@ -102,31 +102,20 @@
 													varStatus="loop">
 													<div class="col-lg-3 col-sm-6">
 														<div class="item">
-														<a id="playlistbutton"
-																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
-															<div class="thumb image-grid">
-																<c:forEach var="cov" items="${myplayListalbumCov}"
-																	begin="${loop.index * 4}" end="${(loop.index * 4) + 3}">
-																	<img src="${cov.albumCov}" alt="">
-																</c:forEach>
-																<div class="hover-effect2">
-																	
-																	<h6>지금 듣기</h6>
+															<div class="thumb">
+																<div class="image-grid">
+																	<c:forEach var="cov" items="${myplayListalbumCov}"
+																		begin="${loop.index * 4}"
+																		end="${(loop.index * 4) + 3}">
+																		<img src="${cov.albumCov}" alt="">
+																	</c:forEach>
+																	<a id="playlistbutton"
+																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}"></a>
+																</div>
+																<div class="down-content">
+																	<h4>${myply.plName}</h4>
 																</div>
 															</div>
-
-															</a>
-															<div class="down-content">
-																<h4>${myply.plName}</h4>
-															</div>
-															<div class="moreInfoButtons mt-2">
-																<button type="button" class="btn btn-edit"
-															data-bs-toggle="modal" data-bs-target="#plyupdate">
-															플레이리스트 이름 수정</button>
-																<button type="button" class="btn btn-delete"
-															id="#plydelete">플레이리스트 삭제</button>
-															</div>
-
 														</div>
 													</div>
 												</c:forEach>
