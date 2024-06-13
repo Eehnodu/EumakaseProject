@@ -39,46 +39,42 @@
 								<div class="main-profile ">
 									<div class="row">
 										<div class="col-lg-3">
-										<h3 id="musicTitle">${musicDetail.title}</h3>
+											<%-- <h3 id="musicTitle">${musicDetail.title}</h3> --%>
 											<img src="${musicDetail.albumCov}">
 										</div>
 
 										<div class="col-lg-9 align-self-center">
 											<div class="left-info">
-												 <span>가수명</span>
+												<%--  <span>가수명</span>
 												<h4>${musicDetail.artist}</h4>
 												<span>앨범명</span>
 												<h4>${musicDetail.album}</h4>
 												<span>장르명</span>
 												<h4>${musicDetail.genre}</h4>
 												<span>발매일</span>
-												<h4>${musicDetail.releasedAt}</h4>
-												 
-												<%-- <table>
-												<tbody>
-						<tr>
-							<th scope="row"><span>아티스트</span></th>
-							<td>
-										<h4>${musicDetail.artist}</h4>
-							</td>
-						</tr>
-							<tr>
-								<th scope="row"><span>앨범명</span></th>
-								<td><h4>${musicDetail.album}</h4></td>
-							</tr>
+												<h4>${musicDetail.releasedAt}</h4> --%>
 
-						<tr>
-							<th scope="row"><span>장르명</span></th>
-							<td><h4>${musicDetail.releasedAt}</h4></td>
-						</tr>
-						<tr>
-							<th scope="row"><span>발매일</span></th>
-							<td><h4>${musicDetail.releasedAt}</h4></td>
-						</tr>
-
-
-					</tbody>
-					</table> --%>
+												<table>
+													<tbody>
+														<h3>${musicDetail.title}</h3>
+														<tr>
+															<th scope="row"><span>아티스트</span></th>
+															<td><h4>${musicDetail.artist}</h4></td>
+														</tr>
+														<tr>
+															<th scope="row"><span>앨범명</span></th>
+															<td><h4>${musicDetail.album}</h4></td>
+														</tr>
+														<tr>
+															<th scope="row"><span>장르</span></th>
+															<td><h4>${musicDetail.genre}</h4></td>
+														</tr>
+														<tr>
+															<th scope="row"><span>발매일</span></th>
+															<td><h4>${musicDetail.releasedAt}</h4></td>
+														</tr>
+													</tbody>
+												</table>
 											</div>
 										</div>
 									</div>
@@ -93,11 +89,9 @@
 												<span class="lyrics">${musicDetail.lyrics}</span>
 											</div>
 										</div>
-
-
 									</div>
-								</div>
 
+								</div>
 							</div>
 						</div>
 					</div>

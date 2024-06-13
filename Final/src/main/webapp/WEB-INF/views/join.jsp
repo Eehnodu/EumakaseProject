@@ -15,6 +15,7 @@
 
 <!-- ***** css 연결 ***** -->
 <link rel="stylesheet" href="assets/css/join.css">
+<link rel="stylesheet" href="assets/css/preference.css?ver=<%=System.currentTimeMillis()%>">
 
 
 </head>

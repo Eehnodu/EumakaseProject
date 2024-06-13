@@ -116,9 +116,6 @@
 																	<h4>${myply.plName}</h4>
 																</div>
 															</div>
-															<!-- 앨범 4장 사진 아래 공간입니다 
-															
-															추가할거있으면 추가해보자 -->
 														</div>
 													</div>
 												</c:forEach>
@@ -146,15 +143,20 @@
 
 
 	<!-- Scripts -->
+
+	<script src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>
