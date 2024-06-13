@@ -34,6 +34,7 @@
 									<h4>
 										<em>곡</em> 정보
 									</h4>
+
 								</div>
 								<div class="main-profile ">
 									<div class="row">

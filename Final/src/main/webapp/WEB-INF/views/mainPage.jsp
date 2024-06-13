@@ -110,7 +110,7 @@
 							<div class="featured-games header-text">
 								<div class="heading-section">
 									<h4>
-										<em>오늘의</em> 추천 노래
+										<em>장르별</em> 플레이리스트
 									</h4>
 								</div>
 
@@ -121,7 +121,7 @@
 										<a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
 											<div class="item">
 												<div class="thumb">
-													<img src="assets/images/genre-${status.index + 1}.png"
+													<img class="genreAlbumCov" src="assets/images/genre-${status.index + 1}.png"
 														alt="">
 												</div>
 												<h4>${recSurvey[genreEntry.key]}</h4>
