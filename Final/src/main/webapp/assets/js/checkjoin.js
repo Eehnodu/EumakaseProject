@@ -125,30 +125,13 @@ function completeJoin() {
 							
 							// console.log(response); response 가져
 							// 선언된 변수에 초기 HTML 구조를 설정합니다.
-							/*let htmlContent = `
-								<div>
-									<h4>선호도 조사</h4>
-									<br>
-									<span>좋아하는 음악 취향을 알려주세요!</span>
-									<br>
-									<form id="toggleForm" onsubmit="handleSubmit(event)">
-							`;*/
-
-							// result 배열을 반복하여 각 요소에 대한 버튼을 추가합니다.
-							/*result.forEach((item, index) => {
-								htmlContent += `
-									<button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
-										${item.surDesc}
-									</button>
-								`;
-							});*/
 							
-							// 뤼튼 시작
+							// 선호도 조사 꾸미기
 							let htmlContent = `
   
     <form id="toggleForm" onsubmit="handleSubmit(event)">
       <fieldset class="checkbox-group">
-      <h3>선호도 조사</h3>
+      <h4 class="h4survey">선호도 조사</h4>
         <legend class="checkbox-group-legend">Choose your favorites</legend>
         <legend class="three">최대 3개까지 선택해주세요</legend>
 `;
@@ -160,28 +143,33 @@ function completeJoin() {
         <input type="checkbox" class="checkbox-input" />
         <span class="checkbox-tile">
           <span class="checkbox-icon">
-           
+           <img src="${item.imageSrc}" alt="${item.surDesc}" class="genre-icon" />
           </span>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
           <span class="checkbox-label">${item.surDesc}</span>
+          </button>
         </span>
       </label>
     </div>
+    
   `;
+  
 							});
 
 							htmlContent += `
+							
       </fieldset>
     </form>
   </div>
 `;
 
 
-							//뤼튼 끝
+							//선호도 조사 꾸미기 끝
 
 							// 폼 마감 태그와 추가 버튼을 문자열에 추가합니다.
 							htmlContent += `
 								<br>
-									<button type='submit' class='btn btn-primary btn-sm' id='btnComplete'><span>가입 완료</span></button>
+									<button type='button' class='btn btn-primary btn-sm' id='btnComplete'><span>가입 완료</span></button>
 								</div>
 							`;
 
@@ -222,6 +210,7 @@ function completeJoin() {
 						});
 
 						// 콘솔에 출력
+						console.log("내가 누른 컨텍스트들")
 						console.log(buttonTexts);
 
 						$.ajax({
@@ -256,7 +245,7 @@ function completeJoin() {
 
 								setTimeout(function() {
 									window.location.href = `${cpath}/`;
-								}, 2000); // 1000밀리초(1초) 후에 페이지 이동
+								 }, 2000); // 1000밀리초(1초) 후에 페이지 이동
 
 
 

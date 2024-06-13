@@ -142,9 +142,10 @@ $(".btn.btn-primary").on("click", function(){
 			$.ajax({
 				  type: 'post',
 				  url: 'checkmymy',
-				  success: function(response) {
-				    var memId = response;
-				
+				  contentType: 'application/json; charset=UTF-8',
+				  success: function(response1) {
+				    var memId = response1;
+					console.log(response1)
 				    // 가져온 memId를 이용하여 새로운 AJAX 요청 보내기
 				    $.ajax({
 				      type: 'POST',

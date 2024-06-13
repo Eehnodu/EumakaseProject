@@ -133,6 +133,9 @@ body {
 	justify-content: center;
 	background-color: #f8f8f9;
 } */
+form{
+	font-family: 'Poppins', sans-serif;
+}
 
 .checkbox-group {
 	display: flex;
@@ -149,10 +152,16 @@ body {
 	margin: 0.5rem 0.5rem;
 }
 
+.h4survey{
+	color: #fff;
+    font-size: 34px;
+    text-decoration: none;
+}
+
 .checkbox-group-legend {
 	font-size: 1.5rem;
 	font-weight: 700;
-	color: #666;
+	color: #ec6090;
 	text-align: center;
 	line-height: 1.125;
 	/* margin-bottom: 1.25rem; */
