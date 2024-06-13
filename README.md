@@ -98,8 +98,7 @@
 <br>
 
 ## 📌 SW유스케이스
-![SW유스케이스](https://github.com/Eehnodu/Portfolio/assets/155121578/4b2b8080-f20b-4640-a29e-289b082fd6c8)
-유스케이스 새로 만들것!!!
+![유스케이스](https://github.com/Eehnodu/Project/assets/155121578/3f63bc55-87c4-45ad-ad3d-eac5cff29e1f)
 <br>
 
 ## 📌 서비스 흐름도
