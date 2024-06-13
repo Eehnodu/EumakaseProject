@@ -84,7 +84,21 @@ public class MemberRestController {
 	public void deleteMyPlayList(MyPlaylistVO mvo) {
 		myplaylistMapper.deleteMyPlayList(mvo);
 	}
-
+	@RequestMapping("/insertCopyPlayList")
+	public void insertMyPlayList(MyPlaylistVO mvo) {
+		System.out.println("다른사람꺼 저장들어오냐?");
+		System.out.println(mvo);
+		myplaylistMapper.insertMypl(mvo);
+		aiplaylistMapper.insertCopyPlayList(mvo);
+	}
+	
+	@RequestMapping("/checkmymy")// 내가 누구인지 궁금해
+	public String checkmymy(HttpSession session) {
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+		return vo.getMemId();
+	}
+	
+	
 	@RequestMapping("/checkId")
 	public String checkId(String memId) {
 		String str = "";

@@ -539,6 +539,7 @@ public class MainController {
 			model.addAttribute("nowplyIdx", userPl.getMyplIdx()); // 현재 myplIdx
 		} else {
 			model.addAttribute("crud", false);
+			//mvo.setMemId(memId);
 		}
 
 		// pl에 해당되는 mypl 정보 가져오기
