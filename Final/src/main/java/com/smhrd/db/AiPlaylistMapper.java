@@ -16,4 +16,5 @@ public interface AiPlaylistMapper {
 	
 	public List<AiPlaylistVO> getPopularMusic();
 	
+	public void insertCopyPlayList(MyPlaylistVO mvo);
 }
