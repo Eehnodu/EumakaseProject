@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>틀</title>
+<title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
@@ -54,9 +54,6 @@
 				<div class="page-content">
 					<div class="game-details">
 						<div class="row">
-
-							<!-- ***** 페이지 플레이리스트 정보 ***** -->
-
 							<!-- *** 플레이리스트 상세 정보 *** -->
 							<div class="col-lg-12">
 								<div class="heading-section">

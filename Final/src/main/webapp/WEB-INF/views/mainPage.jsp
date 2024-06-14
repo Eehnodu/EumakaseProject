@@ -56,12 +56,12 @@
 						<div class="col-lg-4">
 							<div class="top-streamers" id="top-AI">
 								<div class="heading-section">
-									<h6>Welcome To Cyborg</h6>
+									<h6>음악하세</h6>
 									<h4>
-										<em>AI</em> <br> 음악 추천 서비스
+										<em>AI</em> 음악 추천
 									</h4>
 									<div class="main-button">
-										<a href="${cpath}/AIrecommend">Right Now</a>
+										<a href="${cpath}/AIrecommend">Try Now</a>
 
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 
 						<!-- 최근에 재생한 플레이리스트 -->
 						<div class="col-lg-8">
-							<div class="featured-games header-text">
+							<div class="featured-games header-text" id="songsLoved">
 								<div class="heading-section">
 									<h4>
 										<em>가장 많이 </em>사랑받은 노래

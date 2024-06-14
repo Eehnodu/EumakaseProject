@@ -76,9 +76,9 @@ public class MainController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping("/AIquestion")
-	public String AIquestion() {
-		return "AIquestion";
+	@GetMapping("/search")
+	public String search() {
+		return "search";
 	}
 
 	@GetMapping("/")
@@ -586,7 +586,7 @@ public class MainController {
 
 		// 가져온 userPlaylist 정보를 model에 저장
 		model.addAttribute("userPlList", userPlList);
-		model.addAttribute("userSurIdxList", userSurIdxList);
+		session.setAttribute("userSurIdxList", userSurIdxList);
 		model.addAttribute("userSurDescList", userSurDesc.toString().trim());
 		model.addAttribute("userPlaylistList", userPlaylistList);
 		model.addAttribute("userAlbumCovList", userAlbumCovList);
@@ -773,7 +773,7 @@ public class MainController {
 			// mapper를 통해 playlistvo를 저장
 			aiplaylistMapper.savePlaylist(playlistvo);
 		}
-		return "redirect:/mainPage";
+		return "redirect:/mypage";
 	}
 
 	@PostMapping("/update")

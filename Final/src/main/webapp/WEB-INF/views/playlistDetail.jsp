@@ -9,12 +9,13 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>틀</title>
+<title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
 <!-- ***** css 연결 ***** -->
-<link rel="stylesheet" href="assets/css/playlistDetail.css">
+<link rel="stylesheet"
+	href="assets/css/playlistDetail.css?ver=<%=System.currentTimeMillis()%>">
 
 </head>
 <body data-cpath="${cpath}">
@@ -53,29 +54,54 @@
 											<div class="left-info">
 												<div class="left">
 													<!-- <h4>플레이리스트 제목</h4> -->
-													<div class="form-input">
-														<input type="url" placeholder="Paste Your URL"
-															id="video-url"> <label for="video-url">플레이리스트 제목</label>
+													<div class="form-container d-flex align-items-center">
+														<div class="form-input">
+															<input type="url" placeholder="Paste Your URL"
+																id="video-url"> <label for="video-url">플레이리스트
+																제목을 입력하세요</label>
+														</div>
+														<%-- 비회원은 플리저장 클릭 시 로그인 모달창 --%>
+														<c:if test="${member==null}">
+															<a class="btnSavePl" data-bs-toggle="modal"
+																data-bs-target="#loginModal">이 플리 저장하기</a>
+														</c:if>
+														<%-- 로그인한 회원은 플리 저장 --%>
+														<c:if test="${member!=null}">
+															<a class="btnSavePl" href="#" id="savePlaylistLink">이
+																플리 저장하기</a>
+														</c:if>
 													</div>
 													<span>${input_tag}</span>
 												</div>
 											</div>
 										</div>
 										<div class="col-lg-4">
-											<div class="main-border-button" id="buttonDownload">
+											<div class="main-border-button d-flex align-items-center"
+												id="buttonDownload">
+												<div class="wrapOtherGenre">
+													<%-- 회원은 다른 장르 추천받기 --%>
+													<c:if test="${member!=null}">
+														<span class="d-block txtOtherGenre mb-4">다른 장르 추천받기</span>
+													</c:if>
 
-												<%-- 비회원은 플리저장 클릭 시 로그인 모달창 --%>
-												<c:if test="${member==null}">
-													<a data-bs-toggle="modal" data-bs-target="#loginModal">이 플리 저장</a>
-												</c:if>
-												<%-- 로그인한 회원은 플리 저장 --%>
-												<c:if test="${member!=null}">
-													<a href="#" id="savePlaylistLink">이 플리 저장</a>
-												</c:if>
 													<c:forEach var="genre" items="${preGenre}">
-													 	<button id="redDiff" value="${genre.surDesc}">${genre.surDesc}</button>
+														<button id="redDiff" class="toggle-btn btnOtherGenre"
+															value="${genre.surDesc}">${genre.surDesc}</button>
 													</c:forEach>
-												 <button id="redDiff" value="${input_genre}">another(이름수정)</button>
+
+													<%-- 비회원은 새로고침 --%>
+													<c:if test="${member==null}">
+														<button id="redDiff" class="toggle-btn btnOtherGenre btnOtherPl"
+															value="${input_genre}">다른 플리 추천받기</button>
+													</c:if>
+													<%-- 회원은 기존추천 버튼 --%>
+													<c:if test="${member!=null}">
+														<button id="redDiff" class="toggle-btn btnOtherGenre"
+															value="${input_genre}">기존 추천</button>
+													</c:if>
+
+
+												</div>
 											</div>
 										</div>
 										<!-- ***** Gaming Library Start ***** -->
@@ -142,8 +168,10 @@
 	<script
 		src="assets/js/showplaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/otherPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/savePlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/otherPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/savePlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 	<%@ include file="includeFooter.jsp"%>
 </body>

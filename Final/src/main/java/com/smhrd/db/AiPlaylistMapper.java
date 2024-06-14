@@ -13,8 +13,8 @@ public interface AiPlaylistMapper {
 	public void savePlaylist(AiPlaylistVO playlistvo);
 	
 	public List<AiPlaylistVO> getOtherPl(MyPlaylistVO vo);
-	
+
 	public List<AiPlaylistVO> getPopularMusic();
 	
-	public void insertCopyPlayList(MyPlaylistVO mvo);
+	public void insertCopyPlayList(MyPlaylistVO aivo);
 }

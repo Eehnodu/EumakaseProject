@@ -1,22 +1,22 @@
-var Gpath = document.body.getAttribute('data-cpath');
+var path = document.body.getAttribute('data-cpath');
 
 $.ajax({
-    url: `${Gpath}/chartjs`,
+    url: `${path}/getEmotion`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
-        console.log('차트 0 데이터 로드 성공');
+        console.log('차트 2 데이터 로드 성공');
         
         const labels = Object.keys(data);
         const values = Object.values(data);
 
-        const container = document.getElementById('labelsContainer1');
-        const containerData = document.getElementById('labelsContainerData1');
+        const container = document.getElementById('labelsContainer3');
+        const containerData = document.getElementById('labelsContainerData3');
         container.innerHTML = '';
         containerData.innerHTML = '';
 
         const heading = document.createElement('h4');
-        heading.textContent = '내가 즐겨들은 장르';
+        heading.textContent = '내가 자주 느낀 감정';
         container.appendChild(heading);
 
         labels.forEach((label, index) => {
@@ -28,8 +28,8 @@ $.ajax({
             }
         });
         
-        const genre = document.getElementById('myChart1').getContext('2d');
-        new Chart(genre, {
+        const ctx = document.getElementById('myChart3').getContext('2d');
+        new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: labels,
@@ -74,6 +74,6 @@ $.ajax({
         });
     },
     error: function() {
-        console.log('차트 1 데이터 로드 실패');
+        console.log('차트 2 데이터 로드 실패');
     }
 });

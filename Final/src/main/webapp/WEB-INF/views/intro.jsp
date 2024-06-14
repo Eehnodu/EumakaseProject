@@ -27,7 +27,7 @@
 		}
 	}
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -46,33 +46,32 @@
 										<span>Listen to Personalized</span> Playlist
 									</h4>
 								</div>
-								<div class="owl-features owl-carousel">
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/intro1.jpg" height="550px" alt="">
+								<form id="getIntroForm" action="${cpath}/getIntro" method="post" novalidate>
+									<div class="owl-features owl-carousel">
+										<div class="item">
+											<div class="thumb">
+												<canvas id="genreChart" width="400" height="400"></canvas>
+											</div>
+										</div>
+										<div class="item">
+											<div class="thumb" id="topSongsByGenre">
+                                        			<h2>Top Songs by Genre</h2>
+											</div>
+										</div>
+										<div class="item">
+											<div class="thumb">
+												<canvas id="emotionChart" width="400" height="400"></canvas>
+											</div>
+										</div>
+										<div class="item" >
+											<div class="thumb" id="topSongsByEmotion">
+												<h2>Top Songs by Emotion</h2>
+											</div>
 										</div>
 									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/intro2.jpg" height="550px" alt="">
-										</div>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/intro3.jpg" height="550px" alt="">
-										</div>
-									</div>
-									<div class="item">
-										<div class="thumb">
-											<img src="assets/images/intro2.jpg" height="550px" alt="">
-										</div>
-									</div>
-								</div>
+								</form>
 							</div>
 						</div>
-
-
-
 						<div class="col-lg-4">
 							<div id="goAi" class="game-details mb-3">
 								<a href="${cpath}/AIrecommend">
@@ -136,6 +135,7 @@
 		<script src="assets/js/isotope.min.js"></script>
 		<script src="assets/js/tabs.js"></script>
 		<script src="assets/js/popup.js"></script>
+		<script src="assets/js/chartIntro.js"></script>
 
 		<!-- put jquery before owl carousel -->
 		<!-- jquery -->

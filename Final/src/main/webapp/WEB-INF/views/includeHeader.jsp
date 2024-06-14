@@ -32,7 +32,15 @@
 						</a>
 					</c:if>
 					<!-- ***** Logo End ***** -->
-
+					<!-- ***** Search Start ***** -->
+					<div class="search-input">
+						<form id="search" action="#">
+							<input type="text" placeholder="Type Something" id='searchText'
+								name="searchKeyword" onkeypress="handle" /> <i
+								class="fa fa-search"></i>
+						</form>
+					</div>
+					<!-- ***** Search End ***** -->
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav nav-pills">
 						<%-- 비회원은 Home 클릭 시 로그인 모달창 --%>
@@ -104,20 +112,23 @@
 	<div class="modal-dialog">
 		<div class="modal-content modal-ed-content">
 			<div class="modal-header modal-ed-header">
-				<h5 class="modal-title" id="editModalTitle">"${defaultplName}"<br>(을)를 무엇으로 변경할까요?</h5>
+				<h5 class="modal-title" id="editModalTitle">
+					"${defaultplName}"<br>(을)를 무엇으로 변경할까요?
+				</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body mt-3">
-					<div class="form-group ed-form-group">
-						<input type="text" name="newPlaylistName"
-							class="form-style ed-form-style" id="newPlaylistName"
-							placeholder="${defaultplName}" autocomplete="off" maxlength="50">
-							
-							<input type="hidden" name="nowplyIdx" id="nowplyIdx" value="${nowplyIdx}">
-							
-						<i class="input-icon fa-solid fa-music"></i>
-						<button type="button" class="btn btn-confirm btnPink" id="submitbotton">확인</button>
-					</div>
+				<div class="form-group ed-form-group">
+					<input type="text" name="newPlaylistName"
+						class="form-style ed-form-style" id="newPlaylistName"
+						placeholder="${defaultplName}" autocomplete="off" maxlength="50">
+
+					<input type="hidden" name="nowplyIdx" id="nowplyIdx"
+						value="${nowplyIdx}"> <i
+						class="input-icon fa-solid fa-music"></i>
+					<button type="button" class="btn btn-confirm btnPink"
+						id="submitbotton">확인</button>
+				</div>
 			</div>
 		</div>
 	</div>

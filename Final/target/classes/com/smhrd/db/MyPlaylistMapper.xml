@@ -38,6 +38,12 @@
 		SELECT * FROM tb_myplaylist where memId = #{memId}
 	</select>
 
-
-
+	<select id="getSongsByGenre" parameterType="string" resultType="com.smhrd.model.MusicVO">
+	    SELECT title, artist FROM tb_music WHERE genre = #{genre}
+	</select>
+	
+	<select id="getSongsByEmotion" parameterType="string" resultType="com.smhrd.model.MusicVO">
+	    SELECT title, artist FROM tb_music WHERE emotion = #{emotion}
+	</select>
+	
 </mapper>
