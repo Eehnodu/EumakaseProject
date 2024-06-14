@@ -12,8 +12,8 @@ $.ajax({
         container.innerHTML = '';
         containerData.innerHTML = '';
 
-        const heading = document.createElement('h3');
-        heading.textContent = 'My Prefferd Music';
+        const heading = document.createElement('h4');
+        heading.textContent = '내가 사랑한 노래';
         container.appendChild(heading);
 
         data.labels.forEach((label, index) => {
