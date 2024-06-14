@@ -26,10 +26,16 @@
 	
 	<insert id="insertCopyPlayList" parameterType="com.smhrd.model.MyPlaylistVO">
 	    INSERT INTO tb_aiplaylist (musicIdx, contextIdx, contextIdx2, contextIdx3, contextIdx4, contextIdx5, myplIdx)
-	    SELECT musicIdx, contextIdx, contextIdx2, contextIdx3, contextIdx4, contextIdx5, 
-	           (SELECT myplIdx FROM tb_myplaylist WHERE memId = #{memId} AND plName = #{plName} order by myplIdx desc limit 1)
-	    FROM tb_aiplaylist
-	    WHERE myplIdx = #{myplIdx}
+			SELECT 
+			    musicIdx, 
+			    (SELECT contextIdx FROM (SELECT contextIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5) AS subquery ORDER BY contextIdx DESC LIMIT 1 OFFSET 0) AS contextIdx1,
+			    (SELECT contextIdx FROM (SELECT contextIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5) AS subquery ORDER BY contextIdx DESC LIMIT 1 OFFSET 1) AS contextIdx2,
+			    (SELECT contextIdx FROM (SELECT contextIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5) AS subquery ORDER BY contextIdx DESC LIMIT 1 OFFSET 2) AS contextIdx3,
+			    (SELECT contextIdx FROM (SELECT contextIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5) AS subquery ORDER BY contextIdx DESC LIMIT 1 OFFSET 3) AS contextIdx4,
+			    (SELECT contextIdx FROM (SELECT contextIdx FROM tb_context WHERE memId = #{memId} ORDER BY contextIdx DESC LIMIT 5) AS subquery ORDER BY contextIdx DESC LIMIT 1 OFFSET 4) AS contextIdx5,
+			    (SELECT myplIdx FROM tb_myplaylist WHERE memId = #{memId} AND plName = #{plName} ORDER BY myplIdx DESC LIMIT 1) AS myplIdx
+			FROM tb_aiplaylist
+			WHERE myplIdx = #{myplIdx};
   	</insert>
 	
 </mapper>
