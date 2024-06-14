@@ -45,4 +45,17 @@
 			INNER JOIN tb_music m ON t1.musicIdx = m.musicIdx
 	</select>
 	
+	
+	<select id="getMusicIdxByContextId" parameterType="integer" resultType="integer">
+	    SELECT musicIdx FROM tb_aiplaylist WHERE contextIdx = #{contextId}
+	</select>
+	
+	<select id="getMusicById" parameterType="integer" resultType="com.smhrd.model.MusicVO">
+	    SELECT title, artist FROM tb_music WHERE musicIdx = #{musicIdx}
+	</select>
+	
+	<select id="getMusicIdxByContextId5" parameterType="integer" resultType="integer">
+	    SELECT musicIdx FROM tb_aiplaylist WHERE contextIdx5 = #{contextId}
+	</select>
+	
 </mapper>

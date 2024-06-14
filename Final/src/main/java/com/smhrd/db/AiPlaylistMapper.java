@@ -13,5 +13,6 @@ public interface AiPlaylistMapper {
 	public void savePlaylist(AiPlaylistVO playlistvo);
 	
 	public List<AiPlaylistVO> getOtherPl(MyPlaylistVO vo);
+
 	
 }

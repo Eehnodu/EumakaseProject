@@ -33,4 +33,8 @@ public interface SurveyMapper {
     
 	public List<SurveyVO> getGenreBySurIdx(String surIdx);
 	
+	public SurveyVO getEmotion(ContextVO context);
+	
+	public List<Integer> getSurveyIdsByDesc(String desc);
+    public SurveyVO getIntro(ContextVO context);
 }

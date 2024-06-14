@@ -15,5 +15,5 @@ public interface MyPlaylistMapper {
 	public MyPlaylistVO getUserPlaylist(int myplidx);
 	
 	public List<MyPlaylistVO> getMyplayList(String memId);
-
+	
 }

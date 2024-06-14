@@ -27,4 +27,18 @@
     <select id="getOtherSurIdx" parameterType="int" resultType="com.smhrd.model.ContextVO">
 	    SELECT surIdx FROM tb_context WHERE contextIdx = #{contextIdx}
 	</select>
+	
+	<select id="getEmotion" parameterType="com.smhrd.model.MemberVO" resultType="com.smhrd.model.ContextVO">
+        SELECT surIdx 
+        FROM tb_context
+        WHERE memId = #{memId}
+    </select>
+    
+     <select id="getIntro" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.ContextVO">
+	    SELECT contextIdx,surIdx FROM tb_context
+	</select>
+	
+	<select id="getContextIdsBySurveyId" parameterType="integer" resultType="integer">
+    SELECT contextIdx FROM tb_context WHERE surIdx = #{surveyId}
+</select>
 </mapper>

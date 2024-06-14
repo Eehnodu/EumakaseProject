@@ -20,4 +20,5 @@
 		SELECT * FROM tb_aiplaylist WHERE myplIdx = #{myplIdx}
 	</select>
 	
+	
 </mapper>
