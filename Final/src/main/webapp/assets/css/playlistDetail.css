@@ -289,14 +289,19 @@
 	background-color: #ec6090;
 	color: white;
 	border-color: transparent;
-	font-weight: 600;
 }
 
 .active {
 	background-color: #ec6090;
 	color: white;
 	border-color: transparent;
-	font-weight: 600;
+	transform: scale(0.95); /* 버튼이 커지는 크기 비율 */
+    transition: transform 0.3s;
+}
+
+.btnOtherPl {
+	padding: 25px 35px;
+    margin-left: 47px;
 }
 
 .txtOtherGenre {

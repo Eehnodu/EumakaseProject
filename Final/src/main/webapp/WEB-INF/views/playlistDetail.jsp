@@ -79,13 +79,28 @@
 											<div class="main-border-button d-flex align-items-center"
 												id="buttonDownload">
 												<div class="wrapOtherGenre">
-													<span class="d-block txtOtherGenre mb-4">다른 장르로 추천받기</span>
+													<%-- 회원은 다른 장르 추천받기 --%>
+													<c:if test="${member!=null}">
+														<span class="d-block txtOtherGenre mb-4">다른 장르 추천받기</span>
+													</c:if>
+
 													<c:forEach var="genre" items="${preGenre}">
 														<button id="redDiff" class="toggle-btn btnOtherGenre"
 															value="${genre.surDesc}">${genre.surDesc}</button>
 													</c:forEach>
-													<button id="redDiff" class="toggle-btn btnOtherGenre"
-														value="${input_genre}">기존 추천</button>
+
+													<%-- 비회원은 새로고침 --%>
+													<c:if test="${member==null}">
+														<button id="redDiff" class="toggle-btn btnOtherGenre btnOtherPl"
+															value="${input_genre}">다른 플리 추천받기</button>
+													</c:if>
+													<%-- 회원은 기존추천 버튼 --%>
+													<c:if test="${member!=null}">
+														<button id="redDiff" class="toggle-btn btnOtherGenre"
+															value="${input_genre}">기존 추천</button>
+													</c:if>
+
+
 												</div>
 											</div>
 										</div>
