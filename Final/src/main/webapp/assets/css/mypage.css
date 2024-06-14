@@ -161,7 +161,7 @@ html {
     justify-content: center;
 }
 
-.image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록 
+/* image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록 */
 .row .col-lg-3 .item .image-grid:hover .hover-effect2 {
     opacity: 1;
     visibility: visible;
