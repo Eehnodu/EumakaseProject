@@ -20,6 +20,4 @@ public interface MyPlaylistMapper {
 
 	public void deleteMyPlayList(MyPlaylistVO mvo);
 
-
-	
 }

@@ -1,43 +1,60 @@
-const cpath = document.body.getAttribute('data-cpath');
+var Gpath = document.body.getAttribute('data-cpath');
+
 $.ajax({
-    url: `${cpath}/chartjs`,
+    url: `${Gpath}/chartjs`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
-        console.log('성공');
+        console.log('차트 0 데이터 로드 성공');
+        
+        const labels = Object.keys(data);
+        const values = Object.values(data);
 
-        // Extract keys and values from data object
-        const labels = Object.keys(data); // Extracting genre names as labels
-        const values = Object.values(data); // Extracting genre counts as values
-		 console.log(labels);
-		 console.log(values);
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        const container = document.getElementById('labelsContainer1');
+        const containerData = document.getElementById('labelsContainerData1');
+        container.innerHTML = '';
+        containerData.innerHTML = '';
+
+        const heading = document.createElement('h3');
+        heading.textContent = 'My Prefferd Genre';
+        container.appendChild(heading);
+
+        labels.forEach((label, index) => {
+            const span = document.createElement('span');
+            span.textContent = label;
+            containerData.appendChild(span);
+            if (index < labels.length - 1) {
+                containerData.appendChild(document.createElement('br'));
+            }
+        });
+        
+        const genre = document.getElementById('myChart1').getContext('2d');
+        new Chart(genre, {
             type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
                     label: '장르',
                     data: values,
-                    backgroundColor: [	
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
+                    backgroundColor: [
+                        'rgb(253, 252, 220)',
+                        'rgb(254, 217, 183)',
+                        'rgb(240, 113, 103)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
+                         'rgb(253, 252, 220)',
+                        'rgb(254, 217, 183)',
+                        'rgb(240, 113, 103)'
                     ],
                     borderWidth: 1
                 }]
             },
             options: {
-                responsive: true,
+                responsive: false,
+                rotation: -90,
+       		    circumference: 180,
                 plugins: {
-                    legend: {
-                        position: 'top',
-                    },
+                    legend: false, // Hide the legend
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -46,7 +63,7 @@ $.ajax({
                                     label += ': ';
                                 }
                                 if (context.parsed !== null) {
-                                    label += context.parsed + '개'; // Displaying count instead of percentage
+                                    label += context.parsed + '개';
                                 }
                                 return label;
                             }
@@ -57,6 +74,6 @@ $.ajax({
         });
     },
     error: function() {
-        console.log('실패');
+        console.log('차트 1 데이터 로드 실패');
     }
 });

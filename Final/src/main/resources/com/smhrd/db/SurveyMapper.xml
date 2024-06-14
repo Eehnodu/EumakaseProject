@@ -71,4 +71,17 @@
 		SELECT surIdx FROM tb_survey WHERE surDesc = #{surDesc}
 	</select>
 	
+	<select id="getEmotion" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.SurveyVO">
+       SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "emotion" AND surIdx=#{surIdx} ;
+    </select>
+    
+     <select id="getIntro" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.SurveyVO">
+        SELECT *
+        FROM tb_survey
+        WHERE surIdx = #{surIdx} AND surType = 'A' AND surItem IN ('genre','emotion')
+    </select>
+    
+    <select id="getSurveyIdsByDesc" parameterType="string" resultType="integer">
+    SELECT surIdx FROM tb_survey WHERE surDesc = #{desc}
+</select>
 </mapper>
