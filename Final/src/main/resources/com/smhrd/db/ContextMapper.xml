@@ -63,5 +63,9 @@
 		) AS subquery
 		)
 	</update>
+	
+	<insert id="insertCopyContext" parameterType="com.smhrd.model.ContextVO">
+		INSERT INTO tb_context(memId, surIdx) VALUES (#{memId}, #{surIdx})
+	</insert>
 
 </mapper>

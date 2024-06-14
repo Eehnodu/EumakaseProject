@@ -25,4 +25,6 @@ public interface ContextMapper {
     public List<Integer> getContextIdsBySurveyId(Integer surveyId);
 
     public void changeSurIdx(int i);
+    
+    public void insertCopyContext(ContextVO vo);
 }
