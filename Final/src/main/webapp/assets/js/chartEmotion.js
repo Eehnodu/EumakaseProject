@@ -15,8 +15,8 @@ $.ajax({
         container.innerHTML = '';
         containerData.innerHTML = '';
 
-        const heading = document.createElement('h3');
-        heading.textContent = 'My Prefferd Emotion';
+        const heading = document.createElement('h4');
+        heading.textContent = '내가 자주 느낀 감정';
         container.appendChild(heading);
 
         labels.forEach((label, index) => {
