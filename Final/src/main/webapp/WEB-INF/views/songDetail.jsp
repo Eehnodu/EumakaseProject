@@ -90,6 +90,7 @@
 											</div>
 										</div>
 									</div>
+									<div id="player" data-iframe="${musicDetail.iframe}"></div>
 
 								</div>
 							</div>
@@ -111,6 +112,8 @@
 	<script src="assets/js/tabs.js"></script>
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="assets/js/youtube.js"></script>
 
 
 </body>
