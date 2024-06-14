@@ -208,262 +208,6 @@
 	color: #e75e8d;
 }
 
-/* ***** 좋아요 ***** */
-li .heartbox {
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%)
-}
-
-svg {
-	cursor: pointer;
-	overflow: visible;
-	width: 60px;
-	/* margin: 20px; */
-	margin-bottom: -10px;
-}
-
-svg #heart {
-	transform-origin: center;
-	animation: animateHeartOut .3s linear forwards;
-}
-
-svg #main-circ {
-	transform-origin: 29.5px 29.5px;
-}
-
-.checkbox {
-	display: none;
-}
-
-.checkbox:checked+label svg #heart {
-	transform: scale(0.2);
-	fill: #E2264D;
-	animation: animateHeart .3s linear forwards .25s;
-}
-
-.checkbox:checked+label svg #main-circ {
-	transition: all 2s;
-	animation: animateCircle .3s linear forwards;
-	opacity: 1;
-}
-
-.checkbox:checked+label svg #heartgroup1 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup1 #heart1 {
-	transform: scale(0) translate(0, -30px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup1 #heart2 {
-	transform: scale(0) translate(10px, -50px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 #heart1 {
-	transform: scale(0) translate(30px, -15px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 #heart2 {
-	transform: scale(0) translate(60px, -15px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 #heart1 {
-	transform: scale(0) translate(30px, 0px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 #heart2 {
-	transform: scale(0) translate(60px, 10px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 #heart1 {
-	transform: scale(0) translate(30px, 15px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 #heart2 {
-	transform: scale(0) translate(40px, 50px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 #heart1 {
-	transform: scale(0) translate(-10px, 20px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 #heart2 {
-	transform: scale(0) translate(-60px, 30px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 #heart1 {
-	transform: scale(0) translate(-30px, 0px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 #heart2 {
-	transform: scale(0) translate(-60px, -5px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 #heart1 {
-	transform: scale(0) translate(-30px, -15px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 #heart2 {
-	transform: scale(0) translate(-55px, -30px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-@keyframes animateCircle {
-  40% {
-    transform: scale(10);
-    opacity: 1;
-    fill: #DD4688;
-  }
-  55% {
-    transform: scale(11);
-    opacity: 1;
-    fill: #D46ABF;
-  }
-  65% {
-    transform: scale(12);
-    opacity: 1;
-    fill: #CC8EF5;
-  }
-  75% {
-    transform: scale(13);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: .5;
-  }
-  85% {
-    transform: scale(17);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: .2;
-  }
-  95% {
-    transform: scale(18);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: .1;
-  }
-  100% {
-    transform: scale(19);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: 0;
-  }
-}
-
-@keyframes animateHeart {
-  0% {
-    transform: scale(0.2);
-  }
-  40% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-} 
-
-@keyframes animateHeartOut {
-  0% {
-    transform: scale(1.4);
-  }
-  100% {
-    transform: scale(1);
-  } 
-}
 
 /* ***** 더보기 ***** */
 .songDetail {
@@ -515,7 +259,7 @@ svg #main-circ {
 	margin-top: 20px;
 }
 
-.game-details .content .left-info span {
+.game-details .content .col-lg-9 .left-info .left span {
 	color: #666;
 	display: block;
 	margin-top: 7px;
@@ -589,35 +333,64 @@ svg #main-circ {
   overflow: hidden;
   border-radius: 23px;
 }
-
-/* h4 .songTitle{
-	max-width: 280px;
-    white-space: nowrap;  텍스트가 한 줄로 표시되도록 함
-    overflow: hidden;  넘치는 텍스트를 숨김
-    text-overflow: ellipsis;  넘치는 텍스트를 '...'으로 표시
-    position: relative; 툴팁 위치를 위해 필요
+/* ------------------------플리 저장, 수정, 삭제 버튼 CSS ----------------------------- */
+/* *** 플리 이름 수정 및 삭제 *** */
+.rightbutton {
+	text-align: right;
+	padding-top: 0px;
 }
 
-h4 .songTitle::after {
-    content: attr(title); title 속성값을 툴팁 내용으로 사용
-    visibility: hidden;
-    opacity: 0;
-    width: auto;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%; 요소의 위쪽에 툴팁을 표시
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    transition: opacity 0.3s;
+button i{
+	padding: 5px 5px;
 }
 
-h4 .songTitle:hover::after {
-    visibility: visible;
-    opacity: 1;
+/* .material-symbols-outlined {
+	background-color: transparent; 아이콘 배경색 변경
+	color: #fff; 아이콘 색상 변경
+	display: inline-block; 아이콘을 인라인 블록 요소로 설정
+	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+	vertical-align: middle; 아이콘과 텍스트를 동일한 줄에 수평 정렬
 } */
+
+/* *** 플리 저장 *** */
+/* 아이콘 */
+.game-details .content .left-info span {
+	color: #fff;
+	display: block;
+	margin-top: 7px;
+	font-weight: 400;
+	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #e75e8d;
+    --bs-btn-border-color: #e75e8d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #e75e8d;
+    --bs-btn-hover-border-color: #e75e8d;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #e75e8d;
+    --bs-btn-active-border-color: #e75e8d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #e75e8d;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #e75e8d;
+    --bs-gradient: none;
+    float: right;
+    border-radius: 15px;
+}
+
+.btn-outline-primary span{
+	text-align: center;
+}
+
+ .gaming-library ul{
+	border-radius: 23px;
+	transition: background-color 0.2s ease; /* 배경색 변경을 0.3초 동안 부드럽게 전환 */
+} 
+
+ .gaming-library ul:hover{
+	background-color: #1f2122;
+} 

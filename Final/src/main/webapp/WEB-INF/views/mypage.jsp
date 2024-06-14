@@ -109,8 +109,11 @@
 																		end="${(loop.index * 4) + 3}">
 																		<img src="${cov.albumCov}" alt="">
 																	</c:forEach>
-																	<a id="playlistbutton"
-																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}"></a>
+																	<div class="hover-effect2">
+																		<h6>지금 듣기</h6>
+															<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
+																	</a>
+																	</div>
 																</div>
 																<div class="down-content">
 																	<h4>${myply.plName}</h4>
@@ -144,9 +147,12 @@
 
 	<!-- Scripts -->
 
-	<script src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>

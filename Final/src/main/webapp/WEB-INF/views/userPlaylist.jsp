@@ -37,7 +37,13 @@
 <script
 	src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 
-
+<!-- FontAwesome CSS -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+	rel="stylesheet">
+	
+<!-- Material Icons CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -84,16 +90,22 @@
 												</div>
 												<c:choose>
 													<c:when test="${crud}">
-														<button type="button" class="btn btn-edit"
-															data-bs-toggle="modal" data-bs-target="#plyupdate">
-															플레이리스트 이름 수정</button>
-
-														<button type="button" class="btn btn-delete"
-															id="#plydelete">플레이리스트 삭제</button>
+														<div class="rightbutton">
+															<button type="button" class="btn btn-edit"
+																data-bs-toggle="modal" data-bs-target="#plyupdate"
+																>
+																<i class="fas fa-pencil-alt"></i> 이름 수정
+															</button>
+															<button type="button" class="btn btn-delete"
+																id="#plydelete">
+																<i class="fas fa-trash-alt"></i>플리 삭제
+															</button>
+														</div>
 													</c:when>
 													<c:otherwise>
-														<button type="button" class="btn btn-primary"
-															id="#plyinsert">플레이리스트 저장</button>
+														<button type="button" class="btn btn-primary btn-outline-primary" id="plyinsert">
+															<span class="material-symbols-outlined">playlist_add</span> 플리저장
+														</button>
 													</c:otherwise>
 												</c:choose>
 											</div>
@@ -111,20 +123,14 @@
 													<div class="col-lg-12 playlist">
 														<div class="item songDetail">
 															<ul>
-																<li>
-																	<a href="<c:url value='/songDetail?musicIdx=${music.musicIdx}'/>">
-																		<img src="${music.albumCov}" alt="" class="templatemo-item">
-																	</a>
-																</li>
-																<%-- <li>
-																	<h4>${music.artist}</h4> <span>가수명</span>
-																</li> --%>
+																<li><a
+																	href="<c:url value='/songDetail?musicIdx=${music.musicIdx}'/>">
+																		<img src="${music.albumCov}" alt=""
+																		class="templatemo-item">
+																</a></li>
 																<li>
 																	<h4 class="songTitle">${music.title}</h4> <span>${music.artist}</span>
 																</li>
-																<%-- <li>
-																	<h4>${music.title}</h4> <span>곡명</span>
-																</li> --%>
 																<li>
 																	<h4 class="albumTitle">${music.album}</h4> <span>앨범명</span>
 																</li>
