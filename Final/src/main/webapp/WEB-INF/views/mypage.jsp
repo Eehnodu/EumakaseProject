@@ -54,6 +54,10 @@
 	font-size: 2rem; /* 아이콘 크기 조정 */
 	cursor: pointer;
 }
+
+#wrapTable {
+    padding-right: 90px;
+}
 </style>
 </head>
 <body>
@@ -80,38 +84,44 @@
 							<div class="main-profile">
 								<div class="row" id="chartArea">
 									<div class="col-lg-12 position-relative">
-										<div class="main-profile">
-											<div class="row">
-												<div class="col-lg-6">
-													<!-- 차트 영역 -->
-													<form id="chartjs" action="${cpath}/chartjs" method="post"
-														novalidate>
-														<canvas id="myChart1" width="400" height="400"></canvas>
-													</form>
-													<form id="getMusic" action="${cpath}/getMusic"
-														method="post" novalidate>
-														<canvas id="myChart2" width="400" height="400"></canvas>
-													</form>
-													<form id="getEmotion" action="${cpath}/getEmotion"
-														method="post" novalidate>
-														<canvas id="myChart3" width="400" height="400"></canvas>
-													</form>
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="heading-section">
+													<h4>
+														<em>나의</em> 선호도
+													</h4>
 												</div>
-												<div class="col-lg-6 align-self-center">
-													<ul class="showLabelsContainer" id="firstLabelsContainer">
-														<li id="labelsContainer1"></li>
-														<li id="labelsContainerData1"></li>
-													</ul>
-													<br>
-													<ul class="showLabelsContainer" id="secondLabelsContainer">
-														<li id="labelsContainer2"></li>
-														<li id="labelsContainerData2"></li>
-													</ul>
-													<ul class="showLabelsContainer" id="thirdLabelsContainer">
-														<li id="labelsContainer3"></li>
-														<li id="labelsContainerData3"></li>
-													</ul>
-												</div>
+											</div>
+											<div class="col-lg-6 d-flex justify-content-center">
+												<!-- 차트 영역 -->
+												<form id="chartjs" action="${cpath}/chartjs" method="post"
+													novalidate>
+													<canvas id="myChart1" width="400" height="400"></canvas>
+												</form>
+												<form id="getMusic" action="${cpath}/getMusic" method="post"
+													novalidate>
+													<canvas id="myChart2" width="400" height="400"></canvas>
+												</form>
+												<form id="getEmotion" action="${cpath}/getEmotion"
+													method="post" novalidate>
+													<canvas id="myChart3" width="400" height="400"></canvas>
+												</form>
+											</div>
+											<div
+												class="col-lg-6 align-self-center justify-content-center" id="wrapTable">
+												<ul class="showLabelsContainer" id="firstLabelsContainer">
+													<li id="labelsContainer1"></li>
+													<li id="labelsContainerData1"></li>
+												</ul>
+												<br>
+												<ul class="showLabelsContainer" id="secondLabelsContainer">
+													<li id="labelsContainer2"></li>
+													<li id="labelsContainerData2"></li>
+												</ul>
+												<ul class="showLabelsContainer" id="thirdLabelsContainer">
+													<li id="labelsContainer3"></li>
+													<li id="labelsContainerData3"></li>
+												</ul>
 											</div>
 										</div>
 										<button id="prevChart" class="btn-arrow">
@@ -134,7 +144,7 @@
 												<div class="col-lg-12">
 													<div class="heading-section">
 														<h4>
-															<em>나의</em> playlist
+															<em>나의</em> 플레이리스트
 														</h4>
 													</div>
 												</div>

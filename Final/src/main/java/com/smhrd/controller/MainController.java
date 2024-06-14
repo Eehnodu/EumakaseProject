@@ -76,9 +76,9 @@ public class MainController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping("/AIquestion")
-	public String AIquestion() {
-		return "AIquestion";
+	@GetMapping("/search")
+	public String search() {
+		return "search";
 	}
 
 	@GetMapping("/")

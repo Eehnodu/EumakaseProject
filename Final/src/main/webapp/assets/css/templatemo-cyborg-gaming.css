@@ -1565,6 +1565,7 @@ Profile Style
 	border-radius: 23px;
 	padding: 30px;
 	background-color: #27292a;
+	width: 400px;
 }
 
 .main-profile ul li {
@@ -1577,7 +1578,6 @@ Profile Style
 }
 
 .main-profile ul li span {
-	float: right;
 	font-weight: 500;
 	color: #ec6090;
 }
