@@ -1,7 +1,7 @@
-const contextPath = document.body.getAttribute('data-cpath');
+var Ppath = document.body.getAttribute('data-cpath');
 
 $.ajax({
-    url: `${contextPath}/getMusic`,
+    url: `${Ppath}/getMusic`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
@@ -25,8 +25,8 @@ $.ajax({
             }
         });
 
-        const ctx = document.getElementById('myChart2').getContext('2d');
-        new Chart(ctx, {
+        const prefernce = document.getElementById('myChart2').getContext('2d');
+        new Chart(prefernce, {
             type: 'doughnut',
             data: {
                 labels: data.labels,

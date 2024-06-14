@@ -1,4 +1,4 @@
-const path = document.body.getAttribute('data-cpath');
+var path = document.body.getAttribute('data-cpath');
 
 $.ajax({
     url: `${path}/getEmotion`,

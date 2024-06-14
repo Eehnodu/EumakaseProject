@@ -50,3 +50,4 @@ $(document).ready(function() {
     showChart(0);
     showLabelsContainer(0);
 });
+

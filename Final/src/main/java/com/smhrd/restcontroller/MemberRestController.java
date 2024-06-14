@@ -339,7 +339,6 @@ public class MemberRestController {
 	public Map<String, Object> getIntro() {	    
 	    // 컨텍스트 매퍼로부터 ContextVO 목록을 가져옵니다.
 	    List<ContextVO> getIntro = contextMapper.getIntro();
-	    System.out.println("getIntro: " + getIntro);
 	    
 	    // SurveyVO 목록을 저장할 리스트를 초기화합니다.
 	    List<SurveyVO> surveyList = new ArrayList<>();
@@ -351,7 +350,6 @@ public class MemberRestController {
 	            surveyList.add(survey);
 	        }
 	    }
-	    System.out.println("surveyList : " + surveyList);
 	    
 	    // 장르와 감정에 대한 빈도를 저장할 맵을 생성합니다.
 	    Map<String, Integer> genreFrequencyMap = new HashMap<>();
@@ -383,8 +381,6 @@ public class MemberRestController {
 	        .map(Map.Entry::getKey)
 	        .collect(Collectors.toList());
 	   
-	    System.out.println(top3Genres);
-	    System.out.println(top3Emotions);
 	    
 	    // 노래 빈도수를 저장할 맵을 생성합니다.
 	    Map<String, List<String>> topSongsByGenre = new HashMap<>();
@@ -448,12 +444,6 @@ public class MemberRestController {
 	    responseData.put("emotion_counts", new ArrayList<>(emotionFrequencyMap.values())); // 감정 개수 추가
 	    responseData.put("top_songs_by_genre", topSongsByGenre); // 장르별 상위 5개의 노래 추가
 	    responseData.put("top_songs_by_emotion", topSongsByEmotion); // 감정별 상위 5개의 노래 추가
-	    
-	    // Output text
-	    System.out.println("Genre Frequency Map: " + genreFrequencyMap);
-	    System.out.println("Emotion Frequency Map: " + emotionFrequencyMap);
-	    System.out.println("Top Songs by Genre: " + topSongsByGenre);
-	    System.out.println("Top Songs by Emotion: " + topSongsByEmotion);
 	    
 	    return responseData;
 	}

@@ -1,7 +1,7 @@
-const cpath = document.body.getAttribute('data-cpath');
+var Gpath = document.body.getAttribute('data-cpath');
 
 $.ajax({
-    url: `${cpath}/chartjs`,
+    url: `${Gpath}/chartjs`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
@@ -28,8 +28,8 @@ $.ajax({
             }
         });
         
-        const ctx = document.getElementById('myChart1').getContext('2d');
-        new Chart(ctx, {
+        const genre = document.getElementById('myChart1').getContext('2d');
+        new Chart(genre, {
             type: 'doughnut',
             data: {
                 labels: labels,
