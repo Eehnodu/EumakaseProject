@@ -773,7 +773,7 @@ public class MainController {
 			// mapper를 통해 playlistvo를 저장
 			aiplaylistMapper.savePlaylist(playlistvo);
 		}
-		return "redirect:/mainPage";
+		return "redirect:/mypage";
 	}
 
 	@PostMapping("/update")

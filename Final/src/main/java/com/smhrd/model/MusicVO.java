@@ -24,4 +24,5 @@ public class MusicVO {
 	private String lyrics;
 	private String TEXT;
 	private Year year;
+	private String iframe;
 }
