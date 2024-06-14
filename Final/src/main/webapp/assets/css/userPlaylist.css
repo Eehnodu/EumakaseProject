@@ -33,37 +33,35 @@
 	width: 100%;
 }
 
-
-.btn-edit{
+.btn-edit {
 	background-color: #666666;
-    display: inline-block;
-    color: #fff;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 12px;
-    /* border-color:#ec6090; */
+	display: inline-block;
+	color: #fff;
+	font-size: 14px;
+	padding: 5px 10px;
+	border-radius: 12px;
+	/* border-color:#ec6090; */
 }
 
-.btn-edit:hover{
+.btn-edit:hover {
 	border-color: #fff;
-    background-color: #fff;
-    color: #e75e8d;
+	background-color: #fff;
+	color: #e75e8d;
 }
 
-.btn-delete{
+.btn-delete {
 	background-color: rgba(236, 96, 144, 0.9);
-    padding: 5px 10px;
-    border-radius:12px;
-    color: #fff;
-    font-size: 14px;
+	padding: 5px 10px;
+	border-radius: 12px;
+	color: #fff;
+	font-size: 14px;
 }
 
-.btn-delete:hover{
+.btn-delete:hover {
 	border-color: #fff;
-    background-color: #fff;
-    color: #e75e8d;
+	background-color: #fff;
+	color: #e75e8d;
 }
-
 
 /* ***** playlistDetailPage ***** */
 .col-lg-6 .playlist {
@@ -171,11 +169,11 @@
 	font-size: 15px;
 	margin-bottom: 5px;
 	display: block; /* 요소를 블록 레벨 요소로 설정 */
-    overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
-    text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
-    white-space: nowrap; /* 텍스트를 한 줄로 표시하고 줄바꿈을 하지 않음 */
-    word-break: break-all; /* 단어가 넘칠 경우 임의로 단어를 끊어서 줄바꿈을 함 */
-    vertical-align: top; /* 인라인 요소의 수직 정렬을 상단으로 맞춤 */
+	overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
+	text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
+	white-space: nowrap; /* 텍스트를 한 줄로 표시하고 줄바꿈을 하지 않음 */
+	word-break: break-all; /* 단어가 넘칠 경우 임의로 단어를 끊어서 줄바꿈을 함 */
+	vertical-align: top; /* 인라인 요소의 수직 정렬을 상단으로 맞춤 */
 }
 
 .gaming-library .item ul li span {
@@ -208,263 +206,6 @@
 	color: #e75e8d;
 }
 
-/* ***** 좋아요 ***** */
-li .heartbox {
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%)
-}
-
-svg {
-	cursor: pointer;
-	overflow: visible;
-	width: 60px;
-	/* margin: 20px; */
-	margin-bottom: -10px;
-}
-
-svg #heart {
-	transform-origin: center;
-	animation: animateHeartOut .3s linear forwards;
-}
-
-svg #main-circ {
-	transform-origin: 29.5px 29.5px;
-}
-
-.checkbox {
-	display: none;
-}
-
-.checkbox:checked+label svg #heart {
-	transform: scale(0.2);
-	fill: #E2264D;
-	animation: animateHeart .3s linear forwards .25s;
-}
-
-.checkbox:checked+label svg #main-circ {
-	transition: all 2s;
-	animation: animateCircle .3s linear forwards;
-	opacity: 1;
-}
-
-.checkbox:checked+label svg #heartgroup1 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup1 #heart1 {
-	transform: scale(0) translate(0, -30px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup1 #heart2 {
-	transform: scale(0) translate(10px, -50px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 #heart1 {
-	transform: scale(0) translate(30px, -15px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 #heart2 {
-	transform: scale(0) translate(60px, -15px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 #heart1 {
-	transform: scale(0) translate(30px, 0px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 #heart2 {
-	transform: scale(0) translate(60px, 10px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 #heart1 {
-	transform: scale(0) translate(30px, 15px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 #heart2 {
-	transform: scale(0) translate(40px, 50px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 #heart1 {
-	transform: scale(0) translate(-10px, 20px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 #heart2 {
-	transform: scale(0) translate(-60px, 30px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 #heart1 {
-	transform: scale(0) translate(-30px, 0px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 #heart2 {
-	transform: scale(0) translate(-60px, -5px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 {
-	opacity: 1;
-	transition: .1s all .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 #heart1 {
-	transform: scale(0) translate(-30px, -15px);
-	transform-origin: 0 0 0;
-	transition: .5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 #heart2 {
-	transform: scale(0) translate(-55px, -30px);
-	transform-origin: 0 0 0;
-	transition: 1.5s transform .3s;
-}
-
-.checkbox:checked+label svg #heartgroup2 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup3 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup4 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup5 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup6 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-.checkbox:checked+label svg #heartgroup7 {
-	opacity: 1;
-	transition: .1s opacity .3s;
-}
-
-@keyframes animateCircle {
-  40% {
-    transform: scale(10);
-    opacity: 1;
-    fill: #DD4688;
-  }
-  55% {
-    transform: scale(11);
-    opacity: 1;
-    fill: #D46ABF;
-  }
-  65% {
-    transform: scale(12);
-    opacity: 1;
-    fill: #CC8EF5;
-  }
-  75% {
-    transform: scale(13);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: .5;
-  }
-  85% {
-    transform: scale(17);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: .2;
-  }
-  95% {
-    transform: scale(18);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: .1;
-  }
-  100% {
-    transform: scale(19);
-    opacity: 1;
-    fill: transparent;
-    stroke: #CC8EF5;
-    stroke-width: 0;
-  }
-}
-
-@keyframes animateHeart {
-  0% {
-    transform: scale(0.2);
-  }
-  40% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-} 
-
-@keyframes animateHeartOut {
-  0% {
-    transform: scale(1.4);
-  }
-  100% {
-    transform: scale(1);
-  } 
-}
-
 /* ***** 더보기 ***** */
 .songDetail {
 	display: none;
@@ -475,7 +216,6 @@ svg #main-circ {
 }
 
 /* 
-
   ---------------------------------------------
   Game Details Style
   --------------------------------------------- 
@@ -581,43 +321,88 @@ svg #main-circ {
 
 /* 이미지 사분할 */
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  width: 100%; /* 원하는 크기로 설정 */
-  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
-  overflow: hidden;
-  border-radius: 23px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	width: 100%; /* 원하는 크기로 설정 */
+	aspect-ratio: 1/1; /* 정사각형 비율 유지 */
+	overflow: hidden;
+	border-radius: 23px;
 }
 
-/* h4 .songTitle{
-	max-width: 280px;
-    white-space: nowrap;  텍스트가 한 줄로 표시되도록 함
-    overflow: hidden;  넘치는 텍스트를 숨김
-    text-overflow: ellipsis;  넘치는 텍스트를 '...'으로 표시
-    position: relative; 툴팁 위치를 위해 필요
+/* SweetAlert2 아이콘 크기 조정 */
+.swal2-icon {
+	font-size: 10px;
 }
 
-h4 .songTitle::after {
-    content: attr(title); title 속성값을 툴팁 내용으로 사용
-    visibility: hidden;
-    opacity: 0;
-    width: auto;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%; 요소의 위쪽에 툴팁을 표시
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    transition: opacity 0.3s;
+/* SweetAlert2 성공 아이콘 색상 변경 */
+.swal2-icon.swal2-success {
+	border-color: #e75e8d;
+	color: #e75e8d;
 }
 
-h4 .songTitle:hover::after {
-    visibility: visible;
-    opacity: 1;
-} */
+.swal2-icon.swal2-success .swal2-success-ring {
+	border: .25em solid #e75e8d;
+}
+
+.swal2-icon.swal2-success .swal2-success-fix {
+	background-color: #e75e8d;
+}
+
+.swal2-icon.swal2-success .swal2-success-line-tip, .swal2-icon.swal2-success .swal2-success-line-long
+	{
+	background-color: #e75e8d;
+}
+
+/* SweetAlert2 경고 아이콘 색상 변경 */
+div:where(.swal2-icon).swal2-warning {
+	border-color: #e75e8d;
+	color: #e75e8d;
+}
+
+div:where(.swal2-icon).swal2-error {
+	border-color: #e75e8d;
+	color: #e75e8d;
+}
+
+div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line] {
+	background-color: #e75e8d;
+}
+
+/* 아이콘 끝 */
+
+/* SweetAlert2 버튼 */
+.swal2-confirm.swal2-styled {
+	background-color: #e75e8d;
+	padding: 6px 12px;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+button.swal2-confirm.btn.btn-success {
+	background-color: #e75e8d;
+	padding: 6px 12px;
+	border-color: #e75e8d;
+}
+
+button.swal2-cancel.btn.btn-danger {
+	margin-left: 8px;
+	background-color: #666666;
+	color: #fff;
+	padding: 6px 12px;
+	border-color: #666666;
+}
+
+.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show {
+	height: 250px;
+}
+
+/* SweetAlert2 배경색 변경 */
+.swal2-popup {
+	background-color: #27292a;
+	color: white;
+	border-radius: 23px;
+}

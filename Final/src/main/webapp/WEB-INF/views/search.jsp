@@ -13,6 +13,8 @@
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
+<!-- ***** css 연결 ***** -->
+<link rel="stylesheet" href="assets/css/main.css?ver=<%=System.currentTimeMillis()%>">
 
 </head>
 <body>
@@ -25,7 +27,7 @@
 					<!-- ***** 페이지 내용 작성 ***** -->
 
 
-
+가즈아!@!!!!!@!!@
 
 
 
@@ -44,7 +46,7 @@
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
 
-	<%@ include file="includeFooter.jsp"%>
 
 </body>
+	<%@ include file="includeFooter.jsp"%>
 </html>
