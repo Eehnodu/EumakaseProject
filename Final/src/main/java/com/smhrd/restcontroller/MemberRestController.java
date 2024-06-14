@@ -299,4 +299,152 @@ public class MemberRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+	
+	@RequestMapping("{cpath}/getEmotion")
+	@ResponseBody
+	public Map<String, Integer> getEmotion(HttpSession session) {
+	    MemberVO member = (MemberVO) session.getAttribute("member");
+	    List<ContextVO> getEmotion = contextMapper.chartjs(member);
+	    List<SurveyVO> surveyList = new ArrayList<>();
+	    for (ContextVO context : getEmotion) {
+	        SurveyVO survey = surveyMapper.getEmotion(context);
+	        if (survey != null) {
+	            surveyList.add(survey);
+	        }
+	    }
+	    // 빈도를 세기 위한 맵 생성
+	    Map<String, Integer> frequencyMap = new HashMap<>();
+	    for (SurveyVO survey : surveyList) {
+	        if (survey != null && survey.getSurDesc() != null) { // Add null check
+	            String surDesc = survey.getSurDesc();
+	            // 맵에 이미 해당 값이 있다면 기존 값에 1을 더하고, 없으면 새로운 키로 추가
+	            frequencyMap.put(surDesc, frequencyMap.getOrDefault(surDesc, 0) + 1);
+	        }
+	    }
+	    
+	    // 상위 3개의 값과 각 값의 개수를 구하기 위해 맵을 내림차순으로 정렬
+	    List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(frequencyMap.entrySet());
+	    sortedList.sort((a, b) -> b.getValue().compareTo(a.getValue()));
+
+	    // 결과를 담을 맵 생성
+	    Map<String, Integer> top3Values = new LinkedHashMap<>();
+	    for (int i = 0; i < Math.min(3, sortedList.size()); i++) {
+	        Map.Entry<String, Integer> entry = sortedList.get(i);
+	        top3Values.put(entry.getKey(), entry.getValue());
+	    }
+	    return top3Values;
+	}
+	@RequestMapping("{cpath}/getIntro")
+	@ResponseBody
+	public Map<String, Object> getIntro() {	    
+	    // 컨텍스트 매퍼로부터 ContextVO 목록을 가져옵니다.
+	    List<ContextVO> getIntro = contextMapper.getIntro();
+	    
+	    // SurveyVO 목록을 저장할 리스트를 초기화합니다.
+	    List<SurveyVO> surveyList = new ArrayList<>();
+	    
+	    // 각 ContextVO에 대한 SurveyVO를 가져와서 surveyList에 추가합니다.
+	    for (ContextVO context : getIntro) {
+	        SurveyVO survey = surveyMapper.getIntro(context);
+	        if (survey != null) {
+	            surveyList.add(survey);
+	        }
+	    }
+	    
+	    // 장르와 감정에 대한 빈도를 저장할 맵을 생성합니다.
+	    Map<String, Integer> genreFrequencyMap = new HashMap<>();
+	    Map<String, Integer> emotionFrequencyMap = new HashMap<>();
+	    
+	    // 장르와 감정에 대한 빈도수 계산
+	    for (SurveyVO survey : surveyList) {
+	        if (survey != null && survey.getSurDesc() != null && survey.getSurType().equals("A")) {
+	            String surItem = survey.getSurItem();
+	            String surDesc = survey.getSurDesc();
+	            if (surItem.equals("genre")) {
+	                genreFrequencyMap.put(surDesc, genreFrequencyMap.getOrDefault(surDesc, 0) + 1);
+	            } else if (surItem.equals("emotion")) {
+	                emotionFrequencyMap.put(surDesc, emotionFrequencyMap.getOrDefault(surDesc, 0) + 1);
+	            }
+	        }
+	    }
+
+	    // 상위 3개의 장르와 감정을 추출합니다.
+	    List<String> top3Genres = genreFrequencyMap.entrySet().stream()
+	        .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+	        .limit(3)
+	        .map(Map.Entry::getKey)
+	        .collect(Collectors.toList());
+	    
+	    List<String> top3Emotions = emotionFrequencyMap.entrySet().stream()
+	        .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+	        .limit(3)
+	        .map(Map.Entry::getKey)
+	        .collect(Collectors.toList());
+	   
+	    
+	    // 노래 빈도수를 저장할 맵을 생성합니다.
+	    Map<String, List<String>> topSongsByGenre = new HashMap<>();
+	    Map<String, List<String>> topSongsByEmotion = new HashMap<>();
+
+	    // 각 상위 장르에 대해 musicIdx를 추출하고 노래 빈도수를 계산합니다.
+	    for (String genre : top3Genres) {
+	        Map<String, Integer> songFrequencyMap = new HashMap<>();
+	        List<Integer> surveyIds = surveyMapper.getSurveyIdsByDesc(genre);
+	        for (Integer surveyId : surveyIds) {
+	            List<Integer> contextIds = contextMapper.getContextIdsBySurveyId(surveyId);
+	            for (Integer contextId : contextIds) {
+	                List<Integer> musicIdxList = musicMapper.getMusicIdxByContextId(contextId);
+	                for (Integer musicIdx : musicIdxList) {
+	                    MusicVO music = musicMapper.getMusicById(musicIdx);
+	                    if (music != null) {
+	                        String songKey = music.getArtist() + " - " + music.getTitle();
+	                        songFrequencyMap.put(songKey, songFrequencyMap.getOrDefault(songKey, 0) + 1);
+	                    }
+	                }
+	            }
+	        }
+	        List<String> top5Songs = songFrequencyMap.entrySet().stream()
+	            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+	            .limit(5)
+	            .map(Map.Entry::getKey)
+	            .collect(Collectors.toList());
+	        topSongsByGenre.put(genre, top5Songs);
+	    }
+
+	    // 각 상위 감정에 대해 musicIdx를 추출하고 노래 빈도수를 계산합니다.
+	    for (String emotion : top3Emotions) {
+	        Map<String, Integer> songFrequencyMap = new HashMap<>();
+	        List<Integer> surveyIds = surveyMapper.getSurveyIdsByDesc(emotion);
+	        for (Integer surveyId : surveyIds) {
+	            List<Integer> contextIds = contextMapper.getContextIdsBySurveyId(surveyId);
+	            for (Integer contextId : contextIds) {
+	                List<Integer> musicIdxList = musicMapper.getMusicIdxByContextId5(contextId);
+	                for (Integer musicIdx : musicIdxList) {
+	                    MusicVO music = musicMapper.getMusicById(musicIdx);
+	                    if (music != null) {
+	                        String songKey = music.getArtist() + " - " + music.getTitle();
+	                        songFrequencyMap.put(songKey, songFrequencyMap.getOrDefault(songKey, 0) + 1);
+	                    }
+	                }
+	            }
+	        }
+	        List<String> top5Songs = songFrequencyMap.entrySet().stream()
+	            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+	            .limit(5)
+	            .map(Map.Entry::getKey)
+	            .collect(Collectors.toList());
+	        topSongsByEmotion.put(emotion, top5Songs);
+	    }
+
+	    // JSON 형식으로 반환할 데이터 맵을 생성합니다.
+	    Map<String, Object> responseData = new HashMap<>();
+	    responseData.put("genre_labels", new ArrayList<>(genreFrequencyMap.keySet())); // 장르 라벨 추가
+	    responseData.put("genre_counts", new ArrayList<>(genreFrequencyMap.values())); // 장르 개수 추가
+	    responseData.put("emotion_labels", new ArrayList<>(emotionFrequencyMap.keySet())); // 감정 라벨 추가
+	    responseData.put("emotion_counts", new ArrayList<>(emotionFrequencyMap.values())); // 감정 개수 추가
+	    responseData.put("top_songs_by_genre", topSongsByGenre); // 장르별 상위 5개의 노래 추가
+	    responseData.put("top_songs_by_emotion", topSongsByEmotion); // 감정별 상위 5개의 노래 추가
+	    
+	    return responseData;
+	}
 }
