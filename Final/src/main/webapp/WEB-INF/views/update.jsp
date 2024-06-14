@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>마이페이지</title>
+<title>음악하세</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 <link rel="stylesheet"
