@@ -20,5 +20,16 @@
 		SELECT * FROM tb_aiplaylist WHERE myplIdx = #{myplIdx}
 	</select>
 	
+	<select id="getPopularMusic" resultType="com.smhrd.model.AiPlaylistVO">
+		SELECT musicIdx, count(plIdx) AS plIdx FROM ehroqkfdbcah.tb_aiplaylist GROUP BY musicIdx ORDER BY plIdx DESC LIMIT 8
+	</select>
+	
+	<insert id="insertCopyPlayList" parameterType="com.smhrd.model.MyPlaylistVO">
+	    INSERT INTO tb_aiplaylist (musicIdx, contextIdx, contextIdx2, contextIdx3, contextIdx4, contextIdx5, myplIdx)
+	    SELECT musicIdx, contextIdx, contextIdx2, contextIdx3, contextIdx4, contextIdx5, 
+	           (SELECT myplIdx FROM tb_myplaylist WHERE memId = #{memId} AND plName = #{plName} order by myplIdx desc limit 1)
+	    FROM tb_aiplaylist
+	    WHERE myplIdx = #{myplIdx}
+  	</insert>
 	
 </mapper>

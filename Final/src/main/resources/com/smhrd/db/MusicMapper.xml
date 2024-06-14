@@ -2,60 +2,76 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.MusicMapper">
 
-   <resultMap id="musicResultMap" type="com.smhrd.model.MusicVO">
-        <result property="title" column="title"/>
-        <result property="artist" column="artist"/>
-   </resultMap>
+	<resultMap id="musicResultMap" type="com.smhrd.model.MusicVO">
+		<result property="title" column="title" />
+		<result property="artist" column="artist" />
+	</resultMap>
 
-   <select id="getChartMusic" parameterType="com.smhrd.model.AiPlaylistVO" resultMap="musicResultMap">
-        SELECT title, artist
-        FROM tb_music
-        WHERE musicIdx = #{musicIdx}
-   </select>
+	<select id="getChartMusic"
+		parameterType="com.smhrd.model.AiPlaylistVO"
+		resultMap="musicResultMap">
+		SELECT title, artist
+		FROM tb_music
+		WHERE musicIdx = #{musicIdx}
+	</select>
 
-	<select id="getMusic" parameterType="com.smhrd.model.MusicVO" resultType="com.smhrd.model.MusicVO">
-		SELECT * FROM tb_music WHERE artist LIKE CONCAT('%', #{artist}, '%') AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
+	<select id="getMusic" parameterType="com.smhrd.model.MusicVO"
+		resultType="com.smhrd.model.MusicVO">
+		SELECT * FROM tb_music WHERE artist LIKE CONCAT('%',
+		#{artist}, '%') AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
 	</select>
 
 	<!-- other의 앨범커버 가져오기 -->
-	<select id="getOtherAlbumCov" parameterType="int" resultType="com.smhrd.model.MusicVO">
-			SELECT albumCov FROM tb_music WHERE musicIdx = #{musicIdx}
+	<select id="getOtherAlbumCov" parameterType="int"
+		resultType="com.smhrd.model.MusicVO">
+		SELECT albumCov FROM tb_music WHERE musicIdx = #{musicIdx}
 	</select>
-	
+
 	<!-- userplaylist의 음원 정보 가져오기 -->
-	<select id="getUserPlaylist" parameterType="int" resultType="com.smhrd.model.MusicVO">
-			SELECT * FROM tb_music WHERE musicIdx = #{musicIdx}
+	<select id="getUserPlaylist" parameterType="int"
+		resultType="com.smhrd.model.MusicVO">
+		SELECT * FROM tb_music WHERE musicIdx = #{musicIdx}
 	</select>
-	
+
 	<select id="getMyMusic" resultType="com.smhrd.model.MusicVO">
 		SELECT m.*
-			FROM (
-			  SELECT t2.musicIdx
-			  FROM (
-			    SELECT tb_aiplaylist.musicIdx,
-			    ROW_NUMBER() OVER (PARTITION BY tb_myplaylist.myplIdx ORDER BY RAND()) AS rn
-			    FROM tb_myplaylist
-			    INNER JOIN tb_aiplaylist
-			    ON tb_myplaylist.myplIdx = tb_aiplaylist.myplIdx
-			    WHERE tb_myplaylist.memId = #{memId}
-			    GROUP BY tb_aiplaylist.musicIdx, tb_myplaylist.myplIdx
-			  ) t2
-			  WHERE <![CDATA[t2.rn <= 4]]>
-			) t1
-			INNER JOIN tb_music m ON t1.musicIdx = m.musicIdx
+		FROM (
+		SELECT t2.musicIdx
+		FROM (
+		SELECT tb_aiplaylist.musicIdx,
+		ROW_NUMBER() OVER (PARTITION BY tb_myplaylist.myplIdx ORDER BY RAND()) AS rn
+		FROM tb_myplaylist
+		INNER JOIN tb_aiplaylist
+		ON tb_myplaylist.myplIdx = tb_aiplaylist.myplIdx
+		WHERE tb_myplaylist.memId = #{memId}
+		GROUP BY tb_aiplaylist.musicIdx, tb_myplaylist.myplIdx
+		) t2
+		WHERE <![CDATA[t2.rn <= 4]]>
+		) t1
+		INNER JOIN tb_music m ON t1.musicIdx = m.musicIdx
 	</select>
-	
-	
-	<select id="getMusicIdxByContextId" parameterType="integer" resultType="integer">
-	    SELECT musicIdx FROM tb_aiplaylist WHERE contextIdx = #{contextId}
+
+
+	<select id="getMusicIdxByContextId" parameterType="integer"
+		resultType="integer">
+		SELECT musicIdx FROM tb_aiplaylist WHERE contextIdx = #{contextId}
 	</select>
-	
-	<select id="getMusicById" parameterType="integer" resultType="com.smhrd.model.MusicVO">
-	    SELECT title, artist FROM tb_music WHERE musicIdx = #{musicIdx}
+
+	<select id="getMusicById" parameterType="integer"
+		resultType="com.smhrd.model.MusicVO">
+		SELECT title, artist FROM tb_music WHERE musicIdx = #{musicIdx}
 	</select>
-	
-	<select id="getMusicIdxByContextId5" parameterType="integer" resultType="integer">
-	    SELECT musicIdx FROM tb_aiplaylist WHERE contextIdx5 = #{contextId}
+
+	<select id="getMusicIdxByContextId5" parameterType="integer"
+		resultType="integer">
+		SELECT musicIdx FROM tb_aiplaylist WHERE contextIdx5 = #{contextId}
 	</select>
-	
+	<!-- 자동 추천 결과에 쓰일 음원 정보 가져오기 -->
+	<select id="getRecMusic" parameterType="com.smhrd.model.MusicVO"
+		resultType="com.smhrd.model.MusicVO">
+		SELECT musicIdx, albumCov, title, artist, album, genre,
+		releasedAt FROM tb_music WHERE artist LIKE CONCAT('%', #{artist}, '%')
+		AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
+	</select>
+
 </mapper>

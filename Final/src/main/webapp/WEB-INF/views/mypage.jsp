@@ -8,42 +8,52 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <title>마이페이지</title>
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
+
+<!-- 부트스트랩 프레임워크를 상속받는 새로운 스타일러 문제시 삭제가능 쓸꺼면 나중에 includeHeader로 옮겨야함 그냥쓸땐 include header 아래에 넣어야함 mypage.jsp에선 막아둠
+	-->
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"
+	rel="stylesheet">
+
 <link rel="stylesheet" href="assets/css/mypage.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 #chartArea {
-    position: relative;
+	position: relative;
 }
 
 #chartArea .col-lg-12 {
-    position: relative;
+	position: relative;
 }
 
 #prevChart, #nextChart {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10; /* 차트보다 버튼이 앞에 오도록 설정 */
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10; /* 차트보다 버튼이 앞에 오도록 설정 */
 }
 
 #prevChart {
-    left: 10px; /* 왼쪽 버튼 위치 조정 */
+	left: 10px; /* 왼쪽 버튼 위치 조정 */
 }
 
 #nextChart {
-    right: 10px; /* 오른쪽 버튼 위치 조정 */
+	right: 10px; /* 오른쪽 버튼 위치 조정 */
 }
 
 .btn-arrow {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem; /* 아이콘 크기 조정 */
-    cursor: pointer;
+	background-color: transparent;
+	border: none;
+	font-size: 2rem; /* 아이콘 크기 조정 */
+	cursor: pointer;
 }
-
 </style>
 </head>
 <body>
@@ -66,46 +76,57 @@
 			<div class="col-lg-12">
 				<div class="page-content">
 					<div class="row" id="chartArea">
-						    <div class="col-lg-12">
-						        <div class="main-profile">
-						           <div class="row" id="chartArea">
-									    <div class="col-lg-12 position-relative">
-									        <div class="main-profile">
-									           <div class="row">
-												    <div class="col-lg-6">
-												        <!-- 차트 영역 -->
-												        <form id="chartjs" action="${cpath}/chartjs" method="post" novalidate>
-												            <canvas id="myChart1" width="400" height="400"></canvas>
-												        </form>
-												        <form id="getMusic" action="${cpath}/getMusic" method="post" novalidate>
-												            <canvas id="myChart2" width="400" height="400"></canvas>
-												        </form>
-												        <form id="getEmotion" action="${cpath}/getEmotion" method="post" novalidate>
-												            <canvas id="myChart3" width="400" height="400"></canvas>
-												        </form>
-												    </div>
-												    <div class="col-lg-6 align-self-center">
-												        <ul class="showLabelsContainer" id="firstLabelsContainer">
-												            <li id="labelsContainer1"></li>
-												            <li id="labelsContainerData1"></li>
-												        </ul>
-												        <br>
-												        <ul class="showLabelsContainer" id="secondLabelsContainer">
-												            <li id="labelsContainer2"></li>
-												            <li id="labelsContainerData2"></li>
-												        </ul>
-												        <ul class="showLabelsContainer" id="thirdLabelsContainer">
-												            <li id="labelsContainer3"></li>
-												            <li id="labelsContainerData3"></li>
-												        </ul>
-												    </div>
+						<div class="col-lg-12">
+							<div class="main-profile">
+								<div class="row" id="chartArea">
+									<div class="col-lg-12 position-relative">
+										<div class="main-profile">
+											<div class="row">
+												<div class="col-lg-6">
+													<!-- 차트 영역 -->
+													<form id="chartjs" action="${cpath}/chartjs" method="post"
+														novalidate>
+														<canvas id="myChart1" width="400" height="400"></canvas>
+													</form>
+													<form id="getMusic" action="${cpath}/getMusic"
+														method="post" novalidate>
+														<canvas id="myChart2" width="400" height="400"></canvas>
+													</form>
+													<form id="getEmotion" action="${cpath}/getEmotion"
+														method="post" novalidate>
+														<canvas id="myChart3" width="400" height="400"></canvas>
+													</form>
 												</div>
-									        </div>
-									        <button id="prevChart" class="btn-arrow"><i class="fas fa-arrow-left"></i></button>
-									        <button id="nextChart" class="btn-arrow"><i class="fas fa-arrow-right"></i></button>
-									    </div>
+												<div class="col-lg-6 align-self-center">
+													<ul class="showLabelsContainer" id="firstLabelsContainer">
+														<li id="labelsContainer1"></li>
+														<li id="labelsContainerData1"></li>
+													</ul>
+													<br>
+													<ul class="showLabelsContainer" id="secondLabelsContainer">
+														<li id="labelsContainer2"></li>
+														<li id="labelsContainerData2"></li>
+													</ul>
+													<ul class="showLabelsContainer" id="thirdLabelsContainer">
+														<li id="labelsContainer3"></li>
+														<li id="labelsContainerData3"></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<button id="prevChart" class="btn-arrow">
+											<i class="fas fa-arrow-left"></i>
+										</button>
+										<button id="nextChart" class="btn-arrow">
+											<i class="fas fa-arrow-right"></i>
+										</button>
 									</div>
-	
+
+
+
+
+								</div>
+
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="clips">
@@ -117,36 +138,33 @@
 														</h4>
 													</div>
 												</div>
-												<c:forEach var="myply" items="${myplayList}" varStatus="loop">
+												<c:forEach var="myply" items="${myplayList}"
+													varStatus="loop">
 													<div class="col-lg-3 col-sm-6">
 														<div class="item">
 															<div class="thumb">
-																<c:forEach var="cov" items="${myplayListalbumCov}"
-																	begin="${loop.index * 4}" end="${(loop.index * 4) + 3}">
-																	<img src="${cov.albumCov}" alt=""
-																		style="border-radius: 23px; width: 25%;">
-																</c:forEach>
-																<a href = "${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">상세보기</a>
-																<a href="https://www.youtube.com/watch?v=r1b03uKWk_M"
-																	target="_blank"> <i class="fa fa-play"></i>
-																</a>
-															</div>
-															<div class="down-content">
-																<h4>${myply.plName}</h4>
-															</div>
-															<div class="moreInfoButtons mt-2">
-																<button type="button" class="btn btn-sm btn-edit">수정</button>
-																<button type="button" class="btn btn-sm btn-delete">삭제</button>
+																<div class="image-grid">
+																	<c:forEach var="cov" items="${myplayListalbumCov}"
+																		begin="${loop.index * 4}"
+																		end="${(loop.index * 4) + 3}">
+																		<img src="${cov.albumCov}" alt="">
+																	</c:forEach>
+																	<a id="playlistbutton"
+																		href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}"></a>
+																</div>
+																<div class="down-content">
+																	<h4>${myply.plName}</h4>
+																</div>
 															</div>
 														</div>
 													</div>
 												</c:forEach>
-
 												<div class="col-lg-12">
 													<div class="main-button" id="loadMore">
-														<a href="profile.html">더보기</a>
+														<a href="#">더보기</a>
 													</div>
 												</div>
+
 											</div>
 										</div>
 									</div>
@@ -156,86 +174,6 @@
 					</div>
 					<!-- ***** Banner End ***** -->
 
-					<!-- ***** Gaming Library Start ***** -->
-					<div class="gaming-library profile-library">
-						<div class="col-lg-12">
-							<div class="heading-section">
-								<h4>
-									<em>팬 맺은</em> 아티스트
-								</h4>
-							</div>
-							<div class="item">
-								<ul>
-									<li><img src="assets/images/game-01.jpg" alt=""
-										class="templatemo-item"></li>
-									<li>
-										<h4>뉴진스</h4> <span>여성/그룹</span>
-									</li>
-									<li>
-										<h4>최근 발매일</h4> <span>24/08/2036</span>
-									</li>
-									<li>
-										<h4>Hours Played</h4> <span>앨범명</span>
-									</li>
-									<li>
-										<h4>댄스</h4> <span>장르</span>
-									</li>
-									<li>
-										<div class="thumb">
-											<a href="#" target="_blank"><i class="fa fa-play fa-lg"></i></a>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<div class="item">
-								<ul>
-									<li><img src="assets/images/game-02.jpg" alt=""
-										class="templatemo-item"></li>
-									<li>
-										<h4>Fortnite</h4> <span>Sandbox</span>
-									</li>
-									<li>
-										<h4>Date Added</h4> <span>22/06/2036</span>
-									</li>
-									<li>
-										<h4>Hours Played</h4> <span>745 H 22 Mins</span>
-									</li>
-									<li>
-										<h4>Currently</h4> <span>Downloaded</span>
-									</li>
-									<li>
-										<div class="thumb">
-											<a href="#" target="_blank"><i class="fa fa-play fa-lg"></i></a>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<div class="item last-item">
-								<ul>
-									<li><img src="assets/images/game-03.jpg" alt=""
-										class="templatemo-item"></li>
-									<li>
-										<h4>CS-GO</h4> <span>Sandbox</span>
-									</li>
-									<li>
-										<h4>Date Added</h4> <span>21/04/2022</span>
-									</li>
-									<li>
-										<h4>Hours Played</h4> <span>632 H 46 Mins</span>
-									</li>
-									<li>
-										<h4>Currently</h4> <span>Downloaded</span>
-									</li>
-									<li>
-										<div class="thumb">
-											<a href="#" target="_blank"><i class="fa fa-play fa-lg"></i></a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- ***** Gaming Library End ***** -->
 				</div>
 			</div>
 		</div>
@@ -245,7 +183,6 @@
 
 
 	<!-- Scripts -->
-
 	<script src="assets/js/isotope.min.js"></script>
 	<script src="assets/js/owl-carousel.js"></script>
 	<script src="assets/js/tabs.js"></script>
@@ -256,7 +193,24 @@
 	<script src="assets/js/chartPrefernce.js"></script>
 	<script src="assets/js/chartfunction.js"></script>
 	<script src="assets/js/chartEmotion.js"></script>
-	
+
+	<script
+		src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+	<script
+		src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
+
 	<%@ include file="includeFooter.jsp"%>
 </body>
 </html>

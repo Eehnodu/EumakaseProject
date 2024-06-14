@@ -75,6 +75,11 @@
   /*
    *  Owl Carousel - Core
    */
+   
+  .owl-collection .owl-item img {
+    width: 156px;
+    height: 156px;
+	}
   
   .owl-carousel {
     display: none;
@@ -320,7 +325,7 @@
     background-image: url(../images/banner-bg.jpg);
     background-position: center center;
     background-size: cover;
-    min-height: 461px;
+    min-height: 352.8px;
     border-radius: 23px;
     padding: 80px 60px;
   }
@@ -537,8 +542,95 @@
     font-size: 15px;
   }
   
-  
+.col-lg-12 .owl-carousel .item .image-grid img{
+	border-radius: 0px;
+}
  
+/* 이미지 사분할 */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%; /* 원하는 크기로 설정 */
+  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+  overflow: hidden;
+  border-radius: 23px;
+}  
+
+/* *** 지금 듣기 *** */
   
-  
-  
+/* .header-text .item .hover-effect {
+    position: absolute;
+    bottom: -100px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+}
+
+.header-text .item .image-grid:hover .hover-effect {
+    opacity: 1;
+    visibility: visible;
+    bottom: 15px;
+}
+
+.header-text .item .hover-effect h6 {
+    background-color: rgba(31, 33, 34, 0.95);
+    display: inline-block;
+    color: #ec6090;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 25px;
+} */
+
+/* *** 다른 사람은 뭐듣지 파트에서 지금 듣기 *** */
+ .header-text .item {
+    position: relative; /* 상대위치 */
+}
+
+.header-text .item .image-grid {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-text .item .hover-effect2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록  */
+.header-text .item .image-grid:hover .hover-effect2 {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header-text .item .hover-effect2 h6 {
+    background-color: rgba(31, 33, 34, 0.95);
+    display: inline-block;
+    color: #ec6090;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+
+/* 장르 추천 섹션 */
+.genreAlbumCov{
+	background-color: #eeeeee14;
+    border-radius: 23px;
+}

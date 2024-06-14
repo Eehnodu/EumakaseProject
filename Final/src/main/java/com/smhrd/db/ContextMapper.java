@@ -21,7 +21,8 @@ public interface ContextMapper {
     public List<ContextVO> getEmotion(MemberVO member);
 
     public List<ContextVO> getIntro();
+    
     public List<Integer> getContextIdsBySurveyId(Integer surveyId);
 
-	
+    public void changeSurIdx(int i);
 }

@@ -22,6 +22,18 @@
 	    SELECT * FROM tb_myplaylist WHERE myplIdx = #{myplIdx}
 	</select>
 	
+	<!-- 내 플레이리스트 명 업데이트 -->
+	<update id="updateMyPlayList" parameterType="com.smhrd.model.MyPlaylistVO">
+		UPDATE tb_myplaylist SET plName = #{plName} WHERE myplIdx = #{myplIdx}
+	</update>
+	
+	<!-- 내 플레이리스트 삭제 -->
+	<delete id="deleteMyPlayList" parameterType="com.smhrd.model.MyPlaylistVO">
+		DELETE FROM tb_myplaylist where myplIdx = ${myplIdx}
+	</delete>
+	
+	
+	
 	<select id="getMyplayList" resultType="com.smhrd.model.MyPlaylistVO">
 		SELECT * FROM tb_myplaylist where memId = #{memId}
 	</select>

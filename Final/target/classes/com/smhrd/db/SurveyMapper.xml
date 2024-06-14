@@ -55,6 +55,21 @@
 	<select id="surbayIdx" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.SurveyVO">
        SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "genre" AND surIdx=#{surIdx} ;
     </select>
+    
+    <!-- 자동 추천에 쓰일 선택지 가져오기 -->
+	<select id="getRecSurvey" resultType="com.smhrd.model.SurveyVO">
+		SELECT surItem, surDesc FROM tb_survey WHERE surType = 'A' AND surItem != 'genre'
+	</select>
+	
+    <!-- 사용자 선호도 가져오기 -->
+	<select id="getMemPreGenre" parameterType="com.smhrd.model.PreferenceVO" resultType="com.smhrd.model.SurveyVO">
+		SELECT surDesc FROM tb_survey WHERE surIdx = #{surIdx}
+	</select>
+	
+	<!-- 장르명과 일치하는 surIdx 가져오기 -->
+	<select id="getSameDesc" parameterType="string" resultType="com.smhrd.model.SurveyVO">
+		SELECT surIdx FROM tb_survey WHERE surDesc = #{surDesc}
+	</select>
 	
 	<select id="getEmotion" parameterType="com.smhrd.model.ContextVO" resultType="com.smhrd.model.SurveyVO">
        SELECT * FROM tb_survey WHERE surType = 'A' AND surItem = "emotion" AND surIdx=#{surIdx} ;

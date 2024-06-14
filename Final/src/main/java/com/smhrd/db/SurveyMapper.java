@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.smhrd.model.ContextVO;
+import com.smhrd.model.PreferenceVO;
 import com.smhrd.model.SurveyVO;
 
 public interface SurveyMapper {
@@ -36,5 +37,13 @@ public interface SurveyMapper {
 	public SurveyVO getEmotion(ContextVO context);
 	
 	public List<Integer> getSurveyIdsByDesc(String desc);
+	
     public SurveyVO getIntro(ContextVO context);
+    
+	public List<SurveyVO> getRecSurvey();
+	
+	public SurveyVO getMemPreGenre(PreferenceVO vo);
+	
+	public SurveyVO getSameDesc(String surDesc);
+	
 }

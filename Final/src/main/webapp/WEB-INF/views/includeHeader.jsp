@@ -10,6 +10,8 @@
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
 
+
+
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
 	<div class="container">
@@ -95,24 +97,51 @@
 </header>
 <!-- ***** Header Area End ***** -->
 
+<!-- 플레이리스트 수정 모달 -->
+
+<div class="modal fade" id="plyupdate" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content modal-ed-content">
+			<div class="modal-header modal-ed-header">
+				<h5 class="modal-title" id="editModalTitle">"${defaultplName}"<br>(을)를 무엇으로 변경할까요?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body mt-3">
+					<div class="form-group ed-form-group">
+						<input type="text" name="newPlaylistName"
+							class="form-style ed-form-style" id="newPlaylistName"
+							placeholder="${defaultplName}" autocomplete="off" maxlength="50">
+							
+							<input type="hidden" name="nowplyIdx" id="nowplyIdx" value="${nowplyIdx}">
+							
+						<i class="input-icon fa-solid fa-music"></i>
+						<button type="button" class="btn btn-confirm btnPink" id="submitbotton">확인</button>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 플레이리스트 수정 모달 끝 -->
 
 <!-- 로그인 Modal -->
 <div class="modal" id="loginModal">
-	<div class="modal-dialog" id="modal-dialog">
-		<div class="modal-content" id="modal-content">
+	<div class="modal-dialog">
+		<div class="modal-content">
 
 			<!-- Modal Header -->
-			<div class="modal-header" id="modal-header">
+			<div class="modal-header">
 
 				<h4 class="modal-title">
 					<img src="assets/images/logo2.png" alt="">
 				</h4>
-				<button type="button" class="btn-close" id="btn-close"
-					data-bs-dismiss="modal">&times;</button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
 			</div>
 
 			<!-- Modal body -->
-			<div class="modal-body" id="modal-body">
+			<div class="modal-body">
 				<form action="${cpath}/login" method="post">
 					<div class="form-group inputId">
 						<input type="text" name="loginId" class="form-style"

@@ -96,7 +96,7 @@ $('.confirm-button').one('click', function(e) {
 // 결과 표시
 function transitionResult() {
 	setTimeout(function() {
-		$('p.loading').removeClass('loading').addClass('is-complete').find('span').fadeIn(400);
+		$('p.loading').removeClass('loading').addClass('is-complete').css('margin-left', '0px').find('span').fadeIn(400);
 		$('p.is-complete').not('.confirm-button').each(function() {
 			$(this).prev('.chef').remove();
 			$(this).before(chefIcon);
@@ -107,7 +107,7 @@ function transitionResult() {
 
 function showResultBubble() {
 	if ($('.result').hasClass('running')) {
-		$('.result.running').find('p:first-child').addClass('loading').append('<i></i>');
+		$('.result.running').find('p:first-child').addClass('loading').css('margin-left', '70px').append('<i></i>');
 
 		transitionResult();
 		$('.result.running').removeClass('running'); // running 클래스 제거하여 중복 실행 방지
@@ -132,3 +132,5 @@ function goToPlaylistDetail() {
 	const params = selectedResponses.map(response => `response=${encodeURIComponent(response)}`).join('&');
 	window.location.href = `playlistDetail?${params}`;
 }
+
+
