@@ -16,7 +16,7 @@ $.ajax({
         containerData.innerHTML = '';
 
         const heading = document.createElement('h3');
-        heading.textContent = 'My Prefferd Genre';
+        heading.textContent = 'My Preferred Genre';
         container.appendChild(heading);
 
         labels.forEach((label, index) => {
@@ -27,7 +27,13 @@ $.ajax({
                 containerData.appendChild(document.createElement('br'));
             }
         });
-        
+
+        // Destroy existing chart if it exists
+        let chartStatus = Chart.getChart('myChart1');
+        if (chartStatus !== undefined) {
+            chartStatus.destroy();
+        }
+
         const genre = document.getElementById('myChart1').getContext('2d');
         new Chart(genre, {
             type: 'doughnut',
@@ -52,7 +58,7 @@ $.ajax({
             options: {
                 responsive: false,
                 rotation: -90,
-       		    circumference: 180,
+                circumference: 180,
                 plugins: {
                     legend: false, // Hide the legend
                     tooltip: {

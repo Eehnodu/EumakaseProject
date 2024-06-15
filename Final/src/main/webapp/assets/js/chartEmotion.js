@@ -5,7 +5,7 @@ $.ajax({
     type: 'POST',
     dataType: 'json',
     success: function(data) {
-        console.log('차트 2 데이터 로드 성공');
+        console.log('차트 3 데이터 로드 성공');
         
         const labels = Object.keys(data);
         const values = Object.values(data);
@@ -16,7 +16,7 @@ $.ajax({
         containerData.innerHTML = '';
 
         const heading = document.createElement('h3');
-        heading.textContent = 'My Prefferd Emotion';
+        heading.textContent = 'My Preferred Emotion';
         container.appendChild(heading);
 
         labels.forEach((label, index) => {
@@ -27,7 +27,14 @@ $.ajax({
                 containerData.appendChild(document.createElement('br'));
             }
         });
-        
+
+        // Destroy existing chart if it exists
+        let chartStatus = Chart.getChart('myChart3');
+        if (chartStatus !== undefined) {
+            chartStatus.destroy();
+        }
+
+        // Create new chart
         const ctx = document.getElementById('myChart3').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
@@ -42,7 +49,7 @@ $.ajax({
                         'rgb(240, 113, 103)'
                     ],
                     borderColor: [
-                         'rgb(253, 252, 220)',
+                        'rgb(253, 252, 220)',
                         'rgb(254, 217, 183)',
                         'rgb(240, 113, 103)'
                     ],
@@ -52,7 +59,7 @@ $.ajax({
             options: {
                 responsive: false,
                 rotation: -90,
-       		    circumference: 180,
+                circumference: 180,
                 plugins: {
                     legend: false, // Hide the legend
                     tooltip: {
@@ -74,6 +81,6 @@ $.ajax({
         });
     },
     error: function() {
-        console.log('차트 2 데이터 로드 실패');
+        console.log('차트 3 데이터 로드 실패');
     }
 });

@@ -1,11 +1,10 @@
 var Ppath = document.body.getAttribute('data-cpath');
-
 $.ajax({
     url: `${Ppath}/getMusic`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
-        console.log('차트 1 데이터 로드 성공');
+        console.log('차트 2 데이터 로드 성공');
 
         const container = document.getElementById('labelsContainer2');
         const containerData = document.getElementById('labelsContainerData2');
@@ -13,7 +12,7 @@ $.ajax({
         containerData.innerHTML = '';
 
         const heading = document.createElement('h3');
-        heading.textContent = 'My Prefferd Music';
+        heading.textContent = 'My Preferred Music';
         container.appendChild(heading);
 
         data.labels.forEach((label, index) => {
@@ -25,8 +24,14 @@ $.ajax({
             }
         });
 
-        const prefernce = document.getElementById('myChart2').getContext('2d');
-        new Chart(prefernce, {
+        // Destroy existing chart if it exists
+        let chartStatus = Chart.getChart('myChart2');
+        if (chartStatus !== undefined) {
+            chartStatus.destroy();
+        }
+
+        const preference = document.getElementById('myChart2').getContext('2d');
+        new Chart(preference, {
             type: 'doughnut',
             data: {
                 labels: data.labels,
@@ -53,7 +58,7 @@ $.ajax({
             options: {
                 responsive: false,
                 rotation: -90,
-        		circumference: 180,
+                circumference: 180,
                 plugins: {
                     legend: false, // Hide the legend
                     tooltip: {
