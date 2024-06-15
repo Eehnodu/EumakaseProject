@@ -564,10 +564,11 @@ footer p a:hover {
 	padding: 10px 20px;
 	border-radius: 25px;
 }
-
+/*
 .featured-games .item img {
 	border-radius: 23px;
 }
+*/
 
 .featured-games .item h4 {
 	font-size: 15px;
@@ -1017,11 +1018,11 @@ Featured Games Style
 	padding: 10px 20px;
 	border-radius: 25px;
 }
-
+/*
 .featured-games .item img {
 	border-radius: 23px;
 }
-
+*/
 .featured-games .item h4 {
 	font-size: 15px;
 	margin-top: 20px;
