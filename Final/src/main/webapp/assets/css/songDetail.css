@@ -15,7 +15,7 @@ html {
 	border-radius: 23px;
 	padding: 30px;
 	margin-top: 30px;
-	color: #666;
+	color: #b0b0b0;
 }
 
 .lyrics {
@@ -67,7 +67,7 @@ img{
 }
 
 .game-details .align-self-center .left-info span {
-	color: #666;
+	color: #b0b0b0 ;
 	display: block;
 	margin-top: 20px;
 	font-weight: 400;

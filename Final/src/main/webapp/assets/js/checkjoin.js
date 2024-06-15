@@ -94,6 +94,7 @@ function checkPw(pw) {
    completeJoin();
 }
 
+
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
    window.history.pushState({}, '', `${cpath}/join`);
@@ -136,22 +137,55 @@ function completeJoin() {
         <legend class="three">최대 3개까지 선택해주세요</legend>
 `;
 
-                     result.forEach((item, index) => {
-                        htmlContent += `
-    <div class="checkbox">
-      <label class="checkbox-wrapper">
-        <input type="checkbox" class="checkbox-input" />
-        <span class="checkbox-tile">
-          <span class="checkbox-icon">
-           <img src="${item.imageSrc}" alt="${item.surDesc}" class="genre-icon" />
-          </span>
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
-          <span class="checkbox-label">${item.surDesc}</span>
-          </button>
-        </span>
-      </label>
-    </div>
-    
+					  result.forEach((item, index) => {
+						  // item.surType 값을 출력하여 확인
+						  // console.log(`Item Type: ${item.surType}`);
+
+						  // item.surType 값을 출력하여 확인
+						  // console.log(`Item Type: ${item.surType}`);
+
+						  // surDesc에 따라 다른 이미지 경로 설정
+						  let imageSrc = ''; // 기본값을 빈 문자열로 설정
+
+						  if (item.surDesc === 'R&B') {
+							  imageSrc = 'assets/images/rnb.png'; // 'R&B'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '랩/힙합') {
+							  imageSrc = 'assets/images/rap.png'; // '랩/힙합'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '발라드') {
+							  imageSrc = 'assets/images/vallade.png'; // '발라드'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '인디') {
+							  imageSrc = 'assets/images/indi.png'; // '인디'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '재즈') {
+							  imageSrc = 'assets/images/jazz.png'; // '재즈'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === 'POP') {
+							  imageSrc = 'assets/images/pop.png'; // 'POP'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '댄스') {
+							  imageSrc = 'assets/images/dance.png'; // '댄스'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '록/메탈') {
+							  imageSrc = 'assets/images/rock.png'; // '록/메탈'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '기타') {
+							  imageSrc = 'assets/images/etc.png'; // '기타'에 대한 이미지 경로 설정
+						  } else {
+							  imageSrc = 'assets/images/default.png'; // 기본 이미지 경로 설정
+						  }
+
+						  // console.log(`Image Source: ${imageSrc}`); // 경로가 제대로 설정되었는지 확인
+						  // console.log(`Description: ${item.surDesc}`);
+						  // console.log(`Current Item:`, item); // item 객체 자체를 로그로 출력
+						  htmlContent += `
+							<div class="checkbox btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+							    <label class="checkbox-wrapper">
+							        <input type="checkbox" class="checkbox-input" />
+							        <span class="checkbox-tile">
+							            <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+							                <span class="checkbox-icon">
+							                    <img src="${imageSrc}" alt="${item.surDesc}" class="genre-icon" />
+							                </span>
+							                <span class="checkbox-label">${item.surDesc}</span>
+							            </button>
+							        </span>
+							    </label>
+							</div>
   `;
   
                      });
@@ -168,8 +202,10 @@ function completeJoin() {
 
                      // 폼 마감 태그와 추가 버튼을 문자열에 추가합니다.
                      htmlContent += `
-                        <br>
-                           <button type='button' class='btn btn-primary btn-sm' id='btnComplete'><span>가입 완료</span></button>
+                        <br> 
+                           <button type='button' class='btn btn-primary btn-sm' id='btnComplete'><span>submit</span>
+    <div class="successbtn">
+      </div></button>
                         </div>
                      `;
 

@@ -255,7 +255,7 @@
 	margin-top: 20px;
 }
 
-.game-details .content .left-info span {
+.game-details .content .col-lg-9 .left-info .left span {
 	color: #666;
 	display: block;
 	margin-top: 7px;
@@ -321,14 +321,75 @@
 
 /* 이미지 사분할 */
 .image-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	width: 100%; /* 원하는 크기로 설정 */
-	aspect-ratio: 1/1; /* 정사각형 비율 유지 */
-	overflow: hidden;
-	border-radius: 23px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%; /* 원하는 크기로 설정 */
+  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+  overflow: hidden;
+  border-radius: 23px;
 }
+/* ------------------------플리 저장, 수정, 삭제 버튼 CSS ----------------------------- */
+/* *** 플리 이름 수정 및 삭제 *** */
+.rightbutton {
+	text-align: right;
+	padding-top: 0px;
+}
+
+button i{
+	padding: 5px 5px;
+}
+
+/* .material-symbols-outlined {
+	background-color: transparent; 아이콘 배경색 변경
+	color: #fff; 아이콘 색상 변경
+	display: inline-block; 아이콘을 인라인 블록 요소로 설정
+	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+	vertical-align: middle; 아이콘과 텍스트를 동일한 줄에 수평 정렬
+} */
+
+/* *** 플리 저장 *** */
+/* 아이콘 */
+.game-details .content .left-info span {
+	color: #fff;
+	display: block;
+	margin-top: 7px;
+	font-weight: 400;
+	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #e75e8d;
+    --bs-btn-border-color: #e75e8d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #e75e8d;
+    --bs-btn-hover-border-color: #e75e8d;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #e75e8d;
+    --bs-btn-active-border-color: #e75e8d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #e75e8d;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #e75e8d;
+    --bs-gradient: none;
+    float: right;
+    border-radius: 15px;
+}
+
+.btn-outline-primary span{
+	text-align: center;
+}
+
+ .gaming-library ul{
+	border-radius: 23px;
+	transition: background-color 0.2s ease; /* 배경색 변경을 0.3초 동안 부드럽게 전환 */
+} 
+
+ .gaming-library ul:hover{
+	background-color: #1f2122;
+} 
 
 /* SweetAlert2 아이콘 크기 조정 */
 .swal2-icon {
@@ -406,3 +467,4 @@ button.swal2-cancel.btn.btn-danger {
 	color: white;
 	border-radius: 23px;
 }
+
