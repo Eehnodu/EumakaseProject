@@ -76,8 +76,7 @@ public class MainController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	
-	
+
 	@GetMapping("/search")
 	public String search() {
 		System.out.println("search페이지 들어옴");
@@ -589,7 +588,7 @@ public class MainController {
 
 		// 가져온 userPlaylist 정보를 model에 저장
 		model.addAttribute("userPlList", userPlList);
-		model.addAttribute("userSurIdxList", userSurIdxList);
+		session.setAttribute("userSurIdxList", userSurIdxList);
 		model.addAttribute("userSurDescList", userSurDesc.toString().trim());
 		model.addAttribute("userPlaylistList", userPlaylistList);
 		model.addAttribute("userAlbumCovList", userAlbumCovList);

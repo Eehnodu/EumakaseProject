@@ -135,16 +135,16 @@ html {
 
 
 /* *** 나의 playlist 지금 듣기 *** */
-.clips .thumb {
+.row .col-lg-3 .item {
     position: relative; /* 상대위치 */
 }
 
-.clips .thumb.image-grid {
+.row .col-lg-3 .item .image-grid {
     position: relative;
     overflow: hidden;
 }
 
-.clips .thumb .hover-effect2 {
+.row .col-lg-3 .item .hover-effect2 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -161,13 +161,13 @@ html {
     justify-content: center;
 }
 
-/* .image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록  */
-.clips .thumb.image-grid:hover .hover-effect2 {
+/* image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록 */
+.row .col-lg-3 .item .image-grid:hover .hover-effect2 {
     opacity: 1;
     visibility: visible;
 }
 
-.clips .thumb .hover-effect2 h6 {
+.row .col-lg-3 .item .hover-effect2 h6 {
     background-color: rgba(31, 33, 34, 0.95);
     display: inline-block;
     color: #ec6090;

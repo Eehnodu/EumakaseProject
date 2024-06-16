@@ -71,7 +71,7 @@
 
 						<!-- 최근에 재생한 플레이리스트 -->
 						<div class="col-lg-8">
-							<div class="featured-games header-text">
+							<div class="featured-games header-text" id="songsLoved">
 								<div class="heading-section">
 									<h4>
 										<em>가장 많이 </em>사랑받은 노래
