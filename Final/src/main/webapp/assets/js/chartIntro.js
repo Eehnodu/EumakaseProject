@@ -1,7 +1,7 @@
-var cpath=document.body.getAttribute('data-cpath');
-console.log(cpath)
+
+
 $.ajax({
-    url: `${cpath}/getIntro`,
+    url: `/getIntro`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
@@ -19,7 +19,7 @@ $.ajax({
         const emotionLabels = emotionData.map(item => item.surDesc);
         const emotionCounts = emotionData.map(item => item.count);
 
-        // Destroy existing genre chart if it exists
+        // Destroy existing ge	nre chart if it exists
         let chartStatus = Chart.getChart('genreChart');
         if (chartStatus !== undefined) {
             chartStatus.destroy();

@@ -37,9 +37,15 @@
 	integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/tabs.js"></script>
+<script src="assets/js/popup.js"></script>
+<script src="assets/js/chartIntro.js"></script>
+<script src="assets/js/chartIntroFunction.js"></script>
 <style>
 .pink-text {
-    color: pink; /* Adjust the shade of pink as needed */
+    color: pink; 
 }
 
 </style>
@@ -61,7 +67,7 @@
 										<span>Listen to Personalized</span> Playlist
 									</h4>
 								</div>
-								<form id="getIntro" action="${cpath}/getIntro" method="post" novalidate>
+								<form id="getIntro" action="/getIntro" method="post" novalidate>
 									<div class="plzShow">
 										<canvas id="emotionChart" width="400" height="400"></canvas>
 									</div>
@@ -141,12 +147,5 @@
 			</div>
 		</div>
 </body>
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="assets/js/tabs.js"></script>
-<script src="assets/js/popup.js"></script>
-<script src="assets/js/chartIntro.js"></script>
-<script src="assets/js/chartIntroFunction.js"></script>
-
 <%@ include file="includeFooter.jsp"%>
 </html>

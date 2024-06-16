@@ -237,28 +237,39 @@ public class MemberRestController {
 	}
 
 	
-	
-	@PostMapping("/getIntro")
+	@RequestMapping("/getIntro")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> getIntroData() {
+	public ResponseEntity<Map<String, Object>> getIntro() {
 	    String flaskApiUrl = "http://localhost:5000";
 	    RestTemplate restTemplate = new RestTemplate();
 
 	    try {
 	        // Fetch genre data
 	        Map<String, Object> genreResponse = restTemplate.postForObject(flaskApiUrl + "/getintrogenre", null, Map.class);
+	        // Add logging
+	        System.out.println("Genre Response: " + genreResponse);
+
 	        List<Map<String, Object>> genreData = (List<Map<String, Object>>) genreResponse.get("genre_data");
 
 	        // Fetch emotion data
 	        Map<String, Object> emotionResponse = restTemplate.postForObject(flaskApiUrl + "/getintroemotion", null, Map.class);
+	        // Add logging
+	        System.out.println("Emotion Response: " + emotionResponse);
+
 	        List<Map<String, Object>> emotionData = (List<Map<String, Object>>) emotionResponse.get("emotion_data");
 
 	        // Fetch top songs by genre
 	        Map<String, Object> genreTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintrogenretop5", null, Map.class);
+	        // Add logging
+	        System.out.println("Top Songs by Genre Response: " + genreTop5Response);
+
 	        Map<String, List<Map<String, Object>>> topSongsByGenre = (Map<String, List<Map<String, Object>>>) genreTop5Response.get("top_songs_by_genre");
 
 	        // Fetch top songs by emotion
 	        Map<String, Object> emotionTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintroemotiontop5", null, Map.class);
+	        // Add logging
+	        System.out.println("Top Songs by Emotion Response: " + emotionTop5Response);
+
 	        Map<String, List<Map<String, Object>>> topSongsByEmotion = (Map<String, List<Map<String, Object>>>) emotionTop5Response.get("top_songs_by_emotion");
 
 	        // Combine all data into a single map
@@ -267,14 +278,18 @@ public class MemberRestController {
 	        responseData.put("emotion_data", emotionData);
 	        responseData.put("top_songs_by_genre", topSongsByGenre);
 	        responseData.put("top_songs_by_emotion", topSongsByEmotion);
-
+	        System.out.println(genreResponse);
+	        System.out.println(emotionResponse);
+	        System.out.println(genreTop5Response);
+	        System.out.println(emotionTop5Response);
 	        return ResponseEntity.ok(responseData);
 	    } catch (Exception e) {
-	        // 로그 출력
+	        // Log the exception
 	        e.printStackTrace();
-	        // 오류가 발생하면 적절한 HTTP 상태 코드와 메시지 반환
+	        // Return appropriate HTTP status code and message in case of error
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	    }
 	}
+
 	
 }
