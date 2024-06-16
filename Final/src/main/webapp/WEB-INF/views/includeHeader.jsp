@@ -32,14 +32,12 @@
 						</a>
 					</c:if>
 					<!-- ***** Logo End ***** -->
-					<!-- ***** Search Start ***** -->
+					<!-- ***** Search Start ***** --> <!-- 로그인 여부에따라 생길지 말지 정해야됨 -->
 					<div class="search-input">
 						<form id="search" action="${cpath}/search">
 							<input type="text" id="searchText" name="searchKeyword"
-								placeholder="Type Something" /> <i class="fa fa-search"></i>
-							<ul class="nav flex-column" id=search-results>
-								
-							</ul>
+								placeholder="Type Something" autocomplete="off"/> <i class="fa fa-search"></i>
+							<ul class="nav flex-column" id=search-results></ul>
 						</form>
 					</div>
 					<!-- ***** Search End ***** -->
