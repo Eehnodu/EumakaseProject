@@ -76,9 +76,12 @@ public class MainController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping("/AIquestion")
-	public String AIquestion() {
-		return "AIquestion";
+	
+	
+	@GetMapping("/search")
+	public String search() {
+		System.out.println("search페이지 들어옴");
+		return "search";
 	}
 
 	@GetMapping("/")

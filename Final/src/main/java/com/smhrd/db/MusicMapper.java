@@ -29,4 +29,5 @@ public interface MusicMapper {
 
 	public MusicVO getRecMusic(MusicVO vo);
 	
+	public List<MusicVO> searchMusicByTitle(String keyword);
 }

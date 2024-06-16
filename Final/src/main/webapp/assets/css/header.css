@@ -778,10 +778,28 @@ div.\=\"modal-dialog\" {
 .header-area .main-nav #search i {
   position: absolute;
   color: #666;
-  left: 20px;
+  right: 20px;
   top: 16px;
   width: 18px;
   height: 18px;
   font-size: 16px;
+}
+
+#search-results {
+  list-style-type: none;
+  padding: 0;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.search-result-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
 }
 

@@ -9,7 +9,7 @@
 	href="assets/css/header.css?ver=<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
-
+<script src="assets/js/search.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 
 <!-- ***** Header Area Start ***** -->
@@ -34,10 +34,12 @@
 					<!-- ***** Logo End ***** -->
 					<!-- ***** Search Start ***** -->
 					<div class="search-input">
-						<form id="search" action="#">
-							<input type="text" placeholder="Type Something" id='searchText'
-								name="searchKeyword" onkeypress="handle" /> <i
-								class="fa fa-search"></i>
+						<form id="search" action="${cpath}/search">
+							<input type="text" id="searchText" name="searchKeyword"
+								placeholder="Type Something" /> <i class="fa fa-search"></i>
+							<ul class="nav flex-column" id=search-results>
+								
+							</ul>
 						</form>
 					</div>
 					<!-- ***** Search End ***** -->
