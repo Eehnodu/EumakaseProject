@@ -1,41 +1,37 @@
-$(document).ready(function() {
-    // Hide all charts and their corresponding label containers in the initial state
-    $('.plzShow').hide();
 
+    // Function to show a specific chart by index
     function showChart(index) {
-        console.log(`Display the chart at index ${index}.`);
-        $('.plzShow').hide(); // Hide all chart and label containers with the class 'plzShow'
-        $('.plzShow').eq(index).show(); // Display chart and label container at given index
-
-        // Additional logic to specifically show emotion chart if index matches
-        if (index === 2) { // Assuming emotion chart is at index 2 (adjust as per your structure)
-            $('#emotionChart').show();
-            $('#topSongsByEmotion').show();
-        }
+        // Hide all chart and label containers with the class 'plzShow'
+        $('.plzShow').hide();
+        
+        // Display chart and label container at given index
+        $('.plzShow').eq(index).show();
     }
 
+    // Click event handler for previous button
     $('#prevChart').click(function() {
         // Index of currently visible chart and label container
         let currentIndex = $('.plzShow:visible').index();
-        console.log(`Current index before prev: ${currentIndex}`);
-
+        
         // Calculate the index of the previous chart and label container
         let prevIndex = (currentIndex - 1 + $('.plzShow').length) % $('.plzShow').length;
-
+        
+        // Show the chart at the calculated previous index
         showChart(prevIndex);
     });
 
+    // Click event handler for next button
     $('#nextChart').click(function() {
         // Index of currently visible chart and label container
         let currentIndex = $('.plzShow:visible').index();
-        console.log(`Current index before next: ${currentIndex}`);
-
+        
         // Calculate the index of the next chart and label container
         let nextIndex = (currentIndex + 1) % $('.plzShow').length;
-        console.log(`Next index: ${nextIndex}`);
-
+        
+        // Show the chart at the calculated next index
         showChart(nextIndex);
     });
 
-    showChart(0); // Initially show the first chart
-});
+    // Initially show the chart at index 0
+    showChart(0);
+

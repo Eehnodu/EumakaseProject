@@ -37,7 +37,12 @@
 	integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.pink-text {
+    color: pink; /* Adjust the shade of pink as needed */
+}
+
+</style>
 </head>
 <body>
 
@@ -56,22 +61,25 @@
 										<span>Listen to Personalized</span> Playlist
 									</h4>
 								</div>
-								<form id="getIntro" action="/getIntro" method="post" novalidate>
-									<div class="plzShow" id="topSongsByEmotion" width="400" height="400">
-										<h3></h3>
-									</div>
+								<form id="getIntro" action="${cpath}/getIntro" method="post" novalidate>
 									<div class="plzShow">
 										<canvas id="emotionChart" width="400" height="400"></canvas>
 									</div>
-									<div class="plzShow" id="topSongsByGenre" width="400" height="400">
+									<div class="plzShow" id="topSongsByEmotion" width="400"
+										height="400">
 										<h3></h3>
 									</div>
 									<div class="plzShow">
 										<canvas id="genreChart" width="400" height="400"></canvas>
 									</div>
+									<div class="plzShow" id="topSongsByGenre" width="400"
+										height="400">
+										<h3></h3>
+									</div>
 									<button id="prevChart" type="button">Previous</button>
 									<button id="nextChart" type="button">Next</button>
 								</form>
+
 
 							</div>
 						</div>
@@ -134,9 +142,11 @@
 		</div>
 </body>
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="assets/js/tabs.js"></script>
 <script src="assets/js/popup.js"></script>
 <script src="assets/js/chartIntro.js"></script>
-<script src="assets/js/chartIntrofunction.js"></script>
+<script src="assets/js/chartIntroFunction.js"></script>
+
 <%@ include file="includeFooter.jsp"%>
 </html>
