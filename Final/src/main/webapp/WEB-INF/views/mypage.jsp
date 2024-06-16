@@ -60,7 +60,7 @@
 }
 </style>
 </head>
-<body>
+<body data-cpath="${cpath}">
 
 	<!-- ***** Preloader Start ***** -->
 	<div id="js-preloader" class="js-preloader">

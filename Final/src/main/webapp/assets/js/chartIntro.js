@@ -1,7 +1,7 @@
-
+const cpath = document.body.getAttribute('data-cpath');
 
 $.ajax({
-    url: `/getIntro`,
+    url: `${cpath}/getIntro`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {

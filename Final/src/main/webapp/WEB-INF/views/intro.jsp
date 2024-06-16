@@ -41,8 +41,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="assets/js/tabs.js"></script>
 <script src="assets/js/popup.js"></script>
-<script src="assets/js/chartIntro.js"></script>
-<script src="assets/js/chartIntroFunction.js"></script>
 <style>
 .pink-text {
     color: pink; 
@@ -50,7 +48,7 @@
 
 </style>
 </head>
-<body>
+<body data-cpath="${cpath}">
 
 	<div class="container">
 		<div class="row">
@@ -147,5 +145,7 @@
 			</div>
 		</div>
 </body>
+<script src="assets/js/chartIntro.js"></script>
+<script src="assets/js/chartIntroFunction.js"></script>
 <%@ include file="includeFooter.jsp"%>
 </html>
