@@ -28,6 +28,15 @@
 		}
 	}
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script src="assets/js/isotope.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+	integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -47,24 +56,28 @@
 										<span>Listen to Personalized</span> Playlist
 									</h4>
 								</div>
-								<form id="getIntro" action="${cpath}/getIntro" method="post"
-									novalidate>
+								<form id="getIntro" action="/getIntro" method="post" novalidate>
+									<div class="plzShow" id="topSongsByEmotion" width="400" height="400">
+										<h3></h3>
+									</div>
 									<div class="plzShow">
 										<canvas id="emotionChart" width="400" height="400"></canvas>
 									</div>
-									<div id="topSongsByGenre" class="plzShow"></div>
-
+									<div class="plzShow" id="topSongsByGenre" width="400" height="400">
+										<h3></h3>
+									</div>
 									<div class="plzShow">
 										<canvas id="genreChart" width="400" height="400"></canvas>
 									</div>
-									<div id="topSongsByEmotion" class="plzShow"></div>
-
 									<button id="prevChart" type="button">Previous</button>
 									<button id="nextChart" type="button">Next</button>
 								</form>
 
 							</div>
 						</div>
+
+
+
 						<div class="col-lg-4">
 							<div id="goAi" class="game-details mb-3">
 								<a href="${cpath}/AIrecommend">
@@ -119,30 +132,11 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-		<!-- Scripts -->
-s
-		<script src="assets/js/isotope.min.js"></script>
-		<script src="assets/js/tabs.js"></script>
-		<script src="assets/js/popup.js"></script>
-		<script src="assets/js/chartIntro.js"></script>
-		<script src="assets/js/chartIntroFunction.js"></script>
-
-		<!-- put jquery before owl carousel -->
-		<!-- jquery -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-			crossorigin="anonymous"></script>
-
-		<!-- owl carousel -->
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-			integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
 </body>
+<!-- Scripts -->
+<script src="assets/js/tabs.js"></script>
+<script src="assets/js/popup.js"></script>
+<script src="assets/js/chartIntro.js"></script>
+<script src="assets/js/chartIntrofunction.js"></script>
 <%@ include file="includeFooter.jsp"%>
 </html>
