@@ -450,4 +450,37 @@ public class MemberRestController {
 
 		return responseData;
 	}
+	
+	@PostMapping("/getIntro")
+	@ResponseBody
+	public Map<String, Object> getIntroData() {
+	    String flaskApiUrl = "http://localhost:5000";
+	    RestTemplate restTemplate = new RestTemplate();
+
+	    // Fetch genre data
+	    Map<String, Object> genreResponse = restTemplate.postForObject(flaskApiUrl + "/getintrogenre", null, Map.class);
+	    List<Map<String, Object>> genreData = (List<Map<String, Object>>) genreResponse.get("genre_data");
+
+	    // Fetch emotion data
+	    Map<String, Object> emotionResponse = restTemplate.postForObject(flaskApiUrl + "/getintroemotion", null, Map.class);
+	    List<Map<String, Object>> emotionData = (List<Map<String, Object>>) emotionResponse.get("emotion_data");
+
+	    // Fetch top songs by genre
+	    Map<String, Object> genreTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintrogenretop5", null, Map.class);
+	    Map<String, List<Map<String, Object>>> topSongsByGenre = (Map<String, List<Map<String, Object>>>) genreTop5Response.get("top_songs_by_genre");
+
+	    // Fetch top songs by emotion
+	    Map<String, Object> emotionTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintroemotiontop5", null, Map.class);
+	    Map<String, List<Map<String, Object>>> topSongsByEmotion = (Map<String, List<Map<String, Object>>>) emotionTop5Response.get("top_songs_by_emotion");
+
+	    // Combine all data into a single map
+	    Map<String, Object> responseData = new HashMap<>();
+	    responseData.put("genre_data", genreData);
+	    responseData.put("emotion_data", emotionData);
+	    responseData.put("top_songs_by_genre", topSongsByGenre);
+	    responseData.put("top_songs_by_emotion", topSongsByEmotion);
+
+	    return responseData;
+	}
+	
 }

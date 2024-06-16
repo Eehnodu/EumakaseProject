@@ -13,7 +13,8 @@
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
-<link rel="stylesheet" href="assets/css/intro.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet"
+	href="assets/css/intro.css?ver=<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
@@ -46,30 +47,22 @@
 										<span>Listen to Personalized</span> Playlist
 									</h4>
 								</div>
-								<form id="getIntroForm" action="${cpath}/getIntro" method="post" novalidate>
-									<div class="owl-features owl-carousel">
-										<div class="item">
-											<div class="thumb">
-												<canvas id="genreChart" width="400" height="400"></canvas>
-											</div>
-										</div>
-										<div class="item">
-											<div class="thumb" id="topSongsByGenre">
-                                        			<h2>Top Songs by Genre</h2>
-											</div>
-										</div>
-										<div class="item">
-											<div class="thumb">
-												<canvas id="emotionChart" width="400" height="400"></canvas>
-											</div>
-										</div>
-										<div class="item" >
-											<div class="thumb" id="topSongsByEmotion">
-												<h2>Top Songs by Emotion</h2>
-											</div>
-										</div>
+								<form id="getIntro" action="${cpath}/getIntro" method="post"
+									novalidate>
+									<div class="plzShow">
+										<canvas id="emotionChart" width="400" height="400"></canvas>
 									</div>
+									<div id="topSongsByGenre" class="plzShow"></div>
+
+									<div class="plzShow">
+										<canvas id="genreChart" width="400" height="400"></canvas>
+									</div>
+									<div id="topSongsByEmotion" class="plzShow"></div>
+
+									<button id="prevChart" type="button">Previous</button>
+									<button id="nextChart" type="button">Next</button>
 								</form>
+
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -131,11 +124,12 @@
 
 
 		<!-- Scripts -->
-
+s
 		<script src="assets/js/isotope.min.js"></script>
 		<script src="assets/js/tabs.js"></script>
 		<script src="assets/js/popup.js"></script>
 		<script src="assets/js/chartIntro.js"></script>
+		<script src="assets/js/chartIntroFunction.js"></script>
 
 		<!-- put jquery before owl carousel -->
 		<!-- jquery -->
