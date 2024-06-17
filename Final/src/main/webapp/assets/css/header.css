@@ -74,7 +74,6 @@ body {
 }
 
 .header-area .main-nav .logo {
-	border-right: 1px solid #27292a;
 	flex-basis: 25%;
 	margin-right: 5%;
 	-webkit-transition: all 0.3s ease 0s;
@@ -772,7 +771,7 @@ div.\=\"modal-dialog\" {
   border: none;
   color: #666;
   font-size: 14px;
-  padding: 0px 15px 0px 45px;
+  padding: 0px 35px 0px 20px;
 }
 
 .header-area .main-nav #search i {

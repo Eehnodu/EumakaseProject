@@ -413,6 +413,7 @@
   
   .featured-games .item img {
     border-radius: 23px;
+    width: 150px;
   }
   
   .featured-games .item h4 {
