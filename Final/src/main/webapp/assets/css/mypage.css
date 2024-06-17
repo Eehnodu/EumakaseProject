@@ -36,6 +36,59 @@ hr {
     color: #e75e8d;
 }
 
+/* 차트 영역 */
+
+#chartArea {
+	position: relative;
+}
+
+#chartArea .col-lg-12 {
+	position: relative;
+}
+
+#prevChart, #nextChart {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10; /* 차트보다 버튼이 앞에 오도록 설정 */
+	color: #e75e8d;
+}
+
+#prevChart {
+	left: 20px; /* 왼쪽 버튼 위치 조정 */
+}
+
+#nextChart {
+	right: 20px; /* 오른쪽 버튼 위치 조정 */
+}
+
+.btn-arrow {
+	background-color: transparent;
+	border: none;
+	font-size: 2rem; /* 아이콘 크기 조정 */
+	cursor: pointer;
+}
+
+
+li#labelsContainerData1 {
+    font-size: 15px;
+}
+
+
+li#labelsContainer1, li#labelsContainer2, li#labelsContainer3{
+border-bottom: 1px solid #ec608082;
+}
+
+ul#firstLabelsContainer, ul#secondLabelsContainer, ul#thirdLabelsContainer {
+    background-color: transparent;
+    border: solid 1.5px #ec6090;
+    margin-top: -40px;
+    margin-left: 40px;
+}
+
+
+
+
 
 /* 
   ---------------------------------------------
@@ -175,4 +228,98 @@ html {
     font-size: 14px;
     padding: 10px 20px;
     border-radius: 25px;
+}
+
+
+
+
+
+/* 차트영역 프리로더 */
+
+.preloader-inner2 {
+	position: relative;
+	width: 142px;
+	height: 40px;
+	background: transparent;
+}
+
+.preloader-inner2 .dot2 {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: 12px;
+	left: 15px;
+	background: #e75e8d;
+	border-radius: 50%;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-animation: dot 2.8s infinite;
+	animation: dot 2.8s infinite;
+}
+
+.preloader-inner2 .dots2 {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	margin-top: 12px;
+	margin-left: 31px;
+	-webkit-animation: dots 2.8s infinite;
+	animation: dots 2.8s infinite;
+}
+
+.preloader-inner2 .dots2 span {
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-left: 16px;
+	background: #e75e8d;
+	border-radius: 50%;
+}
+
+.js-preloader2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.4); /* 반투명 배경으로 변경 */
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	opacity: 1;
+	visibility: visible;
+	z-index: 999;
+	-webkit-transition: opacity 0.25s ease;
+	transition: opacity 0.5s ease;
+	border-radius:23px;
+}
+
+.js-preloader2.loaded {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+@-webkit-keyframes dot2 { 50% {
+	-webkit-transform: translateX(96px);
+	transform: translateX(96px);
+}
+}
+@keyframes dot2 { 50% {
+	-webkit-transform: translateX(96px);
+	transform: translateX(96px);
+}
+}
+@-webkit-keyframes dots2 { 50% {
+	-webkit-transform: translateX(-31px);
+	transform: translateX(-31px);
+}
+}
+@keyframes dots2 { 50% {
+	-webkit-transform: translateX(-31px);
+	transform: translateX(-31px);
+}
 }
