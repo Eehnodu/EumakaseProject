@@ -19,7 +19,6 @@
 
 </head>
 <body>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -29,7 +28,7 @@
 
 						<div class="col-lg-12">
 							<c:choose>
-								<c:when test="${empty searching_music}">
+								<c:when test="${searching_music == null}">
 									<h4>
 										<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과가 없습니다.</em>
 									</h4>

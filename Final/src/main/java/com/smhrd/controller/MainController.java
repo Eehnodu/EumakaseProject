@@ -96,6 +96,7 @@ public class MainController {
 		        albumCovList.add(i.getAlbumCov());
 		    }
 		}
+		
 		model.addAttribute("contextList",contextList);
 		model.addAttribute("albumCovList",albumCovList);
 		model.addAttribute("myplaylist", myplaylist);

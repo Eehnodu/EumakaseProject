@@ -5,7 +5,6 @@
 //				class="fa fa-search"></i>
 //	</form>
 //</div>
-const cpath = document.body.getAttribute('data-cpath');
 
 const searchInput = document.getElementById('searchText');
 const searchbtn = document.querySelector('.fa-search');
