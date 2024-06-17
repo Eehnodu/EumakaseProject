@@ -29,9 +29,18 @@
 					<div class="row">
 
 						<div class="col-lg-12">
-							<h4>
-								<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과입니다.</em>
-							</h4>
+							<c:choose>
+								<c:when test="${empty searching_music}">
+									<h4>
+										<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과가 없습니다.</em>
+									</h4>
+								</c:when>
+								<c:otherwise>
+									 <h4>
+										<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과입니다.</em>
+									</h4>
+								</c:otherwise>
+							</c:choose>
 						</div>
 
 						<!-- ***** 곡 검색 목록 ***** -->
@@ -39,9 +48,19 @@
 							<div class="gaming-library" id="gaming-playlist">
 								<div class="right-info">
 									<div class="heading-section">
-										<h4>
-											<em>곡</em>
-										</h4>
+										<c:choose>
+											<c:when test="${empty searching_music}">
+												<h4>
+													<em>검색된 곡이 없습니다</em>
+												</h4>
+											</c:when>
+											<c:otherwise>
+												 <h4>
+													<em>곡</em>
+												</h4>
+											</c:otherwise>
+										</c:choose>
+										
 									</div>
 									<!-- 각 곡의 정보를 반복해서 출력 -->
 									<c:forEach items="${searching_music}" var="music">
