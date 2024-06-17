@@ -1,14 +1,15 @@
-var path = document.body.getAttribute('data-cpath');
+var cpath = document.body.getAttribute('data-cpath');
 
+// AJAX request for getmyemotion
 $.ajax({
-    url: `${path}/getEmotion`,
+    url: `${cpath}/getMypage`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
         console.log('차트 2 데이터 로드 성공');
-        
-        const labels = Object.keys(data);
-        const values = Object.values(data);
+        const emotionData = data.emotion_data;
+        const labels = emotionData.map(item => item.surDesc);
+        const values = emotionData.map(item => item.count);
 
         const container = document.getElementById('labelsContainer3');
         const containerData = document.getElementById('labelsContainerData3');
@@ -27,14 +28,17 @@ $.ajax({
                 containerData.appendChild(document.createElement('br'));
             }
         });
-        
+        let chartStatus = Chart.getChart('myChart3');
+			if (chartStatus !== undefined) {
+			  chartStatus.destroy();
+			}
         const ctx = document.getElementById('myChart3').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '장르',
+                    label: '감정',
                     data: values,
                     backgroundColor: [
                         'rgb(253, 252, 220)',
@@ -42,7 +46,7 @@ $.ajax({
                         'rgb(240, 113, 103)'
                     ],
                     borderColor: [
-                         'rgb(253, 252, 220)',
+                        'rgb(253, 252, 220)',
                         'rgb(254, 217, 183)',
                         'rgb(240, 113, 103)'
                     ],
@@ -52,9 +56,9 @@ $.ajax({
             options: {
                 responsive: false,
                 rotation: -90,
-       		    circumference: 180,
+                circumference: 180,
                 plugins: {
-                    legend: false, // Hide the legend
+                    legend: false,
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -73,7 +77,8 @@ $.ajax({
             }
         });
     },
-    error: function() {
+    error: function(e) {
         console.log('차트 2 데이터 로드 실패');
+         console.log(e);
     }
 });

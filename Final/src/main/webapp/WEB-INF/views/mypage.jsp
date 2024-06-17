@@ -56,7 +56,7 @@
 }
 
 #wrapTable {
-    padding-right: 90px;
+	padding-right: 90px;
 }
 </style>
 </head>
@@ -94,21 +94,22 @@
 											</div>
 											<div class="col-lg-6 d-flex justify-content-center">
 												<!-- 차트 영역 -->
-												<form id="chartjs" action="${cpath}/chartjs" method="post"
+												<form id="getmygenre" action="/getMypage" method="post"
 													novalidate>
 													<canvas id="myChart1" width="400" height="400"></canvas>
 												</form>
-												<form id="getMusic" action="${cpath}/getMusic" method="post"
+												<form id="getmymusic" action="/getMypage" method="post"
 													novalidate>
 													<canvas id="myChart2" width="400" height="400"></canvas>
 												</form>
-												<form id="getEmotion" action="${cpath}/getEmotion"
-													method="post" novalidate>
+												<form id="getmyemotion" action="/getMypage" method="post"
+													novalidate>
 													<canvas id="myChart3" width="400" height="400"></canvas>
 												</form>
 											</div>
 											<div
-												class="col-lg-6 align-self-center justify-content-center" id="wrapTable">
+												class="col-lg-6 align-self-center justify-content-center"
+												id="wrapTable">
 												<ul class="showLabelsContainer" id="firstLabelsContainer">
 													<li id="labelsContainer1"></li>
 													<li id="labelsContainerData1"></li>
@@ -123,107 +124,109 @@
 													<li id="labelsContainerData3"></li>
 												</ul>
 											</div>
+
+											<button id="prevChart" class="btn-arrow">
+												<i class="fas fa-arrow-left"></i>
+											</button>
+											<button id="nextChart" class="btn-arrow">
+												<i class="fas fa-arrow-right"></i>
+											</button>
 										</div>
-										<button id="prevChart" class="btn-arrow">
-											<i class="fas fa-arrow-left"></i>
-										</button>
-										<button id="nextChart" class="btn-arrow">
-											<i class="fas fa-arrow-right"></i>
-										</button>
+
+
+
+
 									</div>
 
-
-
-
-								</div>
-
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="clips">
-											<div class="row">
-												<div class="col-lg-12">
-													<div class="heading-section">
-														<h4>
-															<em>나의</em> 플레이리스트
-														</h4>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="clips">
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="heading-section">
+															<h4>
+																<em>나의</em> 플레이리스트
+															</h4>
+														</div>
 													</div>
-												</div>
-												<c:forEach var="myply" items="${myplayList}"
-													varStatus="loop">
-													<div class="col-lg-3 col-sm-6">
-														<div class="item">
-															<div class="thumb">
-																<div class="image-grid">
-																	<c:forEach var="cov" items="${myplayListalbumCov}"
-																		begin="${loop.index * 4}"
-																		end="${(loop.index * 4) + 3}">
-																		<img src="${cov.albumCov}" alt="">
-																	</c:forEach>
-																	<div class="hover-effect2">
-																		<h6>지금 듣기</h6>
-															<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
-																	</a>
+													<c:forEach var="myply" items="${myplayList}"
+														varStatus="loop">
+														<div class="col-lg-3 col-sm-6">
+															<div class="item">
+																<div class="thumb">
+																	<div class="image-grid">
+																		<c:forEach var="cov" items="${myplayListalbumCov}"
+																			begin="${loop.index * 4}"
+																			end="${(loop.index * 4) + 3}">
+																			<img src="${cov.albumCov}" alt="">
+																		</c:forEach>
+																		<div class="hover-effect2">
+																			<h6>지금 듣기</h6>
+																			<a id="playlistbutton"
+																				href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
+																			</a>
+																		</div>
 																	</div>
-																</div>
-																<div class="down-content">
-																	<h4>${myply.plName}</h4>
+																	<div class="down-content">
+																		<h4>${myply.plName}</h4>
+																	</div>
 																</div>
 															</div>
 														</div>
+													</c:forEach>
+													<div class="col-lg-12">
+														<div class="main-button" id="loadMore">
+															<a href="#">더보기</a>
+														</div>
 													</div>
-												</c:forEach>
-												<div class="col-lg-12">
-													<div class="main-button" id="loadMore">
-														<a href="#">더보기</a>
-													</div>
-												</div>
 
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- ***** Banner End ***** -->
+						<!-- ***** Banner End ***** -->
 
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
 
 
-	<!-- Scripts -->
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/loadMore.js"></script>
-	<script src="assets/js/chartGenre.js"></script>
-	<script src="assets/js/chartPrefernce.js"></script>
-	<script src="assets/js/chartfunction.js"></script>
-	<script src="assets/js/chartEmotion.js"></script>
+		<!-- Scripts -->
+		<script src="assets/js/isotope.min.js"></script>
+		<script src="assets/js/owl-carousel.js"></script>
+		<script src="assets/js/tabs.js"></script>
+		<script src="assets/js/popup.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/loadMore.js"></script>
+		<script src="assets/js/chartGenre.js"></script>
+		<script src="assets/js/chartPrefernce.js"></script>
+		<script src="assets/js/chartEmotion.js"></script>
+		<script src="assets/js/chartfunction.js"></script>
 
-	<script
-		src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
 
-	<%@ include file="includeFooter.jsp"%>
+		<%@ include file="includeFooter.jsp"%>
 </body>
 </html>

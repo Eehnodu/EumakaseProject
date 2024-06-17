@@ -16,9 +16,11 @@ import javax.naming.Context;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -168,8 +170,6 @@ public class MemberRestController {
 		session.invalidate();
 	}
 
-	
-
 	@PostMapping("/otherPlaylist")
 	public ResponseEntity<List<MusicVO>> otherPlaylist(@RequestParam("value") String genre, HttpSession session) {
 		String input_keywords = (String) session.getAttribute("input_keywords");
@@ -236,60 +236,138 @@ public class MemberRestController {
 		}
 	}
 
-	
 	@RequestMapping("/getIntro")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> getIntro() {
+		String flaskApiUrl = "http://localhost:5000";
+		RestTemplate restTemplate = new RestTemplate();
+
+		try {
+			// Fetch genre data
+			Map<String, Object> genreResponse = restTemplate.postForObject(flaskApiUrl + "/getintrogenre", null,
+					Map.class);
+			// Add logging
+
+			List<Map<String, Object>> genreData = (List<Map<String, Object>>) genreResponse.get("genre_data");
+
+			// Fetch emotion data
+			Map<String, Object> emotionResponse = restTemplate.postForObject(flaskApiUrl + "/getintroemotion", null,
+					Map.class);
+			// Add logging
+
+			List<Map<String, Object>> emotionData = (List<Map<String, Object>>) emotionResponse.get("emotion_data");
+
+			// Fetch top songs by genre
+			Map<String, Object> genreTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintrogenretop5", null,
+					Map.class);
+			// Add logging
+
+			Map<String, List<Map<String, Object>>> topSongsByGenre = (Map<String, List<Map<String, Object>>>) genreTop5Response
+					.get("top_songs_by_genre");
+
+			// Fetch top songs by emotion
+			Map<String, Object> emotionTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintroemotiontop5",
+					null, Map.class);
+			// Add logging
+
+			Map<String, List<Map<String, Object>>> topSongsByEmotion = (Map<String, List<Map<String, Object>>>) emotionTop5Response
+					.get("top_songs_by_emotion");
+
+			// Combine all data into a single map
+			Map<String, Object> responseData = new HashMap<>();
+			responseData.put("genre_data", genreData);
+			responseData.put("emotion_data", emotionData);
+			responseData.put("top_songs_by_genre", topSongsByGenre);
+			responseData.put("top_songs_by_emotion", topSongsByEmotion);
+			return ResponseEntity.ok(responseData);
+		} catch (Exception e) {
+			// Log the exception
+			e.printStackTrace();
+			// Return appropriate HTTP status code and message in case of error
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+
+	}
+
+	@RequestMapping("/getMypage")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> getMypage(HttpSession session) {
 	    String flaskApiUrl = "http://localhost:5000";
 	    RestTemplate restTemplate = new RestTemplate();
 
-	    try {
-	        // Fetch genre data
-	        Map<String, Object> genreResponse = restTemplate.postForObject(flaskApiUrl + "/getintrogenre", null, Map.class);
-	        // Add logging
-	        System.out.println("Genre Response: " + genreResponse);
+	    // Initialize data variables
+	    List<Map<String, Object>> genreData = null;
+	    List<Map<String, Object>> emotionData = null;
+	    List<Map<String, Object>> topSongsData = null;
 
-	        List<Map<String, Object>> genreData = (List<Map<String, Object>>) genreResponse.get("genre_data");
+	    try {
+	        // Retrieve memid from session
+	        MemberVO mvo = (MemberVO) session.getAttribute("member");
+	        if (mvo == null || mvo.getMemId() == null) {
+	            System.out.println("Member or MemId is null");
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	        }
+	        String input_memid = mvo.getMemId();
+	        System.out.println("input_memid mypage : " + input_memid);
+
+	        // Prepare the request body (input_memid)
+	        Map<String, String> requestBody = new HashMap<>();
+	        requestBody.put("memid", input_memid);
+
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.APPLICATION_JSON);
+	        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+	        // Fetch genre data
+	        try {
+	            ResponseEntity<List<Map<String, Object>>> genreResponseEntity = restTemplate.exchange(
+	                    flaskApiUrl + "/getmygenre", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Map<String, Object>>>() {});
+	            genreData = genreResponseEntity.getBody();
+	            System.out.println("genre_data : " + genreData);
+	        } catch (Exception e) {
+	            System.out.println("Error fetching genre data: " + e.getMessage());
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	        }
 
 	        // Fetch emotion data
-	        Map<String, Object> emotionResponse = restTemplate.postForObject(flaskApiUrl + "/getintroemotion", null, Map.class);
-	        // Add logging
-	        System.out.println("Emotion Response: " + emotionResponse);
-
-	        List<Map<String, Object>> emotionData = (List<Map<String, Object>>) emotionResponse.get("emotion_data");
+	        try {
+	            ResponseEntity<List<Map<String, Object>>> emotionResponseEntity = restTemplate.exchange(
+	                    flaskApiUrl + "/getmyemotion", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Map<String, Object>>>() {});
+	            emotionData = emotionResponseEntity.getBody();
+	            System.out.println("emotion_data : " + emotionData);
+	        } catch (Exception e) {
+	            System.out.println("Error fetching emotion data: " + e.getMessage());
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	        }
 
 	        // Fetch top songs by genre
-	        Map<String, Object> genreTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintrogenretop5", null, Map.class);
-	        // Add logging
-	        System.out.println("Top Songs by Genre Response: " + genreTop5Response);
-
-	        Map<String, List<Map<String, Object>>> topSongsByGenre = (Map<String, List<Map<String, Object>>>) genreTop5Response.get("top_songs_by_genre");
-
-	        // Fetch top songs by emotion
-	        Map<String, Object> emotionTop5Response = restTemplate.postForObject(flaskApiUrl + "/getintroemotiontop5", null, Map.class);
-	        // Add logging
-	        System.out.println("Top Songs by Emotion Response: " + emotionTop5Response);
-
-	        Map<String, List<Map<String, Object>>> topSongsByEmotion = (Map<String, List<Map<String, Object>>>) emotionTop5Response.get("top_songs_by_emotion");
+	        try {
+	            ResponseEntity<List<Map<String, Object>>> topsongsResponseEntity = restTemplate.exchange(
+	                    flaskApiUrl + "/getmytopsongs", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Map<String, Object>>>() {});
+	            topSongsData = topsongsResponseEntity.getBody();
+	            System.out.println("top_songs_by_genre : " + topSongsData);
+	        } catch (Exception e) {
+	            System.out.println("Error fetching top songs data: " + e.getMessage());
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	        }
 
 	        // Combine all data into a single map
 	        Map<String, Object> responseData = new HashMap<>();
 	        responseData.put("genre_data", genreData);
 	        responseData.put("emotion_data", emotionData);
-	        responseData.put("top_songs_by_genre", topSongsByGenre);
-	        responseData.put("top_songs_by_emotion", topSongsByEmotion);
-	        System.out.println(genreResponse);
-	        System.out.println(emotionResponse);
-	        System.out.println(genreTop5Response);
-	        System.out.println(emotionTop5Response);
+	        responseData.put("top_songs_by_genre", topSongsData);
+
 	        return ResponseEntity.ok(responseData);
 	    } catch (Exception e) {
-	        // Log the exception
+	        // Log the exception properly
+	        System.out.println("General error: " + e.getMessage());
 	        e.printStackTrace();
 	        // Return appropriate HTTP status code and message in case of error
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	    }
 	}
 
-	
 }

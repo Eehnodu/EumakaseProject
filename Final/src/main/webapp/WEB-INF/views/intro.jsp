@@ -146,6 +146,6 @@
 		</div>
 </body>
 <script src="assets/js/chartIntro.js"></script>
-<script src="assets/js/chartIntroFunction.js"></script>
+<script src="assets/js/introFunction.js"></script>
 <%@ include file="includeFooter.jsp"%>
 </html>
