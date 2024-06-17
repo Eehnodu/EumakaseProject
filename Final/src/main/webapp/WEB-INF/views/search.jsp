@@ -30,7 +30,7 @@
 
 						<div class="col-lg-12">
 							<h4>
-								<span class="txtPink">'태연'</span><em>에 대한 검색 결과입니다.</em>
+								<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과입니다.</em>
 							</h4>
 						</div>
 
@@ -44,144 +44,40 @@
 										</h4>
 									</div>
 									<!-- 각 곡의 정보를 반복해서 출력 -->
-									<div class="col-lg-12 playlist">
-										<div class="item songDetail">
-											<ul>
-												<li><a href="/controller/songDetail?musicIdx=5699">
-														<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
-														alt="" class="templatemo-item">
-												</a></li>
+									<c:forEach items="${searching_music}" var="music">
+										<div class="col-lg-12 playlist">
+											<div class="item songDetail">
+												<ul>
+													<li><a
+														href="${cpath}/songDetail?musicIdx=${music.musicIdx}">
+															<img src="${music.albumCov}" alt=""
+															class="templatemo-item">
+													</a></li>
 
-												<li>
-													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
-														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
-												</li>
+													<li>
+														<h4 class="songTitle" title="${music.title}">${music.title}</h4>
+														<span>${music.artist}</span>
+													</li>
 
-												<li>
-													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
-												</li>
-												<li>
-													<h4>R&amp;B/Soul</h4> <span>장르</span>
-												</li>
-												<li>
-													<h4>2021-07-28</h4> <span>발매일</span>
-												</li>
-											</ul>
+													<li>
+														<h4 class="albumTitle" title="${music.album}">${music.album}</h4>
+														<span>앨범명</span>
+													</li>
+													<li>
+														<h4>${music.genre}</h4> <span>장르</span>
+													</li>
+													<li>
+														<h4>${music.releasedAt}</h4> <span>발매일</span>
+													</li>
+												</ul>
+											</div>
 										</div>
-									</div>
-
-									<div class="col-lg-12 playlist">
-										<div class="item songDetail">
-											<ul>
-												<li><a href="/controller/songDetail?musicIdx=5699">
-														<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
-														alt="" class="templatemo-item">
-												</a></li>
-
-												<li>
-													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
-														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
-												</li>
-
-												<li>
-													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
-												</li>
-												<li>
-													<h4>R&amp;B/Soul</h4> <span>장르</span>
-												</li>
-												<li>
-													<h4>2021-07-28</h4> <span>발매일</span>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-lg-12 playlist">
-										<div class="item songDetail">
-											<ul>
-												<li><a href="/controller/songDetail?musicIdx=5699">
-														<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
-														alt="" class="templatemo-item">
-												</a></li>
-
-												<li>
-													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
-														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
-												</li>
-
-												<li>
-													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
-												</li>
-												<li>
-													<h4>R&amp;B/Soul</h4> <span>장르</span>
-												</li>
-												<li>
-													<h4>2021-07-28</h4> <span>발매일</span>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-lg-12 playlist">
-										<div class="item songDetail">
-											<ul>
-												<li><a href="/controller/songDetail?musicIdx=5699">
-														<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
-														alt="" class="templatemo-item">
-												</a></li>
-
-												<li>
-													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
-														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
-												</li>
-
-												<li>
-													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
-												</li>
-												<li>
-													<h4>R&amp;B/Soul</h4> <span>장르</span>
-												</li>
-												<li>
-													<h4>2021-07-28</h4> <span>발매일</span>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-lg-12 playlist">
-										<div class="item songDetail">
-											<ul>
-												<li><a href="/controller/songDetail?musicIdx=5699">
-														<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
-														alt="" class="templatemo-item">
-												</a></li>
-
-												<li>
-													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
-														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
-												</li>
-
-												<li>
-													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
-												</li>
-												<li>
-													<h4>R&amp;B/Soul</h4> <span>장르</span>
-												</li>
-												<li>
-													<h4>2021-07-28</h4> <span>발매일</span>
-												</li>
-											</ul>
-										</div>
-									</div>
-
-									<div class="col-lg-12">
+									</c:forEach>
+                <div class="col-lg-12">
 										<div class="main-button" id="loadMore">
 											<a href="#">더보기</a>
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -194,63 +90,52 @@
 							<div class="featured-games header-text">
 								<div class="row">
 									<div class="heading-section">
-										<h4>
-											<em>플레이리스트</em>
-										</h4>
+										<c:choose>
+									        <c:when test="${empty myplaylist}">
+										        <h4>
+													<em>플레이리스트가 없습니다.</em>
+												</h4>
+									        </c:when>
+									        <c:otherwise>
+									            <h4>
+													<em>플레이리스트</em>
+												</h4>
+									        </c:otherwise>
+									    </c:choose>
 									</div>
-									<div class="col-lg-3 col-sm-6">
-										<div class="item" style="display: block;">
-											<div class="thumb">
-												<div class="image-grid">
-
-													<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/104/14/459/10414459_20200408150259_500.jpg?09093e2bd3b4832f7395dc0874503a97/melon/resize/282/quality/80/optimize"
-														alt=""> <img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/112/36/264/11236264_20230508184331_500.jpg?YUV420-90/melon/resize/282"
-														alt=""> <img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/112/21/404/11221404_20230411101938_500.jpg?88ac69b8898d071841a17a3230480227/melon/resize/282/quality/80/optimize"
-														alt=""> <img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/108/63/559/10863559_20220214160739_500.jpg?42c2b52a394ac94dad21d64aec2c577d/melon/resize/282/quality/80/optimize"
-														alt=""> <a id="playlistbutton"
-														href="/controller/userPlaylist?myplIdx=7"></a>
-												</div>
-												<div class="down-content">
-													<h4>세상아 덤벼라</h4>
-													<span>#댄스 #연인 #집 #휴가 #기쁨</span>
+                  
+									<c:forEach items="${myplaylist}" var="myplay" varStatus="loop">
+										<div class="col-lg-3 col-sm-6">
+											<div class="item" style="display: block;">
+												<div class="thumb">
+													<div class="image-grid">
+														<c:forEach var="cov" items="${albumCovList}"
+																		begin="${loop.index * 4}"
+																		end="${(loop.index * 4) + 3}">
+																		<img src="${cov}" alt="">
+																	</c:forEach>
+															<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myplay.myplIdx}">상세보기가즈아</a>
+													</div>
+													<div class="down-content">
+														<h4>${myplay.plName}</h4>
+														<span>
+															<c:forEach items="${contextList}" var="context"
+															begin="${loop.index}" end="${loop.index}">
+															    #${context.surDesc1}
+															    #${context.surDesc2}
+															    #${context.surDesc3}
+															    #${context.surDesc4}
+															    #${context.surDesc5}
+															</c:forEach>
+															
+														</span>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-
-
-									<div class="col-lg-3 col-sm-6">
-										<div class="item" style="display: block;">
-											<div class="thumb">
-												<div class="image-grid">
-
-													<img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/104/14/459/10414459_20200408150259_500.jpg?09093e2bd3b4832f7395dc0874503a97/melon/resize/282/quality/80/optimize"
-														alt=""> <img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/112/36/264/11236264_20230508184331_500.jpg?YUV420-90/melon/resize/282"
-														alt=""> <img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/112/21/404/11221404_20230411101938_500.jpg?88ac69b8898d071841a17a3230480227/melon/resize/282/quality/80/optimize"
-														alt=""> <img
-														src="https://cdnimg.melon.co.kr/cm2/album/images/108/63/559/10863559_20220214160739_500.jpg?42c2b52a394ac94dad21d64aec2c577d/melon/resize/282/quality/80/optimize"
-														alt=""> <a id="playlistbutton"
-														href="/controller/userPlaylist?myplIdx=7"></a>
-												</div>
-												<div class="down-content">
-													<h4>세상아 덤벼라</h4>
-													<span>#댄스 #연인 #집 #휴가 #기쁨</span>
-												</div>
-											</div>
-										</div>
-									</div>
+									</c:forEach>
+									
 								</div>
-
-
-
-
 							</div>
 						</div>
 					</div>

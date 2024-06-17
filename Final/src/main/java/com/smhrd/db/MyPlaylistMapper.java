@@ -20,4 +20,5 @@ public interface MyPlaylistMapper {
 
 	public void deleteMyPlayList(MyPlaylistVO mvo);
 
+	public List<MyPlaylistVO> searchPlaylist(String keyword);
 }
