@@ -151,6 +151,7 @@
 												<c:forEach var="myply" items="${myplayList}"
 													varStatus="loop">
 													<div class="col-lg-3 col-sm-6">
+													<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
 														<div class="item">
 															<div class="thumb">
 																<div class="image-grid">
@@ -159,16 +160,18 @@
 																		end="${(loop.index * 4) + 3}">
 																		<img src="${cov.albumCov}" alt="">
 																	</c:forEach>
+															
+																	
 																	<div class="hover-effect2">
 																		<h6>지금 듣기</h6>
-															<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
-																	</a>
+																		
 																	</div>
 																</div>
 																<div class="down-content">
 																	<h4>${myply.plName}</h4>
 																</div>
 															</div>
+															</a>
 														</div>
 													</div>
 												</c:forEach>

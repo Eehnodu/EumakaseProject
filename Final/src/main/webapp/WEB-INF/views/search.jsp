@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <title>음악하세</title>
 <%@ include file="include.jsp"%>
@@ -44,7 +45,7 @@
 									</div>
 									<!-- 각 곡의 정보를 반복해서 출력 -->
 									<div class="col-lg-12 playlist">
-										<div class="item songDetail" style="display: block;">
+										<div class="item songDetail">
 											<ul>
 												<li><a href="/controller/songDetail?musicIdx=5699">
 														<img
@@ -71,7 +72,85 @@
 									</div>
 
 									<div class="col-lg-12 playlist">
-										<div class="item songDetail" style="display: block;">
+										<div class="item songDetail">
+											<ul>
+												<li><a href="/controller/songDetail?musicIdx=5699">
+														<img
+														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
+														alt="" class="templatemo-item">
+												</a></li>
+
+												<li>
+													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
+														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
+												</li>
+
+												<li>
+													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
+												</li>
+												<li>
+													<h4>R&amp;B/Soul</h4> <span>장르</span>
+												</li>
+												<li>
+													<h4>2021-07-28</h4> <span>발매일</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-12 playlist">
+										<div class="item songDetail">
+											<ul>
+												<li><a href="/controller/songDetail?musicIdx=5699">
+														<img
+														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
+														alt="" class="templatemo-item">
+												</a></li>
+
+												<li>
+													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
+														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
+												</li>
+
+												<li>
+													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
+												</li>
+												<li>
+													<h4>R&amp;B/Soul</h4> <span>장르</span>
+												</li>
+												<li>
+													<h4>2021-07-28</h4> <span>발매일</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-12 playlist">
+										<div class="item songDetail">
+											<ul>
+												<li><a href="/controller/songDetail?musicIdx=5699">
+														<img
+														src="https://cdnimg.melon.co.kr/cm2/album/images/106/63/806/10663806_20210728144617_500.jpg?b66dd9b9e89cae4c0df2e02d62751af9/melon/resize/282/quality/80/optimize"
+														alt="" class="templatemo-item">
+												</a></li>
+
+												<li>
+													<h4 class="songTitle" title="곁에 있어줘 (Feat. 원슈타인)">곁에
+														있어줘 (Feat. 원슈타인)</h4> <span>SOLE (쏠)</span>
+												</li>
+
+												<li>
+													<h4 class="albumTitle" title="곁에 있어줘">곁에 있어줘</h4> <span>앨범명</span>
+												</li>
+												<li>
+													<h4>R&amp;B/Soul</h4> <span>장르</span>
+												</li>
+												<li>
+													<h4>2021-07-28</h4> <span>발매일</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-12 playlist">
+										<div class="item songDetail">
 											<ul>
 												<li><a href="/controller/songDetail?musicIdx=5699">
 														<img
@@ -97,7 +176,11 @@
 										</div>
 									</div>
 
-
+									<div class="col-lg-12">
+										<div class="main-button" id="loadMore">
+											<a href="#">더보기</a>
+										</div>
+									</div>
 
 								</div>
 							</div>
@@ -187,6 +270,9 @@
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="assets/js/loadMore.js"></script>
+	<script src="assets/js/loadMore2.js"></script>
 
 </body>
 <%@ include file="includeFooter.jsp"%>

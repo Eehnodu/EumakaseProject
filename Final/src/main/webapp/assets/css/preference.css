@@ -38,17 +38,16 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     max-width: 500px;
     user-select: none;
 }
 
 .checkbox-group > * {
-    margin: 0.5rem 0.5rem;
+    margin: 0.5rem;
 }
 
-.checkbox-group-legend {
+.checkbox-group-legend, .checkbox-group-subtext {
     font-size: 1.5rem;
     font-weight: 700;
     color: #ec6090;
@@ -56,43 +55,15 @@ body {
     line-height: 1.125;
 }
 
-.checkbox-input {
-    /* Code to hide the input */
-    clip: rect(0 0 0 0);
-    clip-path: inset(100%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+.checkbox-group-subtext {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555;
+    margin-top: 0.5rem;
 }
 
-.checkbox-input:checked + .checkbox-tile {
-    border-color: #ec6090;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #ec6090;
-}
-
-.checkbox-input:checked + .checkbox-tile:before {
-    transform: scale(1);
-    opacity: 1;
-    background-color: #ec6090;
-    border-color: #ec6090;
-}
-
-.checkbox-input:checked + .checkbox-tile .checkbox-icon,
-.checkbox-input:checked + .checkbox-tile .checkbox-label {
-    color: #ccc;
-}
-
-.checkbox-input:focus + .checkbox-tile {
-    border-color: #ec6090;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #ec6090;
-}
-
-.checkbox-input:focus + .checkbox-tile:before {
-    transform: scale(1);
-    opacity: 1;
+.checkbox-wrapper {
+    display: inline-block;
 }
 
 .checkbox-tile {
@@ -103,110 +74,68 @@ body {
     width: 7rem;
     min-height: 7rem;
     border-radius: 0.5rem;
-    border: 2px solid #ccc;
+    border: 2px solid #ec6090;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transition: 0.15s ease;
     cursor: pointer;
     position: relative;
+    transition: all 200ms ease-in-out;
 }
 
-.checkbox-tile:before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 1.25rem;
-    height: 1.25rem;
-    border: 2px solid #ccc;
-    background-color: #fff;
-    border-radius: 50%;
-    top: 0.25rem;
-    left: 0.25rem;
-    opacity: 0;
-    transform: scale(0);
-    transition: 0.25s ease;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
-    background-size: 12px;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-}
-
-.checkbox-tile:hover {
-    border-color: #ec6090;
-}
-
-.checkbox-tile:hover:before {
-    transform: scale(1);
-    opacity: 1;
-}
-
-/* .checkbox-icon {
-    transition: 0.375s ease;
-    color: #494949;
-} */
-
-.checkbox-icon svg {
-    width: 3rem;
-    height: 3rem;
-}
-
-.checkbox-label {
-    color: #27292a;
-    transition: 0.375s ease;
-    text-align: center;
-    font-weight: 600;
-}
-
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-    color: #ec6090;
-    background-color: #fff;
-    border-color: #ec6090;
-    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #ec6090; */
-}
-
-/* btn active 상태일 때  */
-.btn.btn-outline-primary.active {
-    border-color: #ec6090;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #ec6090;
-}
-
-.btn.btn-outline-primary.active::before {
-    transform: scale(1);
-    opacity: 1;
-    background-color: #ec6090;
-    border-color: #ec6090;
-}
-
-.btn.btn-outline-primary.active .checkbox-icon,
-.btn.btn-outline-primary.active .checkbox-label {
-    color: #ec6090;
-}
-
-.btn.btn-outline-primary:hover {
-  background: #fff;
-  --bs-btn-hover-border-color: tranparent;
-}
-
-.btn-outline-primary{
-	border-color: #ccc;
-	transition: background-color 0.3s, border-color 0.3s;
-}
-.btn-outline-primary:active{
-	border-color: #ec6090;
+.checkbox-input {
+    display: none;
 }
 
 .checkbox-input:checked + .checkbox-tile {
-    border-width: 3px; /* 선택되었을 때 두꺼운 border */
+    border-color: #ec6090;
 }
 
-.checkbox-input:focus + .checkbox-tile {
-    border-width: 3px; /* 선택되었을 때 두꺼운 border */
+.checkbox-icon {
+    margin-right: 10px;
 }
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-    border-width: 3px; /* 선택되었을 때 두꺼운 border */
+.btn-outline-primary {
+    --bs-btn-color: #0d6efd;
+    --bs-btn-border-color: #ec6090;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #ec6090;
+    --bs-btn-hover-border-color: #ec6090;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ec6090;
+    --bs-btn-active-border-color: #ec6090;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #0d6efd;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #0d6efd;
+    --bs-gradient: none;
 }
+
+.checkbox-label {
+    font-size: 17px;
+    color: #27292a;
+    transition: all 200ms ease-in-out;
+}
+
+.checkbox-label:hover {
+    font-size: 17px;
+    color: #fff;
+    transition: all 200ms ease-in-out;
+}
+
+.checkbox-input:checked + .checkbox-tile .checkbox-label {
+    color: #fff;
+}
+
+/* 마우스를 올렸을 때 */
+/* .checkbox-tile:hover .checkbox-label {
+    color: #fff;
+} */
+
+ /* 체크박스가 체크되었을 때 */
+/* .checkbox-input:checked + .checkbox-tile .checkbox-label {
+    color: #fff;
+}  */
 
 
 /* ----- 가입 완료 Button Styles ----- */
@@ -228,6 +157,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   transition: all .35s;
+  margin-top: 5px;
 }
 
 .btn-primary:hover{
@@ -241,7 +171,7 @@ body {
   transition: all .35s;
 }
 
-.success{
+.successbtn{
   position: absolute;
   top: 0;
   left: 0;
@@ -258,7 +188,7 @@ body {
 .successbtn svg{
   width: 20px;
   height: 20px;
-  fill: yellowgreen;
+  fill: #ec6090;
   transform-origin: 50% 50%;
   transform: translateY(-50%) rotate(0deg) scale(0);
   transition: all .35s;
@@ -286,4 +216,7 @@ body {
 
 .btn-primary {
 	--bs-btn-hover-border-color: transparent;
+	--bs-btn-active-color: #fff;
+	--bs-btn-active-bg: #ec6090;
+	--bs-btn-active-border-color: #ec6090;
 }

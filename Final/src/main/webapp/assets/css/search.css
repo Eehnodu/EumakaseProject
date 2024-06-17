@@ -129,19 +129,6 @@ image-grid img{
   border-radius: 23px;
 }	
 
-.item{
-	display: none;
-}
-
-.item h4{
-	margin-top: 20px;
-}
-
-html {
-	scroll-behavior: smooth;
-}
-
-
 /* *** 나의 playlist 지금 듣기 *** */
 .clips .thumb {
     position: relative; /* 상대위치 */
@@ -183,4 +170,25 @@ html {
     font-size: 14px;
     padding: 10px 20px;
     border-radius: 25px;
+}
+
+/* ***** 더보기 ***** */
+.songDetail {
+	display: none;
+}
+
+.noContent {
+	color: #fff;
+}
+
+.item{
+	display: none;
+}
+
+.item h4{
+	margin-top: 20px;
+}
+
+html {
+	scroll-behavior: smooth;
 }
