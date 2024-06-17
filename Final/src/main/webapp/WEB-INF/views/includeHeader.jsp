@@ -36,7 +36,7 @@
 					<div class="search-input">
 						<form id="search" action="${cpath}/search">
 							<input type="text" id="searchText" name="searchKeyword"
-								placeholder="검색어를 입력하세요" autocomplete="off"/> <i class="fa fa-search"></i>
+								placeholder="검색어를 입력하세요" autocomplete="off"/> <i class="fa fa-search" id="search-icon"></i>
 							<ul class="nav flex-column" id=search-results></ul>
 						</form>
 					</div>
