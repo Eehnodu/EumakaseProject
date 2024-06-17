@@ -24,57 +24,8 @@
 
 <link rel="stylesheet" href="assets/css/mypage.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-#chartArea {
-	position: relative;
-}
-
-#chartArea .col-lg-12 {
-	position: relative;
-}
-
-#prevChart, #nextChart {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 10; /* 차트보다 버튼이 앞에 오도록 설정 */
-}
-
-#prevChart {
-	left: 10px; /* 왼쪽 버튼 위치 조정 */
-}
-
-#nextChart {
-	right: 10px; /* 오른쪽 버튼 위치 조정 */
-}
-
-.btn-arrow {
-	background-color: transparent;
-	border: none;
-	font-size: 2rem; /* 아이콘 크기 조정 */
-	cursor: pointer;
-}
-
-#wrapTable {
-	padding-right: 90px;
-}
-</style>
 </head>
 <body data-cpath="${cpath}">
-
-	<!-- ***** Preloader Start ***** -->
-	<div id="js-preloader" class="js-preloader">
-		<div class="preloader-inner">
-			<span class="dot"></span>
-			<div class="dots">
-				<span></span> <span></span> <span></span>
-			</div>
-		</div>
-	</div>
-	<!-- ***** Preloader End ***** -->
-
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -92,107 +43,122 @@
 													</h4>
 												</div>
 											</div>
-											<div class="col-lg-6 d-flex justify-content-center">
-												<!-- 차트 영역 -->
-												<form id="getmygenre" action="/getMypage" method="post"
-													novalidate>
-													<canvas id="myChart1" width="400" height="400"></canvas>
-												</form>
-												<form id="getmymusic" action="/getMypage" method="post"
-													novalidate>
-													<canvas id="myChart2" width="400" height="400"></canvas>
-												</form>
-												<form id="getmyemotion" action="/getMypage" method="post"
-													novalidate>
-													<canvas id="myChart3" width="400" height="400"></canvas>
-												</form>
-											</div>
-											<div
-												class="col-lg-6 align-self-center justify-content-center"
-												id="wrapTable">
-												<ul class="showLabelsContainer" id="firstLabelsContainer">
-													<li id="labelsContainer1"></li>
-													<li id="labelsContainerData1"></li>
-												</ul>
-												<br>
-												<ul class="showLabelsContainer" id="secondLabelsContainer">
-													<li id="labelsContainer2"></li>
-													<li id="labelsContainerData2"></li>
-												</ul>
-												<ul class="showLabelsContainer" id="thirdLabelsContainer">
-													<li id="labelsContainer3"></li>
-													<li id="labelsContainerData3"></li>
-												</ul>
-											</div>
-
-											<button id="prevChart" class="btn-arrow">
-												<i class="fas fa-arrow-left"></i>
-											</button>
-											<button id="nextChart" class="btn-arrow">
-												<i class="fas fa-arrow-right"></i>
-											</button>
-										</div>
-
-
-
-
-									</div>
-
-									<div class="row">
-										<div class="col-lg-12">
-											<div class="clips">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="heading-section">
-															<h4>
-																<em>나의</em> 플레이리스트
-															</h4>
-														</div>
-													</div>
-													<c:forEach var="myply" items="${myplayList}"
-														varStatus="loop">
-														<div class="col-lg-3 col-sm-6">
-															<div class="item">
-																<div class="thumb">
-																	<div class="image-grid">
-																		<c:forEach var="cov" items="${myplayListalbumCov}"
-																			begin="${loop.index * 4}"
-																			end="${(loop.index * 4) + 3}">
-																			<img src="${cov.albumCov}" alt="">
-																		</c:forEach>
-																		<div class="hover-effect2">
-																			<h6>지금 듣기</h6>
-																			<a id="playlistbutton"
-																				href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
-																			</a>
-																		</div>
-																	</div>
-																	<div class="down-content">
-																		<h4>${myply.plName}</h4>
-																	</div>
-																</div>
+											<div class="row chartPref">
+												<div class="col-lg-6 d-flex justify-content-end">
+													<!-- ***** Preloader Start ***** -->
+													<div id="js-preloader2" class="js-preloader2">
+														<div class="preloader-inner2">
+															<span class="dot2"></span>
+															<div class="dots2">
+																<span></span> <span></span> <span></span>
 															</div>
 														</div>
-													</c:forEach>
-													<div class="col-lg-12">
-														<div class="main-button" id="loadMore">
-															<a href="#">더보기</a>
+													</div>
+													<!-- ***** Preloader End ***** -->
+													<!-- 차트 영역 -->
+													<form id="getmygenre" action="/getMypage" method="post"
+														novalidate>
+														<canvas id="myChart1" width="400" height="400"
+															style="margin-right: 30px; margin-top: -40px"></canvas>
+													</form>
+													<form id="getmymusic" action="/getMypage"
+														method="post" novalidate>
+														<canvas id="myChart2" width="400" height="400"
+															style="margin-right: 30px; margin-top: -40px"></canvas>
+													</form>
+													<form id="getmyemotion" action="/getMypage"
+														method="post" novalidate>
+														<canvas id="myChart3" width="400" height="400"
+															style="margin-right: 30px; margin-top: -40px"></canvas>
+													</form>
+												</div>
+												<div
+													class="col-lg-6 align-self-center justify-content-center"
+													id="wrapTable">
+													<ul class="showLabelsContainer" id="firstLabelsContainer">
+														<li id="labelsContainer1"></li>
+														<li id="labelsContainerData1"></li>
+													</ul>
+													<ul class="showLabelsContainer" id="secondLabelsContainer">
+														<li id="labelsContainer2"></li>
+														<li id="labelsContainerData2"></li>
+													</ul>
+													<ul class="showLabelsContainer" id="thirdLabelsContainer">
+														<li id="labelsContainer3"></li>
+														<li id="labelsContainerData3"></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<button id="prevChart" class="btn-arrow">
+											<i class="fa-solid fa-backward-step"></i>
+										</button>
+										<button id="nextChart" class="btn-arrow">
+											<i class="fa-solid fa-forward-step"></i>
+										</button>
+									</div>
+
+
+
+								/div>
+
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="clips">
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="heading-section">
+														<h4>
+															<em>나의</em> 플레이리스트
+														</h4>
+													</div>
+												</div>
+												<c:forEach var="myply" items="${myplayList}"
+													varStatus="loop">
+													<div class="col-lg-3 col-sm-6">
+													<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
+														<div class="item">
+															<div class="thumb">
+																<div class="image-grid">
+																	<c:forEach var="cov" items="${myplayListalbumCov}"
+																		begin="${loop.index * 4}"
+																		end="${(loop.index * 4) + 3}">
+																		<img src="${cov.albumCov}" alt="">
+																	</c:forEach>
+															
+																	
+																	<div class="hover-effect2">
+																		<h6>지금 듣기</h6>
+																	</div>
+																</div>
+																<div class="down-content">
+																	<h4>${myply.plName}</h4>
+																</div>
+															</div>
+															</a>
 														</div>
 													</div>
-
+												</c:forEach>
+												<div class="col-lg-12">
+													<div class="main-button" id="loadMore">
+														<a href="#">더보기</a>
+													</div>
 												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- ***** Banner End ***** -->
-
 					</div>
+					<!-- ***** Banner End ***** -->
+
 				</div>
 			</div>
 		</div>
+	</div>
+
 
 
 
@@ -226,7 +192,8 @@
 			src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
 		<script
 			src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
-
+		<script
+			src="assets/js/mypage.js?ver=<%=System.currentTimeMillis()%>"></script>
 		<%@ include file="includeFooter.jsp"%>
 </body>
 </html>

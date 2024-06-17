@@ -20,7 +20,7 @@ $.ajax({
 
         labels.forEach((label, index) => {
             const span = document.createElement('span');
-            span.textContent = label;
+            span.textContent = (index+1) + ". " + label;
             containerData.appendChild(span);
             if (index < labels.length - 1) {
                 containerData.appendChild(document.createElement('br'));
@@ -39,14 +39,14 @@ $.ajax({
                     label: '장르',
                     data: values,
                     backgroundColor: [
-                        'rgb(253, 252, 220)',
-                        'rgb(254, 217, 183)',
-                        'rgb(240, 113, 103)'
+                        'rgb(205, 180, 219)',
+                        'rgb(255, 200, 221)',
+                        'rgb(255, 175, 204)'
                     ],
                     borderColor: [
-                        'rgb(253, 252, 220)',
-                        'rgb(254, 217, 183)',
-                        'rgb(240, 113, 103)'
+                        'rgb(205, 180, 219)',
+                        'rgb(255, 200, 221)',
+                        'rgb(255, 175, 204)'
                     ],
                     borderWidth: 1
                 }]

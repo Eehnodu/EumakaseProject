@@ -6,6 +6,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -76,8 +77,32 @@ public class MainController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+
 	@GetMapping("/search")
-	public String search() {
+	public String search(@RequestParam("searchKeyword") String searchKeyword ,Model model) {
+		System.out.println(searchKeyword);
+		List<MusicVO> musiclist = musicMapper.searchMusicByTitle(searchKeyword);
+		List<MyPlaylistVO> myplaylist = myplaylistMapper.searchPlaylist(searchKeyword);
+		
+		List<Map<String, String>> contextList = new ArrayList<>();
+		List<String> albumCovList = new ArrayList<>();
+
+		for (MyPlaylistVO mvo : myplaylist) {
+		    Map<String, String> context = surveyMapper.context_in_surDesc(mvo.getMyplIdx());
+		    contextList.add(context);
+
+		    List<MusicVO> albumcov = musicMapper.myplIdxgetmusic(mvo.getMyplIdx());
+		    for (MusicVO i : albumcov) {
+		        albumCovList.add(i.getAlbumCov());
+		    }
+		}
+		
+		model.addAttribute("contextList",contextList);
+		model.addAttribute("albumCovList",albumCovList);
+		model.addAttribute("myplaylist", myplaylist);
+		model.addAttribute("keyword", searchKeyword);
+		model.addAttribute("searching_music", musiclist);
+		
 		return "search";
 	}
 

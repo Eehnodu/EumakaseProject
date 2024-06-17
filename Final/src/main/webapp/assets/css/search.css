@@ -1,6 +1,21 @@
-.txtPink{
+.txtPink {
 	color: #e75e8d !important;
 	font-style: italic;
+}
+
+.col-lg-12.playlist {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item.songDetail {
+    flex: 1;
+    margin: 0 10px; /* 항목 간의 간격을 조절합니다. 필요에 따라 조정하세요 */
+}
+
+.item.songDetail ul {
+    list-style-type: none;
+    padding: 0;
 }
 
 .gaming-library .item {
@@ -69,25 +84,12 @@
 	margin-top: 30px;
 }
 
-.game-details .content .right-info .playlist .songDetail ul li {
+.playlist .songDetail ul li {
 	display: inline-block;
 	/* width: 15%; */
-	text-align: center;
+	text-align: center; /* 중앙 정렬 추가 */
 	font-size: 14px;
 	color: #fff;
-}
-
-.game-details .content .right-info ul li i {
-	display: block;
-	margin-bottom: 12px;
-}
-
-.game-details .content .right-info ul li:first-child i {
-	color: yellow;
-}
-
-.game-details .content .right-info ul li i {
-	color: #ec6090;
 }
 
 /* 부트스트랩의 row에 대한 추가 스타일 */
@@ -96,19 +98,10 @@
 	align-items: center; /* 수직 중앙 정렬 */
 }
 
-
-
-
-
 /* 이미지 스타일링 */
 .col-lg-3 img {
 	width: 100%; /* 이미지가 컨테이너의 100% 크기를 차지하도록 설정 */
 	height: auto; /* 이미지의 원본 비율을 유지 */
-}
-
-image-grid img{
-	width: 100%;
-	border-radius: 0px;
 }
 
 /* 내용 영역 스타일링 */
@@ -129,20 +122,6 @@ image-grid img{
   border-radius: 23px;
 }	
 
-.item{
-	display: none;
-}
-
-.item h4{
-	margin-top: 20px;
-}
-
-html {
-	scroll-behavior: smooth;
-}
-
-
-/* *** 나의 playlist 지금 듣기 *** */
 .clips .thumb {
     position: relative; /* 상대위치 */
 }
@@ -152,7 +131,7 @@ html {
     overflow: hidden;
 }
 
-.clips .thumb .hover-effect2 {
+.hover-effect2 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -170,12 +149,12 @@ html {
 }
 
 /* .image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록  */
-.clips .thumb.image-grid:hover .hover-effect2 {
+.hover-effect2:hover {
     opacity: 1;
     visibility: visible;
 }
 
-.clips .thumb .hover-effect2 h6 {
+.hover-effect2 h6 {
     background-color: rgba(31, 33, 34, 0.95);
     display: inline-block;
     color: #ec6090;
@@ -183,4 +162,18 @@ html {
     font-size: 14px;
     padding: 10px 20px;
     border-radius: 25px;
+}
+
+
+.noContent {
+	color: #fff;
+}
+
+
+.item h4{
+	margin-top: 20px;
+}
+
+html {
+	scroll-behavior: smooth;
 }

@@ -172,19 +172,20 @@ function completeJoin() {
 						  // console.log(`Description: ${item.surDesc}`);
 						  // console.log(`Current Item:`, item); // item 객체 자체를 로그로 출력
 						  htmlContent += `
-							<div class="checkbox btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
-							    <label class="checkbox-wrapper">
-							        <input type="checkbox" class="checkbox-input" />
-							        <span class="checkbox-tile">
-							            <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
-							                <span class="checkbox-icon">
-							                    <img src="${imageSrc}" alt="${item.surDesc}" class="genre-icon" />
-							                </span>
-							                <span class="checkbox-label">${item.surDesc}</span>
-							            </button>
-							        </span>
-							    </label>
-							</div>
+<div class="checkbox btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+    <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input">
+        <span class="checkbox-tile">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+                <span class="checkbox-icon">
+                    <img src="${imageSrc}" alt="${item.surDesc}" class="genre-icon" />
+                </span>
+                <span class="checkbox-label">${item.surDesc}</span>
+            </button>
+        </span>
+    </label>
+</div>
+
   `;
   
                      });
@@ -204,12 +205,49 @@ function completeJoin() {
                         <br> 
                            <button type='button' class='btn btn-primary btn-sm' id='btnComplete'><span>submit</span>
     <div class="successbtn">
-      </div></button>
+    <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
+      
+	<path d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173   c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752   c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z"/>
+ </svg>
+      </div>
+      </button>
                         </div>
                      `;
 
                      // 최종적으로 구성된 HTML 문자열을 #prefSurvey에 설정합니다.
                      $("#prefSurvey").html(htmlContent);
+                     
+                    // 버튼 클릭 이벤트 설정
+let btn = document.getElementById("btnComplete");
+
+btn.addEventListener("click", function() {
+    btn.classList.toggle("is_active");
+});
+
+// CSS 스타일을 추가하여 애니메이션을 정의합니다.
+let style = document.createElement('style');
+style.innerHTML = `
+    .btn-primary.is_active {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-primary.is_active .successbtn {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .btn-primary.is_active .successbtn svg {
+        margin-top: 50%;
+        transform: translateY(-50%) rotate(720deg) scale(1);
+    }
+
+    .btn-primary.is_active span {
+        opacity: 0;
+        visibility: hidden;
+    }
+`;
+document.head.appendChild(style);
 
 
 

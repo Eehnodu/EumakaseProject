@@ -11,18 +11,19 @@ $.ajax({
         const labels = emotionData.map(item => item.surDesc);
         const values = emotionData.map(item => item.count);
 
-        const container = document.getElementById('labelsContainer3');
-        const containerData = document.getElementById('labelsContainerData3');
-        container.innerHTML = '';
-        containerData.innerHTML = '';
+		const labels = Object.keys(data);
+		const values = Object.values(data);
 
-        const heading = document.createElement('h4');
-        heading.textContent = '내가 자주 느낀 감정';
-        container.appendChild(heading);
-
+		const container = document.getElementById('labelsContainer3');
+		const containerData = document.getElementById('labelsContainerData3');
+		container.innerHTML = '';
+		containerData.innerHTML = '';
+		const heading = document.createElement('h4');
+		heading.textContent = '내가 자주 느낀 감정';
+		container.appendChild(heading);
         labels.forEach((label, index) => {
             const span = document.createElement('span');
-            span.textContent = label;
+            span.textContent = (index + 1) + ". " + label
             containerData.appendChild(span);
             if (index < labels.length - 1) {
                 containerData.appendChild(document.createElement('br'));
@@ -41,14 +42,14 @@ $.ajax({
                     label: '감정',
                     data: values,
                     backgroundColor: [
-                        'rgb(253, 252, 220)',
-                        'rgb(254, 217, 183)',
-                        'rgb(240, 113, 103)'
+                       'rgb(231, 188, 222)',
+						'rgb(187, 156, 192)',
+						'rgb(103, 114, 157)'
                     ],
                     borderColor: [
-                        'rgb(253, 252, 220)',
-                        'rgb(254, 217, 183)',
-                        'rgb(240, 113, 103)'
+                       'rgb(231, 188, 222)',
+						'rgb(187, 156, 192)',
+						'rgb(103, 114, 157)'
                     ],
                     borderWidth: 1
                 }]

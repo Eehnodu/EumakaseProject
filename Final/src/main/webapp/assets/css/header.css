@@ -3,7 +3,6 @@
   Header Style
   --------------------------------------------- 
   */
-
 .btnPink {
 	cursor: pointer;
 	transition: all 200ms linear;
@@ -17,7 +16,6 @@
 	background-color: #b1486c;
 	border-color: transparent;
 }
-
 
 /* -----추가----- */
 #header {
@@ -74,7 +72,6 @@ body {
 }
 
 .header-area .main-nav .logo {
-	border-right: 1px solid #27292a;
 	flex-basis: 25%;
 	margin-right: 5%;
 	-webkit-transition: all 0.3s ease 0s;
@@ -84,7 +81,7 @@ body {
 }
 
 .header-area .main-nav .logo img {
-	width: 90%;
+	width: 237px;
 }
 
 .background-header .main-nav .logo {
@@ -149,8 +146,8 @@ body {
 
 .header-area .main-nav .nav li:last-child:hover a, .header-area .main-nav .nav li:last-child a.active
 	{
-	color: #fff !important;
-	background-color: #e75e8d !important;
+	color: #e75e8d !important;
+	font-weight: 600;
 }
 
 .background-header .main-nav .nav li:hover a, .background-header .main-nav .nav li a.active
@@ -460,12 +457,9 @@ body {
 }
 
 /* 네비바 메뉴 */
-
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-	background-color:transparent;
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	background-color: transparent;
 }
-
-
 
 /**** 네비바 메뉴 끝 ****/
 
@@ -568,7 +562,7 @@ div.\=\"modal-dialog\" {
 	height: 450px;
 }
 
-.modal-title img{
+.modal-title img {
 	width: 290px;
 }
 
@@ -698,14 +692,14 @@ div.\=\"modal-dialog\" {
 
 /* placeholder */
 .form-group input::placeholder {
-    color: #c4c3ca;
-    opacity: 0.7;
-    transition: all 200ms linear;
+	color: #c4c3ca;
+	opacity: 0.7;
+	transition: all 200ms linear;
 }
 
 .form-group input:focus::placeholder {
-    opacity: 0;
-    transition: all 200ms linear;
+	opacity: 0;
+	transition: all 200ms linear;
 }
 
 .card-3d-wrap {
@@ -733,55 +727,112 @@ div.\=\"modal-dialog\" {
 /* 로그인 모달 끝 */
 
 /* 플리 수정 모달 */
-.modal-content.modal-ed-content{
+.modal-content.modal-ed-content {
 	width: 500px;
 	height: 250px;
 }
 
 .modal-header.modal-ed-header {
-    height: 90px;
+	height: 90px;
 }
 
 #editModalTitle {
-    max-width: 350px;
-    word-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
-    overflow-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
+	max-width: 350px;
+	word-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
+	overflow-wrap: break-word; /* 긴 단어가 있을 때 줄바꿈 */
 }
 
 .ed-form-group {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .ed-form-style {
-    flex: 1;
-    margin-right: 10px; /* 버튼과 인풋창 사이의 간격 */
+	flex: 1;
+	margin-right: 10px; /* 버튼과 인풋창 사이의 간격 */
 }
 
-
 /* 검색바 */
-
 .header-area .main-nav #search {
-  position: relative;
+	position: relative;
 }
 
 .header-area .main-nav #search input {
-  background-color: #27292a;
-  height: 46px;
-  border-radius: 23px;
-  border: none;
-  color: #666;
-  font-size: 14px;
-  padding: 0px 15px 0px 45px;
+	background-color: #27292a;
+	width: 370px;
+	height: 46px;
+	border-radius: 23px;
+	border: none;
+	color: #666;
+	font-size: 14px;
+	padding: 0px 35px 0px 20px;
 }
 
 .header-area .main-nav #search i {
-  position: absolute;
-  color: #666;
-  left: 20px;
-  top: 16px;
-  width: 18px;
-  height: 18px;
-  font-size: 16px;
+	position: absolute;
+	color: #666;
+	right: 20px;
+	top: 16px;
+	width: 18px;
+	height: 18px;
+	font-size: 16px;
 }
 
+/* 검색 드롭다운 */
+#search-results {
+	list-style-type: none;
+	padding: 0;
+	background-color: #1f2122;
+	border-radius: 23px;
+	position: absolute;
+	z-index: 999;
+	width: 100%;
+	top: 100%;
+	left: 0;
+	align-items: flex-start;
+}
+
+.search-result-item {
+	display: flex;
+	align-items: center;
+}
+
+.search-result-link {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #333;
+	padding: 15px 18px !important;
+}
+
+.search-result-link img {
+	border-radius: 10px;
+	margin-right: 10px;
+}
+
+#search-result-link {
+	color: white;
+	font-weight: normal;
+	font-size: 12px;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+
+/* 검색창 제목, 가수 */
+.search-result-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.searchTitle, .searchArtist {
+  max-width: 254px;
+  overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
+  white-space: nowrap; /* 텍스트를 한 줄로 표시하고 줄바꿈을 하지 않음 */
+  vertical-align: top; /* 인라인 요소의 수직 정렬을 상단으로 맞춤 */
+}
+
+#search-icon{
+	cursor: pointer;
+}
