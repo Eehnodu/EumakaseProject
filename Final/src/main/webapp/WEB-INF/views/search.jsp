@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <title>음악하세</title>
 <%@ include file="include.jsp"%>
@@ -73,11 +72,6 @@
 											</div>
 										</div>
 									</c:forEach>
-                <div class="col-lg-12">
-										<div class="main-button" id="loadMore">
-											<a href="#">더보기</a>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -154,10 +148,6 @@
 	<script src="assets/js/tabs.js"></script>
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="assets/js/loadMore.js"></script>
-	<script src="assets/js/loadMore2.js"></script>
 
 </body>
 <%@ include file="includeFooter.jsp"%>
