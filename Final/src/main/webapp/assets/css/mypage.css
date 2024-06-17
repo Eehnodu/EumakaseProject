@@ -188,16 +188,17 @@ html {
 
 
 /* *** 나의 playlist 지금 듣기 *** */
-.row .col-lg-3 .item {
-    position: relative; /* 상대위치 */
+/* .header-text와 .col-sm-6를 동일하게 적용 */
+.header-text .item, .col-sm-6 .item {
+    position: relative;
 }
 
-.row .col-lg-3 .item .image-grid {
+.header-text .item .image-grid, .col-sm-6 .item .image-grid {
     position: relative;
     overflow: hidden;
 }
 
-.row .col-lg-3 .item .hover-effect2 {
+.header-text .item .hover-effect2, .col-sm-6 .item .hover-effect2 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -214,13 +215,12 @@ html {
     justify-content: center;
 }
 
-/* image-grid 요소에 마우스를 올릴 때 .hover-effect2 요소가 보이도록 */
-.row .col-lg-3 .item .image-grid:hover .hover-effect2 {
+.header-text .item .image-grid:hover .hover-effect2, .col-sm-6 .item .image-grid:hover .hover-effect2 {
     opacity: 1;
     visibility: visible;
 }
 
-.row .col-lg-3 .item .hover-effect2 h6 {
+.header-text .item .hover-effect2 h6, .col-sm-6 .item .hover-effect2 h6 {
     background-color: rgba(31, 33, 34, 0.95);
     display: inline-block;
     color: #ec6090;

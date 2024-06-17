@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <title>음악하세</title>
 <%@ include file="include.jsp"%>
@@ -45,7 +46,7 @@
 									<!-- 각 곡의 정보를 반복해서 출력 -->
 									<c:forEach items="${searching_music}" var="music">
 										<div class="col-lg-12 playlist">
-											<div class="item songDetail" style="display: block;">
+											<div class="item songDetail">
 												<ul>
 													<li><a
 														href="${cpath}/songDetail?musicIdx=${music.musicIdx}">
@@ -72,6 +73,11 @@
 											</div>
 										</div>
 									</c:forEach>
+                <div class="col-lg-12">
+										<div class="main-button" id="loadMore">
+											<a href="#">더보기</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -149,6 +155,9 @@
 	<script src="assets/js/popup.js"></script>
 	<script src="assets/js/custom.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="assets/js/loadMore.js"></script>
+	<script src="assets/js/loadMore2.js"></script>
 
 </body>
 <%@ include file="includeFooter.jsp"%>

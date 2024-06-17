@@ -41,9 +41,11 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
 	rel="stylesheet">
-	
+
 <!-- Material Icons CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+	rel="stylesheet">
 
 </head>
 <body>
@@ -89,8 +91,7 @@
 													<c:when test="${crud}">
 														<div class="rightbutton">
 															<button type="button" class="btn btn-edit"
-																data-bs-toggle="modal" data-bs-target="#plyupdate"
-																>
+																data-bs-toggle="modal" data-bs-target="#plyupdate">
 																<i class="fas fa-pencil-alt"></i> 이름 수정
 															</button>
 															<button type="button" class="btn btn-delete"
@@ -100,9 +101,15 @@
 														</div>
 													</c:when>
 													<c:otherwise>
-														<button type="button" class="btn btn-primary btn-outline-primary" id="plyinsert">
+														<!-- <button type="button" class="btn btn-primary btn-outline-primary" id="plyinsert">
 															<span class="material-symbols-outlined">playlist_add</span> 플리저장
+														</button> -->
+														<button type="button" class="btn btn-primary btn-outline-primary btn-slide2" id="plyinsert">
+															<span class="material-symbols-outlined circle2">playlist_add</span>
+															<span class="title2">플리 저장</span> 
+															<span class="title-hover2">플리 저장</span>
 														</button>
+
 													</c:otherwise>
 												</c:choose>
 											</div>

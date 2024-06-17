@@ -329,6 +329,7 @@
   overflow: hidden;
   border-radius: 23px;
 }
+
 /* ------------------------플리 저장, 수정, 삭제 버튼 CSS ----------------------------- */
 /* *** 플리 이름 수정 및 삭제 *** */
 .rightbutton {
@@ -340,20 +341,11 @@ button i{
 	padding: 5px 5px;
 }
 
-/* .material-symbols-outlined {
-	background-color: transparent; 아이콘 배경색 변경
-	color: #fff; 아이콘 색상 변경
-	display: inline-block; 아이콘을 인라인 블록 요소로 설정
-	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-	vertical-align: middle; 아이콘과 텍스트를 동일한 줄에 수평 정렬
-} */
-
 /* *** 플리 저장 *** */
 /* 아이콘 */
 .game-details .content .left-info span {
 	color: #fff;
-	display: block;
-	margin-top: 7px;
+	margin-bottom: 7px;
 	font-weight: 400;
 	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
@@ -376,15 +368,102 @@ button i{
     --bs-gradient: none;
     float: right;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.btn-slide2 {
+    position: relative;
+   /*  display: inline-block; */
+    height: 50px;
+    width: 180px;
+    line-height: 50px;
+    padding: 0;
+    border-radius: 50px;
+    background: #27292a;
+    border: 2px solid #0099cc;
+    /* margin: 10px; */
+    transition: .6s;
 }
 
-.btn-outline-primary span{
-	text-align: center;
+.btn-slide2 {
+    border: 2px solid #e75e8d;
+}
+
+.btn-slide2:hover {
+    background-color: #e75e8d;
+}
+
+.btn-slide2:hover span.circle2 {
+	left: 100%;
+    margin-left: -45px;
+    background-color: #fff;
+    color: #e75e8d;
+}
+
+.btn-slide2:hover span.title2 {
+    left: 40px;
+    opacity: 0;
+}
+
+.btn-slide2:hover span.title-hover2 {
+    opacity: 1;
+    left: 40px;
+}
+
+.btn-slide2 span.circle2 {
+    display: block;
+    background-color: #e75e8d;
+    color: #fff;
+    position: absolute;
+    float: left;
+    margin: 0 auto;
+    line-height: 42px;
+    height: 40px;
+    width: 40px;
+    /* top: 0; */
+    left: 5px;
+    transition: .6s;
+    border-radius: 50%;
+}
+
+.btn-slide2 span.title2,
+.btn-slide2 span.title-hover2 {
+    position: absolute;
+    left: 90px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: .5s;
+}
+
+.btn-slide2 span.title2,
+.btn-slide2 span.title-hover2 {
+    color: #e75e8d;
+    left: 70px;
+  }
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+    left: 70px;
+    opacity: 0;
+}
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+    color: #fff;
+}
+
+/* *** 마우스 올렸을 떄 hover *** */
+.btn-outline-primary span {
+    text-align: center;
+    margin-right: 5px; /* 아이콘과 텍스트 간의 간격 조절 */
 }
 
  .gaming-library ul{
 	border-radius: 23px;
-	transition: background-color 0.2s ease; /* 배경색 변경을 0.3초 동안 부드럽게 전환 */
+	transition: background-color 0.2s ease; 
 } 
 
  .gaming-library ul:hover{
@@ -467,4 +546,3 @@ button.swal2-cancel.btn.btn-danger {
 	color: white;
 	border-radius: 23px;
 }
-
