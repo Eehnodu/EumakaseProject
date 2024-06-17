@@ -74,6 +74,12 @@ public class MemberRestController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@RequestMapping("/try")
+	public List<MusicVO> searchMusicByTitle(String keyword) {
+		List<MusicVO> musiclist =  musicMapper.searchMusicByTitle(keyword);
+		return musiclist;
+	}
+	
 	@RequestMapping("/updateMyPlayList")
 	public void updateMyPlayList(String newPlaylistName, int myplIdx) {
 		MyPlaylistVO mvo = new MyPlaylistVO();

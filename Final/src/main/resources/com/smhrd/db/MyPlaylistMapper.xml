@@ -46,4 +46,12 @@
 	    SELECT title, artist FROM tb_music WHERE emotion = #{emotion}
 	</select>
 	
+	<select id="searchPlaylist" parameterType="String" resultType="com.smhrd.model.MyPlaylistVO">
+		SELECT *
+		FROM tb_myplaylist
+		WHERE MATCH(plName) AGAINST (#{keyword} IN NATURAL LANGUAGE MODE) LIMIT 5
+	</select>
+	
+	
+	
 </mapper>
