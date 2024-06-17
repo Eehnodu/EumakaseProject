@@ -1,6 +1,5 @@
 const cpath = document.body.getAttribute('data-cpath');
 
-
 // 엔터를 눌렀었을 때 다음 입력란으로 이동
 $(document).ready(function() {
 

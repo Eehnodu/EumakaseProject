@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="assets/css/mypage.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body data-cpath="${cpath}">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -56,17 +56,17 @@
 													</div>
 													<!-- ***** Preloader End ***** -->
 													<!-- 차트 영역 -->
-													<form id="chartjs" action="${cpath}/chartjs" method="post"
+													<form id="getmygenre" action="/getMypage" method="post"
 														novalidate>
 														<canvas id="myChart1" width="400" height="400"
 															style="margin-right: 30px; margin-top: -40px"></canvas>
 													</form>
-													<form id="getMusic" action="${cpath}/getMusic"
+													<form id="getmymusic" action="/getMypage"
 														method="post" novalidate>
 														<canvas id="myChart2" width="400" height="400"
 															style="margin-right: 30px; margin-top: -40px"></canvas>
 													</form>
-													<form id="getEmotion" action="${cpath}/getEmotion"
+													<form id="getmyemotion" action="/getMypage"
 														method="post" novalidate>
 														<canvas id="myChart3" width="400" height="400"
 															style="margin-right: 30px; margin-top: -40px"></canvas>
@@ -100,8 +100,7 @@
 
 
 
-
-								</div>
+								/div>
 
 								<div class="row">
 									<div class="col-lg-12">
@@ -163,37 +162,38 @@
 
 
 
-	<!-- Scripts -->
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/popup.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/loadMore.js"></script>
-	<script src="assets/js/chartGenre.js"></script>
-	<script src="assets/js/chartPrefernce.js"></script>
-	<script src="assets/js/chartfunction.js"></script>
-	<script src="assets/js/chartEmotion.js"></script>
 
-	<script
-		src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
-	<script
-		src="assets/js/mypage.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<!-- Scripts -->
+		<script src="assets/js/isotope.min.js"></script>
+		<script src="assets/js/owl-carousel.js"></script>
+		<script src="assets/js/tabs.js"></script>
+		<script src="assets/js/popup.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/loadMore.js"></script>
+		<script src="assets/js/chartGenre.js"></script>
+		<script src="assets/js/chartPrefernce.js"></script>
+		<script src="assets/js/chartEmotion.js"></script>
+		<script src="assets/js/chartfunction.js"></script>
 
-	<%@ include file="includeFooter.jsp"%>
+		<script
+			src="assets/js/userPlaylist.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/isotope.min.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/owl-carousel.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script src="assets/js/tabs.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script src="assets/js/popup.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script src="assets/js/custom.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/loadMore.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/chartGenre.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/chartPrefernce.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/chartfunction.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<script
+			src="assets/js/mypage.js?ver=<%=System.currentTimeMillis()%>"></script>
+		<%@ include file="includeFooter.jsp"%>
 </body>
 </html>

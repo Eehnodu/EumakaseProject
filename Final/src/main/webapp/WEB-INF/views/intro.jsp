@@ -13,7 +13,8 @@
 <%@ include file="include.jsp"%>
 <%@ include file="includeHeader.jsp"%>
 
-<link rel="stylesheet" href="assets/css/intro.css?ver=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet"
+	href="assets/css/intro.css?ver=<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
@@ -27,9 +28,27 @@
 		}
 	}
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script src="assets/js/isotope.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+	integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/tabs.js"></script>
+<script src="assets/js/popup.js"></script>
+<style>
+.pink-text {
+    color: pink; 
+}
+
+</style>
 </head>
-<body>
+<body data-cpath="${cpath}">
 
 	<div class="container">
 		<div class="row">
@@ -46,32 +65,31 @@
 										<span>Listen to Personalized</span> Playlist
 									</h4>
 								</div>
-								<form id="getIntroForm" action="${cpath}/getIntro" method="post" novalidate>
-									<div class="owl-features owl-carousel">
-										<div class="item">
-											<div class="thumb">
-												<canvas id="genreChart" width="400" height="400"></canvas>
-											</div>
-										</div>
-										<div class="item">
-											<div class="thumb" id="topSongsByGenre">
-                                        			<h2>Top Songs by Genre</h2>
-											</div>
-										</div>
-										<div class="item">
-											<div class="thumb">
-												<canvas id="emotionChart" width="400" height="400"></canvas>
-											</div>
-										</div>
-										<div class="item" >
-											<div class="thumb" id="topSongsByEmotion">
-												<h2>Top Songs by Emotion</h2>
-											</div>
-										</div>
+								<form id="getIntro" action="/getIntro" method="post" novalidate>
+									<div class="plzShow">
+										<canvas id="emotionChart" width="400" height="400"></canvas>
 									</div>
+									<div class="plzShow" id="topSongsByEmotion" width="400"
+										height="400">
+										<h3></h3>
+									</div>
+									<div class="plzShow">
+										<canvas id="genreChart" width="400" height="400"></canvas>
+									</div>
+									<div class="plzShow" id="topSongsByGenre" width="400"
+										height="400">
+										<h3></h3>
+									</div>
+									<button id="prevChart" type="button">Previous</button>
+									<button id="nextChart" type="button">Next</button>
 								</form>
+
+
 							</div>
 						</div>
+
+
+
 						<div class="col-lg-4">
 							<div id="goAi" class="game-details mb-3">
 								<a href="${cpath}/AIrecommend">
@@ -126,29 +144,8 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-		<!-- Scripts -->
-
-		<script src="assets/js/isotope.min.js"></script>
-		<script src="assets/js/tabs.js"></script>
-		<script src="assets/js/popup.js"></script>
-		<script src="assets/js/chartIntro.js"></script>
-
-		<!-- put jquery before owl carousel -->
-		<!-- jquery -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-			crossorigin="anonymous"></script>
-
-		<!-- owl carousel -->
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-			integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="assets/js/intro.js?ver=<%=System.currentTimeMillis()%>"></script>
 </body>
+<script src="assets/js/chartIntro.js"></script>
+<script src="assets/js/introFunction.js"></script>
 <%@ include file="includeFooter.jsp"%>
 </html>
