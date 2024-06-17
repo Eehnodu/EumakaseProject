@@ -49,7 +49,7 @@
 										<c:choose>
 											<c:when test="${empty searching_music}">
 												<h4>
-													<em>검색된 곡이 없습니다</em>
+													<em>검색된 곡이 없습니다.</em>
 												</h4>
 											</c:when>
 											<c:otherwise>
