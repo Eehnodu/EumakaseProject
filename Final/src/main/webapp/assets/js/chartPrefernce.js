@@ -18,7 +18,7 @@ $.ajax({
 
         data.labels.forEach((label, index) => {
             const span = document.createElement('span');
-            span.textContent = label;
+            span.textContent = (index+1) + ". " + label;
             containerData.appendChild(span);
             if (index < data.labels.length - 1) {
                 containerData.appendChild(document.createElement('br'));

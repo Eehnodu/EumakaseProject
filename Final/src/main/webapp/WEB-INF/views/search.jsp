@@ -97,6 +97,7 @@
 									        </c:otherwise>
 									    </c:choose>
 									</div>
+                  
 									<c:forEach items="${myplaylist}" var="myplay" varStatus="loop">
 										<div class="col-lg-3 col-sm-6">
 											<div class="item" style="display: block;">
@@ -129,10 +130,6 @@
 									</c:forEach>
 									
 								</div>
-
-
-
-
 							</div>
 						</div>
 					</div>
