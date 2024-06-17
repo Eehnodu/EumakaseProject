@@ -164,18 +164,11 @@
     border-radius: 25px;
 }
 
-/* ***** 더보기 ***** */
-.songDetail {
-	display: none;
-}
 
 .noContent {
 	color: #fff;
 }
 
-.item{
-	display: none;
-}
 
 .item h4{
 	margin-top: 20px;
