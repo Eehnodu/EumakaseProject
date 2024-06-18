@@ -251,7 +251,13 @@ public class MainController {
 		}
 		String memId = memvo.getMemId();
 		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);
+		List<Map<String, String>> contextList = new ArrayList<>();
 
+		for (MyPlaylistVO mvo : myplayListIdx) {
+		    Map<String, String> context = surveyMapper.context_in_surDesc(mvo.getMyplIdx());
+		    contextList.add(context);
+		}
+		model.addAttribute("contextList", contextList);
 		model.addAttribute("myplayList", myplayListIdx);
 
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
@@ -841,10 +847,10 @@ public class MainController {
 	}
 
 	@GetMapping("/songDetail")
-	public String songDetail(@RequestParam int musicIdx, Model model) {
+	public String songDetail(@RequestParam int musicIdx, HttpSession session) {
 		// musicIdx를 이용하여 해당 곡의 상세 정보를 가져옵니다.
 		MusicVO music = musicMapper.getUserPlaylist(musicIdx);
-		model.addAttribute("musicDetail", music);
+		session.setAttribute("musicDetail", music);
 		return "songDetail";
 	}
 

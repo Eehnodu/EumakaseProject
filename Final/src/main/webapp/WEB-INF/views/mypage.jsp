@@ -103,8 +103,7 @@
 														</h4>
 													</div>
 												</div>
-												<c:forEach var="myply" items="${myplayList}"
-													varStatus="loop">
+												<c:forEach var="myply" items="${myplayList}" varStatus="loop">
 													<div class="col-lg-3 col-sm-6">
 													<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myply.myplIdx}">
 														<div class="item">
@@ -123,6 +122,19 @@
 																</div>
 																<div class="down-content">
 																	<h4 class="pinkPlTitle">${myply.plName}</h4>
+																</div>
+																<div>
+																	<span>
+															<c:forEach items="${contextList}" var="context"
+															begin="${loop.index}" end="${loop.index}">
+															    #${context.surDesc1}
+															    #${context.surDesc2}
+															    #${context.surDesc3}
+															    #${context.surDesc4}
+															    #${context.surDesc5}
+															</c:forEach>
+															
+														</span>
 																</div>
 															</div>
 															</a>
