@@ -124,7 +124,7 @@
 																	<h4 class="pinkPlTitle">${myply.plName}</h4>
 																</div>
 																<div>
-																	<span>
+																	<span id="mymusicTag">
 															<c:forEach items="${contextList}" var="context"
 															begin="${loop.index}" end="${loop.index}">
 															    #${context.surDesc1}
