@@ -129,7 +129,7 @@
 														</c:forEach>
 													</div>
 													<div class="down-content">
-														<h4 class="pinkPlTitle">${myplay.plName}</h4>
+														<h4>${myplay.plName}</h4>
 														<span> <c:forEach items="${contextList}"
 																var="context" begin="${loop.index}" end="${loop.index}">
 															    #${context.surDesc1}

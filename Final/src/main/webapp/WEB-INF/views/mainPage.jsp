@@ -156,7 +156,7 @@
 													<h6>상세 보기</h6>
 												</div>
 											</div>
-											<h4><span class="pinkPlTitle">${otherIdx.plName}</span></h4><br> <span>${otherSurDescList[status.index]}</span>
+											<h4><span>${otherIdx.plName}</span></h4><br> <span>${otherSurDescList[status.index]}</span>
 											</h4>
 										</a>
 									</div>

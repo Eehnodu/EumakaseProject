@@ -121,10 +121,10 @@
 																	</div>
 																</div>
 																<div class="down-content">
-																	<h4 class="pinkPlTitle">${myply.plName}</h4>
+																	<h4>${myply.plName}</h4>
 																</div>
 																<div>
-																	<span id="mymusicTag">
+																	<span>
 															<c:forEach items="${contextList}" var="context"
 															begin="${loop.index}" end="${loop.index}">
 															    #${context.surDesc1}
