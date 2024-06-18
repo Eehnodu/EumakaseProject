@@ -30,12 +30,14 @@
 							<c:choose>
 								<c:when test="${searching_music == null}">
 									<h4>
-										<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과가 없습니다.</em>
+										<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과가
+											없습니다.</em>
 									</h4>
 								</c:when>
 								<c:otherwise>
-									 <h4>
-										<span class="txtPink">'${keyword}'</span><em>에 대한 검색 결과입니다.</em>
+									<h4>
+										<span class="txtPink">'${keyword}'</span><em>에 대한 검색
+											결과입니다.</em>
 									</h4>
 								</c:otherwise>
 							</c:choose>
@@ -49,16 +51,16 @@
 										<c:choose>
 											<c:when test="${empty searching_music}">
 												<h4>
-													<em>검색된 곡이 없습니다.</em>
+													<span class="txtItalics">검색된 곡이 없습니다.</span>
 												</h4>
 											</c:when>
 											<c:otherwise>
-												 <h4>
+												<h4>
 													<em>곡</em>
 												</h4>
 											</c:otherwise>
 										</c:choose>
-										
+
 									</div>
 									<!-- 각 곡의 정보를 반복해서 출력 -->
 									<c:forEach items="${searching_music}" var="music">
@@ -103,50 +105,47 @@
 								<div class="row">
 									<div class="heading-section">
 										<c:choose>
-									        <c:when test="${empty myplaylist}">
-										        <h4>
-													<em>플레이리스트가 없습니다.</em>
+											<c:when test="${empty myplaylist}">
+												<h4>
+													<span class="txtItalics">플레이리스트가 없습니다.</span>
 												</h4>
-									        </c:when>
-									        <c:otherwise>
-									            <h4>
+											</c:when>
+											<c:otherwise>
+												<h4>
 													<em>플레이리스트</em>
 												</h4>
-									        </c:otherwise>
-									    </c:choose>
+											</c:otherwise>
+										</c:choose>
 									</div>
-                  
+
 									<c:forEach items="${myplaylist}" var="myplay" varStatus="loop">
 										<div class="col-lg-3 col-sm-6">
 											<div class="item" style="display: block;">
 												<div class="thumb">
 													<div class="image-grid">
 														<c:forEach var="cov" items="${albumCovList}"
-																		begin="${loop.index * 4}"
-																		end="${(loop.index * 4) + 3}">
-																		<img src="${cov}" alt="">
-																	</c:forEach>
-															<a id="playlistbutton" href="${cpath}/userPlaylist?myplIdx=${myplay.myplIdx}">상세보기가즈아</a>
+															begin="${loop.index * 4}" end="${(loop.index * 4) + 3}">
+															<img src="${cov}" alt="">
+														</c:forEach>
 													</div>
 													<div class="down-content">
-														<h4>${myplay.plName}</h4>
-														<span>
-															<c:forEach items="${contextList}" var="context"
-															begin="${loop.index}" end="${loop.index}">
+														<h4 class="pinkPlTitle">${myplay.plName}</h4>
+														<span> <c:forEach items="${contextList}"
+																var="context" begin="${loop.index}" end="${loop.index}">
 															    #${context.surDesc1}
 															    #${context.surDesc2}
 															    #${context.surDesc3}
 															    #${context.surDesc4}
 															    #${context.surDesc5}
 															</c:forEach>
-															
+
 														</span>
 													</div>
 												</div>
 											</div>
 										</div>
 									</c:forEach>
-									
+
 								</div>
 							</div>
 						</div>

@@ -41,12 +41,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="assets/js/tabs.js"></script>
 <script src="assets/js/popup.js"></script>
-<style>
-.pink-text {
-    color: pink; 
-}
-
-</style>
 </head>
 <body data-cpath="${cpath}">
 
@@ -60,28 +54,37 @@
 					<div class="row">
 						<div id="introImages" class="col-lg-8">
 							<div class="featured-games header-text">
-								<div class="heading-section">
-									<h4>
-										<span>Listen to Personalized</span> Playlist
-									</h4>
-								</div>
 								<form id="getIntro" action="/getIntro" method="post" novalidate>
 									<div class="plzShow">
-										<canvas id="emotionChart" width="400" height="400"></canvas>
+										<div class="heading-section">
+											<h4>
+												<span>Most Popular Emotions in </span>EUMAKASE
+											</h4>
+										</div>
+										<canvas id="emotionChart" width="400" height="400"
+											style="margin-left: 160px; margin-top: 70px"></canvas>
 									</div>
 									<div class="plzShow" id="topSongsByEmotion" width="400"
-										height="400">
-										<h3></h3>
+										height="400" style="margin-left: 160px; margin-top:70px">
 									</div>
 									<div class="plzShow">
-										<canvas id="genreChart" width="400" height="400"></canvas>
+										<div class="heading-section">
+											<h4>
+												<span>Most Popular Genres in </span>EUMAKASE 
+											</h4>
+										</div>
+										<canvas id="genreChart" width="400" height="400"
+											style="margin-left: 160px; margin-top: 70px"></canvas>
 									</div>
 									<div class="plzShow" id="topSongsByGenre" width="400"
-										height="400">
-										<h3></h3>
+										height="400" style="margin-left: 160px; margin-top:70px">
 									</div>
-									<button id="prevChart" type="button">Previous</button>
-									<button id="nextChart" type="button">Next</button>
+									<button id="prevChart" class="btn-arrow" type="button">
+										<i class="fa-solid fa-backward-step"></i>
+									</button>
+									<button id="nextChart" class="btn-arrow" type="button">
+										<i class="fa-solid fa-forward-step"></i>
+									</button>
 								</form>
 
 
