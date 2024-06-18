@@ -1,4 +1,58 @@
-#introWrap{
+/* 소개 차트 */
+.pink-text {
+	font-size: 13px;
+	color: #ec6090;
+}
+
+.featured-games {
+	height: 680px;
+}
+
+.heading-section h4 {
+	margin-top: 15px;
+	margin-bottom: 50px;
+	text-align: center;
+	font-size: 30px;
+}
+
+#prevChart, #nextChart {
+	position: absolute;
+	top: 50%;
+	z-index: 10; /* 차트보다 버튼이 앞에 오도록 설정 */
+	color: #e75e8d;
+}
+
+#prevChart {
+	margin-left: 42px;
+}
+
+#nextChart {
+	right: 830px;
+}
+
+.btn-arrow {
+	background-color: transparent;
+	border: none;
+	font-size: 2rem; /* 아이콘 크기 조정 */
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.introTopSongs {
+	border: 2px solid rgb(236, 96, 144);
+	border-radius: 23px;
+	padding: 20px;
+	width: 400px;
+	margin-bottom: 20px;
+}
+
+.introTopSongTxt {
+	border-bottom: 1px solid #ec608082;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+#introWrap {
 	height: 800px;
 }
 
@@ -17,8 +71,8 @@ h4 span {
 }
 
 #aiBox {
-    padding: 17px 30px;
-    background-color: #ec6090;
+	padding: 17px 30px;
+	background-color: #ec6090;
 }
 
 #aiBox:hover {
@@ -26,12 +80,11 @@ h4 span {
 	border-color: transparent;
 }
 
-
 #txtGoAI span {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
-svg{
+svg {
 	width: 45px;
 }
 
@@ -82,36 +135,35 @@ span.songTitle {
 	padding-top: 7px;
 	margin-bottom: 1px;
 	text-align: left !important;
-    max-width: 280px;
-    white-space: nowrap;  /* 텍스트가 한 줄로 표시되도록 함 */
-    overflow: hidden;  /* 넘치는 텍스트를 숨김 */
-    text-overflow: ellipsis;  /* 넘치는 텍스트를 '...'으로 표시 */
-    position: relative; /* 툴팁 위치를 위해 필요 */
-    
+	max-width: 280px;
+	white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 함 */
+	overflow: hidden; /* 넘치는 텍스트를 숨김 */
+	text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
+	position: relative; /* 툴팁 위치를 위해 필요 */
 }
 
 span.songTitle::after {
-    content: attr(title); /* title 속성값을 툴팁 내용으로 사용 */
-    visibility: hidden;
-    opacity: 0;
-    width: auto;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%; /* 요소의 위쪽에 툴팁을 표시 */
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    transition: opacity 0.3s;
+	content: attr(title); /* title 속성값을 툴팁 내용으로 사용 */
+	visibility: hidden;
+	opacity: 0;
+	width: auto;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%; /* 요소의 위쪽에 툴팁을 표시 */
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	transition: opacity 0.3s;
 }
 
 span.songTitle:hover::after {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 .playlistDetail .item span {

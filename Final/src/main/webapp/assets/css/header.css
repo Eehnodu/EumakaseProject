@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'SpoqaHanSansNeo-Regular';
+}
+
 /* 
   ---------------------------------------------
   Header Style
@@ -752,6 +762,10 @@ div.\=\"modal-dialog\" {
 	margin-right: 10px; /* 버튼과 인풋창 사이의 간격 */
 }
 
+.fa-music {
+	margin-top: 10px;
+}
+
 /* 검색바 */
 .header-area .main-nav #search {
 	position: relative;
@@ -826,13 +840,13 @@ div.\=\"modal-dialog\" {
 }
 
 .searchTitle, .searchArtist {
-  max-width: 254px;
-  overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
-  text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
-  white-space: nowrap; /* 텍스트를 한 줄로 표시하고 줄바꿈을 하지 않음 */
-  vertical-align: top; /* 인라인 요소의 수직 정렬을 상단으로 맞춤 */
+	max-width: 254px;
+	overflow: hidden; /* 넘치는 콘텐츠를 숨김 */
+	text-overflow: ellipsis; /* 넘치는 텍스트를 '...'으로 표시 */
+	white-space: nowrap; /* 텍스트를 한 줄로 표시하고 줄바꿈을 하지 않음 */
+	vertical-align: top; /* 인라인 요소의 수직 정렬을 상단으로 맞춤 */
 }
 
-#search-icon{
+#search-icon {
 	cursor: pointer;
 }

@@ -11,9 +11,6 @@ $.ajax({
         const labels = emotionData.map(item => item.surDesc);
         const values = emotionData.map(item => item.count);
 
-		const labels = Object.keys(data);
-		const values = Object.values(data);
-
 		const container = document.getElementById('labelsContainer3');
 		const containerData = document.getElementById('labelsContainerData3');
 		container.innerHTML = '';

@@ -5,7 +5,6 @@
 //				class="fa fa-search"></i>
 //	</form>
 //</div>
-
 const searchInput = document.getElementById('searchText');
 const searchbtn = document.querySelector('.fa-search');
 
@@ -97,6 +96,13 @@ $(document).ready(function() {
 
 	document.getElementById('search-icon').addEventListener('click', function() {
 		document.getElementById('search').submit();
+	});
+
+	// 검색창 바깥 영역 클릭 시 검색 결과 숨기기
+	$(document).on('click', function(event) {
+		if (!$(event.target).closest('.search-input, #search-results').length) {
+			$('#search-results').empty();
+		}
 	});
 });
 

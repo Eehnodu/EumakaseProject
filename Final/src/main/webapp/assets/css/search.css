@@ -3,6 +3,12 @@
 	font-style: italic;
 }
 
+.txtItalics{
+	font-style: italic;
+	font-size: 25px;
+}
+
+
 .col-lg-12.playlist {
     display: flex;
     justify-content: space-between;

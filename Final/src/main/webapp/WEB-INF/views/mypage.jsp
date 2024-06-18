@@ -45,16 +45,6 @@
 											</div>
 											<div class="row chartPref">
 												<div class="col-lg-6 d-flex justify-content-end">
-													<!-- ***** Preloader Start ***** -->
-													<div id="js-preloader2" class="js-preloader2">
-														<div class="preloader-inner2">
-															<span class="dot2"></span>
-															<div class="dots2">
-																<span></span> <span></span> <span></span>
-															</div>
-														</div>
-													</div>
-													<!-- ***** Preloader End ***** -->
 													<!-- 차트 영역 -->
 													<form id="getmygenre" action="/getMypage" method="post"
 														novalidate>
@@ -128,11 +118,11 @@
 															
 																	
 																	<div class="hover-effect2">
-																		<h6>지금 듣기</h6>
+																		<h6>상세 보기</h6>
 																	</div>
 																</div>
 																<div class="down-content">
-																	<h4>${myply.plName}</h4>
+																	<h4 class="pinkPlTitle">${myply.plName}</h4>
 																</div>
 															</div>
 															</a>

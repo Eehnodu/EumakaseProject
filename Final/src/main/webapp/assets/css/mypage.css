@@ -1,43 +1,40 @@
-
-
 hr {
 	background: pink;
 	height: 1px;
 	border: 0;
 }
 
-.btn-edit{
+.btn-edit {
 	background-color: #666666;
-    display: inline-block;
-    color: #fff;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 12px;
-    /* border-color:#ec6090; */
+	display: inline-block;
+	color: #fff;
+	font-size: 14px;
+	padding: 5px 10px;
+	border-radius: 12px;
+	/* border-color:#ec6090; */
 }
 
-.btn-edit:hover{
+.btn-edit:hover {
 	border-color: #fff;
-    background-color: #fff;
-    color: #e75e8d;
+	background-color: #fff;
+	color: #e75e8d;
 }
 
-.btn-delete{
+.btn-delete {
 	background-color: rgba(236, 96, 144, 0.9);
-    padding: 5px 10px;
-    border-radius:12px;
-    color: #fff;
-    font-size: 14px;
+	padding: 5px 10px;
+	border-radius: 12px;
+	color: #fff;
+	font-size: 14px;
 }
 
-.btn-delete:hover{
+.btn-delete:hover {
 	border-color: #fff;
-    background-color: #fff;
-    color: #e75e8d;
+	background-color: #fff;
+	color: #e75e8d;
 }
 
 /* 차트 영역 */
-
 #chartArea {
 	position: relative;
 }
@@ -69,26 +66,21 @@ hr {
 	cursor: pointer;
 }
 
-
 li#labelsContainerData1 {
-    font-size: 15px;
+	font-size: 15px;
 }
 
-
-li#labelsContainer1, li#labelsContainer2, li#labelsContainer3{
-border-bottom: 1px solid #ec608082;
+li#labelsContainer1, li#labelsContainer2, li#labelsContainer3 {
+	border-bottom: 1px solid #ec608082;
 }
 
-ul#firstLabelsContainer, ul#secondLabelsContainer, ul#thirdLabelsContainer {
-    background-color: transparent;
-    border: solid 1.5px #ec6090;
-    margin-top: -40px;
-    margin-left: 40px;
+ul#firstLabelsContainer, ul#secondLabelsContainer, ul#thirdLabelsContainer
+	{
+	background-color: transparent;
+	border: solid 2px #ec6090;
+	margin-top: -40px;
+	margin-left: 40px;
 }
-
-
-
-
 
 /* 
   ---------------------------------------------
@@ -138,11 +130,11 @@ li .thumb a {
 }
 
 fa-lg {
-	    margin-right: 3px;
+	margin-right: 3px;
 }
 
-#playlistbutton{
-	background-color : transparent;
+#playlistbutton {
+	background-color: transparent;
 }
 
 /* 이미지 스타일링 */
@@ -151,7 +143,7 @@ fa-lg {
 	height: auto; /* 이미지의 원본 비율을 유지 */
 }
 
-image-grid img{
+image-grid img {
 	width: 100%;
 	border-radius: 0px;
 }
@@ -165,20 +157,20 @@ image-grid img{
 
 /* 이미지 사분할 */
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  width: 100%; /* 원하는 크기로 설정 */
-  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
-  overflow: hidden;
-  border-radius: 23px;
-}	
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	width: 100%; /* 원하는 크기로 설정 */
+	aspect-ratio: 1/1; /* 정사각형 비율 유지 */
+	overflow: hidden;
+	border-radius: 23px;
+}
 
-.item{
+.item {
 	display: none;
 }
 
-.item h4{
+.item h4 {
 	margin-top: 20px;
 }
 
@@ -186,140 +178,47 @@ html {
 	scroll-behavior: smooth;
 }
 
-
-/* *** 나의 playlist 지금 듣기 *** */
+/* *** 나의 playlist 상세 보기 *** */
 /* .header-text와 .col-sm-6를 동일하게 적용 */
 .header-text .item, .col-sm-6 .item {
-    position: relative;
+	position: relative;
 }
 
 .header-text .item .image-grid, .col-sm-6 .item .image-grid {
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 }
 
 .header-text .item .hover-effect2, .col-sm-6 .item .hover-effect2 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: all .4s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-text .item .image-grid:hover .hover-effect2, .col-sm-6 .item .image-grid:hover .hover-effect2 {
-    opacity: 1;
-    visibility: visible;
-}
-
-.header-text .item .hover-effect2 h6, .col-sm-6 .item .hover-effect2 h6 {
-    background-color: rgba(31, 33, 34, 0.95);
-    display: inline-block;
-    color: #ec6090;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: 25px;
-}
-
-
-
-
-
-/* 차트영역 프리로더 */
-
-.preloader-inner2 {
-	position: relative;
-	width: 142px;
-	height: 40px;
-	background: transparent;
-}
-
-.preloader-inner2 .dot2 {
 	position: absolute;
-	width: 16px;
-	height: 16px;
-	top: 12px;
-	left: 15px;
-	background: #e75e8d;
-	border-radius: 50%;
-	-webkit-transform: translateX(0);
-	transform: translateX(0);
-	-webkit-animation: dot 2.8s infinite;
-	animation: dot 2.8s infinite;
-}
-
-.preloader-inner2 .dots2 {
-	-webkit-transform: translateX(0);
-	transform: translateX(0);
-	margin-top: 12px;
-	margin-left: 31px;
-	-webkit-animation: dots 2.8s infinite;
-	animation: dots 2.8s infinite;
-}
-
-.preloader-inner2 .dots2 span {
-	display: block;
-	float: left;
-	width: 16px;
-	height: 16px;
-	margin-left: 16px;
-	background: #e75e8d;
-	border-radius: 50%;
-}
-
-.js-preloader2 {
-	position: absolute;
-	top: 0;
+	bottom: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.4); /* 반투명 배경으로 변경 */
-	display: -webkit-box;
-	display: flex;
-	-webkit-box-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	justify-content: center;
-	opacity: 1;
-	visibility: visible;
-	z-index: 999;
-	-webkit-transition: opacity 0.25s ease;
-	transition: opacity 0.5s ease;
-	border-radius:23px;
-}
-
-.js-preloader2.loaded {
+	text-align: center;
+	width: 100%;
+	height: 100%;
 	opacity: 0;
 	visibility: hidden;
-	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0.6);
+	transition: all .4s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-@-webkit-keyframes dot2 { 50% {
-	-webkit-transform: translateX(96px);
-	transform: translateX(96px);
+.header-text .item .image-grid:hover .hover-effect2, .col-sm-6 .item .image-grid:hover .hover-effect2
+	{
+	opacity: 1;
+	visibility: visible;
 }
-}
-@keyframes dot2 { 50% {
-	-webkit-transform: translateX(96px);
-	transform: translateX(96px);
-}
-}
-@-webkit-keyframes dots2 { 50% {
-	-webkit-transform: translateX(-31px);
-	transform: translateX(-31px);
-}
-}
-@keyframes dots2 { 50% {
-	-webkit-transform: translateX(-31px);
-	transform: translateX(-31px);
-}
+
+.header-text .item .hover-effect2 h6, .col-sm-6 .item .hover-effect2 h6
+	{
+	background-color: rgba(31, 33, 34, 0.95);
+	display: inline-block;
+	color: #ec6090;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 10px 20px;
+	border-radius: 25px;
 }

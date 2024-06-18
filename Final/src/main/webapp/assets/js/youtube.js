@@ -11,8 +11,8 @@ function onYouTubeIframeAPIReady() {
     var iframeValue = document.getElementById('player').getAttribute('data-iframe');
 
     player = new YT.Player('player', {
-        height: '360',  //변경가능-영상 높이
-        width: '640',  //변경가능-영상 너비
+        height: '240',  //변경가능-영상 높이
+        width: '426',  //변경가능-영상 너비
         videoId: iframeValue,  //모델에서 전달된 iframe 값을 사용
         playerVars: {
             'rel': 0,    //연관동영상 표시여부(0:표시안함)
