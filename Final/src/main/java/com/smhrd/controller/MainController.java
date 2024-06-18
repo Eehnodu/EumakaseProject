@@ -251,7 +251,13 @@ public class MainController {
 		}
 		String memId = memvo.getMemId();
 		List<MyPlaylistVO> myplayListIdx = myplaylistMapper.getMyplayList(memId);
+		List<Map<String, String>> contextList = new ArrayList<>();
 
+		for (MyPlaylistVO mvo : myplayListIdx) {
+		    Map<String, String> context = surveyMapper.context_in_surDesc(mvo.getMyplIdx());
+		    contextList.add(context);
+		}
+		model.addAttribute("contextList", contextList);
 		model.addAttribute("myplayList", myplayListIdx);
 
 		List<MusicVO> mymusic = musicMapper.getMyMusic(memId);
