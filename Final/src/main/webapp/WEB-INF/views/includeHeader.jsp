@@ -30,16 +30,21 @@
 						<a href="${cpath}/mainPage" class="logo"> <img
 							src="assets/images/logo.png" alt="">
 						</a>
-					</c:if>
-					<!-- ***** Logo End ***** -->
-					<!-- ***** Search Start ***** --> <!-- 로그인 여부에따라 생길지 말지 정해야됨 -->
-					<div class="search-input">
+						<div class="search-input">
 						<form id="search" action="${cpath}/search">
 							<input type="text" id="searchText" name="searchKeyword"
-								placeholder="검색어를 입력하세요" autocomplete="off"/> <i class="fa fa-search" id="search-icon"></i>
+								placeholder="검색어를 입력하세요" autocomplete="off" /> <i
+								class="fa fa-search" id="search-icon"></i>
 							<ul class="nav flex-column" id=search-results></ul>
 						</form>
 					</div>
+					</c:if>
+					<!-- ***** Logo End ***** -->
+					
+					
+					<!-- ***** Search Start ***** -->
+					<!-- 로그인 여부에따라 생길지 말지 정해야됨 -->
+					
 					<!-- ***** Search End ***** -->
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav nav-pills">
