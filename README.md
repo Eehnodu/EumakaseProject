@@ -96,7 +96,7 @@
 <br>
 
 ## ⚙ 시스템 아키텍처
-![아키텍쳐](https://github.com/Envoy-VC/awesome-badges/assets/155121578/8ce73797-6a96-43a7-9bcf-bcfc05a53be5)
+![아키텍처](https://github.com/Envoy-VC/awesome-badges/assets/155121578/85619e76-a6f6-4cd8-8680-18dd34177faa)
 <br>
 
 ## 📌 SW유스케이스
