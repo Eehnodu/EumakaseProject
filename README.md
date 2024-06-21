@@ -194,115 +194,70 @@
 
 <details>
 <summary>
-### 🔨 차트의 오버랩 문제<br>
+### 🔨 Chart.js 로딩 속도 문제<br>
 </summary>
 - 문제<br>
-
-  메인 페이지 접속시 오늘 날짜를 기준으로 7일전까지의 데이터를 가져와 시각화함.
-  원하는 날짜로 바꾸어 차트의 값을 업데이트 할 경우 기존의 차트가 사라지지 않고 새로운 차트가 덧씌워지는 문제가 발생.
+	
+  STS와 MySQL 연결 및 시각화의 어려움
+  Value Object와 컨트롤러 호출의 빈번함
+  Chart를 불러오는 과정에서 화면에 늦게 출력되는 시간이 10초 이상 걸림.
 
 - 원인<br>
 
-  new 연산자를 이용해 새로운 메모리로 할당됨에따라 canvas를 초기화하는게 아닌
-  새로운 chart가 기존 차트에 덧씌우듯 표시되는 문제라 사료됨.
+  STS에서 Mybatis를 이용하여 데이터를 가져옴
+  데이터의 볼륨과 거치는 테이블이 많아서 속도 저하가 된다고 생각함.
  
 - 해결방안<br>
 
-  update 메소드와 destroy 메소드 사용.
-  update 메소드를 사용하였으나 console.log로 확인하였을때 값의 변경이 일어났지만 기존 차트는 유지됨.
-  destory 메소드를 사용하여 기존의 차트 객체를 삭제하고 다시 설정해주는 방법으로 해결.
+  Pymysql에서 SQL쿼리문으로 해결하여 flask를 통해 값을 받아옴.
  
 - 코드<br>
 ```
-$("#date_check").on("click", function() {
-		let start_date = $("#dateFrom").val();
-		let end_date = $("#dateTo").val();
-		
-		// 기존 차트 데이터 삭제
-		if(doughnutChart != undefined){
-			doughnutChart.destroy();
-		}
-		if(lineChart != undefined){
-			lineChart.destroy();
-		}
-		fetchStartExChart(start_date, end_date);
-		fetchStartChChart(start_date, end_date);
-	});
+# pymysql 연결
+def get_connection():
+    return pymysql.connect(
+        host='project-db-cgi.smhrd.com',
+        port=3307,
+        user='ehroqkfdbcah',
+        password='q1w2e3!@#',
+        db='ehroqkfdbcah',
+        charset='utf8',
+        cursorclass=pymysql.cursors.DictCursor
+    )
+
+# 값을 불러오는 sql문
+def get_my_genre(input_memid):
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            get_context_sql = """
+                SELECT s.surDesc, COUNT(*) as count
+                FROM tb_context c
+                JOIN tb_survey s ON c.surIdx = s.surIdx
+                WHERE c.memId = %s
+                  AND s.surType = 'A'
+                  AND s.surItem = 'genre'
+                GROUP BY s.surDesc
+                ORDER BY count DESC
+                LIMIT 3;
+            """
+            cursor.execute(get_context_sql, (input_memid))
+            results = cursor.fetchall()
+            mygenre_list = [{'surDesc': row['surDesc'], 'count': row['count']} for row in results]
+            return mygenre_list
+    finally:
+        conn.close()
+
+# sts와 flask 연결
+@app.route('/getmygenre', methods=['POST'])
+def get_my_genre_endpoint():
+    content = request.json
+    input_memid = content['memid']
+    genre_data = get_my_genre(input_memid)
+    return jsonify(genre_data).
+
 ```
 </details>
 
-<details>
-<summary>
-### 🔨 비밀번호 암호화(SHA-256 + Salt)<br>
-</summary>
-- 문제<br>
 
-  SHA-256은 단방향 알고리즘의 한 종류로, 해시 값을 이용한 암호화 방식.
-  SHA-256을 사용하였을때 같은 비밀번호일 경우 같은 해시 값을 반환함을 확인.
-
-- 원인<br>
-
-  SHA-256은 입력 값에 해당하는 해시 값이 정해져 있음.
-  레인보우 테이블을 이용해 해시 값을 통해 원본 문자열의 유추가 가능해짐.
-  레인보우 테이블이란? => 해시 함수의 모든 입력값에 대한 결과값을 표로 정리한 것.
- 
-- 해결방안<br>
-
-  무작위 숫자를 바이트 배열로 변환하여 이를 10진수 문자열로 변환한 Salt값을 추가로 생성.
-  로그인 및 개인정보 수정 시 비밀번호의 확인을 위해 해당 Salt값을 알아야하기 때문에
-  Member_id에 해당하는 Salt값을 저장하는 tb_salt 테이블을 생성 및 저장.
- 
-- 코드<br>
-```
-public class Encrypt {
-	/**
-	 * 무작위 문자열 Salt 생성
-	 * 
-	 * @return 생성된 Salt 문자열
-	 */
-	public static String getSalt() {
-		// 1. SecureRandom 객체 생성
-		SecureRandom sr = new SecureRandom();
-		// 2. 무작위 바이트 배열 salt 생성 (길이: 20)
-		byte[] salt = new byte[20];
-		// 3. 무작위 바이트로 salt 배열 채우기
-		sr.nextBytes(salt);
-		// 4. 바이트 배열을 16진수 문자열로 변환하여 반환
-		StringBuffer sb = new StringBuffer();
-		for (byte b : salt) {
-			sb.append(String.format("%02x", b));
-		}
-		return sb.toString();
-	}
-	/**
-	 * 주어진 암호와 Salt를 이용하여 SHA-256 알고리즘을 적용한 결과를 반환
-	 * 
-	 * @param pwd  암호
-	 * @param salt Salt 문자열
-	 * @return 암호와 Salt를 이용하여 적용한 SHA-256 알고리즘 결과
-	 */
-	public static String getEncrypt(String pwd, String salt) {
-		String result = "";
-		try {
-			// 1. SHA-256 알고리즘을 적용할 MessageDigest 객체 생성
-			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			// 2. 암호와 Salt를 이용하여 MessageDigest 업데이트
-			md.update((pwd + salt).getBytes());
-			// 3. 업데이트된 내용으로 해시값 계산
-			byte[] pwdSalt = md.digest();
-			// 4. 해시값을 16진수 문자열로 변환하여 반환
-			StringBuffer sb = new StringBuffer();
-			for (byte b : pwdSalt) {
-				sb.append(String.format("%02x", b));
-			}
-			result = sb.toString();
-		} catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException(e);
-		}
-		return result;
-	}
-}
-```
-</details>
-우리꺼로 작성할 것!!
 
