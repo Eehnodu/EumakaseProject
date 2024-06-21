@@ -257,6 +257,7 @@ def get_my_genre_endpoint():
     return jsonify(genre_data).
 
 ```
+
 </details>
 
 
