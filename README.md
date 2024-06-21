@@ -96,8 +96,7 @@
 <br>
 
 ## ⚙ 시스템 아키텍처
-![image](https://github.com/2024-SMHRD-KDT-BigData-23/FitNeeds/assets/155136709/911d56fd-1a63-4e86-a44b-98940a326cba)
-아키텍쳐 새로 만들것!!!
+![아키텍쳐](https://github.com/Envoy-VC/awesome-badges/assets/155121578/8ce73797-6a96-43a7-9bcf-bcfc05a53be5)
 <br>
 
 ## 📌 SW유스케이스
