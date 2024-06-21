@@ -1,5 +1,6 @@
 # 🎧 음악하세(팀명: 도개발윷모)
-![logo2](https://github.com/Eehnodu/FinalProject/assets/155136516/bfd18320-d52d-48a5-a1aa-3d7a547f3dc7)
+![logo](https://github.com/Eehnodu/FinalProject/assets/155136516/07cf47d0-5747-48c2-aeda-164d28d4f8be)
+
 
 ## 👀 서비스 소개
 * 서비스명: AI를 활용한 음악 추천 서비스 반응형 웹
