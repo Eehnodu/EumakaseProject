@@ -123,20 +123,30 @@
 | ![image](https://github.com/Eehnodu/Portfolio/assets/155121578/e1f6280f-5398-4ab4-8f67-68d50268344d)|
 새로 할것!!
 
-|🎞 회원관리 페이지 |
+|🎞 메인 페이지 |
 |:---:|
 |![image](https://github.com/Eehnodu/Portfolio/assets/155121578/df0c6a8b-13ed-4575-85e6-464859130e81)|
 새로 할것!!
 
-|🎞 메인페이지 및 비교페이지|
-|:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
-새로 할것!!
-
-|🎞 운동 및 체중 입력 페이지|🎞 예약 페이지|
+|🎞 AI 추천 페이지 |🎞 AI 추천 결과 페이지 |
 |:---:|:---:|
 |![image](https://github.com/Eehnodu/Portfolio/assets/155121578/906efd8b-648d-464c-97e2-9d42f6b2ab82)|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/0ed2e567-9a0f-45d9-b166-54c6d5528e11)|
-새로 할것!!
+
+|🎞 마이 페이지 |
+|:---:|
+|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+
+|🎞 플레이리스트 상세 페이지 |
+|:---:|
+|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+
+|🎞 곡 상세 정보 페이지 |
+|:---:|
+|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+
+|🎞 검색 페이지 |
+|:---:|
+|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
 
 
 
