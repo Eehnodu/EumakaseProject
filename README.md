@@ -130,19 +130,20 @@
 
 |🎞 AI 추천 페이지 |🎞 AI 추천 결과 페이지 |
 |:---:|:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/906efd8b-648d-464c-97e2-9d42f6b2ab82)|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/0ed2e567-9a0f-45d9-b166-54c6d5528e11)|
+|![AI](https://github.com/Eehnodu/FinalProject/assets/155136516/f4323cc7-8428-4eda-981d-ca8cd210e9dc)|![플리](https://github.com/Eehnodu/FinalProject/assets/155136516/ed1eb377-fbd7-4173-87ef-fc929612972b)
+|
 
 |🎞 마이 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![마이뮤직](https://github.com/Eehnodu/FinalProject/assets/155136516/5b4558b2-176c-4b27-9315-06bdae19ae9d)|
 
 |🎞 플레이리스트 상세 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![남의플리](https://github.com/Eehnodu/FinalProject/assets/155136516/ae1aaf5a-4802-42f2-8711-2bdcb239a392)|
 
 |🎞 곡 상세 정보 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![곡상세](https://github.com/Eehnodu/FinalProject/assets/155136516/3dac243c-84e8-4a24-b907-2755f82c55af)|
 
 |🎞 검색 페이지 |
 |:---:|
