@@ -124,16 +124,16 @@
 |:---:|
 | ![image](https://github.com/Eehnodu/Eumakase/assets/155121578/a22a46ae-acdb-4455-84a9-b0f377d9a605)|
 
-|🎞 메인 페이지 |
-|:---:|
+|🎞 메인 페이지 |🎞 메인 페이지 |
+|:---:|:---:|
 |![image](https://github.com/Eehnodu/Eumakase/assets/155121578/9057a45d-6694-455e-a970-f9c8904096ea)|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/f5b4c6e5-13eb-4595-94b2-720216f13287)|
 
 |🎞 AI 추천 페이지 |🎞 AI 추천 결과 페이지 |
 |:---:|:---:|
 |![image](https://github.com/Eehnodu/Eumakase/assets/155121578/359e8810-c346-4b05-8cdb-68b24220d6cc)|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/dcfd1290-0e16-4909-9f69-ec93ea146815)|
 
-|🎞 마이 페이지 |
-|:---:|
+|🎞 마이 페이지 |🎞 마이 페이지 |
+|:---:|:---:|
 |![image](https://github.com/Eehnodu/Eumakase/assets/155121578/74621c9a-d005-4682-8b9a-0ba228bd5f6a)|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/881db3e7-0880-4fed-a740-02eb900da717)|
 
 |🎞 플레이리스트 상세 페이지 |
