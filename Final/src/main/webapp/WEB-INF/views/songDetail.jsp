@@ -86,11 +86,11 @@
 														<em>가사</em>
 													</h4>
 												</div>
+												<div id="player" data-iframe="${musicDetail.iframe}"></div>
 												<span class="lyrics">${musicDetail.lyrics}</span>
 											</div>
 										</div>
 									</div>
-									<div id="player" data-iframe="${musicDetail.iframe}"></div>
 
 								</div>
 							</div>

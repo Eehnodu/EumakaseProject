@@ -255,7 +255,7 @@
 	margin-top: 20px;
 }
 
-.game-details .content .left-info span {
+.game-details .content .col-lg-9 .left-info .left span {
 	color: #666;
 	display: block;
 	margin-top: 7px;
@@ -321,14 +321,154 @@
 
 /* 이미지 사분할 */
 .image-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	width: 100%; /* 원하는 크기로 설정 */
-	aspect-ratio: 1/1; /* 정사각형 비율 유지 */
-	overflow: hidden;
-	border-radius: 23px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%; /* 원하는 크기로 설정 */
+  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+  overflow: hidden;
+  border-radius: 23px;
 }
+
+/* ------------------------플리 저장, 수정, 삭제 버튼 CSS ----------------------------- */
+/* *** 플리 이름 수정 및 삭제 *** */
+.rightbutton {
+	text-align: right;
+	padding-top: 0px;
+}
+
+button i{
+	padding: 5px 5px;
+}
+
+/* *** 플리 저장 *** */
+/* 아이콘 */
+.game-details .content .left-info span {
+	color: #fff;
+	margin-bottom: 7px;
+	font-weight: 400;
+	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #e75e8d;
+    --bs-btn-border-color: #e75e8d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #e75e8d;
+    --bs-btn-hover-border-color: #e75e8d;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #e75e8d;
+    --bs-btn-active-border-color: #e75e8d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #e75e8d;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #e75e8d;
+    --bs-gradient: none;
+    float: right;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.btn-slide2 {
+    position: relative;
+   /*  display: inline-block; */
+    height: 50px;
+    width: 180px;
+    line-height: 50px;
+    padding: 0;
+    border-radius: 50px;
+    background: #27292a;
+    border: 2px solid #0099cc;
+    /* margin: 10px; */
+    transition: .6s;
+}
+
+.btn-slide2 {
+    border: 2px solid #e75e8d;
+}
+
+.btn-slide2:hover {
+    background-color: #e75e8d;
+}
+
+.btn-slide2:hover span.circle2 {
+	left: 100%;
+    margin-left: -45px;
+    background-color: #fff;
+    color: #e75e8d;
+}
+
+.btn-slide2:hover span.title2 {
+    left: 40px;
+    opacity: 0;
+}
+
+.btn-slide2:hover span.title-hover2 {
+    opacity: 1;
+    left: 40px;
+}
+
+.btn-slide2 span.circle2 {
+    display: block;
+    background-color: #e75e8d;
+    color: #fff;
+    position: absolute;
+    float: left;
+    margin: 0 auto;
+    line-height: 42px;
+    height: 40px;
+    width: 40px;
+    /* top: 0; */
+    left: 5px;
+    transition: .6s;
+    border-radius: 50%;
+}
+
+.btn-slide2 span.title2,
+.btn-slide2 span.title-hover2 {
+    position: absolute;
+    left: 90px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: .5s;
+}
+
+.btn-slide2 span.title2,
+.btn-slide2 span.title-hover2 {
+    color: #e75e8d;
+    left: 70px;
+  }
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+    left: 70px;
+    opacity: 0;
+}
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+    color: #fff;
+}
+
+/* *** 마우스 올렸을 떄 hover *** */
+.btn-outline-primary span {
+    text-align: center;
+    margin-right: 5px; /* 아이콘과 텍스트 간의 간격 조절 */
+}
+
+ .gaming-library ul{
+	border-radius: 23px;
+	transition: background-color 0.2s ease; 
+} 
+
+ .gaming-library ul:hover{
+	background-color: #1f2122;
+} 
 
 /* SweetAlert2 아이콘 크기 조정 */
 .swal2-icon {

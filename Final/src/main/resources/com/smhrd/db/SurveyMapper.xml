@@ -82,6 +82,24 @@
     </select>
     
     <select id="getSurveyIdsByDesc" parameterType="string" resultType="integer">
-    SELECT surIdx FROM tb_survey WHERE surDesc = #{desc}
-</select>
+    	SELECT surIdx FROM tb_survey WHERE surDesc = #{desc}
+	</select>
+	
+	<select id="context_in_surDesc" parameterType="int" resultType="map">
+		SELECT
+		    MAX(CASE WHEN con.contextIdx = ai.contextIdx THEN sur.surDesc END) AS surDesc1,
+		    MAX(CASE WHEN con.contextIdx = ai.contextIdx2 THEN sur.surDesc END) AS surDesc2,
+		    MAX(CASE WHEN con.contextIdx = ai.contextIdx3 THEN sur.surDesc END) AS surDesc3,
+		    MAX(CASE WHEN con.contextIdx = ai.contextIdx4 THEN sur.surDesc END) AS surDesc4,
+		    MAX(CASE WHEN con.contextIdx = ai.contextIdx5 THEN sur.surDesc END) AS surDesc5
+		FROM
+		    tb_aiplaylist ai
+		INNER JOIN
+		    tb_context con ON con.contextIdx IN (ai.contextIdx, ai.contextIdx2, ai.contextIdx3, ai.contextIdx4, ai.contextIdx5)
+		INNER JOIN
+		    tb_survey sur ON con.surIdx = sur.surIdx
+		WHERE
+		    ai.myplIdx = #{myplIdx};
+	</select>
+	
 </mapper>

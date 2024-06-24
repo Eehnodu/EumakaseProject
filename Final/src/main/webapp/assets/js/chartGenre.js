@@ -1,14 +1,13 @@
-var Gpath = document.body.getAttribute('data-cpath');
-
+var cpath = document.body.getAttribute('data-cpath');
 $.ajax({
-    url: `${Gpath}/chartjs`,
+    url: `${cpath}/getMypage`,
     type: 'POST',
     dataType: 'json',
     success: function(data) {
         console.log('차트 0 데이터 로드 성공');
-        
-        const labels = Object.keys(data);
-        const values = Object.values(data);
+        const genreData = data.genre_data;
+        const labels = genreData.map(item => item.surDesc);
+        const values = genreData.map(item => item.count);
 
         const container = document.getElementById('labelsContainer1');
         const containerData = document.getElementById('labelsContainerData1');
@@ -21,13 +20,16 @@ $.ajax({
 
         labels.forEach((label, index) => {
             const span = document.createElement('span');
-            span.textContent = label;
+            span.textContent = (index+1) + ". " + label;
             containerData.appendChild(span);
             if (index < labels.length - 1) {
                 containerData.appendChild(document.createElement('br'));
             }
         });
-        
+         let chartStatus = Chart.getChart('myChart1');
+			if (chartStatus !== undefined) {
+			  chartStatus.destroy();
+			}
         const genre = document.getElementById('myChart1').getContext('2d');
         new Chart(genre, {
             type: 'doughnut',
@@ -37,14 +39,14 @@ $.ajax({
                     label: '장르',
                     data: values,
                     backgroundColor: [
-                        'rgb(253, 252, 220)',
-                        'rgb(254, 217, 183)',
-                        'rgb(240, 113, 103)'
+                        'rgb(205, 180, 219)',
+                        'rgb(255, 200, 221)',
+                        'rgb(255, 175, 204)'
                     ],
                     borderColor: [
-                         'rgb(253, 252, 220)',
-                        'rgb(254, 217, 183)',
-                        'rgb(240, 113, 103)'
+                        'rgb(205, 180, 219)',
+                        'rgb(255, 200, 221)',
+                        'rgb(255, 175, 204)'
                     ],
                     borderWidth: 1
                 }]
@@ -52,9 +54,9 @@ $.ajax({
             options: {
                 responsive: false,
                 rotation: -90,
-       		    circumference: 180,
+                circumference: 180,
                 plugins: {
-                    legend: false, // Hide the legend
+                    legend: false,
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -73,7 +75,9 @@ $.ajax({
             }
         });
     },
-    error: function() {
-        console.log('차트 1 데이터 로드 실패');
+    error: function(e) {
+        console.log('차트 0 데이터 로드 실패');
+        console.log(e);
+        
     }
 });

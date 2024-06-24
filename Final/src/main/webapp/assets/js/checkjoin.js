@@ -1,6 +1,5 @@
 const cpath = document.body.getAttribute('data-cpath');
 
-
 // 엔터를 눌렀었을 때 다음 입력란으로 이동
 $(document).ready(function() {
 
@@ -94,6 +93,7 @@ function checkPw(pw) {
    completeJoin();
 }
 
+
 // 아이디,비번 검사 확인 후 가입완료
 function completeJoin() {
    window.history.pushState({}, '', `${cpath}/join`);
@@ -136,22 +136,56 @@ function completeJoin() {
         <legend class="three">최대 3개까지 선택해주세요</legend>
 `;
 
-                     result.forEach((item, index) => {
-                        htmlContent += `
-    <div class="checkbox">
-      <label class="checkbox-wrapper">
-        <input type="checkbox" class="checkbox-input" />
+					  result.forEach((item, index) => {
+						  // item.surType 값을 출력하여 확인
+						  // console.log(`Item Type: ${item.surType}`);
+
+						  // item.surType 값을 출력하여 확인
+						  // console.log(`Item Type: ${item.surType}`);
+
+						  // surDesc에 따라 다른 이미지 경로 설정
+						  let imageSrc = ''; // 기본값을 빈 문자열로 설정
+
+						  if (item.surDesc === 'R&B') {
+							  imageSrc = 'assets/images/rnb.png'; // 'R&B'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '랩/힙합') {
+							  imageSrc = 'assets/images/rap.png'; // '랩/힙합'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '발라드') {
+							  imageSrc = 'assets/images/vallade.png'; // '발라드'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '인디') {
+							  imageSrc = 'assets/images/indi.png'; // '인디'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '재즈') {
+							  imageSrc = 'assets/images/jazz.png'; // '재즈'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === 'POP') {
+							  imageSrc = 'assets/images/pop.png'; // 'POP'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '댄스') {
+							  imageSrc = 'assets/images/dance.png'; // '댄스'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '록/메탈') {
+							  imageSrc = 'assets/images/rock.png'; // '록/메탈'에 대한 이미지 경로 설정
+						  } else if (item.surDesc === '기타') {
+							  imageSrc = 'assets/images/etc.png'; // '기타'에 대한 이미지 경로 설정
+						  } else {
+							  imageSrc = 'assets/images/default.png'; // 기본 이미지 경로 설정
+						  }
+
+						  // console.log(`Image Source: ${imageSrc}`); // 경로가 제대로 설정되었는지 확인
+						  // console.log(`Description: ${item.surDesc}`);
+						  // console.log(`Current Item:`, item); // item 객체 자체를 로그로 출력
+						  htmlContent += `
+<div class="checkbox btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+    <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input">
         <span class="checkbox-tile">
-          <span class="checkbox-icon">
-           <img src="${item.imageSrc}" alt="${item.surDesc}" class="genre-icon" />
-          </span>
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
-          <span class="checkbox-label">${item.surDesc}</span>
-          </button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+                <span class="checkbox-icon">
+                    <img src="${imageSrc}" alt="${item.surDesc}" class="genre-icon" />
+                </span>
+                <span class="checkbox-label">${item.surDesc}</span>
+            </button>
         </span>
-      </label>
-    </div>
-    
+    </label>
+</div>
+
   `;
   
                      });
@@ -168,13 +202,52 @@ function completeJoin() {
 
                      // 폼 마감 태그와 추가 버튼을 문자열에 추가합니다.
                      htmlContent += `
-                        <br>
-                           <button type='button' class='btn btn-primary btn-sm' id='btnComplete'><span>가입 완료</span></button>
+                        <br> 
+                           <button type='button' class='btn btn-primary btn-sm' id='btnComplete'><span>submit</span>
+    <div class="successbtn">
+    <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
+      
+	<path d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173   c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752   c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z"/>
+ </svg>
+      </div>
+      </button>
                         </div>
                      `;
 
                      // 최종적으로 구성된 HTML 문자열을 #prefSurvey에 설정합니다.
                      $("#prefSurvey").html(htmlContent);
+                     
+                    // 버튼 클릭 이벤트 설정
+let btn = document.getElementById("btnComplete");
+
+btn.addEventListener("click", function() {
+    btn.classList.toggle("is_active");
+});
+
+// CSS 스타일을 추가하여 애니메이션을 정의합니다.
+let style = document.createElement('style');
+style.innerHTML = `
+    .btn-primary.is_active {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-primary.is_active .successbtn {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .btn-primary.is_active .successbtn svg {
+        margin-top: 50%;
+        transform: translateY(-50%) rotate(720deg) scale(1);
+    }
+
+    .btn-primary.is_active span {
+        opacity: 0;
+        visibility: hidden;
+    }
+`;
+document.head.appendChild(style);
 
 
 

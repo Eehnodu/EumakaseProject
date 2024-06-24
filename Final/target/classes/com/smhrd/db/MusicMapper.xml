@@ -73,5 +73,30 @@
 		releasedAt FROM tb_music WHERE artist LIKE CONCAT('%', #{artist}, '%')
 		AND title LIKE CONCAT('%', #{title}, '%') LIMIT 1
 	</select>
+	
+	<select id="searchMusicByTitle" parameterType="String" resultType="com.smhrd.model.MusicVO">
+	    SELECT *
+	    FROM tb_music
+	    WHERE MATCH(title) AGAINST (#{keyword} IN NATURAL LANGUAGE MODE) LIMIT 3
+	</select>
+	
+	<select id="myplIdxgetmusic" resultType="com.smhrd.model.MusicVO">
+		SELECT * 
+		FROM tb_music
+		WHERE musicIdx IN (
+		    SELECT musicIdx
+		    FROM (
+		        SELECT musicIdx
+		        FROM tb_aiplaylist ai
+		        INNER JOIN tb_myplaylist mpy ON ai.myplIdx = mpy.myplIdx
+		        WHERE mpy.myplIdx = #{myplIdx}
+		        ORDER BY RAND()
+		        LIMIT 4
+		    ) AS subquery
+		)
+		ORDER BY RAND()
+		LIMIT 4
+	</select>
+	
 
 </mapper>

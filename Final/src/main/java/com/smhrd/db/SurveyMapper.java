@@ -1,6 +1,7 @@
 package com.smhrd.db;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -45,5 +46,7 @@ public interface SurveyMapper {
 	public SurveyVO getMemPreGenre(PreferenceVO vo);
 	
 	public SurveyVO getSameDesc(String surDesc);
+	
+	public Map<String, String> context_in_surDesc(int myplIdx);
 	
 }

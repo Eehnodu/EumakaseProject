@@ -9,7 +9,7 @@
 	href="assets/css/header.css?ver=<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
-
+<script src="assets/js/search.js?ver=<%=System.currentTimeMillis()%>"></script>
 
 
 <!-- ***** Header Area Start ***** -->
@@ -22,24 +22,29 @@
 					<%-- 비회원은 로고 클릭 시 소개페이지 --%>
 					<c:if test="${member==null}">
 						<a href="${cpath}/" class="logo"> <img
-							src="assets/images/logo2.png" alt="">
+							src="assets/images/logo.png" alt="">
 						</a>
 					</c:if>
 					<%-- 로그인한 회원은 로고 클릭 시 메인페이지 --%>
 					<c:if test="${member!=null}">
 						<a href="${cpath}/mainPage" class="logo"> <img
-							src="assets/images/logo2.png" alt="">
+							src="assets/images/logo.png" alt="">
 						</a>
-					</c:if>
-					<!-- ***** Logo End ***** -->
-					<!-- ***** Search Start ***** -->
-					<div class="search-input">
-						<form id="search" action="#">
-							<input type="text" placeholder="Type Something" id='searchText'
-								name="searchKeyword" onkeypress="handle" /> <i
-								class="fa fa-search"></i>
+						<div class="search-input">
+						<form id="search" action="${cpath}/search">
+							<input type="text" id="searchText" name="searchKeyword"
+								placeholder="검색어를 입력하세요" autocomplete="off" /> <i
+								class="fa fa-search" id="search-icon"></i>
+							<ul class="nav flex-column" id=search-results></ul>
 						</form>
 					</div>
+					</c:if>
+					<!-- ***** Logo End ***** -->
+					
+					
+					<!-- ***** Search Start ***** -->
+					<!-- 로그인 여부에따라 생길지 말지 정해야됨 -->
+					
 					<!-- ***** Search End ***** -->
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav nav-pills">
@@ -146,7 +151,7 @@
 			<div class="modal-header">
 
 				<h4 class="modal-title">
-					<img src="assets/images/logo2.png" alt="">
+					<img src="assets/images/logo.png" alt="">
 				</h4>
 				<button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
 			</div>

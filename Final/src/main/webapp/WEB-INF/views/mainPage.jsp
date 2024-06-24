@@ -54,22 +54,20 @@
 					<!-- AI 추천 및 최근에 재생한 플레이리스트 -->
 					<div class="row">
 						<div class="col-lg-4">
-							<div class="top-streamers" id="top-AI">
-								<div class="heading-section">
-									<h6>음악하세</h6>
-									<h4>
-										<em>AI</em> 음악 추천
-									</h4>
-									<div class="main-button">
-										<a href="${cpath}/AIrecommend">Try Now</a>
-
+							<a href="${cpath}/AIrecommend">
+								<div class="top-streamers" id="top-AI">
+									<div class="heading-section aiHeading">
+										<div class="main-button">
+											<span class="btnLP">AI 음악추천<br>시작하기
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 
 
-						<!-- 최근에 재생한 플레이리스트 -->
+						<!-- ***** 가장 많이 사랑받은 노래 start ***** -->
 						<div class="col-lg-8">
 							<div class="featured-games header-text" id="songsLoved">
 								<div class="heading-section">
@@ -81,12 +79,15 @@
 									<c:forEach var="popular" items="${popularMusic}">
 										<div class="item">
 											<div class="thumb">
-												<a href="<c:url value='/songDetail?musicIdx=${popular.musicIdx}'/>">
+												<a
+													href="<c:url value='/songDetail?musicIdx=${popular.musicIdx}'/>">
 													<img src="${popular.albumCov}" alt="">
 												</a>
 												<div class="hover-effect">
 													<h6>
-														<a href="#"></a>지금 듣기
+														<a
+															href="<c:url value='/songDetail?musicIdx=${popular.musicIdx}'/>">
+															상세 보기 </a>
 													</h6>
 												</div>
 											</div>
@@ -98,11 +99,7 @@
 								</div>
 							</div>
 						</div>
-
-						<!-- ***** Featured Games End ***** -->
-
-
-
+						<!-- ***** 가장 많이 사랑받은 노래 end ***** -->
 
 
 						<!-- ***** 사용자한테 추천하는 플레이리스트 start ***** -->
@@ -121,10 +118,10 @@
 										<a href="${cpath}/recPlayList?genreIndex=${genreEntry.key}">
 											<div class="item">
 												<div class="thumb">
-													<img class="genreAlbumCov" src="assets/images/genre-${status.index + 1}.png"
-														alt="">
+													<img class="genreAlbumCov"
+														src="assets/images/genre-${status.index + 1}.png" alt="">
 												</div>
-												<h4>${recSurvey[genreEntry.key]}</h4>
+												<h4 class="genreTag">${recSurvey[genreEntry.key]}</h4>
 											</div>
 										</a>
 									</c:forEach>
@@ -133,9 +130,6 @@
 						</div>
 					</div>
 					<!-- ***** 사용자한테 추천하는 플레이리스트 End ***** -->
-
-
-
 
 					<!-- ***** 다른 사람의 플레이리스트 start ***** -->
 					<div class="col-lg-12">
@@ -159,10 +153,10 @@
 													</div>
 												</c:forEach>
 												<div class="hover-effect2">
-													<h6>지금 듣기</h6>
+													<h6>상세 보기</h6>
 												</div>
 											</div>
-											<h4>${otherIdx.plName}<br> <span>${otherSurDescList[status.index]}</span>
+											<h4><span class="pinkPlTitle">${otherIdx.plName}</span></h4><br> <span>${otherSurDescList[status.index]}</span>
 											</h4>
 										</a>
 									</div>
