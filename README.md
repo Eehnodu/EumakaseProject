@@ -28,6 +28,96 @@
 <div markdown="1">
 
 * 기능1 : 선호도 및 사용자 상태 파악 질문
+  <br>선호도 질문
+  ```
+  # DB에 저장된 정보 가져오기
+  @RequestMapping("/joiningSurvey")
+	public List<SurveyVO> joiningSurvey(HttpSession session) {
+		if (session != null) {
+			session.invalidate();
+		}
+
+		List<SurveyVO> SurveyList = surveyMapper.joiningSurvey();
+
+		return SurveyList;
+	}
+  
+  # ajax를 통해 반환
+  $.ajax({
+            url: `${cpath}/joiningProcess`,
+            type: "post",
+            data: $("form").serialize(),
+            success: function(response) {
+               // console.log(response);
+               $.ajax({
+                  url: `${cpath}/joiningSurvey`,
+                  type: "post",
+                  success: function(result) { // 결과 성공 콜백함수
+                     window.history.pushState({}, '', `${cpath}/`);
+                     console.log(response);
+                     console.log(result);
+                     
+                     // console.log(response); response 가져
+                     // 선언된 변수에 초기 HTML 구조를 설정합니다.
+                     
+                     // 선호도 조사 꾸미기
+                     let htmlContent = `
+  
+    <form id="toggleForm" onsubmit="handleSubmit(event)">
+      <fieldset class="checkbox-group">
+      <h4 class="h4survey">선호도 조사</h4>
+        <legend class="checkbox-group-legend">Choose your favorites</legend>
+        <legend class="three">최대 3개까지 선택해주세요</legend>
+`;
+  ```
+  <br>상태파악 질문
+  ```
+@GetMapping("/AIrecommend")
+	public String AIrecommend(Model model) {
+		Random ran = new Random();
+		List<SurveyVO> Que = surveyMapper.aiQuestion();
+		List<SurveyVO> Ans = surveyMapper.aiAnswer();
+		Map<String, List<SurveyVO>> questionMap = new HashMap<>();
+		Map<String, List<SurveyVO>> answerMap = new HashMap<>();
+
+		// 카테고리 초기화
+		String[] categories = { "emotion", "situation", "place", "people", "genre" };
+		for (String category : categories) {
+			questionMap.put(category, new ArrayList<>());
+			answerMap.put(category, new ArrayList<>());
+		}
+
+		// 질문을 카테고리별로 분류
+		for (SurveyVO que : Que) {
+			if (questionMap.containsKey(que.getSurItem())) {
+				questionMap.get(que.getSurItem()).add(que);
+			}
+		}
+
+		// 답변을 카테고리별로 분류
+		for (SurveyVO ans : Ans) {
+			if (answerMap.containsKey(ans.getSurItem())) {
+				answerMap.get(ans.getSurItem()).add(ans);
+			}
+		}
+
+		// 랜덤 질문을 모델에 추가
+		for (String category : categories) {
+			List<SurveyVO> ques = questionMap.get(category);
+			if (!ques.isEmpty()) {
+				model.addAttribute(category + "Que", ques.get(ran.nextInt(ques.size())));
+			}
+		}
+
+		// 모든 답변을 모델에 추가
+		for (String category : categories) {
+			model.addAttribute(category + "Ans", answerMap.get(category));
+		}
+
+		return "AIrecommend";
+	}
+
+  ```
 * 기능2 : 선호도 평가 질문 제시(회원가입 시)
 * 기능3 : 질문을 통한 사용자 분석 및 AI를 활용한 플레이리스트 추천
 * 기능4 : 계절 및 장르별 자동 추천
