@@ -907,7 +907,7 @@ with open('xgboost_model1.pkl', 'rb') as f:
 
 |🎞 곡 상세 정보 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/7cbf260f-c910-4d3b-993a-adaa6d7db39d)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/5a873cc5-cbc6-4b1b-bd35-280a81a726d2)|
 
 |🎞 검색 페이지 |
 |:---:|
