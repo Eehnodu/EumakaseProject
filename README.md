@@ -27,7 +27,7 @@
 <summary><b>주요 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
-* 기능1,2 : 선호도 및 사용자 상태 파악 질문 및 제시시
+* 기능1,2 : 선호도 및 사용자 상태 파악 질문 및 제시시<br>
   <br>선호도 질문
   ```
   # DB에 저장된 정보 가져오기
@@ -241,7 +241,7 @@
 		}
 	}
 ```
-* 기능4 : 계절 및 장르별 자동 추천
+* 기능4 : 계절 및 장르별 자동 추천<br>
   <br>계절별 추천
   ```
   @GetMapping("/")
@@ -663,14 +663,144 @@
 	    }
 	}
 ```
-* 기능6 : 음원 및 큐레이션 데이터 크롤링
+* 기능6 : 음원 및 큐레이션 데이터 크롤링<br>
   <br> 음원 크롤링
   ![image](https://github.com/Eehnodu/Eumakase/assets/155121578/f0123431-28b1-4aa8-a546-5ac811ae8a00)
   <br> 큐레이션 크롤링
   ![image](https://github.com/Eehnodu/Eumakase/assets/155121578/37219bab-352d-4060-b5f4-3438748eff71)
 * 기능7 : 검색 기능
-* 기능8 : 머신러닝(XgBoost)를 활용한 AI 개발
+  ```
+  @GetMapping("/search")
+	public String search(@RequestParam("searchKeyword") String searchKeyword ,Model model) {
+		System.out.println(searchKeyword);
+		List<MusicVO> musiclist = musicMapper.searchMusicByTitle(searchKeyword);
+		List<MyPlaylistVO> myplaylist = myplaylistMapper.searchPlaylist(searchKeyword);
+		
+		List<Map<String, String>> contextList = new ArrayList<>();
+		List<String> albumCovList = new ArrayList<>();
 
+		for (MyPlaylistVO mvo : myplaylist) {
+		    Map<String, String> context = surveyMapper.context_in_surDesc(mvo.getMyplIdx());
+		    contextList.add(context);
+
+		    List<MusicVO> albumcov = musicMapper.myplIdxgetmusic(mvo.getMyplIdx());
+		    for (MusicVO i : albumcov) {
+		        albumCovList.add(i.getAlbumCov());
+		    }
+		}
+		
+		model.addAttribute("contextList",contextList);
+		model.addAttribute("albumCovList",albumCovList);
+		model.addAttribute("myplaylist", myplaylist);
+		model.addAttribute("keyword", searchKeyword);
+		model.addAttribute("searching_music", musiclist);
+		
+		return "search";
+	}
+  ```
+* 기능8 : 머신러닝(XgBoost)를 활용한 AI 개발
+```
+# 필요한 열 제외
+data = data.drop(columns=['curArtist', 'curTitle'])
+
+# curExplain, curHead, curObject를 결합하여 새로운 컬럼 생성
+data['combined'] = data['curExplain'].astype(str) + ' ' + data['curHead'].astype(str) + ' ' + data['curObject'].astype(str)
+
+# 범주형 변수를 category 타입으로 변환
+categorical_cols = ['curColor', 'curColor2', 'curColor3', 'genre', 'song']
+for col in categorical_cols:
+    data[col] = data[col].astype('category')
+
+# 'song' 열을 Label Encoding
+label_encoder = LabelEncoder()
+data['song'] = label_encoder.fit_transform(data['song'])
+
+# LabelEncoder 저장
+with open('label_encoder1.pkl', 'wb') as le_file:
+    pickle.dump(label_encoder, le_file)
+
+# TF-IDF 벡터화
+tfidf_vectorizer = TfidfVectorizer(max_features=5000, ngram_range=(1, 2), min_df=2, max_df=0.8)
+tfidf_matrix = tfidf_vectorizer.fit_transform(data['combined'])
+
+# TF-IDF 결과를 데이터프레임으로 변환
+tfidf_df = pd.DataFrame(tfidf_matrix.toarray(), columns=tfidf_vectorizer.get_feature_names_out())
+
+# TF-IDF Vectorizer 저장
+with open('tfidf_vectorizer1.pkl', 'wb') as tv_file:
+    pickle.dump(tfidf_vectorizer, tv_file)
+
+# TF-IDF 행렬 저장
+with open('tfidf_matrix1.pkl', 'wb') as tm_file:
+    pickle.dump(tfidf_matrix, tm_file)
+
+# 모델 학습에 사용할 데이터 준비 (curExplain, curHead, curObject, combined 열 제거)
+X = pd.concat([data[['curColor', 'curPer', 'curColor2', 'curPer2', 'curColor3', 'curPer3', 'genre']].reset_index(drop=True), tfidf_df.reset_index(drop=True)], axis=1)
+y = data['song']
+
+# DMatrix 생성
+dtrain = xgb.DMatrix(X, label=y, enable_categorical=True)
+
+# LabelEncoder 저장
+with open('label_encoder1.pkl', 'wb') as le_file:
+    pickle.dump(label_encoder, le_file)
+    
+    # TF-IDF Vectorizer 저장
+with open('tfidf_vectorizer1.pkl', 'wb') as tv_file:
+    pickle.dump(tfidf_vectorizer, tv_file)
+
+# TF-IDF 행렬 저장
+with open('tfidf_matrix1.pkl', 'wb') as tm_file:
+    pickle.dump(tfidf_matrix, tm_file)
+
+# 모델 파라미터 설정
+params = {
+    'objective': 'multi:softmax',
+    'learning_rate': 0.05,
+    'max_depth': 6,
+    'num_class': len(label_encoder.classes_)
+}
+
+# 학습 시간 측정
+start_time = time.time()
+model = xgb.train(params, dtrain, num_boost_round=100)
+end_time = time.time()
+
+# 학습 시간
+training_time = end_time - start_time
+print(f'학습 시간: {training_time} 초')
+
+# 모델 저장
+with open('xgboost_model1.pkl', 'wb') as f:
+    pickle.dump(model, f)
+
+# 예측 수행 및 랜덤 추천 함수
+def recommend_random_songs(model, label_encoder, tfidf_vectorizer, tfidf_matrix, input_keywords, input_genre, n_recommendations=500, n_random=20):
+    # 입력 키워드를 TF-IDF 벡터화
+    input_vector = tfidf_vectorizer.transform([input_keywords])
+    
+    # 코사인 유사도 계산
+    cosine_sim = cosine_similarity(input_vector, tfidf_matrix)
+    
+    # 입력한 장르와 일치하는 인덱스 필터링
+    genre_indices = data[data['genre'] == input_genre].index
+    
+    # 유사도가 높은 순서로 정렬된 인덱스
+    sorted_indices = genre_indices[np.argsort(-cosine_sim[0][genre_indices])]
+    
+    # 상위 n개의 유사한 노래 추천
+    recommended_song_indices = sorted_indices[:n_recommendations]
+    recommended_songs = label_encoder.inverse_transform(data.loc[recommended_song_indices, 'song'])
+    
+    # n개의 랜덤 추천 노래 선택
+    random_recommendations = random.sample(list(recommended_songs), n_random)
+    
+    return random_recommendations
+
+# 저장된 모델 불러오기
+with open('xgboost_model1.pkl', 'rb') as f:
+    loaded_model = pickle.load(f)
+```
 </div>
 </details>
 
