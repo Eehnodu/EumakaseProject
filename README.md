@@ -242,7 +242,7 @@
 	}
 ```
 * 기능4 : 계절 및 장르별 자동 추천
-  <br> 계절별 추천천
+  <br>계절별 추천
   ```
   @GetMapping("/")
 	public String intro(Model model, HttpSession session) {
@@ -580,7 +580,94 @@
 	}
   ```
 * 기능5 : Chart.js를 활용한 개인 및 사용자 데이터 시각화
+```
+# 차트에 필요한 값 가져오기
+@RequestMapping("/getMypage")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> getMypage(HttpSession session) {
+	    String flaskApiUrl = "http://localhost:5000";
+	    RestTemplate restTemplate = new RestTemplate();
+
+	    // Initialize data variables
+	    List<Map<String, Object>> genreData = null;
+	    List<Map<String, Object>> emotionData = null;
+	    List<Map<String, Object>> topSongsData = null;
+
+	    try {
+	        // Retrieve memid from session
+	        MemberVO mvo = (MemberVO) session.getAttribute("member");
+	        if (mvo == null || mvo.getMemId() == null) {
+	            System.out.println("Member or MemId is null");
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	        }
+	        String input_memid = mvo.getMemId();
+	        System.out.println("input_memid mypage : " + input_memid);
+
+	        // Prepare the request body (input_memid)
+	        Map<String, String> requestBody = new HashMap<>();
+	        requestBody.put("memid", input_memid);
+
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.APPLICATION_JSON);
+	        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+	        // Fetch genre data
+	        try {
+	            ResponseEntity<List<Map<String, Object>>> genreResponseEntity = restTemplate.exchange(
+	                    flaskApiUrl + "/getmygenre", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Map<String, Object>>>() {});
+	            genreData = genreResponseEntity.getBody();
+	            System.out.println("genre_data : " + genreData);
+	        } catch (Exception e) {
+	            System.out.println("Error fetching genre data: " + e.getMessage());
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	        }
+
+	        // Fetch emotion data
+	        try {
+	            ResponseEntity<List<Map<String, Object>>> emotionResponseEntity = restTemplate.exchange(
+	                    flaskApiUrl + "/getmyemotion", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Map<String, Object>>>() {});
+	            emotionData = emotionResponseEntity.getBody();
+	            System.out.println("emotion_data : " + emotionData);
+	        } catch (Exception e) {
+	            System.out.println("Error fetching emotion data: " + e.getMessage());
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	        }
+
+	        // Fetch top songs by genre
+	        try {
+	            ResponseEntity<List<Map<String, Object>>> topsongsResponseEntity = restTemplate.exchange(
+	                    flaskApiUrl + "/getmytopsongs", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Map<String, Object>>>() {});
+	            topSongsData = topsongsResponseEntity.getBody();
+	            System.out.println("top_songs_by_genre : " + topSongsData);
+	        } catch (Exception e) {
+	            System.out.println("Error fetching top songs data: " + e.getMessage());
+	            e.printStackTrace();
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	        }
+
+	        // Combine all data into a single map
+	        Map<String, Object> responseData = new HashMap<>();
+	        responseData.put("genre_data", genreData);
+	        responseData.put("emotion_data", emotionData);
+	        responseData.put("top_songs_by_genre", topSongsData);
+
+	        return ResponseEntity.ok(responseData);
+	    } catch (Exception e) {
+	        // Log the exception properly
+	        System.out.println("General error: " + e.getMessage());
+	        e.printStackTrace();
+	        // Return appropriate HTTP status code and message in case of error
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	    }
+	}
+```
 * 기능6 : 음원 및 큐레이션 데이터 크롤링
+  <br> 음원 크롤링
+  ![image](https://github.com/Eehnodu/Eumakase/assets/155121578/f0123431-28b1-4aa8-a546-5ac811ae8a00)
+  <br> 큐레이션 크롤링
+  ![image](https://github.com/Eehnodu/Eumakase/assets/155121578/37219bab-352d-4060-b5f4-3438748eff71)
 * 기능7 : 검색 기능
 * 기능8 : 머신러닝(XgBoost)를 활용한 AI 개발
 
