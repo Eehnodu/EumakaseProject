@@ -27,7 +27,7 @@
 <summary><b>주요 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
-* 기능1 : 선호도 및 사용자 상태 파악 질문
+* 기능1,2 : 선호도 및 사용자 상태 파악 질문 및 제시시
   <br>선호도 질문
   ```
   # DB에 저장된 정보 가져오기
@@ -117,9 +117,468 @@
 	}
 
   ```
-* 기능2 : 선호도 평가 질문 제시(회원가입 시)
 * 기능3 : 질문을 통한 사용자 분석 및 AI를 활용한 플레이리스트 추천
+```
+@GetMapping("/playlistDetail")
+	public String playlistDetail(@RequestParam(name = "response", required = false) List<String> responses, Model model,
+			HttpSession session) {
+		List<Integer> result = new ArrayList<>();
+		if (responses != null) {
+			try {
+				for (String response : responses) {
+					result.add(Integer.parseInt(response));
+				}
+
+				String input_keywords = "";
+				String input_tag = "";
+				String input_genre = "";
+				String description = "";
+
+				SurveyVO vo = new SurveyVO();
+				for (int i = 0; i < result.size(); i++) {
+					vo.setSurIdx(result.get(i));
+					description = surveyMapper.aiSurveyAnser(vo).getSurDesc();
+					input_keywords += " " + description;
+					input_tag += "#" + description + " ";
+					if (i == 4) {
+						input_genre = description;
+					}
+				}
+
+				// Model 객체에 선택했던 키워드와 장르 추가
+				session.setAttribute("input_keywords", input_keywords.toString().trim());
+				session.setAttribute("input_tag", input_tag.toString().trim());
+				session.setAttribute("input_genre", input_genre);
+
+				// 회원인지 아닌지 구분하여 context에 저장
+				MemberVO member = (MemberVO) session.getAttribute("member");
+				String memId = (member != null) ? member.getMemId() : "guest"; // 회원이 아니면 "guest"로 설정
+
+				// 회원의 선호도 장르를 담을 리스트 생성
+				List<SurveyVO> preGenre = new ArrayList<>();
+				if (member != null) {
+					for (PreferenceVO preCon : preferenceMapper.getMemPreCon(memId)) {
+						preGenre.add(surveyMapper.getMemPreGenre(preCon));
+					}
+				}
+				// 개인 선호도 장르를 모델에 담기
+				model.addAttribute("preGenre", preGenre);
+
+				try {
+					for (String response : responses) {
+						Map<String, Object> params = new HashMap<>();
+						params.put("memId", memId);
+						params.put("surIdx", Integer.parseInt(response));
+						contextMapper.insertContext(params);
+					}
+				} catch (Exception e) {
+				}
+
+				// Flask API 호출
+				String url = "http://localhost:5000/recommend";
+
+				// 요청 바디 생성
+				Map<String, String> requestBody = new HashMap<>();
+				requestBody.put("keywords", input_keywords.trim());
+				requestBody.put("genre", input_genre);
+
+				// HttpHeaders 설정
+				HttpHeaders headers = new HttpHeaders();
+				headers.add("Content-Type", "application/json");
+
+				// 요청 엔티티 생성
+				HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+				// 요청 보내기 및 응답 받기
+				ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+						String[].class);
+
+				// 추천 결과를 모델에 추가
+				String[] recommendations = responseEntity.getBody();
+				List<String> recommendationList = Arrays.asList(recommendations); // 추천 결과를 리스트로 변환
+				session.setAttribute("recommendations", recommendationList); // 모델에 리스트로 추가
+
+				List<MusicVO> musicList = new ArrayList<>();
+				MusicVO musicvo = new MusicVO();
+
+				// 추천 받은 노래의 음원 정보 가져오기
+				for (String list : recommendationList) {
+					String[] parts = list.split(" - ", 2);
+					if (parts.length == 2) {
+						musicvo.setArtist(parts[0]); // 가수
+						musicvo.setTitle(parts[1]); // 곡명
+					} else {
+						// 만약 구분자가 없는 경우 (예외 처리)
+						musicvo.setArtist(list);
+						musicvo.setTitle("");
+					}
+					// MusicVO에서 일치하는 정보 가져와야함
+					if (musicMapper.getMusic(musicvo) != null) {
+						musicList.add(musicMapper.getMusic(musicvo));
+					}
+				}
+
+				// 가져온 음원의 정보를 'musicList'라는 모델에 추가
+				session.setAttribute("musicList", musicList);
+
+			} catch (HttpServerErrorException e) {
+				// 서버 오류 처리
+				model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
+			} catch (RestClientException e) {
+				// 클라이언트 오류 처리
+				model.addAttribute("error", "요청 중 오류가 발생했습니다: " + e.getMessage());
+			} catch (NumberFormatException e) {
+				// 숫자 형식 오류 처리
+				model.addAttribute("error", "잘못된 응답 형식입니다: " + e.getMessage());
+			} catch (Exception e) {
+				// 일반적인 예외 처리
+				model.addAttribute("error", "예기치 않은 오류가 발생했습니다: " + e.getMessage());
+			}
+
+			return "playlistDetail";
+		} else {
+			return "redirect:/"; // responses가 null인 경우 리디렉션
+		}
+	}
+```
 * 기능4 : 계절 및 장르별 자동 추천
+  <br> 계절별 추천천
+  ```
+  @GetMapping("/")
+	public String intro(Model model, HttpSession session) {
+
+		MemberVO memvo = (MemberVO) session.getAttribute("member");
+		if (memvo != null) {
+			return "redirect:/mainPage";
+		}
+
+		try {
+			// 현재 날짜에서 월을 가져오기
+			LocalDate currentDate = LocalDate.now();
+			Month currentMonth = currentDate.getMonth();
+
+			// 월에 따라 계절 결정
+			String season = "";
+			switch (currentMonth) {
+			case DECEMBER:
+			case JANUARY:
+			case FEBRUARY:
+				season = "겨울";
+				break;
+			case MARCH:
+			case APRIL:
+			case MAY:
+				season = "봄";
+				break;
+			case JUNE:
+			case JULY:
+			case AUGUST:
+				season = "여름";
+				break;
+			case SEPTEMBER:
+			case OCTOBER:
+			case NOVEMBER:
+				season = "가을";
+				break;
+			}
+
+			// 장르 리스트
+			List<SurveyVO> genres = surveyMapper.getSeasonGenre();
+
+			// 랜덤으로 장르 선택
+			Random random = new Random();
+			String genre = genres.get(random.nextInt(genres.size())).getSurDesc();
+
+			// Flask API 호출
+			String url = "http://localhost:5000/recommend";
+
+			// 요청 바디 생성
+			Map<String, String> requestBody = new HashMap<>();
+			requestBody.put("keywords", season);
+			requestBody.put("genre", genre);
+
+			// HttpHeaders 설정
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", "application/json");
+
+			// 요청 엔티티 생성
+			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+			// 요청 보내기 및 응답 받기
+			ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+					String[].class);
+
+			// 추천 결과를 모델에 추가
+			String[] recommendations = responseEntity.getBody();
+			List<String> recommendationList = Arrays.stream(recommendations).limit(6).collect(Collectors.toList()); // 추천
+																													// 결과를
+																													// 리스트로
+																													// 변환
+			session.setAttribute("seasonRec", recommendationList); // 모델에 리스트로 추가
+
+			List<MusicVO> musicList = new ArrayList<>();
+			MusicVO musicvo = new MusicVO();
+
+			// 추천 받은 노래의 음원 정보 가져오기
+			for (String list : recommendationList) {
+				String[] parts = list.split(" - ", 2);
+				if (parts.length == 2) {
+					musicvo.setArtist(parts[0]); // 가수
+					musicvo.setTitle(parts[1]); // 곡명
+				} else {
+					// 만약 구분자가 없는 경우 (예외 처리)
+					musicvo.setArtist(list);
+					musicvo.setTitle("");
+				}
+				// MusicVO에서 일치하는 정보 가져와야함
+				MusicVO musicFromDB = musicMapper.getMusic(musicvo);
+				if (musicFromDB != null) {
+					musicList.add(musicFromDB);
+				}
+			}
+			// 가져온 음원의 정보를 'musicList'라는 모델에 추가
+			session.setAttribute("seasonList", musicList);
+			session.setAttribute("seasonName", season + "에 어울리는 " + genre + "🎧");
+
+		} catch (HttpServerErrorException e) {
+			// 서버 오류 처리
+			model.addAttribute("error", "서버 오류가 발생했습니다: " + e.getMessage());
+		} catch (RestClientException e) {
+			// 클라이언트 오류 처리
+			model.addAttribute("error", "요청 중 오류가 발생했습니다: " + e.getMessage());
+		} catch (Exception e) {
+			// 일반적인 예외 처리
+			model.addAttribute("error", "예기치 않은 오류가 발생했습니다: " + e.getMessage());
+		}
+		return "intro";
+	}
+  ```
+  <br>장르별 추천
+  ```
+  @GetMapping("/mainPage")
+	public String mainPage(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+
+		// 사랑받는 노래 가져오기
+		List<AiPlaylistVO> popularMusicList = aiplaylistMapper.getPopularMusic();
+		List<MusicVO> popularMusic = new ArrayList<>();
+		for (AiPlaylistVO music : popularMusicList) {
+			popularMusic.add(musicMapper.getUserPlaylist(music.getMusicIdx()));
+		}
+		session.setAttribute("popularMusic", popularMusic);
+
+		// 중간에 장르 자동 추천
+		// 쿠키가 이미 있는지 확인
+		Cookie recCookie = WebUtils.getCookie(request, "recCookie");
+
+		// 세션에서 값을 읽음
+		List<List<String>> allRecList = (List<List<String>>) session.getAttribute("recomendMusic");
+		List<String> allSurveyList = (List<String>) session.getAttribute("recSurvey");
+		List<Map.Entry<Integer, SurveyVO>> indexList = (List<Map.Entry<Integer, SurveyVO>>) session
+				.getAttribute("indexList");
+		List<List<MusicVO>> allRecMusicList = (List<List<MusicVO>>) session.getAttribute("recMusic");
+
+		// null 초기화 방지
+		boolean needNewData = recCookie == null || allRecList == null || allSurveyList == null || indexList == null
+				|| allRecList.isEmpty() || allSurveyList.isEmpty() || indexList.isEmpty();
+
+		if (needNewData) {
+			// 장르와 선택지 리스트 가져오기
+			List<SurveyVO> surveyList = surveyMapper.getRecSurvey();
+			List<SurveyVO> genreList = surveyMapper.getSeasonGenre();
+
+			// Map을 사용하여 설문 항목을 저장
+			Map<String, List<String>> surveyMap = new HashMap<>();
+			surveyMap.put("emotion", new ArrayList<>());
+			surveyMap.put("situation", new ArrayList<>());
+			surveyMap.put("place", new ArrayList<>());
+			surveyMap.put("people", new ArrayList<>());
+
+			for (SurveyVO survey : surveyList) {
+				List<String> list = surveyMap.get(survey.getSurItem());
+				if (list != null) {
+					list.add(survey.getSurDesc());
+				}
+			}
+
+			Random random = new Random();
+
+			// 각 장르에 대한 추천 리스트를 담을 리스트 초기화
+			allRecList = new ArrayList<>();
+			allSurveyList = new ArrayList<>();
+			indexList = new ArrayList<>();
+
+			for (int i = 0; i < genreList.size(); i++) {
+				indexList.add(new AbstractMap.SimpleEntry<>(i, genreList.get(i)));
+			}
+
+			for (Map.Entry<Integer, SurveyVO> entry : indexList) {
+				String recGen = entry.getValue().getSurDesc();
+
+				// 각 항목별로 랜덤 선택
+				String recEmotion = surveyMap.get("emotion").get(random.nextInt(surveyMap.get("emotion").size()));
+				String recSituation = surveyMap.get("situation").get(random.nextInt(surveyMap.get("situation").size()));
+				String recPlace = surveyMap.get("place").get(random.nextInt(surveyMap.get("place").size()));
+				String recPeople = surveyMap.get("people").get(random.nextInt(surveyMap.get("people").size()));
+
+				String recStr = recEmotion + " " + recSituation + " " + recPlace + " " + recPeople;
+
+				// 각 단어 앞에 '#' 추가
+				String recSurvey = ("#" + recGen + " " + "#" + recStr.replaceAll(" ", " #")).trim();
+
+				// Flask API 호출
+				String url = "http://localhost:5000/recommend";
+
+				// 요청 바디 생성
+				Map<String, String> requestBody = new HashMap<>();
+				requestBody.put("keywords", recStr);
+				requestBody.put("genre", recGen);
+
+				// HttpHeaders 설정
+				HttpHeaders headers = new HttpHeaders();
+				headers.add("Content-Type", "application/json");
+
+				// 요청 엔티티 생성
+				HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+				try {
+					// 요청 보내기 및 응답 받기
+					ResponseEntity<String[]> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
+							String[].class);
+
+					// 추천 결과를 모델에 추가
+					String[] recommendations = responseEntity.getBody();
+					if (recommendations != null) {
+						List<String> recList = Arrays.asList(recommendations);
+						allRecList.add(recList);
+						allSurveyList.add(recSurvey);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+			// 세션에 추천 데이터를 저장
+			session.setAttribute("recomendMusic", allRecList);
+			session.setAttribute("recSurvey", allSurveyList);
+			session.setAttribute("indexList", indexList);
+
+			// 세션 식별자를 쿠키에 저장
+			Cookie recCookieNew = new Cookie("recCookie", session.getId());
+			recCookieNew.setMaxAge(24 * 60 * 60); // 1 day
+			recCookieNew.setPath("/");
+			response.addCookie(recCookieNew);
+		}
+
+		// 추천 받은 노래의 음원 정보 가져오기
+		if (allRecMusicList == null || allRecMusicList.isEmpty()) {
+			allRecMusicList = new ArrayList<>();
+			for (List<String> recList : allRecList) {
+				List<MusicVO> recMusicList = new ArrayList<>();
+				for (String list : recList) {
+					MusicVO musicvo = new MusicVO();
+					String[] parts = list.split(" - ", 2);
+					if (parts.length == 2) {
+						musicvo.setArtist(parts[0]); // 가수
+						musicvo.setTitle(parts[1]); // 곡명
+					} else {
+						// 만약 구분자가 없는 경우 (예외 처리)
+						musicvo.setArtist(list);
+						musicvo.setTitle("");
+					}
+					// MusicVO에서 일치하는 정보 가져와야함
+					MusicVO musicFromDB = musicMapper.getRecMusic(musicvo);
+					if (musicFromDB != null) {
+						recMusicList.add(musicFromDB);
+					}
+				}
+				allRecMusicList.add(recMusicList);
+			}
+
+			// 각 장르별로 가져온 음원의 정보를 'recMusic'라는 세션에 추가
+			session.setAttribute("recMusic", allRecMusicList);
+		}
+
+		// 다른 사람은 뭐듣지? 값 가져오기
+		MemberVO memvo = (MemberVO) session.getAttribute("member");
+
+		if (memvo == null) {
+			return "redirect:/";
+		}
+
+		String memId = memvo.getMemId();
+
+		try {
+			// 다른 사람의 mypl 정보 가져오기
+			List<MyPlaylistVO> otherIdxList = myplaylistMapper.getOtherPl(memId);
+			session.setAttribute("otherIdxList", otherIdxList);
+
+			// 가져온 idx를 이용해서 개인의 playlist 가져오기
+			List<List<AiPlaylistVO>> otherPlList = new ArrayList<>();
+			// 가져온 playlist 정보에서 선택했던 tag 가져오기
+			List<List<Integer>> otherSurIdxList = new ArrayList<>();
+			// 가져은 playlist 정보에서 musicIdx 가져오기
+			List<List<Integer>> otherMusicIdxList = new ArrayList<>();
+
+			for (MyPlaylistVO other : otherIdxList) {
+				// 가져온 playlist 정보
+				List<AiPlaylistVO> tempPlList = aiplaylistMapper.getOtherPl(other);
+				otherPlList.add(tempPlList);
+
+				if (!tempPlList.isEmpty()) {
+					AiPlaylistVO tempPl = tempPlList.get(0);
+
+					// 각 contextIdx에 대한 surIdx 값을 가져오기
+					int[] contextIdxArray = { tempPl.getContextIdx(), tempPl.getContextIdx2(), tempPl.getContextIdx3(),
+							tempPl.getContextIdx4(), tempPl.getContextIdx5() };
+
+					List<Integer> surIdxList = new ArrayList<>();
+					for (int contextIdx : contextIdxArray) {
+						surIdxList.add(contextMapper.getOtherSurIdx(contextIdx).getSurIdx());
+					}
+
+					otherSurIdxList.add(surIdxList);
+
+					// playlist에서 musicIDx 가져오기
+					List<Integer> musicIdxList = new ArrayList<>();
+					for (AiPlaylistVO albumCov : tempPlList) {
+						musicIdxList.add(albumCov.getMusicIdx());
+					}
+					otherMusicIdxList.add(musicIdxList);
+				}
+			}
+
+			// 가져온 surIdx를 통해서 surDesc정보 가져오기
+			List<String> otherSurDescList = new ArrayList<>();
+			for (List<Integer> surIdxList : otherSurIdxList) {
+				String otherSurDesc = "";
+				for (int surIdx : surIdxList) {
+					// surIdx에 해당하는 Desc값 가져오기
+					otherSurDesc += "#" + surveyMapper.getOtherSurDesc(surIdx).getSurDesc() + " ";
+				}
+				otherSurDescList.add(otherSurDesc.trim());
+			}
+			// 가져온 musicIdx를 이용해서 albumCov 가져오기
+			List<List<String>> otherAlbumCovList = new ArrayList<>();
+			for (List<Integer> musicIdxList : otherMusicIdxList) {
+				List<String> albumCovList = new ArrayList<>();
+				for (int i = 0; i < 4; i++) {
+					albumCovList.add(musicMapper.getOtherAlbumCov(musicIdxList.get(i)).getAlbumCov());
+				}
+				otherAlbumCovList.add(albumCovList);
+			}
+
+			// 가져온 otherPlaylist 정보를 session에 저장
+			session.setAttribute("otherPlList", otherPlList);
+			session.setAttribute("otherSurIdxList", otherSurIdxList);
+			session.setAttribute("otherSurDescList", otherSurDescList);
+			session.setAttribute("otherAlbumCovList", otherAlbumCovList);
+			return "mainPage";
+
+		} catch (Exception e) {
+			return "redirect:/";
+		}
+	}
+  ```
 * 기능5 : Chart.js를 활용한 개인 및 사용자 데이터 시각화
 * 기능6 : 음원 및 큐레이션 데이터 크롤링
 * 기능7 : 검색 기능
