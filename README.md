@@ -67,12 +67,11 @@
       <fieldset class="checkbox-group">
       <h4 class="h4survey">선호도 조사</h4>
         <legend class="checkbox-group-legend">Choose your favorites</legend>
-        <legend class="three">최대 3개까지 선택해주세요</legend>
-`;
+        <legend class="three">최대 3개까지 선택해주세요</legend>`;
   ```
   <br>상태파악 질문
   ```
-@GetMapping("/AIrecommend")
+  @GetMapping("/AIrecommend")
 	public String AIrecommend(Model model) {
 		Random ran = new Random();
 		List<SurveyVO> Que = surveyMapper.aiQuestion();
