@@ -122,31 +122,31 @@
 
 |🎞 서비스 소개 페이지 |
 |:---:|
-| ![image](https://github.com/Eehnodu/Portfolio/assets/155121578/e1f6280f-5398-4ab4-8f67-68d50268344d)|
+| ![image](https://github.com/Eehnodu/Eumakase/assets/155121578/a22a46ae-acdb-4455-84a9-b0f377d9a605)|
 
 |🎞 메인 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/df0c6a8b-13ed-4575-85e6-464859130e81)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/9057a45d-6694-455e-a970-f9c8904096ea)|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/f5b4c6e5-13eb-4595-94b2-720216f13287)|
 
 |🎞 AI 추천 페이지 |🎞 AI 추천 결과 페이지 |
 |:---:|:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/906efd8b-648d-464c-97e2-9d42f6b2ab82)|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/0ed2e567-9a0f-45d9-b166-54c6d5528e11)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/359e8810-c346-4b05-8cdb-68b24220d6cc)|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/dcfd1290-0e16-4909-9f69-ec93ea146815)|
 
 |🎞 마이 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/74621c9a-d005-4682-8b9a-0ba228bd5f6a)|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/881db3e7-0880-4fed-a740-02eb900da717)|
 
 |🎞 플레이리스트 상세 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/d8e56db6-9f4c-4926-be85-9988ae7505f5)|
 
 |🎞 곡 상세 정보 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/7cbf260f-c910-4d3b-993a-adaa6d7db39d)|
 
 |🎞 검색 페이지 |
 |:---:|
-|![image](https://github.com/Eehnodu/Portfolio/assets/155121578/3f67348a-3090-448a-8f16-307e1c7ac7a6)|
+|![image](https://github.com/Eehnodu/Eumakase/assets/155121578/697a3821-bc2a-45f7-9bc5-80bfe9651b10)|
 
 
 
