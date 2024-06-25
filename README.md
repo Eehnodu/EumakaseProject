@@ -918,11 +918,11 @@ with open('xgboost_model1.pkl', 'rb') as f:
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
   <tr>
-    <td align="center"><img src="https://i.namu.wiki/i/GirsrnQUH-q5qbVv871h4zLg_H1X25k25qY-Vr5DcO6xV8MWdcENwySAA0M62Xyurjt3ezZUbPm7GoVYJRRXWGIAXpWJ0_zsEH0mxNsLH2S_GX54w9exBaOg6io06JjbYZRHQiPSyUwPoLzRFA5aeQ.webp" width="100" height="100"/></td>
-    <td align="center"><img src="https://mb.ntdtv.kr/assets/uploads/2019/01/Screen-Shot-2019-01-08-at-4.31.55-PM-e1546932545978.png" width="100" height="100"/></td>
-    <td align="center"><img src="https://github.com/2024-SMHRD-KDT-BigData-23/FitNeeds/assets/155136709/60cfda0f-23f4-4e5d-a953-12565033b91b" height="100"/></td>
-    <td align="center"><img src="https://i.pinimg.com/236x/ed/bb/53/edbb53d4f6dd710431c1140551404af9.jpg" width="100" height="100"/></td>
-    <td align="center"><img src="https://pbs.twimg.com/media/B-n6uPYUUAAZSUx.png" width="100" height="100"/></td>
+    <td align="center"><img src="https://i.namu.wiki/i/s4iS2Pjv4t1XhTJDo9VIJyc4wxeUMy1ZtVWjxd3Nel4UyWHIdYTDOpCeblgVK2k4eUh3Ro59KMet2XQkPFOJ_5DFcwfh8QYtJnSrUhqHCtAMZJ09pYBRgU2s_6V2zwWUVNr2U2sj4nw4h7g_kGgBKg.webp" width="100" height="100"/></td>
+    <td align="center"><img src="https://i.namu.wiki/i/qWyoh8nA_DcTuY4gqcmkFC2k5Sbn8D6yVCVRQHMhJD-eRYtugUDNg6jP-v0VqbnFdCjL4jYrepNXw9ey8ouFAA.webp" width="100" height="100"/></td>
+    <td align="center"><img src="https://i.namu.wiki/i/AXRxHVcpRrjP9yQ06BTERtASAClV0WMnazkm8ZZux_HeYLon-qBpudXeAXJ715wfrskX4bYkJH4ZifiaHK0MR7JfaWdHnERiYhczdiuoTFx911CAE5-0r_S_JILa1YhOxerXH1b8nTnrTOfRj9chTQ.webp" width="100" height="100"/></td>
+    <td align="center"><img src="https://i.namu.wiki/i/5Veq9acZq3uqIUMsQbKyf4wjHiuk500_e7LUTtdWvG_2m7Wax-Anb5bFATOMsQReegqabE05_P6Swl9h9vUl3g.webp" width="100" height="100"/></td>
+    <td align="center"><img src="https://i.namu.wiki/i/wn556ziE1XBi5tU1vYIC4qHG5DpQZMuo4v9zIP213-Cpqf3bgDTepelfMBhGM8B5UOM9o7X2r9193Ds_3u0-oVPpnz9Evc1aRXtZTSDJHIywmkHzwSDRDjAMI9dsCBBQ45A8b3T_cab1XSh-TBE2qw.webp" width="100" height="100"/></td>
   </tr>
   <tr>
     <td align="center"><strong>김동현</strong></td>
