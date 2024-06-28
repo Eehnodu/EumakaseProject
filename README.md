@@ -832,41 +832,7 @@ with open('xgboost_model1.pkl', 'rb') as f:
         <td>개발도구</td>
         <td>
 	    <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=Eclipse&logoColor=white"/>
-            <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white"/>
-	    <img src="https://img.shields.io/badge/Jupyter%20Notebook-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white"/> 
-        </td>
-    </tr>
-    <tr>
-        <td>서버환경</td>
-        <td>
-            <img src="https://img.shields.io/badge/Apache Tomcat-D22128?style=for-the-badge&logo=Apache Tomcat&logoColor=white"/>
-            <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"/> 
-        </td>
-    </tr>
-    <tr>
-        <td>데이터베이스</td>
-        <td>
-            <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-        </td>
-    </tr>
-    <tr>
-        <td>협업도구</td>
-        <td>
-            <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>
-            <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
-        </td>
-    </tr>
-</table>
-
-
-<br>
-
-## ⚙ 시스템 아키텍처
-![아키텍처](https://github.com/Envoy-VC/awesome-badges/assets/155121578/85619e76-a6f6-4cd8-8680-18dd34177faa)
-<br>
-
-## 📌 SW유스케이스
-![유스케이스](https://github.com/Eehnodu/Project/assets/155121578/3f63bc55-87c4-45ad-ad3d-eac5cff29e1f)
+            <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=VisualStudioCode&log스](https://github.com/Eehnodu/EumakaseProject/assets/155121578/27acf97e-e687-4ef7-b4a9-2f152bf96d67)
 <br>
 
 ## 📌 서비스 흐름도
