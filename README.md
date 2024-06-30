@@ -948,7 +948,7 @@ with open('xgboost_model1.pkl', 'rb') as f:
   <tr>
     <td align="center"><b>Crawling 및 데이터 전처리<br><br>마이페이지 구현<br><br>플레이리스트 상세페이지 DB에서 정보 가져오기 구현<br><br>동기, 비동기 검색 구현<br><br>플레이리스트 CRUD 기능<br></td>
     <td align="center"><b>UI/UX 디자인<br><br>소개 페이지 구현<br><br>AI 음악추천, 곡 정보 페이지 구현<br><br>검색창, 검색 결과 페이지 구현<br><br>회원관리 기능 구현<br></td>
-    <td align="center"><b>PM<br><br>DB 설계 및 구축<br><br>XgBoost를 활용한 AI 개발<br><br>Crawling<br><br>Flask를 통한 AI 추천 결과 연동<br><br>다른 사용자 플레이리스트 화면 구현<br><br>곡 정보 페이지 Youtube iframe 구현<br><br>계절 및 장르별 추천 플레이리스트<br></td>
+    <td align="center"><b>PM<br><br>DB 설계 및 구축<br><br>XgBoost를 활용한 AI 개발<br><br>Crawling<br><br>Flask를 통한 AI 추천 결과 연동<br><br>다른 사용자 플레이리스트 화면 구현<br><br>곡 정보 페이지 및 Youtube iframe 구현<br><br>계절 및 장르별 추천 플레이리스트<br></td>
     <td align="center"><b>Crawling<br><br>OpenCV를 통한 색감 정보 추출<br><br>Google Vision, Transtation API를 활용한 이미지 객체 인식 구현<br><br>텍스트마이닝을 통한 큐레이션 데이터 분석<br><br>Chart.js를 통한 개인 및 사용자 데이터 시각화<br></b></td>
     <td align="center"><b>UI/UX 디자인<br><br>메인 페이지, 마이페이지 구현<br><br>AI 음악 추천 및 결과 페이지 구현<br><br>곡 정보, 플레이리스트 페이지 구현<br></b></td>
   </tr>
