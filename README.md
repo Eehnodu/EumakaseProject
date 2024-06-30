@@ -934,7 +934,7 @@ with open('xgboost_model1.pkl', 'rb') as f:
   <tr>
     <td align="center"><b>Back-end, DB</b></td>
     <td align="center"><b>Front-end</b></td>
-    <td align="center"><b>Back-end, DB, Modeling</b></td>
+    <td align="center"><b>PM, Back-end, DB, Modeling</b></td>
     <td align="center"><b>Front-end, Back-end</b></td>
     <td align="center"><b>Front-end</b></td>
   </tr>
